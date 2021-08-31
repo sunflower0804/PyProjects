@@ -1,0 +1,48 @@
+{
+  "uid" : "83edc06c07f9ae9e47eb6dd1b683e4e2",
+  "name" : "packages",
+  "children" : [ {
+    "name" : "test_case.calculate_module.cserver_module.test_serverpage",
+    "children" : [ {
+      "name" : "test_search_clusterUI[items0]",
+      "uid" : "c4afbcbf8466d488",
+      "parentUid" : "493603ef7f0dc79731e2345cda996160",
+      "status" : "broken",
+      "time" : {
+        "start" : 1630295734276,
+        "stop" : 1630295734333,
+        "duration" : 57
+      },
+      "flaky" : false,
+      "newFailed" : false,
+      "parameters" : [ "{'cluster1': 'host3223-cvm3323', 'cluster2': 'host3222-cvm3322'}" ]
+    }, {
+      "name" : "test_search_clusterUI1[items0]",
+      "uid" : "dad27f00f3e1eca1",
+      "parentUid" : "493603ef7f0dc79731e2345cda996160",
+      "status" : "broken",
+      "time" : {
+        "start" : 1630295737018,
+        "stop" : 1630295737024,
+        "duration" : 6
+      },
+      "flaky" : false,
+      "newFailed" : false,
+      "parameters" : [ "{'cluster1': 'host3223-cvm3323', 'cluster2': 'host3222-cvm3322'}" ]
+    }, {
+      "name" : "test_login_failure_b",
+      "uid" : "bceb7ed224aa342f",
+      "parentUid" : "493603ef7f0dc79731e2345cda996160",
+      "status" : "failed",
+      "time" : {
+        "start" : 1630295739612,
+        "stop" : 1630295739613,
+        "duration" : 1
+      },
+      "flaky" : false,
+      "newFailed" : false,
+      "parameters" : [ ]
+    } ],
+    "uid" : "test_case.calculate_module.cserver_module.test_serverpage"
+  } ]
+}

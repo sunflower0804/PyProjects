@@ -1,0 +1,13 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="PyUnresolvedReferencesInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredIdentifiers">
+        <list>
+          <option value="Calculate.page.home_page.home_search_ui.By" />
+          <option value="Calculate.test_case.test_home_page.test_search_ui._base_url" />
+        </list>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>

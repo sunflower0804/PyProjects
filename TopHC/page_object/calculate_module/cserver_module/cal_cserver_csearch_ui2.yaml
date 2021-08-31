@@ -1,0 +1,17 @@
+#3、定位集群cluster1下的虚拟机vm1信息
+- by: xpath
+  locator: //*[@id="panel-c-scroll"]/div[1]/section/section/div[1]/section/div[2]/div/ul/li/ul/li[1]/div/div/div/div
+  action: click
+
+- by: xpath
+  locator: //*[@id="compute_virtual_tabs_vmList"]/section/div[2]/div[1]/div[3]/table/tbody/tr[1]/td[2]/div/span/a
+  action: text
+
+#4、定位集群cluster2下的虚拟机vm1信息
+- by: xpath
+  locator: //*[@id="panel-c-scroll"]/div[1]/section/section/div[1]/section/div[2]/div/ul/li/ul/li[2]/div/div/div/div
+  action: click
+
+- by: xpath
+  locator: //*[@id="compute_virtual_tabs_vmList"]/section/div[2]/div[1]/div[3]/table/tbody/tr[1]/td[2]/div/span/a
+  action: text

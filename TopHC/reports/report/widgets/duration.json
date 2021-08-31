@@ -1,0 +1,31 @@
+[ {
+  "uid" : "dad27f00f3e1eca1",
+  "name" : "test_search_clusterUI1[items0]",
+  "time" : {
+    "start" : 1630295737018,
+    "stop" : 1630295737024,
+    "duration" : 6
+  },
+  "status" : "broken",
+  "severity" : "normal"
+}, {
+  "uid" : "c4afbcbf8466d488",
+  "name" : "test_search_clusterUI[items0]",
+  "time" : {
+    "start" : 1630295734276,
+    "stop" : 1630295734333,
+    "duration" : 57
+  },
+  "status" : "broken",
+  "severity" : "normal"
+}, {
+  "uid" : "bceb7ed224aa342f",
+  "name" : "test_login_failure_b",
+  "time" : {
+    "start" : 1630295739612,
+    "stop" : 1630295739613,
+    "duration" : 1
+  },
+  "status" : "failed",
+  "severity" : "normal"
+} ]

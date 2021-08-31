@@ -1,0 +1,62 @@
+{
+  "8d0a59507e600e0df6726922f1441934" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 1,
+      "skipped" : 0,
+      "passed" : 0,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "c4afbcbf8466d488",
+      "status" : "broken",
+      "statusDetails" : "selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {\"method\":\"xpath\",\"selector\":\"//*[@id=\"navBar_item_计算_content\"]\"}\n  (Session info: chrome=92.0.4515.159)",
+      "time" : {
+        "start" : 1630295734276,
+        "stop" : 1630295734333,
+        "duration" : 57
+      }
+    } ]
+  },
+  "31bf0ddd6803d192585d0b6cd391a925" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 1,
+      "skipped" : 0,
+      "passed" : 0,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "dad27f00f3e1eca1",
+      "status" : "broken",
+      "statusDetails" : "selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {\"method\":\"xpath\",\"selector\":\"//*[@id=\"navBar_item_计算_content\"]\"}\n  (Session info: chrome=92.0.4515.159)",
+      "time" : {
+        "start" : 1630295737018,
+        "stop" : 1630295737024,
+        "duration" : 6
+      }
+    } ]
+  },
+  "b43786636ea1f278af09e200305e9f7d" : {
+    "statistic" : {
+      "failed" : 1,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 0,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "bceb7ed224aa342f",
+      "status" : "failed",
+      "statusDetails" : "AssertionError: assert '1' == 1",
+      "time" : {
+        "start" : 1630295739612,
+        "stop" : 1630295739613,
+        "duration" : 1
+      }
+    } ]
+  }
+}

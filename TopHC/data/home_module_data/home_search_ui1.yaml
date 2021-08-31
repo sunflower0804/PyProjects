@@ -1,0 +1,4 @@
+- by: xpath
+  locator: //*[@id="panel-c-scroll"]/div[1]/section/section/div/div[1]/section[1]/div/div[1]/div/div[1]/h4
+  action: text
+

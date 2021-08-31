@@ -1,0 +1,63 @@
+{
+  "uid" : "3d40d3b4658876ee",
+  "name" : "test_search_clusterUI1[items0]",
+  "fullName" : "test_case.calculate_module.cserver_module.test_serverpage.TestSearchUI#test_search_clusterUI1",
+  "historyId" : "31bf0ddd6803d192585d0b6cd391a925",
+  "time" : {
+    "start" : 1630236105347,
+    "stop" : 1630236107068,
+    "duration" : 1721
+  },
+  "status" : "passed",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ ],
+  "afterStages" : [ ],
+  "labels" : [ {
+    "name" : "story",
+    "value" : "云服务器子模块"
+  }, {
+    "name" : "feature",
+    "value" : "计算-->云服务器模块"
+  }, {
+    "name" : "parentSuite",
+    "value" : "test_case.calculate_module.cserver_module"
+  }, {
+    "name" : "suite",
+    "value" : "test_serverpage"
+  }, {
+    "name" : "subSuite",
+    "value" : "TestSearchUI"
+  }, {
+    "name" : "host",
+    "value" : "DESKTOP-SKQ5DMP"
+  }, {
+    "name" : "thread",
+    "value" : "22832-MainThread"
+  }, {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "package",
+    "value" : "test_case.calculate_module.cserver_module.test_serverpage"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ {
+    "name" : "items",
+    "value" : "{'cluster1': 'host3223-cvm3323', 'cluster2': 'host3222-cvm3322'}"
+  } ],
+  "links" : [ ],
+  "hidden" : true,
+  "retry" : true,
+  "extra" : {
+    "categories" : [ ],
+    "tags" : [ ]
+  },
+  "source" : "3d40d3b4658876ee.json",
+  "parameterValues" : [ "{'cluster1': 'host3223-cvm3323', 'cluster2': 'host3222-cvm3322'}" ]
+}
