@@ -1,0 +1,9 @@
+- by: xpath
+  locator: //*[@id="panel-c-scroll"]/div[1]/section/section/div[1]/section/div[2]/div/ul/li/ul/li[1]/div/div/div/div
+  action: click
+
+- by: xpath
+  locator: //*[@id="panel-c-scroll"]/div[1]/section/section/div[1]/section/div[2]/div/ul/li/ul/li[1]/div/div/div/div
+  action: text
+
+

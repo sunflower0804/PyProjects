@@ -1,0 +1,13 @@
+- by: xpath
+  locator: //li/ul/li[2]/div/span
+  action: click
+
+- by: xpath
+  locator: //li[2]/ul/li/div/span
+  action: click()
+
+- by: xpath
+  locator: //li[2]/ul/li/ul/li/ul/li/div/div/div/div
+  action: click()
+
+

@@ -13,39 +13,54 @@ class TestSearchUI:
         self.main = Main(driver=None)
 
     # 2.1.1.2云服务器模块UI信息检查
-    # 1-1.集群目录结构信息校验
-    # (1)检查每个集群下目录信息
-
-    TEST_CASE_LINK = 'https://www.baidu.com/'
+    # 1-1-1.云服务器/集群信息导航栏信息校验
+    # (1)集群目录信息校验
+    TEST_CASE_LINK = 'https://www.kdocs.cn/p/129592400066'
     @allure.testcase(TEST_CASE_LINK, '登录测试用例001的id')
     # --allure-link-pattern=issue:https://www.baidu.com/{}  #对应的TD链接
     @allure.issue('59561', '登录测试用例001的对应的bug')  # bugID，传入上面的括号里
-    @allure.story('集群目录结构信息校验')  #对模块子功能进行标注
-    @pytest.mark.parametrize("items", YamlUtil.loadyaml(r"D:\WorkTools\PyProjects\TopHC\test_case\calculate_module\cserver_module\test_search_text1.yaml"))
-    def test_search_clusterUI(self, items):
+    @allure.title('集群目录结构信息校验')  #对模块子功能进行标注
+    @pytest.mark.parametrize("items", YamlUtil.loadyaml(r"D:\WorkTools\PyProjects\TopHC\data\test_data\calculate_module_data\cserver_module\cal_cserver_cluster1.yaml"))
+    def test_search_clusterUI1(self, items):
         with allure.step('前置条件：\n1、测试环境存在集群cluster1、cluster2;\n2、存在租户zh1, 已添加cluster1、cluster2下的资源池\n3、租户zh1在cluster1、cluster2下分别存在云服务器vm1、vm2'):
             pass
         with allure.step('操作步骤：\n1、登录企业云系统当前租户选择zh1\n2、进入计算 - -云服务器首页\n3、检查集群信息列表'):
-            tt = self.main.goto_serverpage().search_clustersUI()
+            tt = self.main.goto_serverpage().search_clustersUI1()
         with allure.step('预期结果：\n3、集群信息列表中存在集群cluster1、cluster2，对应集群名称显示正确'):
             assert items['cluster1'] == tt[0]
             assert items['cluster2'] == tt[1]
 
+    #(2)集群云服务器信息校验
+    @pytest.mark.parametrize("items", YamlUtil.loadyaml(r"D:\WorkTools\PyProjects\TopHC\data\test_data\calculate_module_data\cserver_module\cal_cserver_cluster2.yaml"))
+    def test_search_clusterUI2(self, items):
+        tt = self.main.goto_serverpage().search_clustersUI2()
+        assert items['uuid1'] == tt[3]
 
 
-   # @pytest.mark.parametrize("items", YamlUtil.loadyaml(r"D:\WorkTools\PyProjects\TopHC\test_case\calculate_module\cserver_module\test_search_text1.yaml"))
-    #def test_search_clusterUI1(self, items):
-        #tt = self.main.goto_serverpage().search_clustersUI()
-        #assert items['cluster1'] == tt[0]
-        #assert items['cluster2'] == tt[1]
+    #(3)集群目录结构信息校验
+    @pytest.mark.parametrize("items", YamlUtil.loadyaml(r"D:\WorkTools\PyProjects\TopHC\data\test_data\calculate_module_data\cserver_module\cal_cserver_cluster3.yaml"))
+    def test_search_clusterUI3(self, items):
+        tt = self.main.goto_serverpage().search_clustersUI3()
+        assert items['zu'] == tt[1]
 
-    def test_click(self):
-        self.main.goto_serverpage().search_text1()
+    # (4)集群目录下服务器信息校验
+    @pytest.mark.parametrize("items", YamlUtil.loadyaml(r"D:\WorkTools\PyProjects\TopHC\data\test_data\calculate_module_data\cserver_module\cal_cserver_cluster4.yaml"))
+    def test_search_clusterUI3(self, items):
+        tt = self.main.goto_serverpage().search_clustersUI3()
+        assert items['uuid1'] == tt[3]
 
+    # 1-1-2.集群信息导航栏功能校验
+    #(5)集群目录新增组功能验证(正常/异常场景)
+    @pytest.mark.parametrize("items", YamlUtil.loadyaml(r"D:\WorkTools\PyProjects\TopHC\data\test_data\calculate_module_data\cserver_module\cal_cserver_addgroup.yaml"))
+    def test_add_group(self, items):
+        tt = self.main.goto_serverpage().add_group()
+        assert items['uuid1'] == tt[3]
 
-    #def test_search_text2(self):
-        #self.main.goto_cal_cserver_searchUI().search_clusters2()
-
+    #(6)集群目录组名称重命名功能验证(正常/异常场景)
+    @pytest.mark.parametrize("items", YamlUtil.loadyaml(r"D:\WorkTools\PyProjects\TopHC\data\test_data\calculate_module_data\cserver_module\cal_cserver_updategroup.yaml"))
+    def test_update_group(self, items):
+        tt = self.main.goto_serverpage().update_group()
+        assert items['uuid1'] == tt[3]
 
 '''
 allure常用特性

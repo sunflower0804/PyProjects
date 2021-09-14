@@ -12,6 +12,8 @@ def loadyaml(filename):
     data = yaml.load(files, Loader=yaml.FullLoader)
     return data
 
+'''
 #调试
 a = loadyaml('../data/login.yaml')
 print(a)
+'''

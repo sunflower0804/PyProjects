@@ -1,12 +1,13 @@
+import allure
 import pytest
 from selenium import webdriver
 
 
 #使用不同权限用户登录测试
-from TopHC.config.yamlload import loadyaml
+from PMO.config.yamlload import loadyaml
 from TopHC.page_object.home_module.login_page import LoginPage
 
-
+@allure.feature('登录测试')   #对模块功能进行标注
 class TestLogin:
     def setup_method(self, method):
         options = webdriver.ChromeOptions()
@@ -17,11 +18,12 @@ class TestLogin:
         self.driver.quit()
 
 
-    @pytest.mark.parametrize("login_user, login_username, login_password", loadyaml(r'D:\WorkTools\PyProjects\TopHC\\test_case\home_module\\test_login.yaml'))
+    @pytest.mark.parametrize("login_user, login_username, login_password", loadyaml(r'D:\WorkTools\PyProjects\TopHC\data\test_data\home_module_data\test_login.yaml'))
     def test_01_login(self, login_user, login_username, login_password):
         #self.driver = webdriver.Chrome()  #使用谷歌登录
         lp = LoginPage(self.driver)
         lp.login(login_user, login_username, login_password)
+        print('登录成功')
 
 '''
     def test_login(self):
