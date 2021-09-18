@@ -2,6 +2,7 @@ import allure
 import pytest
 
 from TopHC.base.main import Main
+from TopHC.others.filepath import readFilepath
 from TopHC.others.yamlexcelload import loadyaml
 
 
@@ -21,7 +22,9 @@ class TestServicePage:
     @allure.issue('59561', '测试用例对应的bugID')  # bugID，传入上面的括号里
     @allure.title('集群目录结构信息校验')  #对模块子功能进行标注
     '''
-    @pytest.mark.parametrize("items", loadyaml(r'D:\WorkTools\PyProjects\TopHC\data\test_data\calculate_module_data\cserver_module\cal_cserver_cluster1.yaml'))
+
+    path = readFilepath.CserverTestPath
+    @pytest.mark.parametrize("items", loadyaml(path))
     def test_search_clusterUI1(self, items):
         tt = self.main.goto_serverpage().search_clustersUI1()
         assert items['cluster1'] == tt[0]

@@ -9,7 +9,7 @@ class TestTagApi:
     def setup(self):
         self.tagapi = TagApi()
 
-    @pytest.mark.parametrize("false, pwd, system, user", yaml.safe_load(open("./test_login.yaml")))
+    @pytest.mark.parametrize("false, pwd, system, user", yaml.safe_load(open("./logintest.yaml")))
     def test_post_token(self, false, pwd, system, user):
         print(self.tagapi.post_token())
 

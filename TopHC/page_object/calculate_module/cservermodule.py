@@ -1,15 +1,26 @@
-
+import pytest
 from selenium.webdriver.common.by import By
 from TopHC.base.basepage import BasePage
-
+from TopHC.others.yamlexcelload import loadyaml
+from TopHC.others.filepath import readFilepath
 
 #云服务器模块
 # 1.云服务器页面
+
+
+
+
+
 class ServicePage(BasePage):
+    aa = readFilepath.CserverDataPath
+    #aa = r'D:\WorkTools\PyProjects\TopHC\data\page_data\calculate_module_data\cserver_module\mouldtest.yaml'
     # 1.1 集群信息导航栏信息校验
     # (1)集群目录信息校验
     def search_clustersUI1(self):
-        return self.steps(r'D:\WorkTools\PyProjects\TopHC\data\page_data\calculate_module_data\cserver_module\cal_cserver_cluster1.yaml')
+        data1 = self.aa
+        data = loadyaml(data1)
+        data1 = data['cluster1']
+        return self.steps(data1)
 
 
     #（2）集群云服务器信息校验
@@ -33,7 +44,7 @@ class ServicePage(BasePage):
 
     #(1)集群目录新增组功能验证
     def add_group(self):
-        return self.steps(r'/TopHC/data/page_data/calculate_module_data/cserver_module/cal_cserver_addgroup.yaml')
+        return self.steps(r'/TopHC/data/page_data/calculate_module_data/cserver_module/serverdata.yaml')
 
     #(6)集群目录组名称重命名功能验证
     def update_group(self):

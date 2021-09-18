@@ -1,0 +1,104 @@
+{
+  "uid" : "3f722f7052e399fd",
+  "name" : "登录信息校验",
+  "fullName" : "test_case.home_module.test_loginpage.TestLogin#test_01_login",
+  "historyId" : "46ba06573a043aec94d8dad02fc7dd76",
+  "time" : {
+    "start" : 1631686411331,
+    "stop" : 1631686420338,
+    "duration" : 9007
+  },
+  "status" : "passed",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ {
+    "name" : "xunit_setup_method_fixture_TestLogin",
+    "time" : {
+      "start" : 1631686408525,
+      "stop" : 1631686411330,
+      "duration" : 2805
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "shouldDisplayMessage" : false,
+    "attachmentsCount" : 0,
+    "hasContent" : false,
+    "stepsCount" : 0
+  } ],
+  "afterStages" : [ {
+    "name" : "xunit_setup_method_fixture_TestLogin::0",
+    "time" : {
+      "start" : 1631686420340,
+      "stop" : 1631686422444,
+      "duration" : 2104
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "shouldDisplayMessage" : false,
+    "attachmentsCount" : 0,
+    "hasContent" : false,
+    "stepsCount" : 0
+  } ],
+  "labels" : [ {
+    "name" : "feature",
+    "value" : "登录测试"
+  }, {
+    "name" : "parentSuite",
+    "value" : "test_case.home_module"
+  }, {
+    "name" : "suite",
+    "value" : "test_loginpage"
+  }, {
+    "name" : "subSuite",
+    "value" : "TestLogin"
+  }, {
+    "name" : "host",
+    "value" : "DESKTOP-SKQ5DMP"
+  }, {
+    "name" : "thread",
+    "value" : "9964-MainThread"
+  }, {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "package",
+    "value" : "test_case.home_module.test_loginpage"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ {
+    "name" : "login_password",
+    "value" : "'admin123.'"
+  }, {
+    "name" : "login_user",
+    "value" : "'system'"
+  }, {
+    "name" : "login_username",
+    "value" : "'dd'"
+  } ],
+  "links" : [ {
+    "name" : "登录测试用例001的对应的bug",
+    "url" : "59561",
+    "type" : "issue"
+  }, {
+    "name" : "登录测试用例TH-CP-LOGIN-0001~0003",
+    "url" : "https://www.kdocs.cn/p/129592400066",
+    "type" : "test_case"
+  } ],
+  "hidden" : true,
+  "retry" : true,
+  "extra" : {
+    "categories" : [ ],
+    "tags" : [ ]
+  },
+  "source" : "3f722f7052e399fd.json",
+  "parameterValues" : [ "'admin123.'", "'system'", "'dd'" ]
+}
