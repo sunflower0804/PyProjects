@@ -2,11 +2,12 @@ import allure
 import pytest
 from selenium import webdriver
 
-
-#使用不同权限用户登录测试
-from PMO.config.yamlload import loadyaml
+from TopHC.others.yamlexcelload import loadyaml
 from TopHC.page_object.home_module.login_page import LoginPage
 
+# 1.1.1.1登录功能验证
+# 1-1-1.云服务器/集群信息导航栏信息校验
+# (1)#使用不同权限用户登录测试
 @allure.feature('登录测试')   #对模块功能进行标注
 class TestLogin:
     def setup_method(self, method):
@@ -17,7 +18,11 @@ class TestLogin:
     def teardown_method(self, method):
         self.driver.quit()
 
-
+    TEST_CASE_LINK = 'https://www.kdocs.cn/p/129592400066'
+    @allure.testcase(TEST_CASE_LINK, '登录测试用例TH-CP-LOGIN-0001~0003')
+    # --allure-link-pattern=issue:https://www.baidu.com/{}  #对应的TD链接
+    @allure.issue('59561', '登录测试用例的对应的bug')  # bugID，传入上面的括号里
+    @allure.title('登录信息校验')  # 对模块子功能进行标注
     @pytest.mark.parametrize("login_user, login_username, login_password", loadyaml(r'D:\WorkTools\PyProjects\TopHC\data\test_data\home_module_data\test_login.yaml'))
     def test_01_login(self, login_user, login_username, login_password):
         #self.driver = webdriver.Chrome()  #使用谷歌登录

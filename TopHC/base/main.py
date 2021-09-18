@@ -5,15 +5,14 @@
 
 from time import sleep
 
-
 from TopHC.base.basepage import BasePage
-from TopHC.page_object.calculate_module.cserver_module.backuppage import BackupPage
-from TopHC.page_object.calculate_module.cserver_module.goto_calculator_cservice import Cal_Cservice
-from TopHC.page_object.calculate_module.cserver_module.mouldpage import MouldPage
-from TopHC.page_object.calculate_module.cserver_module.serverpage import ServicePage
-from TopHC.page_object.calculate_module.cserver_module.specspage import SpecsPage
-from TopHC.page_object.calculate_module.cserver_module.strategypage import StrategyPage
-from TopHC.page_object.home_module.home_page import HomePage
+
+from TopHC.page_object.calculate_module.ccontainermodule import BackupPage
+from TopHC.page_object.calculate_module.containercmodule import SpecsPage
+from TopHC.page_object.calculate_module.cservermodule import ServicePage, MouldPage
+from TopHC.page_object.calculate_module.desktopmoudel import StrategyPage
+from TopHC.page_object.calculate_module.goto_calculatemoudel import CserviceHome
+from TopHC.page_object.home_module.homemoudel import HomePage
 
 
 class Main(BasePage):
@@ -23,42 +22,52 @@ class Main(BasePage):
     # 1.首页-->概览模块
     # 1.1首页页面入口
     def goto_homepage(self):
-        sleep(2)
+        sleep(1)
         return HomePage(self._driver)   #跳转至首页功能实现的流程方法类
 
     # 2.计算模块
-    #计算模块入口
-    def goto_cal_cserver(self):
-        return Cal_Cservice(self._driver).goto_cal_cserver()
+    # 2.1云服务器子模块入口路径
+    #(1) 云服务器
+    def goto_cserverhome(self):
+        return CserviceHome(self._driver).goto_cserverhome()
 
-    # 2.1云服务器子模块
+    #（2）模板
+    def goto_cservermould(self):
+        return CserviceHome(self._driver).goto_cservermoudel()
+
+    #（3）规格
+
+    #（4）策略
+
+    #（5）备份
+
+
     # 2.1.1云服务器页面入口
     def goto_serverpage(self):
-        self.goto_cal_cserver()       # 先调用入口方法进入云服务器模块
+        self.goto_cserverhome() # 先调用入口方法进入云服务器模块
         return ServicePage(self._driver)
 
     #2.1.2云服务器模板页面入口
     def goto_cmouldpage(self):
-        self.goto_cserverpage  #先调云服务器页面入口
-        sleep(1)
+        self.goto_cservermould()  #先调云服务器页面入口
         return MouldPage(self._driver)
 
     # 2.1.3云服务规格页面入口
     def goto_cspecs(self):
-        self.goto_serverpage  # #先调云服务器页面入口
+        self.goto_cmouldpage()  # #先调云服务器页面入口
         sleep(1)
         return SpecsPage(self._driver)
 
 
     # 2.1.4云服务备份页面入口
     def goto_cbackup(self):
-        self.goto_serverpage  # #先调云服务器页面入口
+        self.goto_serverpage()  # #先调云服务器页面入口
         sleep(1)
         return BackupPage(self._driver)
 
     # 2.1.5云服务策略页面入口
     def goto_strategy(self):
-        self.goto_serverpage  # #先调云服务器页面入口
+        self.goto_serverpage()  # #先调云服务器页面入口
         sleep(1)
         return StrategyPage(self._driver)
 

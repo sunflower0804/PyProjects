@@ -1,4 +1,7 @@
 "Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
-"broken","Mon Aug 30 11:55:37 CST 2021","Mon Aug 30 11:55:37 CST 2021","6","test_case.calculate_module.cserver_module","test_serverpage","TestSearchUI","","","test_search_clusterUI1[items0]",""
 "broken","Mon Aug 30 11:55:34 CST 2021","Mon Aug 30 11:55:34 CST 2021","57","test_case.calculate_module.cserver_module","test_serverpage","TestSearchUI","","","test_search_clusterUI[items0]",""
+"passed","Wed Sep 15 15:12:59 CST 2021","Wed Sep 15 15:13:06 CST 2021","7425","test_case.home_module","test_loginpage","TestLogin","","","登录信息校验",""
+"passed","Wed Sep 15 15:13:11 CST 2021","Wed Sep 15 15:13:18 CST 2021","7535","test_case.home_module","test_loginpage","TestLogin","","","登录信息校验",""
+"broken","Mon Aug 30 11:55:37 CST 2021","Mon Aug 30 11:55:37 CST 2021","6","test_case.calculate_module.cserver_module","test_serverpage","TestSearchUI","","","test_search_clusterUI1[items0]",""
 "failed","Mon Aug 30 11:55:39 CST 2021","Mon Aug 30 11:55:39 CST 2021","1","test_case.calculate_module.cserver_module","test_serverpage","TestSearchUI","","","test_login_failure_b",""
+"passed","Wed Sep 15 15:12:47 CST 2021","Wed Sep 15 15:12:54 CST 2021","7247","test_case.home_module","test_loginpage","TestLogin","","","登录信息校验",""

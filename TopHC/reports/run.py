@@ -9,15 +9,19 @@ import os
 
 import pytest
 
+from TopHC.others.filepath import readFilepath
+
 if __name__ == '__main__':
     #执行测试用例获得测试数据
-    pytest.main(['-s', r'D:\WorkTools\PyProjects\TopHC\test_case\calculate_module\cserver_module\test_serverpage.py', '--alluredir', './allure-result'])
+    reportpath=readFilepath.ReportPath
+    pytest.main(['-s', r'D:\WorkTools\PyProjects\TopHC\test_case\home_module\test_loginpage.py', '--alluredir', '/reportpath/allure-result'])
+
     #生成测试报告步骤：
     #1.找到测试数据： allure-result
     #2.生成测试报告的目录：report
-    os.system('allure generate ./allure-result -o ./report --clean')
+    os.system('allure generate reportpath/allure-result -o reportpath/report --clean')
     #os.system('allure serve ./report')   #打开测试报告
-    #最后的测试报告路径：./reports/index.html
+    #最后的测试报告路径：D:/WorkTools/PyProjects/TopHC/reports/index.html
 
 '''
 # --clean-alluredir清空上一次的xml报告

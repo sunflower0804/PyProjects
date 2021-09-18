@@ -9,7 +9,7 @@
       "total" : 1
     },
     "items" : [ {
-      "uid" : "c4afbcbf8466d488",
+      "uid" : "6468653423619e00",
       "status" : "broken",
       "statusDetails" : "selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {\"method\":\"xpath\",\"selector\":\"//*[@id=\"navBar_item_计算_content\"]\"}\n  (Session info: chrome=92.0.4515.159)",
       "time" : {
@@ -29,13 +29,32 @@
       "total" : 1
     },
     "items" : [ {
-      "uid" : "dad27f00f3e1eca1",
+      "uid" : "60e54a660f6b6adc",
       "status" : "broken",
       "statusDetails" : "selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {\"method\":\"xpath\",\"selector\":\"//*[@id=\"navBar_item_计算_content\"]\"}\n  (Session info: chrome=92.0.4515.159)",
       "time" : {
         "start" : 1630295737018,
         "stop" : 1630295737024,
         "duration" : 6
+      }
+    } ]
+  },
+  "46ba06573a043aec94d8dad02fc7dd76" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "10ff8a9dccfe2d55",
+      "status" : "passed",
+      "time" : {
+        "start" : 1631689979436,
+        "stop" : 1631689986861,
+        "duration" : 7425
       }
     } ]
   },
@@ -49,13 +68,51 @@
       "total" : 1
     },
     "items" : [ {
-      "uid" : "bceb7ed224aa342f",
+      "uid" : "7580b38851e3549a",
       "status" : "failed",
       "statusDetails" : "AssertionError: assert '1' == 1",
       "time" : {
         "start" : 1630295739612,
         "stop" : 1630295739613,
         "duration" : 1
+      }
+    } ]
+  },
+  "92d97907ca10a18ed05f197458b054bf" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "f8fce0461a85a79",
+      "status" : "passed",
+      "time" : {
+        "start" : 1631689991266,
+        "stop" : 1631689998801,
+        "duration" : 7535
+      }
+    } ]
+  },
+  "5255daca2dc83be3c8a2ea9e992e8a7e" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "e83c45a337474c56",
+      "status" : "passed",
+      "time" : {
+        "start" : 1631689967445,
+        "stop" : 1631689974692,
+        "duration" : 7247
       }
     } ]
   }

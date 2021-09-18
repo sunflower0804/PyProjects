@@ -2,47 +2,94 @@
   "uid" : "83edc06c07f9ae9e47eb6dd1b683e4e2",
   "name" : "packages",
   "children" : [ {
-    "name" : "test_case.calculate_module.cserver_module.test_serverpage",
+    "name" : "test_case",
     "children" : [ {
-      "name" : "test_search_clusterUI[items0]",
-      "uid" : "c4afbcbf8466d488",
-      "parentUid" : "493603ef7f0dc79731e2345cda996160",
-      "status" : "broken",
-      "time" : {
-        "start" : 1630295734276,
-        "stop" : 1630295734333,
-        "duration" : 57
-      },
-      "flaky" : false,
-      "newFailed" : false,
-      "parameters" : [ "{'cluster1': 'host3223-cvm3323', 'cluster2': 'host3222-cvm3322'}" ]
+      "name" : "calculate_module.cserver_module.test_serverpage",
+      "children" : [ {
+        "name" : "test_search_clusterUI[items0]",
+        "uid" : "6468653423619e00",
+        "parentUid" : "493603ef7f0dc79731e2345cda996160",
+        "status" : "broken",
+        "time" : {
+          "start" : 1630295734276,
+          "stop" : 1630295734333,
+          "duration" : 57
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ "{'cluster1': 'host3223-cvm3323', 'cluster2': 'host3222-cvm3322'}" ]
+      }, {
+        "name" : "test_search_clusterUI1[items0]",
+        "uid" : "60e54a660f6b6adc",
+        "parentUid" : "493603ef7f0dc79731e2345cda996160",
+        "status" : "broken",
+        "time" : {
+          "start" : 1630295737018,
+          "stop" : 1630295737024,
+          "duration" : 6
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ "{'cluster1': 'host3223-cvm3323', 'cluster2': 'host3222-cvm3322'}" ]
+      }, {
+        "name" : "test_login_failure_b",
+        "uid" : "7580b38851e3549a",
+        "parentUid" : "493603ef7f0dc79731e2345cda996160",
+        "status" : "failed",
+        "time" : {
+          "start" : 1630295739612,
+          "stop" : 1630295739613,
+          "duration" : 1
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      } ],
+      "uid" : "calculate_module.cserver_module.test_serverpage"
     }, {
-      "name" : "test_search_clusterUI1[items0]",
-      "uid" : "dad27f00f3e1eca1",
-      "parentUid" : "493603ef7f0dc79731e2345cda996160",
-      "status" : "broken",
-      "time" : {
-        "start" : 1630295737018,
-        "stop" : 1630295737024,
-        "duration" : 6
-      },
-      "flaky" : false,
-      "newFailed" : false,
-      "parameters" : [ "{'cluster1': 'host3223-cvm3323', 'cluster2': 'host3222-cvm3322'}" ]
-    }, {
-      "name" : "test_login_failure_b",
-      "uid" : "bceb7ed224aa342f",
-      "parentUid" : "493603ef7f0dc79731e2345cda996160",
-      "status" : "failed",
-      "time" : {
-        "start" : 1630295739612,
-        "stop" : 1630295739613,
-        "duration" : 1
-      },
-      "flaky" : false,
-      "newFailed" : false,
-      "parameters" : [ ]
+      "name" : "home_module.test_loginpage",
+      "children" : [ {
+        "name" : "登录信息校验",
+        "uid" : "e83c45a337474c56",
+        "parentUid" : "650517bb3500d276d1944d883c155c99",
+        "status" : "passed",
+        "time" : {
+          "start" : 1631689967445,
+          "stop" : 1631689974692,
+          "duration" : 7247
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ "'admin123.'", "'system'", "'xh'" ]
+      }, {
+        "name" : "登录信息校验",
+        "uid" : "10ff8a9dccfe2d55",
+        "parentUid" : "650517bb3500d276d1944d883c155c99",
+        "status" : "passed",
+        "time" : {
+          "start" : 1631689979436,
+          "stop" : 1631689986861,
+          "duration" : 7425
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ "'admin123.'", "'system'", "'dd'" ]
+      }, {
+        "name" : "登录信息校验",
+        "uid" : "f8fce0461a85a79",
+        "parentUid" : "650517bb3500d276d1944d883c155c99",
+        "status" : "passed",
+        "time" : {
+          "start" : 1631689991266,
+          "stop" : 1631689998801,
+          "duration" : 7535
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ "'admin123.'", "'xh-1'", "'xh11-1'" ]
+      } ],
+      "uid" : "home_module.test_loginpage"
     } ],
-    "uid" : "test_case.calculate_module.cserver_module.test_serverpage"
+    "uid" : "3b2e467b921b0ea8d4803b9c79d92d0c"
   } ]
 }

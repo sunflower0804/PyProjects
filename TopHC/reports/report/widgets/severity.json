@@ -1,15 +1,15 @@
 [ {
-  "uid" : "dad27f00f3e1eca1",
-  "name" : "test_search_clusterUI1[items0]",
+  "uid" : "e83c45a337474c56",
+  "name" : "登录信息校验",
   "time" : {
-    "start" : 1630295737018,
-    "stop" : 1630295737024,
-    "duration" : 6
+    "start" : 1631689967445,
+    "stop" : 1631689974692,
+    "duration" : 7247
   },
-  "status" : "broken",
+  "status" : "passed",
   "severity" : "normal"
 }, {
-  "uid" : "bceb7ed224aa342f",
+  "uid" : "7580b38851e3549a",
   "name" : "test_login_failure_b",
   "time" : {
     "start" : 1630295739612,
@@ -19,7 +19,27 @@
   "status" : "failed",
   "severity" : "normal"
 }, {
-  "uid" : "c4afbcbf8466d488",
+  "uid" : "60e54a660f6b6adc",
+  "name" : "test_search_clusterUI1[items0]",
+  "time" : {
+    "start" : 1630295737018,
+    "stop" : 1630295737024,
+    "duration" : 6
+  },
+  "status" : "broken",
+  "severity" : "normal"
+}, {
+  "uid" : "f8fce0461a85a79",
+  "name" : "登录信息校验",
+  "time" : {
+    "start" : 1631689991266,
+    "stop" : 1631689998801,
+    "duration" : 7535
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "6468653423619e00",
   "name" : "test_search_clusterUI[items0]",
   "time" : {
     "start" : 1630295734276,
@@ -27,5 +47,15 @@
     "duration" : 57
   },
   "status" : "broken",
+  "severity" : "normal"
+}, {
+  "uid" : "10ff8a9dccfe2d55",
+  "name" : "登录信息校验",
+  "time" : {
+    "start" : 1631689979436,
+    "stop" : 1631689986861,
+    "duration" : 7425
+  },
+  "status" : "passed",
   "severity" : "normal"
 } ]
