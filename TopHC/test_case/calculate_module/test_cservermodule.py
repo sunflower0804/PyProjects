@@ -23,7 +23,7 @@ class TestServicePage:
     @allure.title('集群目录结构信息校验')  #对模块子功能进行标注
     '''
 
-    path = readFilepath.CserverTestPath
+    path = readFilepath.ServerTestPath
     @pytest.mark.parametrize("items", loadyaml(path))
     def test_search_clusterUI1(self, items):
         tt = self.main.goto_serverpage().search_clustersUI1()

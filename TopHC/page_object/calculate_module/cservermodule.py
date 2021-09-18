@@ -12,14 +12,13 @@ from TopHC.others.filepath import readFilepath
 
 
 class ServicePage(BasePage):
-    aa = readFilepath.CserverDataPath
-    #aa = r'D:\WorkTools\PyProjects\TopHC\data\page_data\calculate_module_data\cserver_module\mouldtest.yaml'
+    aa = readFilepath.ServerDataPath
     # 1.1 集群信息导航栏信息校验
     # (1)集群目录信息校验
     def search_clustersUI1(self):
         data1 = self.aa
         data = loadyaml(data1)
-        data1 = data['cluster1']
+        data1 = data['TH-CP-CLUSTER-0001']
         return self.steps(data1)
 
 

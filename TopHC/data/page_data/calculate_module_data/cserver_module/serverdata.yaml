@@ -1,4 +1,4 @@
-cluster1:
+TH-CP-CLUSTER-0001:
   - by: xpath
     locator: //*[@id="panel-c-scroll"]/div[1]/section/section/div[1]/section/div[2]/div/ul/li/ul/li[2]/div/div/div/div
     action: click
