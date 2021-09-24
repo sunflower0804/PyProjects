@@ -1,3 +1,92 @@
-- cluster1: host3223-cvm3323
+# 1.云服务器模块
+# 1.1云服务器页面
+# 1.1.1云服务器页面/集群信息导航栏信息校验
+# (1)集群目录信息校验
+TH-CP-CLUSTER-0001:
+  cluster1: host3223-cvm3323
   cluster2: host3222-cvm3322
 
+#（2）集群云服务器信息校验
+TH-CP-CLUSTER-0002:
+  vm1-name: a
+
+#（3）集群目录结构信息校验
+TH-CP-CLUSTER-0003:
+  group-name: '111'
+
+#（4）集群目录服务器信息校验
+TH-CP-CLUSTER-0004:
+  vm1-name: test001
+
+# 1.1.2.云服务器页面/集群信息导航栏功能校验
+# (1)集群目录新增组功能验证/正常场景
+TH-CP-CLUSTER-0005:
+  data01:
+  data02:
+    - by: xpath
+      locator: //*[@id="panel-c-scroll"]/div[1]/section/section/div[1]/section/div[2]/div/ul/li/ul/li[1]/ul/li/ul/li/ul/li[2]/div/div/div/div
+      action: click
+
+    - by: xpath
+      locator: //*[@id="compute_virtual_tabs_vmList"]/section/div[2]/div[1]/div[3]/table/tbody/tr[1]/td[2]/div/span/a
+      action: text
+
+#（6）集群目录新增组功能验证/异常场景
+TH-CP-CLUSTER-0006:
+  data01:
+  data02:
+    by: xpath
+    locator: //*[@id="panel-c-scroll"]/div[1]/section/section/div[1]/section/div[2]/div/ul/li/ul/li[1]/ul/li/ul/li/div/div/span/i
+  data03:
+    by: xpath
+    locator: //*[@id="el-tooltip-8985"]/div[1]/div/span[2]
+
+# (7)集群目录组名称重命名功能验证/正常场景
+
+#（8）集群目录组名称重命名功能验证/异常场景
+
+#（9）集群目录组添加云服务器入口验证
+
+#（10）集群目录组移动验证
+
+#（11）集群目录组删除验证
+
+
+# 1.2.1.云服务器页面/菜单栏功能校验
+#(1)虚拟机搜索/功能入口参数校验
+TH-CP-VM-0001:
+  text: 请输入名称、IP、Mac地址、uuid
+
+#(2)虚拟机搜索/功能验证/正常场景
+TH-CP-VM-0002:
+  vm_name: test001
+
+#(2)虚拟机搜索/功能验证/异常场景
+TH-CP-VM-0003:
+  vm_name: 暂无数据
+
+
+# 1.2.2.云服务器页面/菜单栏功能校验/虚拟机批量操作
+
+
+
+# 1.2.3.云服务器页面/菜单栏功能校验/添加云服务器
+#1.2.3.1 创建云服务器
+#<1 自定义
+#<1-1 基本信息页参数校验
+#<1-1-1云服务器输入框验证
+#(1)云服务器输入框弱提示验证
+TH-CP-VM-0004:
+  cservice_name: 请输入云服务器名称
+
+#(2)云服务器输入框输入为空验证
+TH-CP-VM-0005:
+  title1_name: 名称不能为空
+
+#(3)云服务器输入框输入特殊字符验证
+TH-CP-VM-0006:
+  title2_name: 名称不能含有特殊字符
+
+#(4)云服务器输入框输入特殊字符验证
+TH-CP-VM-0007:
+  title3_name: 名称由1~32位字符组成

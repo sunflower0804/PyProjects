@@ -27,24 +27,12 @@ class Main(BasePage):
 
     # 2.计算模块
     # 2.1云服务器子模块入口路径
-    #(1) 云服务器
-    def goto_cserverhome(self):
-        return CserviceHome(self._driver).goto_cserverhome()
-
-    #（2）模板
-    def goto_cservermould(self):
-        return CserviceHome(self._driver).goto_cservermoudel()
-
-    #（3）规格
-
-    #（4）策略
-
-    #（5）备份
-
-
     # 2.1.1云服务器页面入口
+    def goto_cserver(self):
+        CserviceHome(self._driver).goto_cserver()
+        return CserviceHome(self._driver).goto_cserverhome() # 先调用入口方法进入云服务器模块
+
     def goto_serverpage(self):
-        self.goto_cserverhome() # 先调用入口方法进入云服务器模块
         return ServicePage(self._driver)
 
     #2.1.2云服务器模板页面入口

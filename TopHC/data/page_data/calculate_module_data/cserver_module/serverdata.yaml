@@ -1,3 +1,7 @@
+# 1.云服务器模块
+# 1.1云服务器页面
+# 1.1.1云服务器页面/集群信息导航栏信息校验
+# (1)集群目录信息校验
 TH-CP-CLUSTER-0001:
   - by: xpath
     locator: //*[@id="panel-c-scroll"]/div[1]/section/section/div[1]/section/div[2]/div/ul/li/ul/li[2]/div/div/div/div
@@ -11,12 +15,258 @@ TH-CP-CLUSTER-0001:
     locator: //*[@id="panel-c-scroll"]/div[1]/section/section/div[1]/section/div[2]/div/ul/li/ul/li[2]/div/div/div/div
     action: text
 
-cluster2:
+#（2）集群云服务器信息校验
+TH-CP-CLUSTER-0002:
   - by: xpath
-    locator: //*[@id="panel-c-scroll"]/div[1]/section/section/div[1]/section/div[2]/div/ul/li/ul/li[1]/div/div/div/div
+    locator: //*[@id="panel-c-scroll"]/div[1]/section/section/div[1]/section/div[2]/div/ul/li/ul/li[2]/div/div/div/div
     action: click
 
   - by: xpath
-    locator: //*[@id="panel-c-scroll"]/div[1]/section/section/div[1]/section/div[2]/div/ul/li/ul/li[1]/div/div/div/div
+    locator: //*[@id="compute_virtual_tabs_vmList"]/section/div[2]/div[1]/div[3]/table/tbody/tr[1]/td[2]/div/span/a
     action: text
 
+#（3）集群目录结构信息校验
+TH-CP-CLUSTER-0003:
+  data01: &demo
+    - by: xpath
+      locator: //*[@id="panel-c-scroll"]/div[1]/section/section/div[1]/section/div[2]/div/ul/li/ul/li[1]/div/span
+      action: click
+
+    - by: xpath
+      locator: //*[@id="panel-c-scroll"]/div[1]/section/section/div[1]/section/div[2]/div/ul/li/ul/li[1]/ul/li/div/span
+      action: click
+
+    - by: xpath
+      locator: //*[@id="panel-c-scroll"]/div[1]/section/section/div[1]/section/div[2]/div/ul/li/ul/li[1]/ul/li/ul/li/div/span
+      action: click
+
+  data02: &demo1
+    - by: xpath
+      locator: //*[@id="panel-c-scroll"]/div[1]/section/section/div[1]/section/div[2]/div/ul/li/ul/li[1]/ul/li/ul/li/ul/li[1]/div/div/div/div
+      action: text
+
+    - by: xpath
+      locator: //*[@id="panel-c-scroll"]/div[1]/section/section/div[1]/section/div[2]/div/ul/li/ul/li[1]/ul/li/ul/li/div/span
+      action: click
+
+    - by: xpath
+      locator: //*[@id="panel-c-scroll"]/div[1]/section/section/div[1]/section/div[2]/div/ul/li/ul/li[1]/ul/li/div/span
+      action: click
+
+    - by: xpath
+      locator: //*[@id="panel-c-scroll"]/div[1]/section/section/div[1]/section/div[2]/div/ul/li/ul/li[1]/div/span
+      action: click
+
+#（4）集群目录结构信息校验
+TH-CP-CLUSTER-0004:
+  data01: *demo
+  data02:
+    - by: xpath
+      locator: //*[@id="panel-c-scroll"]/div[1]/section/section/div[1]/section/div[2]/div/ul/li/ul/li[1]/ul/li/ul/li/ul/li[2]/div/div/div/div
+      action: click
+
+    - by: xpath
+      locator: //*[@id="compute_virtual_tabs_vmList"]/section/div[2]/div[1]/div[3]/table/tbody/tr[1]/td[2]/div/span/a
+      action: text
+
+  data03: *demo1
+
+# 1.1.2.云服务器页面//集群信息导航栏功能校验
+# (1)集群目录新增组功能验证/正常场景？？？
+TH-CP-CLUSTER-0005:
+  data01: *demo
+  data02:
+    by: xpath
+    locator: //*[@id="panel-c-scroll"]/div[1]/section/section/div[1]/section/div[2]/div/ul/li/ul/li[1]/ul/li/ul/li/div/div/span/i
+  data03:
+    by: xpath
+    locator: //*[@id="el-tooltip-8985"]/div[1]/div/span[2]
+
+#（6）集群目录新增组功能验证 / 异常场景 ???
+TH-CP-CLUSTER-0006:
+  data01: *demo
+  data02:
+    by: xpath
+    locator: //*[@id="panel-c-scroll"]/div[1]/section/section/div[1]/section/div[2]/div/ul/li/ul/li[1]/ul/li/ul/li/div/div/span/i
+  data03:
+    by: xpath
+    locator: //*[@id="el-tooltip-8985"]/div[1]/div/span[2]
+
+# (7)集群目录组名称重命名功能验证/正常场景
+
+#（8）集群目录组名称重命名功能验证/异常场景
+
+#（9）集群目录组添加云服务器入口验证
+
+#（10）集群目录组移动验证
+
+#（11）集群目录组删除验证
+
+# 1.2.1.云服务器页面/菜单栏功能校验
+#(1)虚拟机搜索/功能入口参数校验
+TH-CP-VM-0001:
+  by: xpath
+  locator: //*[@id="compute_virtual_filtersVal"]
+  attr: placeholder
+
+#(2) 搜索功能验证/正常场景
+TH-CP-VM-0002:
+  - by: xpath
+    locator: //*[@id="compute_virtual_filtersVal"]
+    action: click
+
+  - by: xpath
+    locator: //*[@id="compute_virtual_filtersVal"]
+    action: send
+    value: test
+
+  - by: xpath
+    locator: //*[@id="compute_virtual_searchBtn"]/span
+    action: click
+
+  - by: xpath
+    locator: //*[@id="compute_virtual_tabs_vmList"]/section/div[2]/div[1]/div[3]/table/tbody/tr[1]/td[2]/div/span/a
+    action: text
+
+  - by: xpath
+    locator: //*[@id="compute_virtual_clearName"]
+    action: click
+
+#(2) 搜索功能验证/异常场景
+TH-CP-VM-0003:
+  - by: xpath
+    locator: //*[@id="compute_virtual_filtersVal"]
+    action: click
+
+  - by: xpath
+    locator: //*[@id="compute_virtual_filtersVal"]
+    action: send
+    value: ggg
+
+  - by: xpath
+    locator: //*[@id="compute_virtual_searchBtn"]/span
+    action: click
+
+  - by: xpath
+    locator: //*[@id="compute_virtual_tabs_vmList"]/section/div[2]/div[1]/div[3]/div/span
+    action: text
+
+  - by: xpath
+    locator: //*[@id="compute_virtual_clearName"]
+    action: click
+
+# 1.2.2.云服务器页面/菜单栏功能校验/虚拟机批量操作
+
+
+
+# 1.2.3.云服务器页面/菜单栏功能校验/添加云服务器
+#1.2.3.1 创建云服务器
+#<1 自定义
+#<1-1 基本信息页参数校验
+#<1-1-1云服务器输入框验证
+#依次点击添加云服务器-->创建云服务器，进入基本信息页
+TH-CP-VM-000:
+  data01: #&demo00041
+    - by: xpath
+      locator: //*[@id="compute_virtual_create_compute_btn"]/span
+      action: click
+
+    - by: xpath
+      locator: //*[@id="compute_instances_create_basic_auto"]/div[1]
+      action: click
+
+#(1)云服务器输入框弱提示验证
+#定位到云服务器提示框，获取弱提示属性
+TH-CP-VM-0004:
+  by: id
+  locator: compute_instances_create_name
+  attr: placeholder
+
+#(2)云服务器输入框输入为空验证
+TH-CP-VM-0005:
+  - by: id
+    locator: compute_instances_create_name
+    action: send
+    value: ''
+
+  - by: id
+    locator: compute_instances_create_confirm
+    action: click
+
+  - by: xpath
+    locator: //*[@id="compute_instances_create_basic"]/div/div[2]/section[1]/div/div[2]/form/section[1]/div[2]/div/div[2]
+    action: text
+
+#(3)云服务器输入框输入特殊字符验证
+TH-CP-VM-0006:
+  - by: id
+    locator: compute_instances_create_name
+    action: send
+    value: '#￥%……&**'
+
+  - by: xpath
+    locator: //*[@id="compute_instances_create_basic"]/div/div[2]/section[1]/div/div[2]/form/section[1]/div[2]/div/div[2]
+    action: text
+
+  - by: id
+    locator: compute_instances_create_name
+    action: clear
+
+#(4)云服务器输入框输入大于32位字符验证
+TH-CP-VM-0007:
+  - by: id
+    locator: compute_instances_create_name
+    action: send
+    value: '111111111111111111111111111111111'
+
+  - by: id
+    locator: compute_instances_create_confirm
+    action: click
+
+  - by: xpath
+    locator: //*[@id="compute_instances_create_basic"]/div/div[2]/section[1]/div/div[2]/form/section[1]/div[2]/div/div[2]
+    action: text
+
+  - by: id
+    locator: compute_instances_create_name
+    action: clear
+
+#(4)云服务器输入框输入正确字符验证
+TH-CP-VM-0008:
+  - by: id
+    locator: compute_instances_create_name
+    action: send
+    value: 'test111'
+
+  - by: id
+    locator: compute_instances_create_confirm
+    action: click
+
+  - by: xpath
+    locator: (//div[@class="dialog-footer-submit"]/button[2])[1]/span
+    action: click
+
+  - by: xpath
+    locator:  (//div[@class="dialog-footer-submit"]/button[2])[1]/span
+    action: click
+
+  - by: xpath
+    locator: //*[@id="compute_instances_create_volume_capacity1"]
+    action: send
+    value: '0.5'
+
+  - by: xpath
+    locator: (//div[@class="dialog-footer-submit"]/button[2])[1]/span
+    action: click
+
+  - by: xpath
+    locator: (//div[@class="dialog-footer-submit"]/button[2])[1]/span
+    action: click
+
+  - by: xpath
+    locator: (//div[@class="dialog-footer-submit"]/button[2])[1]/span
+    action: click
+
+  - by: xpath
+    locator: (//div[@class="dialog-footer-submit"]/button[2])[1]/span
+    action: click
