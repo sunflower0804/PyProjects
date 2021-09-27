@@ -1,5 +1,5 @@
 #因为token_access也是公共的，且会发生变化，所以也对它进行封装
-#from project02.RequestsWework.AO.base.baseapi import BaseApi
+
 from TopHCAPI.base_page.baseapi import BaseApi
 
 

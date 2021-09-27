@@ -9,11 +9,13 @@ class Filepath:
     '''
     #获取当前项目的绝对路径
     BasePath = os.path.abspath(os.path.dirname(os.path.abspath(__file__))+'/../..')
-    #获取数据yaml文件所在绝对路劲
+    #获取数据yaml文件所在绝对路径
     DataPath = BasePath + '\TopHC\data'
-    #日志文件所在路劲
+    #获取测试用例文件所在路径
+    TestPath = BasePath + r'\TopHC\test_case'
+    #日志文件所在路径
     LogPath = BasePath + '\TopHC\log'
-    #HTML报告所在路劲
+    #HTML报告所在路径
     ReportPath = BasePath + r'\TopHC\report'
 
     #各模块测试数据路径
@@ -26,12 +28,16 @@ class Filepath:
     #（1）测试步骤数据
     ServerDataPath = DataPath + '\page_data\calculate_module_data\cserver_module\serverdata.yaml'
     #（2）测试用例数据
-    ServerTestPath = DataPath + r'\test_data\calculate_module_data\cserver_module\servertest.yaml'
+    ServerTestDataPath = DataPath + r'\test_data\calculate_module_data\cserver_module\servertest.yaml'
+    #（3）测试用例
+    ServerTestPath = TestPath + r'\calculate_module\test_cservermodule.py'
     #2.1.2 模板页面
     #（1）测试步骤数据
     MouldDataPath = DataPath + '\page_data\calculate_module_data\cserver_module\moulddata.yaml'
     #（2）测试用例数据
     MouldTestPath = DataPath + r'\test_data\calculate_module_data\cserver_module\mouldtest.yaml'
+    #（3）测试用例
+
     # 2.1.3 规格页面
     #（1）测试步骤数据
     SpecsDataPath = DataPath + '\page_data\calculate_module_data\cserver_module\specsdata.yaml'

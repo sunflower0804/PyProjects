@@ -9,37 +9,37 @@ from TopHC.others.yamlexcelload import loadyaml
 
 
 @allure.feature('计算-->云服务器模块')   #对模块功能进行标注
-@allure.story('云服务器子模块')  ##对模块子功能进行标注
+@allure.story('云服务器子模块--云服务器页面')  ##对模块子功能进行标注
 class TestServicePage:
     def setup_class(self):
         self.main = Main(driver=None)
 
-    filepath = readFilepath.ServerTestPath
+    filepath = readFilepath.ServerTestDataPath
     data = loadyaml(filepath)
 
     # 1.云服务器模块
     # 1.1云服务器页面
+    @allure.title('云服务器页面入口校验')  # 对模块子功能进行标注
     def test_cservice(self):
         self.main.goto_cserver()
     # 1.1.1云服务器页面/集群信息导航栏信息校验
     # (1)集群目录信息校验
-    '''
     TEST_CASE_LINK = 'https://www.kdocs.cn/p/129592400066'
     @allure.testcase(TEST_CASE_LINK, '用例_编号：TH-CP-CLUSTER-0001')
     # --allure-link-pattern=issue:https://www.baidu.com/{}  #对应的TD链接
-    @allure.issue('59561', '测试用例对应的bugID')  # bugID，传入上面的括号里
-    @allure.title('集群目录结构信息校验')  #对模块子功能进行标注
-    '''
-
+    #@allure.issue('59561', '测试用例对应的bugID')  # bugID，传入上面的括号里
+    @allure.title('集群目录信息校验')  #对模块子功能进行标注
     #@pytest.mark.parametrize("items", loadyaml(filepath))
     def test_search_clusterUI1(self):
         testdata = self.data['TH-CP-CLUSTER-0001']
         pagedata = self.main.goto_serverpage().search_clustersUI1()
-        assert testdata['cluster1'] == pagedata[0]
+        assert testdata['cluster1'] == pagedata[0]  #集群目录信息断言
         assert testdata['cluster2'] == pagedata[1]
 
 
     # （2）集群云服务器信息校验
+    @allure.testcase(TEST_CASE_LINK, '用例_编号：TH-CP-CLUSTER-0002')
+    @allure.title('集群云服务器信息校验')  #对模块子功能进行标注
     def test_search_clusterUI2(self):
         testdata = self.data['TH-CP-CLUSTER-0002']
         pagedata = self.main.goto_serverpage().search_clustersUI2()
@@ -47,13 +47,17 @@ class TestServicePage:
 
 
     #（3）集群目录结构信息校验
+    @allure.testcase(TEST_CASE_LINK, '用例_编号：TH-CP-CLUSTER-0003')
+    @allure.title('集群目录结构信息校验')  #对模块子功能进行标注
     def test_search_clusterUI3(self):
         testdata = self.data['TH-CP-CLUSTER-0003']
         pagedata = self.main.goto_serverpage().search_clustersUI3()
         assert testdata['group-name'] == pagedata[0]
 
 
-    #（4）集群目录结构信息校验
+    #（4）集群目录服务器信息校验
+    @allure.testcase(TEST_CASE_LINK, '用例_编号：TH-CP-CLUSTER-0004')
+    @allure.title('集群目录服务器信息校验')  #对模块子功能进行标注
     def test_search_clusterUI4(self):
         testdata = self.data['TH-CP-CLUSTER-0004']
         pagedata = self.main.goto_serverpage().search_clustersUI4()
@@ -62,6 +66,8 @@ class TestServicePage:
     @pytest.mark.skip()
     # 1.1.2.云服务器页面/集群信息导航栏功能校验
     # (5)集群目录新增组功能验证/正常场景
+    @allure.testcase(TEST_CASE_LINK, '用例_编号：TH-CP-CLUSTER-0005')
+    @allure.title('集群目录新增组功能验证/正常场景')  #对模块子功能进行标注
     def test_search_clusterUI5(self):
         #testdata = self.data['TH-CP-CLUSTER-0005']
         self.main.goto_serverpage().search_clustersUI5()
@@ -69,37 +75,51 @@ class TestServicePage:
 
     @pytest.mark.skip()
     # (6)集群目录新增组功能验证/异常场景
+    @allure.testcase(TEST_CASE_LINK, '用例_编号：TH-CP-CLUSTER-0006')
+    @allure.title('集群目录新增组功能验证/异常场景')  #对模块子功能进行标注
     def test_search_clustersUI6(self):
         pass
 
     @pytest.mark.skip()
     # (7)集群目录组名称重命名功能验证/正常场景
+    @allure.testcase(TEST_CASE_LINK, '用例_编号：TH-CP-CLUSTER-0007')
+    @allure.title('集群目录组名称重命名功能验证/正常场景')  # 对模块子功能进行标注
     def test_search_clustersUI7(self):
         pass
 
     @pytest.mark.skip()
     #（8）集群目录组名称重命名功能验证/异常场景
+    @allure.testcase(TEST_CASE_LINK, '用例_编号：TH-CP-CLUSTER-0008')
+    @allure.title('集群目录组名称重命名功能验证/异常场景')  #对模块子功能进行标注
     def test_search_clustersUI8(self):
         pass
 
     @pytest.mark.skip()
     #（9）集群目录组添加云服务器入口验证
+    @allure.testcase(TEST_CASE_LINK, '用例_编号：TH-CP-CLUSTER-0009')
+    @allure.title('集群目录组添加云服务器入口验证')  #对模块子功能进行标注
     def test_search_clustersUI9(self):
         pass
 
     @pytest.mark.skip()
     #（10）集群目录组移动验证
+    @allure.testcase(TEST_CASE_LINK, '用例_编号：TH-CP-CLUSTER-0010')
+    @allure.title('集群目录组移动验证')  #对模块子功能进行标注
     def test_search_clustersUI10(self):
         pass
 
     @pytest.mark.skip()
     #（11）集群目录组删除验证
+    @allure.testcase(TEST_CASE_LINK, '用例_编号：TH-CP-CLUSTER-0011')
+    @allure.title('集群目录组删除验证')  #对模块子功能进行标注
     def test_search_clustersUI11(self):
         pass
 
 
     # 1.2.1.云服务器页面/菜单栏功能校验/搜索
     #(1) 功能入口参数校验/弱提示
+    @allure.testcase(TEST_CASE_LINK, '用例_编号：TH-CP-VM-0001')
+    @allure.title('菜单栏功能校验/搜索功能/弱提示信息校验')  #对模块子功能进行标注
     def test_search__VM1(self):
         testdata = self.data['TH-CP-VM-0001']
         pagedata = self.main.goto_serverpage().search_VM1()
@@ -109,13 +129,17 @@ class TestServicePage:
 
 
     # (2) 搜索功能验证/正常场景
+    @allure.testcase(TEST_CASE_LINK, '用例_编号：TH-CP-VM-0002')
+    @allure.title('菜单栏功能校验/搜索功能验证/正常场景')  #对模块子功能进行标注
     def test_search__VM2(self):
         testdata = self.data['TH-CP-VM-0002']
         pagedata = self.main.goto_serverpage().search_VM2()
         assert testdata['vm_name'] == pagedata[0]
 
 
-    # (3) 搜索功能验证/异场景
+    # (3) 搜索功能验证/异常场景
+    @allure.testcase(TEST_CASE_LINK, '用例_编号：TH-CP-VM-0003')
+    @allure.title('菜单栏功能校验/搜索功能验证/异常场景')  #对模块子功能进行标注
     def test_search__VM3(self):
         testdata = self.data['TH-CP-VM-0003']
         pagedata = self.main.goto_serverpage().search_VM3()
@@ -127,6 +151,8 @@ class TestServicePage:
     # 1.2.3.1 创建云服务器
     # <1 自定义
     # <1-1 基本信息页参数校验
+    @allure.testcase(TEST_CASE_LINK, '用例_编号：TH-CP-VM-0004~0007')
+    @allure.title('添加云服务器/基本信息页参数校验')  #对模块子功能进行标注
     def test_creat_VM_page1(self):
         testdata01 = self.data['TH-CP-VM-0004']   #云服务器输入框弱提示信息
         testdata02 = self.data['TH-CP-VM-0005']   #云服务器输入框输入为空提示信息

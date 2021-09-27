@@ -13,7 +13,7 @@ class ServicePage(BasePage):
     # (1)集群目录信息校验
     def search_clustersUI1(self):
         data1 = self.data['TH-CP-CLUSTER-0001']
-        return self.steps(data1)
+        return self.steps(data1) #获取集群目录信息
 
 
     #（2）集群云服务器信息校验

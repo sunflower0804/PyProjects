@@ -2,8 +2,6 @@
 
 import requests
 
-#from project02.RequestsWework.AO.base.baseapi import BaseApi
-#from project02.RequestsWework.PO.base.base_token import BaseToken
 from TopHCAPI.base_page.base_token import BaseToken
 from TopHCAPI.base_page.baseapi import BaseApi
 
