@@ -1,0 +1,161 @@
+[ {
+  "uid" : "6f1e4324e012f097",
+  "name" : "集群目录组移动验证",
+  "time" : {
+    "start" : 1632656410439,
+    "stop" : 1632656410439,
+    "duration" : 0
+  },
+  "status" : "skipped",
+  "severity" : "normal"
+}, {
+  "uid" : "3007702896f33598",
+  "name" : "集群目录新增组功能验证/异常场景",
+  "time" : {
+    "start" : 1632656410431,
+    "stop" : 1632656410431,
+    "duration" : 0
+  },
+  "status" : "skipped",
+  "severity" : "normal"
+}, {
+  "uid" : "49496b124d88e4dc",
+  "name" : "菜单栏功能校验/搜索功能验证/异常场景",
+  "time" : {
+    "start" : 1632656414140,
+    "stop" : 1632656417686,
+    "duration" : 3546
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "2de93283ab413583",
+  "name" : "云服务器页面入口校验",
+  "time" : {
+    "start" : 1632656390760,
+    "stop" : 1632656392547,
+    "duration" : 1787
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "63c7240aac14abee",
+  "name" : "菜单栏功能校验/搜索功能验证/正常场景",
+  "time" : {
+    "start" : 1632656410478,
+    "stop" : 1632656414138,
+    "duration" : 3660
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "3f7c5c34a192e5c7",
+  "name" : "集群目录组名称重命名功能验证/异常场景",
+  "time" : {
+    "start" : 1632656410434,
+    "stop" : 1632656410434,
+    "duration" : 0
+  },
+  "status" : "skipped",
+  "severity" : "normal"
+}, {
+  "uid" : "4ece53fb8b77bf4",
+  "name" : "集群目录组删除验证",
+  "time" : {
+    "start" : 1632656410442,
+    "stop" : 1632656410442,
+    "duration" : 0
+  },
+  "status" : "skipped",
+  "severity" : "normal"
+}, {
+  "uid" : "5a465d962639c42d",
+  "name" : "菜单栏功能校验/搜索功能/弱提示信息校验",
+  "time" : {
+    "start" : 1632656410444,
+    "stop" : 1632656410475,
+    "duration" : 31
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "a5a3436cd70ec39c",
+  "name" : "集群目录信息校验",
+  "time" : {
+    "start" : 1632656392550,
+    "stop" : 1632656393820,
+    "duration" : 1270
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "bb53fd7f474ba166",
+  "name" : "添加云服务器/基本信息页参数校验",
+  "time" : {
+    "start" : 1632656417689,
+    "stop" : 1632656431630,
+    "duration" : 13941
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "ccbcf1a011e6a92e",
+  "name" : "集群目录新增组功能验证/正常场景",
+  "time" : {
+    "start" : 1632656410430,
+    "stop" : 1632656410430,
+    "duration" : 0
+  },
+  "status" : "skipped",
+  "severity" : "normal"
+}, {
+  "uid" : "f841bef812322c46",
+  "name" : "集群目录服务器信息校验",
+  "time" : {
+    "start" : 1632656401330,
+    "stop" : 1632656410281,
+    "duration" : 8951
+  },
+  "status" : "failed",
+  "severity" : "normal"
+}, {
+  "uid" : "251bd96a96eaef07",
+  "name" : "集群云服务器信息校验",
+  "time" : {
+    "start" : 1632656393822,
+    "stop" : 1632656394940,
+    "duration" : 1118
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "a9aaa9eecf46d98b",
+  "name" : "集群目录组名称重命名功能验证/正常场景",
+  "time" : {
+    "start" : 1632656410433,
+    "stop" : 1632656410433,
+    "duration" : 0
+  },
+  "status" : "skipped",
+  "severity" : "normal"
+}, {
+  "uid" : "c539af0c3887ca1",
+  "name" : "集群目录结构信息校验",
+  "time" : {
+    "start" : 1632656394942,
+    "stop" : 1632656401328,
+    "duration" : 6386
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "4287115972f80fa3",
+  "name" : "集群目录组添加云服务器入口验证",
+  "time" : {
+    "start" : 1632656410436,
+    "stop" : 1632656410436,
+    "duration" : 0
+  },
+  "status" : "skipped",
+  "severity" : "normal"
+} ]

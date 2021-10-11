@@ -1,0 +1,14 @@
+#1、登录接口参数
+TH-CP-LOGIN-0001:
+  method: post
+  url: "http://10.30.100.26:8080/v1/authentication/login"
+  json:
+    is_ldap: False
+    tenant: system
+    user: xh
+    password: 767e955464233667bfd855686a55b352
+
+
+
+
+

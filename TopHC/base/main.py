@@ -13,11 +13,13 @@ from TopHC.page_object.calculate_module.cservermodule import ServicePage, MouldP
 from TopHC.page_object.calculate_module.desktopmoudel import StrategyPage
 from TopHC.page_object.calculate_module.goto_calculatemoudel import CserviceHome
 from TopHC.page_object.home_module.homemoudel import HomePage
+from TopHC.page_object.system_module.configure_module.configuremodule import ConfigurePage
+from TopHC.page_object.system_module.configure_module.goto_configuremoudel import ConfigureHome
 
 
 class Main(BasePage):
     # 进入首页（用户名登录的步骤通过basepage模块中复用已登录过账号）
-    _base_url = 'https://10.30.33.25/#/pages/overview'
+    _base_url = 'http://10.30.100.26:8080/#/pages/overview'
 
     # 1.首页-->概览模块
     # 1.1首页页面入口
@@ -32,7 +34,7 @@ class Main(BasePage):
         CserviceHome(self._driver).goto_cserver()
         return CserviceHome(self._driver).goto_cserverhome() # 先调用入口方法进入云服务器模块
 
-    def goto_serverpage(self):
+    def goto_serverpage(self):    #进入云服务器模块云服务器页面的实现类
         return ServicePage(self._driver)
 
     #2.1.2云服务器模板页面入口
@@ -61,3 +63,12 @@ class Main(BasePage):
 
 
 
+    # 10.系统模块
+    # 2.1配置子模块入口路径
+    # 2.1.1配置页面入口
+    def goto_configure(self):
+        ConfigureHome(self._driver).goto_configure()
+        return ConfigureHome(self._driver).goto_configurehome() # 先调用入口方法进入配置模块
+
+    def goto_configurepage(self):    #进入云服务器模块云服务器页面的实现类
+        return ConfigurePage(self._driver)

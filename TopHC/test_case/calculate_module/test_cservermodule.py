@@ -31,10 +31,10 @@ class TestServicePage:
     @allure.title('集群目录信息校验')  #对模块子功能进行标注
     #@pytest.mark.parametrize("items", loadyaml(filepath))
     def test_search_clusterUI1(self):
-        testdata = self.data['TH-CP-CLUSTER-0001']
-        pagedata = self.main.goto_serverpage().search_clustersUI1()
-        assert testdata['cluster1'] == pagedata[0]  #集群目录信息断言
-        assert testdata['cluster2'] == pagedata[1]
+        testdata = self.data['TH-CP-CLUSTER-0001']  #获取集群名称断言数据
+        pagedata = self.main.goto_serverpage().search_clustersUI1()  #调用集群名称测试方法
+        assert testdata['cluster1'] == pagedata[0]  #集群1名称断言
+        assert testdata['cluster2'] == pagedata[1]  #集群2名称断言
 
 
     # （2）集群云服务器信息校验
@@ -63,13 +63,14 @@ class TestServicePage:
         pagedata = self.main.goto_serverpage().search_clustersUI4()
         assert testdata['vm1-name'] == pagedata[0]
 
-    @pytest.mark.skip()
+
     # 1.1.2.云服务器页面/集群信息导航栏功能校验
     # (5)集群目录新增组功能验证/正常场景
     @allure.testcase(TEST_CASE_LINK, '用例_编号：TH-CP-CLUSTER-0005')
     @allure.title('集群目录新增组功能验证/正常场景')  #对模块子功能进行标注
     def test_search_clusterUI5(self):
         #testdata = self.data['TH-CP-CLUSTER-0005']
+        self.main.goto_cserver()
         self.main.goto_serverpage().search_clustersUI5()
         #assert testdata['vm1-name'] == pagedata[0]
 

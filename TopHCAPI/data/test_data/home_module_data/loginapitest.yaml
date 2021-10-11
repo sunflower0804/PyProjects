@@ -1,0 +1,7 @@
+TH-CP-LOGIN-0001:
+  scode: 0
+  message: success
+
+TH-CP-CLUSTER-0001:
+  cluster1: host3223-cvm3323   #集群1名称预期结果
+  cluster2: host3222-cvm3322   #集群2名称预期结果

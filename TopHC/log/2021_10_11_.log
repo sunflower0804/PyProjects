@@ -1,0 +1,10 @@
+2021-10-11 08:35:55,587 - basepage.py - [line:89] - INFO - 鼠标光标移动至navBar_item_系统_content元素
+2021-10-11 08:35:56,047 - basepage.py - [line:95] - INFO - 鼠标光标移动至navBar_item_系统_content_配置元素并点击
+2021-10-11 08:35:56,749 - basepage.py - [line:77] - INFO - 点击了//*[@id="panel-c-scroll"]/div[1]/section/section/div[1]/div[1]/h3元素
+2021-10-11 08:37:53,844 - basepage.py - [line:89] - INFO - 鼠标光标移动至navBar_item_系统_content元素
+2021-10-11 08:38:47,085 - basepage.py - [line:89] - INFO - 鼠标光标移动至navBar_item_系统_content元素
+2021-10-11 08:38:47,434 - basepage.py - [line:95] - INFO - 鼠标光标移动至navBar_item_系统_content_配置元素并点击
+2021-10-11 08:38:48,050 - basepage.py - [line:77] - INFO - 点击了//*[@id="panel-c-scroll"]/div[1]/section/section/div[1]/div[1]/h3元素
+2021-10-11 08:39:49,235 - basepage.py - [line:89] - INFO - 鼠标光标移动至navBar_item_系统_content元素
+2021-10-11 08:39:49,736 - basepage.py - [line:95] - INFO - 鼠标光标移动至navBar_item_系统_content_配置元素并点击
+2021-10-11 08:39:49,833 - basepage.py - [line:77] - INFO - 点击了//*[@id="panel-c-scroll"]/div[1]/section/section/div[1]/div[1]/h3元素

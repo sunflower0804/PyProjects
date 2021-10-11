@@ -1,0 +1,94 @@
+#1.标签类型
+#1.1创建标签类型
+TH-FN-LABEL-0001:
+  method: post
+  url: "http://10.30.100.26:8080/v1/label/type/add"
+  json:
+    tenant: f15a44f9-26f5-4bea-a96b-55f5f1d78fa0
+    name: kk
+    color: '#396afc'
+    description: ""
+    cluster_uuid: 49bb08f9-1c60-49ee-85d6-6fde276895c5
+
+#1.2查询标签类型
+TH-FN-LABEL-0002:
+  method: get
+  url: "http://10.30.100.26:8080/v1/label/type/delete"
+  params:
+    tenant: f15a44f9-26f5-4bea-a96b-55f5f1d78fa0
+    label_name: kk
+    uuid: 4230f361-8cd8-4a8a-aacd-ca232a097cc4
+    cluster_uuid: 49bb08f9-1c60-49ee-85d6-6fde276895c5
+
+#1.3修改标签类型
+TH-FN-LABEL-0003:
+  method: post
+  url: "http://10.30.100.26:8080/v1/label/type/delete"
+  json:
+    tenant: f15a44f9-26f5-4bea-a96b-55f5f1d78fa0
+    label_name: kk
+    uuid: 4230f361-8cd8-4a8a-aacd-ca232a097cc4
+    cluster_uuid: 49bb08f9-1c60-49ee-85d6-6fde276895c5
+
+#1.2删除标签类型
+TH-FN-LABEL-0004:
+  method: post
+  url: "http://10.30.100.26:8080/v1/label/type/delete"
+  json:
+    tenant: f15a44f9-26f5-4bea-a96b-55f5f1d78fa0
+    label_name: kk
+    uuid: 4230f361-8cd8-4a8a-aacd-ca232a097cc4
+    cluster_uuid: 49bb08f9-1c60-49ee-85d6-6fde276895c5
+
+#2.标签
+#2.1创建标签
+TH-FN-TAG-0001:
+  method: post
+  url: "http://10.30.100.26:8080/v1/label/add"
+  json:
+    tenant: f15a44f9-26f5-4bea-a96b-55f5f1d78fa0
+    name: hh
+    color: '#396afc'
+    label_type_uuid: "44e56217-7723-43c7-ab52-47a5157a826f"
+    cluster_uuid: 49bb08f9-1c60-49ee-85d6-6fde276895c5
+    value: ["111"]
+    ltype: "11"
+
+#2.2查询标签
+TH-FN-TAG-0002:
+  method: post
+  url: "http://10.30.100.26:8080/v1/label/add"
+  json:
+    tenant: f15a44f9-26f5-4bea-a96b-55f5f1d78fa0
+    name: hh
+    color: '#396afc'
+    label_type_uuid: "44e56217-7723-43c7-ab52-47a5157a826f"
+    cluster_uuid: 49bb08f9-1c60-49ee-85d6-6fde276895c5
+    value: ["111"]
+    ltype: "11"
+
+#2.3修改标签
+TH-FN-TAG-0003:
+  method: post
+  url: "http://10.30.100.26:8080/v1/label/add"
+  json:
+    tenant: f15a44f9-26f5-4bea-a96b-55f5f1d78fa0
+    name: hh
+    color: '#396afc'
+    label_type_uuid: "44e56217-7723-43c7-ab52-47a5157a826f"
+    cluster_uuid: 49bb08f9-1c60-49ee-85d6-6fde276895c5
+    value: ["111"]
+    ltype: "11"
+
+#2.1删除标签
+TH-FN-TAG-0004:
+  method: post
+  url: "http://10.30.100.26:8080/v1/label/add"
+  json:
+    tenant: f15a44f9-26f5-4bea-a96b-55f5f1d78fa0
+    name: hh
+    color: '#396afc'
+    label_type_uuid: "44e56217-7723-43c7-ab52-47a5157a826f"
+    cluster_uuid: 49bb08f9-1c60-49ee-85d6-6fde276895c5
+    value: ["111"]
+    ltype: "11"

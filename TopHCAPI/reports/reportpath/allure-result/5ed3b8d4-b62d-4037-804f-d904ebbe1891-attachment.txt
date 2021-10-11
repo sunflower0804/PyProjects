@@ -1,0 +1,3 @@
+INFO     Framework:basepage.py:108 元素文本信息为请输入云服务器名称
+INFO     Framework:basepage.py:137 键盘输入后清理
+INFO     Framework:basepage.py:137 键盘输入后清理

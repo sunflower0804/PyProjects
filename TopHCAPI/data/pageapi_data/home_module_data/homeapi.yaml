@@ -1,0 +1,23 @@
+#添加标签类型
+TH-CP-LABEL-0001:
+  method: post
+  url: "http://10.30.100.26:8080/v1/label/type/add"
+  json:
+    tenant: f15a44f9-26f5-4bea-a96b-55f5f1d78fa0
+    name: ll
+    color: '#396afc'
+    description: ""
+    cluster_uuid: 49bb08f9-1c60-49ee-85d6-6fde276895c5
+
+#添加标签
+TH-CP-LABEL-0002:
+  method: post
+  url: "http://10.30.100.26:8080/v1/label/add"
+  json:
+    tenant: f15a44f9-26f5-4bea-a96b-55f5f1d78fa0
+    name: hh
+    color: '#396afc'
+    label_type_uuid: "44e56217-7723-43c7-ab52-47a5157a826f"
+    cluster_uuid: 49bb08f9-1c60-49ee-85d6-6fde276895c5
+    value: ["111"]
+    ltype: "11"

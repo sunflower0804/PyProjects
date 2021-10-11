@@ -1,0 +1,7 @@
+- by: xpath
+  locator: /html/body/div[4]/div/div[2]/form/div[1]/div/div[1]/div/div[1]/input
+  action:
+    - send_keys: test1
+
+
+

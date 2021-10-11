@@ -24,7 +24,7 @@ class TestLogin:
     @allure.issue('59561', '登录测试用例的对应的bug')  # bugID，传入上面的括号里
     @allure.title('登录信息校验')  # 对模块子功能进行标注
     @pytest.mark.parametrize("login_user, login_username, login_password", loadyaml(
-        r'/TopHC/data/test_data/home_module_data/logintest.yaml'))
+        r'/TopHC/data/test_data/home_module_data/loginapi.yaml'))
     def test_01_login(self, login_user, login_username, login_password):
         #self.driver = webdriver.Chrome()  #使用谷歌登录
         lp = LoginPage(self.driver)

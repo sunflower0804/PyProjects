@@ -99,5 +99,18 @@ class Filepath:
     # （2）测试用例数据
     DeployTestPath = DataPath
 
+
+
+    #10.系统模块
+    #10.1 配置模块
+    #2.1.1配置页面
+    #（1）测试步骤数据
+    ConfigureDataPath = DataPath + '\page_data\system_module\configure_module\configuredata.yaml'
+    #（2）测试用例数据
+    ConfigureTestDataPath = DataPath + r'\test_data\system_module_data\configure_module\configuretest.yaml'
+    #（3）测试用例
+    ConfigureTestPath = TestPath + r'\system_module\test_configuremodule.py'
+
+
 #实例化Filepath类并赋值给readFilepath,后面可直接调用readFilepath
 readFilepath=Filepath()

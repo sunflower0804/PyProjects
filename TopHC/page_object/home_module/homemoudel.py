@@ -12,7 +12,7 @@ class HomePage(BasePage):
     def search_text1(self):
         sleep(2)
         return self.find(By.XPATH,'//*[@id="panel-c-scroll"]/div[1]/section/section/div/div[1]/section[1]/div/div[1]/div/div[1]/h4').text
-        #return self.steps(r"D:\WorkTools\PyProjects\TopHC\data\home_module_data\home_search_ui1.yaml")
+        #return self.steps(r"D:\WorkTools\PyProjects\TopHC\data\home_module_data\homeapi.yaml")
 
     #D:/WorkTools/PyProjects/TopHC/page_object/home_module
 

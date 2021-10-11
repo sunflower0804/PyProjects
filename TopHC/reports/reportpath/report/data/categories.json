@@ -1,0 +1,26 @@
+{
+  "uid" : "4b4757e66a1912dae1a509f688f20b0f",
+  "name" : "categories",
+  "children" : [ {
+    "name" : "Product defects",
+    "children" : [ {
+      "name" : "AssertionError: assert 'win7-64' == 'a'\n  - a\n  + win7-64",
+      "children" : [ {
+        "name" : "集群目录服务器信息校验",
+        "uid" : "f841bef812322c46",
+        "parentUid" : "a9b8ee91efccc98a7078aed338276e3e",
+        "status" : "failed",
+        "time" : {
+          "start" : 1632656401330,
+          "stop" : 1632656410281,
+          "duration" : 8951
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      } ],
+      "uid" : "a9b8ee91efccc98a7078aed338276e3e"
+    } ],
+    "uid" : "8fb3a91ba5aaf9de24cc8a92edc82b5d"
+  } ]
+}
