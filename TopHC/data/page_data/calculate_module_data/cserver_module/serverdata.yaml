@@ -179,10 +179,9 @@ TH-CP-VM-0003:
 #1.2.3.1 创建云服务器
 #<1 自定义
 #<1-1 基本信息页参数校验
-#<1-1-1云服务器输入框验证
 #依次点击添加云服务器-->创建云服务器，进入基本信息页
 TH-CP-VM-000:
-  data01: #&demo00041
+  data01: &demo00041
     - by: xpath
       locator: //*[@id="compute_virtual_create_compute_btn"]/span
       action: click
@@ -191,11 +190,12 @@ TH-CP-VM-000:
       locator: //*[@id="compute_instances_create_basic_auto"]/div[1]
       action: click
 
+#<1-1-1云服务器输入框验证
 #(1)云服务器输入框弱提示验证
 #定位到云服务器提示框，获取弱提示属性
 TH-CP-VM-0004:
-  by: id
-  locator: compute_instances_create_name
+  by: xpath
+  locator: (//div[@class="el-form-item__content"])[2]/div/input
   attr: placeholder
 
 #(2)云服务器输入框输入为空验证
@@ -205,10 +205,12 @@ TH-CP-VM-0005:
     action: send
     value: ''
 
+  #输入为空后点击确认按钮才会出现提示信息
   - by: id
     locator: compute_instances_create_confirm
     action: click
 
+  #输入为空后云服务器输入框下方的提示信息获取
   - by: xpath
     locator: //*[@id="compute_instances_create_basic"]/div/div[2]/section[1]/div/div[2]/form/section[1]/div[2]/div/div[2]
     action: text
@@ -224,65 +226,1156 @@ TH-CP-VM-0006:
     locator: //*[@id="compute_instances_create_basic"]/div/div[2]/section[1]/div/div[2]/form/section[1]/div[2]/div/div[2]
     action: text
 
+#(4)云服务器输入框输入大于32位字符验证
+TH-CP-VM-0007:
   - by: id
     locator: compute_instances_create_name
     action: clear
 
-#(4)云服务器输入框输入大于32位字符验证
-TH-CP-VM-0007:
   - by: id
     locator: compute_instances_create_name
     action: send
     value: '111111111111111111111111111111111'
 
-  - by: id
-    locator: compute_instances_create_confirm
-    action: click
-
+  #输入大于32位后云服务器输入框下方的提示信息获取
   - by: xpath
     locator: //*[@id="compute_instances_create_basic"]/div/div[2]/section[1]/div/div[2]/form/section[1]/div[2]/div/div[2]
     action: text
 
+#<1-1-2操作系统下拉框验证
+TH-CP-VM-0008:
   - by: id
     locator: compute_instances_create_name
     action: clear
 
-#(4)云服务器输入框输入正确字符验证
-TH-CP-VM-0008:
   - by: id
     locator: compute_instances_create_name
     action: send
-    value: 'test111'
+    value: TEST
+
+  #点击操作系统下拉框
+  - by: xpath
+    locator: //*[@id="compute_instances_create_osSelecte"]/span
+    action: click
+
+  #移动鼠标，选择下拉框中的others
+  - by: xpath
+    locator: //div[@class="el-cascader-menus el-popper os-cascader"]/ul[1]/li[4]
+    action: click
+
+  #移动鼠标，选择下拉框中的FreeBSD，并点击
+  - by: xpath
+    locator: //div[@class="el-cascader-menus el-popper os-cascader"]/ul[2]/li[1]
+    action: click
+
+  #获取选择后的页面元素
+  - by: id
+    locator: compute_instances_create_osSelecte
+    action: text
+
+#<1-1-3创建个数输入框验证
+#(1)创建个数输入框默认值验证
+#定位到创建个数输入框，获取默认值：1
+TH-CP-VM-0009:
+  by: id
+  locator: compute_instances_create_create_num
+
+#(2)创建个数输入框输入为空验证
+TH-CP-VM-0010:
+  data1:
+    - by: id
+      locator: compute_instances_create_create_num
+      action: clear
+
+    - by: id
+      locator: compute_instances_create_create_num
+      action: send
+      value: ''
+
+  #输入框下方提示信息获取：“云服务器创建个数不能为空”
+    - by: xpath
+      locator: //*[@id="compute_instances_create_basic"]/div/div[2]/section[1]/div/div[2]/form/section[1]/div[6]/div/div[3]
+      action: text
+
+  #输入框弱提示信息获取：“请输入自动创建云服务器个数（限制100）”
+  data2:
+    by: id
+    locator: compute_instances_create_create_num
+    attr: placeholder
+
+  data3:
+    - by: id
+      locator: compute_instances_create_create_num
+      action: clear
+
+#(3)创建个数输入框输入特殊字符验证
+TH-CP-VM-0011:
+  - by: id
+    locator: compute_instances_create_create_num
+    action: clear
 
   - by: id
-    locator: compute_instances_create_confirm
-    action: click
-
-  - by: xpath
-    locator: (//div[@class="dialog-footer-submit"]/button[2])[1]/span
-    action: click
-
-  - by: xpath
-    locator:  (//div[@class="dialog-footer-submit"]/button[2])[1]/span
-    action: click
-
-  - by: xpath
-    locator: //*[@id="compute_instances_create_volume_capacity1"]
+    locator: compute_instances_create_create_num
     action: send
-    value: '0.5'
+    value: '#￥%……&**'
+
+  #输入框下方提示信息获取：“云服务器创建个数输入错误！”
+  - by: xpath
+    locator: //*[@id="compute_instances_create_basic"]/div/div[2]/section[1]/div/div[2]/form/section[1]/div[6]/div/div[3]
+    action: text
+
+  - by: id
+    locator: compute_instances_create_create_num
+    action: clear
+
+#(4)创建个数输入框输入大于100验证
+TH-CP-VM-0012:
+  - by: id
+    locator: compute_instances_create_create_num
+    action: clear
+
+  - by: id
+    locator: compute_instances_create_create_num
+    action: send
+    value: '111'
+
+  #输入框下方提示信息获取：“云服务器创建个数不能超过100”
+  - by: xpath
+    locator: //*[@id="compute_instances_create_basic"]/div/div[2]/section[1]/div/div[2]/form/section[1]/div[6]/div/div[3]
+    action: text
+
+#(5)创建个数输入框输入小于1验证
+TH-CP-VM-0013:
+  - by: id
+    locator: compute_instances_create_create_num
+    action: clear
+
+  - by: id
+    locator: compute_instances_create_create_num
+    action: send
+    value: '0'
+
+  #输入框下方提示信息获取：“云服务器创建个数输入错误！”
+  - by: xpath
+    locator: //*[@id="compute_instances_create_basic"]/div/div[2]/section[1]/div/div[2]/form/section[1]/div[6]/div/div[3]
+    action: text
+
+  - by: id
+    locator: compute_instances_create_create_num
+    action: clear
+
+  #关闭基本信息页
+  - by: xpath
+    locator: //*[@id="compute_instances_create_basic"]/div/div[1]/button/i
+    action: click
+
+#<1-2 CPU、内存信息页参数校验
+#依次点击添加云服务器-->创建云服务器-->进入基本信息页-->进入CPU、内存信息页
+TH-CP-VM-0014:
+  data1: *demo00041
+  data2: &demo00042
+    - by: id
+      locator: compute_instances_create_name
+      action: send
+      value: test001
+
+    - by: xpath
+      locator: //div[@class="dialog-footer-submit"]/button[1]
+      action: click
+
+#<1-2-1处理器输入框验证
+#(1)处理器输入框默认值验证
+#定位到处理器输入框，获取默认值：2
+TH-CP-VM-0015:
+  by: id
+  locator: compute_instances_create_cpunr
+
+#(2)处理器输入框输入为空验证
+TH-CP-VM-0016:
+  data1:
+    - by: id
+      locator: compute_instances_create_cpunr
+      action: clear
+
+    - by: id
+      locator: compute_instances_create_cpunr
+      action: send
+      value: ''
+
+  #输入框下方提示信息获取：“CPU核数不能为空”
+    - by: xpath
+      locator: //*[@id="compute_instances_create_basic"]/div/div[2]/section[1]/div/div[2]/form/section[2]/div[1]/div/span
+      action: text
+
+  #输入框弱提示信息获取：“请输入处理器”
+  data2:
+    by: xpath
+    locator: //*[@id="compute_instances_create_basic"]/div/div[2]/section[1]/div/div[2]/form/section[2]/div[1]/div/div/input
+    attr: placeholder
+
+#(3)处理器输入框输入特殊字符验证
+TH-CP-VM-0017:
+  - by: id
+    locator: compute_instances_create_cpunr
+    action: send
+    value: '#￥%……&**'
+
+  #输入框下方提示信息获取：“CPU核数只能为正整数！”
+  - by: xpath
+    locator: //*[@id="compute_instances_create_basic"]/div/div[2]/section[1]/div/div[2]/form/section[2]/div[1]/div/span
+    action: text
+
+#(4)处理器输入框输入大于2验证
+TH-CP-VM-0018:
+  - by: id
+    locator: compute_instances_create_cpunr
+    action: clear
+
+  - by: id
+    locator: compute_instances_create_cpunr
+    action: send
+    value: '111'
+
+  #输入框下方提示信息获取：“CPU核数不能大于CPU最大核数”
+  - by: xpath
+    locator: //*[@id="compute_instances_create_basic"]/div/div[2]/section[1]/div/div[2]/form/section[2]/div[1]/div/span
+    action: text
+
+#(5)处理器输入框输入小于1验证
+TH-CP-VM-0019:
+  - by: id
+    locator: compute_instances_create_cpunr
+    action: clear
+
+  - by: id
+    locator: compute_instances_create_cpunr
+    action: send
+    value: '0'
+
+  #输入框下方提示信息获取：“CPU核数只能为正整数！”
+  - by: xpath
+    locator: //*[@id="compute_instances_create_basic"]/div/div[2]/section[1]/div/div[2]/form/section[2]/div[1]/div/span
+    action: text
+
+  #恢复默认值2
+  - by: id
+    locator: compute_instances_create_cpunr
+    action: clear
+
+  - by: id
+    locator: compute_instances_create_cpunr
+    action: send
+    value: '2'
+
+#<1-2-2插槽数输入框验证
+#(1)插槽数输入框默认值验证
+#定位到插槽数输入框，获取默认值：1
+TH-CP-VM-0020:
+  by: id
+  locator: compute_instances_create_cpu_sockets
+
+#(2)插槽数输入框输入为空验证
+TH-CP-VM-0021:
+  data1:
+    - by: id
+      locator: compute_instances_create_cpu_sockets
+      action: clear
+
+    - by: id
+      locator: compute_instances_create_cpu_sockets
+      action: send
+      value: ''
+
+  #输入框下方提示信息获取：“插槽数不能为空”
+    - by: xpath
+      locator: //*[@id="compute_instances_create_basic"]/div/div[2]/section[1]/div/div[2]/form/section[2]/div[2]/div/div[2]
+      action: text
+
+  #输入框弱提示信息获取：“请输入处理器插槽数”
+  data2:
+    by: xpath
+    locator: //*[@id="compute_instances_create_cpu_sockets"]
+    attr: placeholder
+
+#(3)插槽数输入框输入特殊字符验证
+TH-CP-VM-0022:
+  - by: id
+    locator: compute_instances_create_cpu_sockets
+    action: clear
+
+  - by: id
+    locator: compute_instances_create_cpu_sockets
+    action: send
+    value: '#￥%……&**'
+
+  #输入框下方提示信息获取：“请输入正整数”
+  - by: xpath
+    locator: //*[@id="compute_instances_create_basic"]/div/div[2]/section[1]/div/div[2]/form/section[2]/div[2]/div/div[2]
+    action: text
+
+#(4)插槽数输入框输入大于4验证
+TH-CP-VM-0023:
+  - by: id
+    locator: compute_instances_create_cpu_sockets
+    action: clear
+
+  - by: id
+    locator: compute_instances_create_cpu_sockets
+    action: send
+    value: '5'
+
+  #输入框下方提示信息获取：“插槽数不能大于4”
+  - by: xpath
+    locator: //*[@id="compute_instances_create_basic"]/div/div[2]/section[1]/div/div[2]/form/section[2]/div[2]/div/div[2]
+    action: text
+
+#(5)插槽数输入框输入小于1验证
+TH-CP-VM-0024:
+  - by: id
+    locator: compute_instances_create_cpu_sockets
+    action: clear
+
+  - by: id
+    locator: compute_instances_create_cpu_sockets
+    action: send
+    value: '0'
+
+  #输入框下方提示信息获取：“请输入正整数”
+  - by: xpath
+    locator: //*[@id="compute_instances_create_basic"]/div/div[2]/section[1]/div/div[2]/form/section[2]/div[2]/div/div[2]
+    action: text
+
+  - by: id
+    locator: compute_instances_create_cpu_sockets
+    action: clear
+
+  #恢复默认值2
+  - by: id
+    locator: compute_instances_create_cpu_sockets
+    action: send
+    value: '1'
+
+#<1-2-3插槽核数输入框验证
+#(1)插槽核数输入框默认值验证
+#定位到插槽核数输入框，获取默认值：2
+TH-CP-VM-0025:
+  by: id
+  locator: compute_instances_create_cpu_socket_cores
+
+#(2)插槽核数输入框输入为空验证
+TH-CP-VM-0026:
+  data1:
+    - by: id
+      locator: compute_instances_create_cpu_socket_cores
+      action: clear
+
+    - by: id
+      locator: compute_instances_create_cpu_socket_cores
+      action: send
+      value: ''
+
+  #输入框下方提示信息获取：“插槽核数不能为空”
+    - by: xpath
+      locator: //*[@id="compute_instances_create_basic"]/div/div[2]/section[1]/div/div[2]/form/section[2]/div[3]/div/div[2]
+      action: text
+
+  #输入框弱提示信息获取：“请输入处理器插槽核数”
+  data2:
+    by: id
+    locator: compute_instances_create_cpu_socket_cores
+    attr: placeholder
+
+#(3)插槽核数输入框输入特殊字符验证
+TH-CP-VM-0027:
+  - by: id
+    locator: compute_instances_create_cpu_socket_cores
+    action: clear
+
+  - by: id
+    locator: compute_instances_create_cpu_socket_cores
+    action: send
+    value: '#￥%……&**'
+
+  #输入框下方提示信息获取：“请输入正整数”
+  - by: xpath
+    locator: //*[@id="compute_instances_create_basic"]/div/div[2]/section[1]/div/div[2]/form/section[2]/div[3]/div/div[2]
+    action: text
+
+#(4)插槽核数输入框输入大于24验证
+TH-CP-VM-0028:
+  - by: id
+    locator: compute_instances_create_cpu_socket_cores
+    action: clear
+
+  - by: id
+    locator: compute_instances_create_cpu_socket_cores
+    action: send
+    value: '25'
+
+  #输入框下方提示信息获取：“插槽核数不能大于24”
+  - by: xpath
+    locator: //*[@id="compute_instances_create_basic"]/div/div[2]/section[1]/div/div[2]/form/section[2]/div[3]/div/div[2]
+    action: text
+
+#(5)插槽核数输入框输入小于1验证
+TH-CP-VM-0029:
+  - by: id
+    locator: compute_instances_create_cpu_socket_cores
+    action: clear
+
+  - by: id
+    locator: compute_instances_create_cpu_socket_cores
+    action: send
+    value: '0'
+
+  #输入框下方提示信息获取：“请输入正整数”
+  - by: xpath
+    locator: //*[@id="compute_instances_create_basic"]/div/div[2]/section[1]/div/div[2]/form/section[2]/div[3]/div/div[2]
+    action: text
+
+  - by: id
+    locator: compute_instances_create_cpu_socket_cores
+    action: clear
+
+  #恢复默认值2
+  - by: id
+    locator: compute_instances_create_cpu_socket_cores
+    action: send
+    value: '2'
+
+#<1-2-4内存输入框验证
+#(1)内存大小输入框默认值验证
+#定位到内存大小输入框，获取默认值：4
+TH-CP-VM-0030:
+  by: id
+  locator: compute_instances_create_memory
+
+#(2)内存大小输入框输入为空验证
+TH-CP-VM-0031:
+  data1:
+    - by: id
+      locator: compute_instances_create_memory
+      action: clear
+
+    - by: id
+      locator: compute_instances_create_memory
+      action: send
+      value: ''
+
+  #输入框下方提示信息获取：“内存大小不能为空”
+    - by: xpath
+      locator: //*[@id="compute_instances_create_basic"]/div/div[2]/section[1]/div/div[2]/form/section[2]/div[4]/div/div[2]
+      action: text
+
+  #输入框弱提示信息获取：“请输入设置内存大小”
+  data2:
+    by: id
+    locator: compute_instances_create_memory
+    attr: placeholder
+
+#(3)内存大小输入框输入特殊字符验证
+TH-CP-VM-0032:
+  - by: id
+    locator: compute_instances_create_memory
+    action: clear
+
+  - by: id
+    locator: compute_instances_create_memory
+    action: send
+    value: '#￥%……&**'
+
+  #输入框下方提示信息获取：“内存输入必须是0.5的整数倍”
+  - by: xpath
+    locator:  //*[@id="compute_instances_create_basic"]/div/div[2]/section[1]/div/div[2]/form/section[2]/div[4]/div/div[2]
+    action: text
+
+#(4)内存大小输入框输入大于256验证
+TH-CP-VM-0033:
+  - by: id
+    locator: compute_instances_create_memory
+    action: clear
+
+  - by: id
+    locator: compute_instances_create_memory
+    action: send
+    value: '257'
+
+  #输入框下方提示信息获取：“内存不能超过最大内存256G”
+  - by: xpath
+    locator:  //*[@id="compute_instances_create_basic"]/div/div[2]/section[1]/div/div[2]/form/section[2]/div[4]/div/div[2]
+    action: text
+
+#(5)内存大小输入框输入小于0.5验证
+TH-CP-VM-0034:
+  - by: id
+    locator: compute_instances_create_memory
+    action: clear
+
+  - by: id
+    locator: compute_instances_create_memory
+    action: send
+    value: '0'
+
+  #输入框下方提示信息获取：“内存输入必须是0.5的整数倍”
+  - by: xpath
+    locator:  //*[@id="compute_instances_create_basic"]/div/div[2]/section[1]/div/div[2]/form/section[2]/div[4]/div/div[2]
+    action: text
+
+  - by: id
+    locator: compute_instances_create_memory
+    action: clear
+
+  #恢复默认值4
+  - by: id
+    locator: compute_instances_create_memory
+    action: send
+    value: '4'
+
+#<1-2-5基准类型下拉框验证
+TH-CP-VM-0035:
+  #点击基准类型下拉框
+  - by: xpath
+    locator: //*[@id="compute_instances_create_basic"]/div/div[2]/section[1]/div/div[2]/form/section[2]/div[5]/div/span/span
+    action: click
+
+  #移动鼠标，选择一级下拉框中的arm
+  - by: xpath
+    locator: //div[@class="el-cascader-menus el-popper"]/ul[1]/li[3]
+    action: click
+
+  #移动鼠标，选择二级下拉框中的Phytium，并点击
+  - by: xpath
+    locator: //div[@class="el-cascader-menus el-popper"]/ul[2]/li[5]
+    action: click
+
+  #移动鼠标，选择三级下拉框中的Tengyun-S2500，并点击
+  - by: xpath
+    locator: //div[@class="el-cascader-menus el-popper"]/ul[3]/li[2]
+    action: click
+
+  #获取选择后的页面元素:arm/Phytium/Tengyun-S2500
+  - by: xpath
+    locator: //*[@id="compute_instances_create_basic"]/div/div[2]/section[1]/div/div[2]/form/section[2]/div[5]/div/span/span
+    action: text
+
+  #关闭CPU、内存信息页
+  - by: xpath
+    locator: //*[@id="compute_instances_create_basic"]/div/div[1]/button/i
+    action: click
+
+#<1-3 存储信息页参数校验
+#云硬盘/自定义
+#依次点击添加云服务器-->创建云服务器-->进入基本信息页-->进入CPU、内存信息页-->进入存储信息页
+TH-CP-VM-0036:
+  data1: *demo00041
+  data2: *demo00042
+  data3: &demo00043
+    - by: xpath
+      locator: //div[@class="el-row"]/div[2]/div/button[2]
+      action: click
+
+#<1-3-1磁盘大小输入框验证
+#(1)磁盘大小输入框弱提示验证
+#定位到磁盘大小输入框，获取弱提示属性
+TH-CP-VM-0037:
+  by: id
+  locator: compute_instances_create_volume_capacity1
+  attr: placeholder
+
+#(2)磁盘大小输入框输入为空验证
+TH-CP-VM-0038:
+  - by: id
+    locator: compute_instances_create_volume_capacity1
+    action: clear
+
+  - by: id
+    locator: compute_instances_create_volume_capacity1
+    action: send
+    value: ''
+
+  #输入为空后点击下一步按钮才会出现提示信息
+  - by: xpath
+    locator: //div[@class="el-row"]/div[2]/div/button[2]
+    action: click
+
+  #输入为空后云服务器输入框下方的提示信息获取
+  - by: xpath
+    locator: //div[@class="el-form-item__error"]
+    action: text
+
+#(3)磁盘大小输入框输入特殊字符验证
+TH-CP-VM-0039:
+  - by: id
+    locator: compute_instances_create_volume_capacity1
+    action: clear
+
+  - by: id
+    locator: compute_instances_create_volume_capacity1
+    action: send
+    value: '#￥%……&**'
 
   - by: xpath
-    locator: (//div[@class="dialog-footer-submit"]/button[2])[1]/span
+    locator: //div[@class="el-form-item__error"]
+    action: text
+
+#(4)磁盘大小输入框输入大于256T验证：1111111
+TH-CP-VM-0040:
+  - by: id
+    locator: compute_instances_create_volume_capacity1
+    action: clear
+
+  - by: id
+    locator: compute_instances_create_volume_capacity1
+    action: send
+    value: '1111111'
+
+  #输入大于256T后云服务器输入框下方的提示信息获取：卷容量不能高于256T
+  - by: xpath
+    locator: //div[@class="el-form-item__error"]
+    action: text
+
+  #输入大于256T后云服务器输入框上方的提示信息获取：单卷容量超过最小域副本容量上限安全值，请均衡各域容量！(建议后期容量不够后再扩容)
+  - by: xpath
+    locator: //span[@class="capacity-tip"]
+    action: text
+
+  - by: id
+    locator: compute_instances_create_volume_capacity1
+    action: clear
+
+#(5)磁盘大小输入框输入小于0.5验证
+TH-CP-VM-0041:
+  - by: id
+    locator: compute_instances_create_volume_capacity1
+    action: clear
+
+  - by: id
+    locator: compute_instances_create_volume_capacity1
+    action: send
+    value: '0'
+
+  #输入框下方提示信息获取：“卷容量输入必须是0.5的整数倍”
+  - by: xpath
+    locator: //div[@class="el-form-item__error"]
+    action: text
+
+  - by: id
+    locator: compute_instances_create_volume_capacity1
+    action: clear
+
+  #输入正常值2
+  - by: id
+    locator: compute_instances_create_volume_capacity1
+    action: send
+    value: '2'
+
+#<1-3-2驱动类型选择项验证
+#(1)驱动类型选择项验证
+TH-CP-VM-0042:
+  #默认选择scsi验证(tabindex="0")
+  data1:
+    by: xpath
+    locator: //div[@class="el-radio-group radio-target-device"]/label[4]
+    attr: tabindex
+
+  #选择ide验证(tabindex="0")
+  data2:
+    - by: xpath
+      locator: //div[@class="el-radio-group radio-target-device"]/label[1]
+      action: click
+
+  data3:
+    by: xpath
+    locator: //div[@class="el-radio-group radio-target-device"]/label[1]
+    attr: tabindex
+
+    #恢复默认选项scsi
+  data4:
+    - by: xpath
+      locator: //div[@class="el-radio-group radio-target-device"]/label[4]
+      action: click
+
+#<1-3-3存储池下拉框验证
+TH-CP-VM-0043:
+  #点击存储池下拉框
+  - by: id
+    locator: compute_instances_create_auto_pool_uuid1
+    action: click
+
+  #移动鼠标，选择下拉框中的已有存储池选项
+  - by: xpath
+    locator: /html/body/div[4]/div[1]/div[1]/ul/li
     action: click
 
   - by: xpath
-    locator: (//div[@class="dialog-footer-submit"]/button[2])[1]/span
+    locator: /html/body/div[4]/div[1]/div[1]/ul/li
+    action: text
+
+#<1-3-4卷名称输入框验证
+#(1)卷名称输入框默认值验证
+#定位到卷名称输入框，获取默认值：test001-volume1
+TH-CP-VM-0044:
+  data1:
+    by: id
+    locator: compute_instances_create_volume_name1
+
+  data2:
+    - by: id
+      locator: compute_instances_create_volume_name1
+      action: clear
+
+#(2)卷名称输入框输入为空验证
+TH-CP-VM-0045:
+  data1:
+    - by: id
+      locator: compute_instances_create_volume_name1
+      action: send
+      value: ''
+
+  #输入框下方提示信息获取：“卷名称不能为空”
+    - by: xpath
+      locator: //div[@class="el-form-item__error"]
+      action: text
+
+  #输入框弱提示信息获取：“请输入卷名称”
+  data2:
+    by: id
+    locator: compute_instances_create_volume_name1
+    attr: placeholder
+
+#(3)卷名称输入框输入特殊字符验证
+TH-CP-VM-0046:
+  - by: id
+    locator: compute_instances_create_volume_name1
+    action: send
+    value: '#￥%……&**'
+
+  #输入框下方提示信息获取：“卷名称不能含有特殊字符”
+  - by: xpath
+    locator:  //div[@class="el-form-item__error"]
+    action: text
+
+  - by: id
+    locator: compute_instances_create_volume_name1
+    action: clear
+
+#(4)卷名称输入框输入大于32位字符验证
+TH-CP-VM-0047:
+  - by: id
+    locator: compute_instances_create_volume_name1
+    action: send
+    value: '111111111111111111111111111111111'
+
+  #输入框下方提示信息获取：“卷名称由1~32位字符组成”
+  - by: xpath
+    locator: //div[@class="el-form-item__error"]
+    action: text
+
+  - by: id
+    locator: compute_instances_create_volume_name1
+    action: clear
+
+  #恢复默认值test001-volume1
+  - by: id
+    locator: compute_instances_create_volume_name1
+    action: send
+    value: 'test001-volume1'
+
+#<1-3-5副本数下拉框验证
+TH-CP-VM-0048:
+  #副本数默认值验证
+  data1:
+    by: id
+    locator: compute_instances_create_volume_auto_replica1
+
+
+  #点击副本数下拉框
+  data2:
+    - by: id
+      locator: compute_instances_create_volume_auto_replica1
+      action: click
+
+  #移动鼠标，选择下拉框中的已有选项
+    - by: xpath
+      locator: /html/body/div[4]/div[1]/div[1]/ul/li[1]
+      action: click
+
+  #副本数选择值验证
+  data3:
+    by: id
+    locator: compute_instances_create_volume_auto_replica1
+
+#<1-3-6云盘类型下拉框验证
+TH-CP-VM-0049:
+  #云盘类型默认值验证：普通云盘1.0
+  data1:
+    by: id
+    locator: compute_instances_create_volume_auto_vsdVendor1
+
+  #点击云盘类型下拉框
+  data2:
+    - by: id
+      locator: compute_instances_create_volume_auto_vsdVendor1
+      action: click
+
+  #移动鼠标，选择下拉框中的已有选项
+    - by: xpath
+      locator: (//div[@class="el-select-dropdown__wrap el-scrollbar__wrap"])[6]/ul[1]/li[3]
+      action: click
+
+  #云盘类型选择值验证：高效云盘
+  data3:
+    by: id
+    locator: compute_instances_create_volume_auto_vsdVendor1
+
+#<1-3-7存储介质下拉框验证
+TH-CP-VM-0050:
+  #存储介质默认值验证：机械硬盘
+  data1:
+    by: id
+    locator: compute_instances_create_auto_drive_type1
+
+  #点击存储介质下拉框
+  data2:
+    - by: id
+      locator: compute_instances_create_auto_drive_type1
+      action: click
+
+  #移动鼠标，选择下拉框中的已有选项
+    - by: xpath
+      locator: /html/body/div[4]/div[1]/div[1]/ul/li[2]
+      action: click
+
+  #存储介质选择值验证：固态硬盘
+  data3:
+    by: id
+    locator: compute_instances_create_auto_drive_type1
+
+#<1-3-8链路冗余下拉框验证
+TH-CP-VM-0051:
+  #链路冗余默认值验证：1
+  data1:
+    by: id
+    locator: compute_instances_create_volume_auto_redundancy1
+
+  #点击链路冗余下拉框
+  data2:
+    - by: id
+      locator: compute_instances_create_volume_auto_redundancy1
+      action: click
+
+  #移动鼠标，选择下拉框中的已有选项
+    - by: xpath
+      locator: (//div[@class="el-select-dropdown__wrap el-scrollbar__wrap"])[8]/ul[1]/li[3]
+      action: click
+
+  #链路冗余选择值验证：3
+  data3:
+    by: id
+    locator: compute_instances_create_volume_auto_redundancy1
+
+  #关闭存储信息页
+  data4:
+    - by: xpath
+      locator: //*[@id="compute_instances_create_basic"]/div/div[1]/button/i
+      action: click
+
+
+#<1-3 存储信息页参数校验
+#云硬盘/自定义
+#依次点击添加云服务器-->创建云服务器-->进入基本信息页-->进入CPU、内存信息页-->进入存储信息页-->进入网卡信息页
+TH-CP-VM-0052:
+  data01: *demo00041
+  data02: *demo00042
+  data03: *demo00043
+  data04:
+    - by: id
+      locator: compute_instances_create_volume_capacity1
+      action: send
+      value: 1
+
+    - by: xpath
+      locator: //div[@class="el-row"]/div[2]/div/button[2]
+      action: click
+
+#<1-4-1添加网卡功能验证
+TH-CP-VM-0053:
+  #新增一个网卡
+  - by: xpath
+    locator: //section[@class="interface-component"]/div[1]/i
     action: click
 
+  #检查新增网卡是否成功
   - by: xpath
-    locator: (//div[@class="dialog-footer-submit"]/button[2])[1]/span
+    locator: //div[@class="el-collapse-item__header"]/span[1]/span[2]
+    action: text
+
+  #删除新增的网卡
+  - by: xpath
+    locator: //div[@class="el-collapse-item__header"]/span[2]/i
     action: click
 
+#<1-4-2网卡信息折叠功能验证
+TH-CP-VM-0054:
+  data1: &q1
+    - by: xpath
+      locator: (//div[@class="el-collapse-item is-active"])[1]/div[1]/div[1]/span[1]/span[1]
+      action: click
+
+  #点击折叠按钮后网卡信息为空
+  data2: &q2
+    by: xpath
+    locator: (//div[@class="el-collapse-item__content"])[1]/div[1]/label[1]   #适配器
+
+  #再次点击折叠按钮后网卡信息正常显示
+  data3: *q1
+
+  data4: *q2
+
+#<1-4-3网卡下拉框验证
+TH-CP-VM-0055:
+  #网卡类型默认值验证：本地网络(存在虚拟交换机选项)
   - by: xpath
-    locator: (//div[@class="dialog-footer-submit"]/button[2])[1]/span
+    locator: (//div[@class="el-collapse-item__content"])[1]/div[4]/label
+    action: text
+
+  #点击网卡下拉框
+  - by: xpath
+    locator: (//div[@class="el-input el-input--small el-input--suffix"])[2]/input
     action: click
+
+  #移动鼠标，选择下拉框中的已有选项
+  - by: xpath
+    locator: /html/body/div[4]/div[1]/div[1]/ul/li[1]
+    action: click
+
+  #网卡类型选择值验证：VPC网络(存在VPC交换机选项)
+  - by: xpath
+    locator: (//div[@class="el-collapse-item__content"])[1]/div[6]/label
+    action: text
+
+# <1-4-4适配器下拉框验证
+TH-CP-VM-0056:
+  #适配器类型默认值验证：virtio
+  data1:
+    by: xpath
+    locator: (//div[@class="el-collapse-item__content"])[1]/div[1]/div[1]/div/div/input
+
+  #点击适配器下拉框
+  data2:
+    - by: xpath
+      locator: (//div[@class="el-collapse-item__content"])[1]/div[1]/div[1]/div/div/input
+      action: click
+
+  #移动鼠标，选择下拉框中的已有选项
+    - by: xpath
+      locator: (//body[@class="theme-white el-popup-parent--hidden"])/div[5]/div/div/ul/li[3]
+      action: click
+
+  #适配器类型选择值验证：rtl8139
+  data3:
+    by: xpath
+    locator: (//div[@class="el-collapse-item__content"])[1]/div[1]/div[1]/div/div/input
+
+# <1-4-5多队列设置开关验证
+TH-CP-VM-0057:
+  #默认关闭状态验证(关闭状态下队列数输入框不存在)
+  data1:
+    by: xpath
+    locator: (//div[@class="el-form-item__content"])[10]/div/input
+
+  #开启多队列
+  data2:
+    - by: xpath
+      locator: (//div[@class="el-form-item__content"])[9]/div/input
+      action: click
+
+  #开启状态验证(开启状态下队列数输入框存在)
+  data3:
+    by: xpath
+    locator: (//div[@class="el-form-item__content"])[10]/div/input
+
+# <1-4-6队列数输入框验证
+#定位到队列数输入框，获取默认值：1
+TH-CP-VM-0058:
+  data1:
+    by: xpath
+    locator: (//div[@class="el-form-item__content"])[10]/div/input
+
+  data2:
+    - by: xpath
+      locator: (//div[@class="el-form-item__content"])[10]/div/input
+      action: clear
+
+#(2)队列数输入框输入为空验证
+TH-CP-VM-0059:
+  data1:
+    - by: xpath
+      locator: (//div[@class="el-form-item__content"])[10]/div/input
+      action: send
+      value: ''
+
+  #输入框下方提示信息获取：“队列数不能为空”
+    - by: xpath
+      locator: (//div[@class="el-form-item__content"])[10]/div[2]
+      action: text
+
+  #输入框弱提示信息获取：“请输入队列数”
+  data2:
+    by: xpath
+    locator: (//div[@class="el-form-item__content"])[10]/div/input
+    attr: placeholder
+
+#(3)队列数输入框输入特殊字符验证
+TH-CP-VM-0060:
+  - by: xpath
+    locator: (//div[@class="el-form-item__content"])[10]/div/input
+    action: send
+    value: '#￥%……&**'
+
+  #输入框下方提示信息获取：“队列数为正整数”
+  - by: xpath
+    locator: (//div[@class="el-form-item__content"])[10]/div[2]
+    action: text
+
+  - by: xpath
+    locator: (//div[@class="el-form-item__content"])[10]/div/input
+    action: clear
+
+#(4)队列数输入框输入大于2验证
+TH-CP-VM-0061:
+  - by: xpath
+    locator: (//div[@class="el-form-item__content"])[10]/div/input
+    action: send
+    value: 3
+
+  #输入框下方提示信息获取：“队列数不能超过当前cpu数（当前cpu数为2）”
+  - by: xpath
+    locator: (//div[@class="el-form-item__content"])[10]/div[2]
+    action: text
+
+  - by: xpath
+    locator: (//div[@class="el-form-item__content"])[10]/div/input
+    action: clear
+
+#(5)队列数输入框输入小于1验证
+TH-CP-VM-0062:
+  - by: xpath
+    locator: (//div[@class="el-form-item__content"])[10]/div/input
+    action: send
+    value: 0
+
+  #输入框下方提示信息获取：“队列数为正整数”
+  - by: xpath
+    locator: (//div[@class="el-form-item__content"])[10]/div[2]
+    action: text
+
+  - by: xpath
+    locator: (//div[@class="el-form-item__content"])[10]/div/input
+    action: clear
+
+  #恢复默认值1
+  - by: xpath
+    locator: (//div[@class="el-form-item__content"])[10]/div/input
+    action: send
+    value: 1
+
+# <1-4-7虚拟交换机下拉框验证（前置条件：存在创建好的虚拟交换机compute、manage；compute下存在端口“计算”、“计算98”）
+TH-CP-VM-0063:
+  #虚拟交换机默认值验证：compute
+  data1:
+    by: id
+    locator: compute_instances_create_interface_localNetworkType
+
+  #端口默认值验证
+  data2:
+    by: id
+    locator: compute_instances_create_interface_portGroup
+
+  #点击虚拟交换机下拉框
+  data3:
+    - by: id
+      locator: compute_instances_create_interface_localNetworkType
+      action: click
+
+#QOS设置
+#发送
+# <1-4-6速率输入框验证
+#定位到速率输入框，获取默认值：0
+TH-CP-VM-0064:
+  data1:
+    by: xpath
+    locator: (//div[@class="el-input el-input--small el-input-group el-input-group--append"])[1]/input
+
+  data2:
+    - by: xpath
+      locator: (//div[@class="el-input el-input--small el-input-group el-input-group--append"])[1]/input
+      action: clear
+
+#(2)速率输入框输入为空验证
+TH-CP-VM-0065:
+  data1:
+    - by: xpath
+      locator: (//div[@class="el-input el-input--small el-input-group el-input-group--append"])[1]/input
+      action: send
+      value: ''
+
+  #输入框弱提示信息获取：“请输入队速率”
+  data2:
+    by: xpath
+    locator: (//div[@class="el-form-item__content"])[17]/div/input
+    attr: placeholder
+
+#(3)速率输入框输入特殊字符验证
+TH-CP-VM-0066:
+  - by: xpath
+    locator: (//div[@class="el-input el-input--small el-input-group el-input-group--append"])[1]/input
+    action: send
+    value: '#￥%……&**'
+
+  #输入框下方提示信息获取：“请输入0或者正整数”
+  - by: xpath
+    locator: (//div[@class="el-form-item__content"])[17]/div[2]
+    action: text
+
+  - by: xpath
+    locator: (//div[@class="el-input el-input--small el-input-group el-input-group--append"])[1]/input
+    action: clear
+
+#(4)速率输入框输入大于4194303验证
+TH-CP-VM-0067:
+  - by: xpath
+    locator: (//div[@class="el-input el-input--small el-input-group el-input-group--append"])[1]/input
+    action: send
+    value: 4194304
+
+  #输入框下方提示信息获取：“输入上限4194303”
+  - by: xpath
+    locator: (//div[@class="el-form-item__content"])[17]/div[2]
+    action: text
+
+  - by: xpath
+    locator: (//div[@class="el-input el-input--small el-input-group el-input-group--append"])[1]/input
+    action: clear
+
+#(5)速率输入框输入小于0验证
+TH-CP-VM-0068:
+  - by: xpath
+    locator: (//div[@class="el-input el-input--small el-input-group el-input-group--append"])[1]/input
+    action: send
+    value: -1
+
+  #输入框下方提示信息获取：“请输入0或者正整数”
+  - by: xpath
+    locator: (//div[@class="el-form-item__content"])[17]/div[2]
+    action: text
+
+  - by: xpath
+    locator: (//div[@class="el-input el-input--small el-input-group el-input-group--append"])[1]/input
+    action: clear
+
+  #恢复默认值0
+  - by: xpath
+    locator: (//div[@class="el-input el-input--small el-input-group el-input-group--append"])[1]/input
+    action: send
+    value: 0

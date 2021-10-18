@@ -1,4 +1,5 @@
 # 封装所有界面都公用的属性和方法：例如driver、find_element等
+import component as component
 from selenium.webdriver.support import expected_conditions as EC
 from time import sleep
 from selenium import webdriver
@@ -23,7 +24,6 @@ class BasePage():
         # 定义页面基础类时，初始化webdiver，传参数的时候没有对参数driver赋默认None值，即一个默认参数，导致页面报错如下：
         # 传人默认参数，在调用self.main=Main()时，就可以不传入参数了(或者直接在调用时传入默认参数初始值self.main=Main(WebDriver = None))
         # 且不指定浏览器驱动类型时，后面调用时定位元素会出问题
-
         if driver is None:  # 如果外面没有对driver进行传值（即第一次调用），那么就对driver进行初始化
             options = Options()  # 使用 selenium 时，我们可能需要对 chrome 做一些特殊的设置，以完成我们期望的浏览器行为，比如阻止图片加载，阻止JavaScript执行 等动作。这些需要 selenium的 ChromeOptions 来帮助我们完成
             options.debugger_address = '127.0.0.1:9500'  # 开启浏览器调试模式：cmd命令窗口输入： chrome  --remote-debugging-port=端口1（随便取），回车
@@ -33,13 +33,11 @@ class BasePage():
             # 弊端：全局生效，但只要找到元素不管有没有完全加载就继续下一步，这样会造成操作失败
             #self._driver.implicitly_wait(10)
             # 解决办法:使用显示等待
-
         else:
             self._driver = driver  # 后面每次有方法调用self._driver时，都是初始化之后的driver
 
         if self._base_url != '':
             self._driver.get(self._base_url)
-
 
     # 共同方法
     # 1、元素定位+显示等待
@@ -52,7 +50,7 @@ class BasePage():
             return ele
         except Exception as e:
             print('{0}元素未找到'.format(loc[1]))
-        #return self._driver.find_element(*loc)
+
 
     def finds(self, *loc, index):
         '''显示存在，只要元素存在目标'''
@@ -63,6 +61,16 @@ class BasePage():
             return ele[index]
         except Exception as e:
             print('{0}元素{1}未找到'.format(loc[1], [index]))
+
+    def check_element_exist(self, by, loc):
+        '''判断元素是否存在'''
+        locs = (by, loc)   #将传入的参数转换为元组
+        try:
+            ele = WebDriverWait(self._driver, 1).until(EC.visibility_of_element_located(locs))
+            result = ele.is_displayed()
+            return result   #存在返回True
+        except:
+            return False
 
     # 2、输入框输入
     def send(self, *loc, value):
@@ -102,18 +110,25 @@ class BasePage():
 
     # 5、获取文本
     def text(self, *loc, attr= 'placeholder'):
-        '''获取元素文本信息'''
+        '''获取元素属性值信息'''
         div = self.find(*loc)
         text = div.get_attribute(attr)
         logs.info('元素文本信息为{0}'.format(text))
         return text
 
     def texts(self, *loc, index):
-        '''获取元素文本信息，当元素为元素组时'''
+        '''获取元素属性值信息，当元素为元素组时'''
         div = self.finds(*loc, index)
         texts = div.get_attribute('innerText')
         logs.info('元素文本信息为{0}'.format(texts))
         return texts
+
+    def input_text(self, *loc):
+        '''获取输入框/下拉框中输入的值'''
+        input = self.find(*loc)
+        value = input.get_attribute('value')
+        logs.info('元素文本信息为{0}'.format(value))
+        return value
 
     # 6、键盘操作
     def keys_choose_all(self):
@@ -162,7 +177,10 @@ class BasePage():
                     sleep(1)
                     element.click()
                 if action == "send":
+                    #self.send(step["by"], step["locator"], value=step["value"])
                     element.click()
+                    sleep(1)      #未加等待时间时会导致输入的字符被清除
+                    #element.set_value(step["value"])
                     element.send_keys(step["value"])
                 if action == "clear":
                     self.clear_books(step["by"], step["locator"])

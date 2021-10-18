@@ -11,12 +11,12 @@ class Log():
         3.获取日志输出时间，并做为日志文件名称
         4.获取日志文件夹目录
         '''
-        self.logger=logging.getLogger(name='Framework')
-        self.logger.setLevel(level=logging.DEBUG)
-        log_fmt='%(asctime)s - %(filename)s - [line:%(lineno)d] - %(levelname)s - %(message)s'
-        self.formatter=logging.Formatter(fmt=log_fmt)
-        self.LogTime=time.strftime("%Y_%m_%d_")
-        self.LogPath=readFilepath.LogPath    #日志存放路径
+        self.logger = logging.getLogger(name='Framework')
+        self.logger.setLevel(level = logging.DEBUG)
+        log_fmt = '%(asctime)s - %(filename)s - [line:%(lineno)d] - %(levelname)s - %(message)s'
+        self.formatter = logging.Formatter(fmt=log_fmt)
+        self.LogTime = time.strftime("%Y_%m_%d_")
+        self.LogPath = readFilepath.LogPath    #日志存放路径
 
     def streamhandler(self):
         '''控制台处理器'''

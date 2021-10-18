@@ -70,7 +70,6 @@ class TestServicePage:
     @allure.title('集群目录新增组功能验证/正常场景')  #对模块子功能进行标注
     def test_search_clusterUI5(self):
         #testdata = self.data['TH-CP-CLUSTER-0005']
-        self.main.goto_cserver()
         self.main.goto_serverpage().search_clustersUI5()
         #assert testdata['vm1-name'] == pagedata[0]
 
@@ -155,30 +154,508 @@ class TestServicePage:
     @allure.testcase(TEST_CASE_LINK, '用例_编号：TH-CP-VM-0004~0007')
     @allure.title('添加云服务器/基本信息页参数校验')  #对模块子功能进行标注
     def test_creat_VM_page1(self):
-        testdata01 = self.data['TH-CP-VM-0004']   #云服务器输入框弱提示信息
-        testdata02 = self.data['TH-CP-VM-0005']   #云服务器输入框输入为空提示信息
-        testdata03 = self.data['TH-CP-VM-0006']   #云服务器输入框输入特殊字符提示信息
+        self.main.goto_cserver()
+        self.main.goto_serverpage().creat_VM_page1()
+
+    # <1-1-1云服务器输入框验证
+    # (1)云服务器输入框弱提示验证7
+    @allure.title('<1-1-1云服务器输入框验证/云服务器输入框弱提示验证')  # 对模块子功能进行标注
+    def test_creat_VM_page1111(self):
+        self.main.goto_cserver()
+        self.main.goto_serverpage().creat_VM_page1()
+        pagedata = self.main.goto_serverpage().creat_VM_page1111()
+        testdata01 = self.data['TH-CP-VM-0004']  # 云服务器输入框弱提示信息
+        print(pagedata)
+        assert testdata01['cservice_name'] == pagedata
+
+    # (2)云服务器输入框输入为空验证
+    @allure.title('<1-1-1云服务器输入框验证/云服务器输入框输入为空验证')  # 对模块子功能进行标注
+    def test_creat_VM_page1112(self):
+        self.main.goto_cserver()
+        self.main.goto_serverpage().creat_VM_page1()
+        pagedata = self.main.goto_serverpage().creat_VM_page1112()
+        testdata = self.data['TH-CP-VM-0005']  # 云服务器输入框输入为空提示信息
+        assert testdata['title_name'] == pagedata[0]
+
+    # (3)云服务器输入框输入特殊字符验证
+    @allure.title('<1-1-1云服务器输入框验证/云服务器输入框输入特殊字符验证')  # 对模块子功能进行标注
+    def test_creat_VM_page1113(self):
+        self.main.goto_cserver()
+        self.main.goto_serverpage().creat_VM_page1()
+        pagedata = self.main.goto_serverpage().creat_VM_page1113()
+        print(pagedata[0])
+        testdata = self.data['TH-CP-VM-0006']  # 云服务器输入框输入特殊字符提示信息
+        assert testdata['title_name'] == pagedata[0]
+
+    # (4)云服务器输入框输入大于32位字符验证
+    @allure.title('<1-1-1云服务器输入框验证/云服务器输入框输入大于32位字符验证')  # 对模块子功能进行标注
+    def test_creat_VM_page1114(self):
+        self.main.goto_cserver()
+        self.main.goto_serverpage().creat_VM_page1()
+        pagedata = self.main.goto_serverpage().creat_VM_page1114()
         testdata04 = self.data['TH-CP-VM-0007']  # 云服务器输入框输入大于32位字符提示信息
-        #testdata05 = self.data['TH-CP-VM-0008']
-        pagedata = self.main.goto_serverpage().creat_VM_page1()
-        #print(pagedata)
-        # <1-1-1云服务器输入框验证
-        # (1)云服务器输入框弱提示验证
-        # assert (testdata01['cservice_name'],testdata02['title_name'],testdata03['title_name'],testdata04['title_name']) == (pagedata[0],pagedata[1][0],pagedata[2][0],pagedata[3][0])
-        assert testdata01['cservice_name'] == pagedata[0]
-        # (2)云服务器输入框输入为空验证
-        assert testdata02['title1_name'] == pagedata[1][0]
-        # (3)云服务器输入框输入特殊字符验证
-        assert testdata03['title2_name'] == pagedata[2][0]
-        # (4)云服务器输入框输入大于32位字符验证
-        assert testdata04['title3_name'] == pagedata[3][0]
+        assert testdata04['title3_name'] == pagedata[0]
+
+    # <1-1-2操作系统下拉框验证
+    # (1)操作系统下拉框选择 FreeBSD
+    @allure.title('<1-1-2操作系统下拉框验证/操作系统下拉框选择验证')  # 对模块子功能进行标注
+    def test_creat_VM_page1121(self):
+        self.main.goto_cserver()
+        self.main.goto_serverpage().creat_VM_page1()
+        pagedata = self.main.goto_serverpage().creat_VM_page1121()
+        testdata = self.data['TH-CP-VM-0008']  # 操作系统下拉框选项
+        assert testdata['system_name'] == pagedata[0]
+
+    # <1-1-3创建个数输入框验证
+    # (1)创建个数输入默认值验证
+    @allure.title('<1-1-3创建个数输入框验证/创建个数输入默认值验证')  # 对模块子功能进行标注
+    def test_creat_VM_page1131(self):
+        self.main.goto_cserver()
+        self.main.goto_serverpage().creat_VM_page1()
+        pagedata = self.main.goto_serverpage().creat_VM_page1131()
+        print(pagedata)
+        testdata = self.data['TH-CP-VM-0009']  # 创建个数输入框默认值
+        assert testdata['server_num'] == pagedata
+
+    # (2)创建个数输入框输入为空验证
+    @allure.title('<1-1-3创建个数输入框验证/创建个数输入框输入为空验证')  # 对模块子功能进行标注
+    def test_creat_VM_page1132(self):
+        self.main.goto_cserver()
+        self.main.goto_serverpage().creat_VM_page1()
+        pagedata = self.main.goto_serverpage().creat_VM_page1132()
+        testdata = self.data['TH-CP-VM-0010']  # 创建个数输入框输入为空
+        print(pagedata)
+        assert testdata['server1_num'] == pagedata[0][0]
+        assert testdata['server2_num'] == pagedata[1]
+
+    # (3)创建个数输入框输入特殊字符验证
+    @allure.title('<1-1-3创建个数输入框验证/创建个数输入框输入特殊字符验证')  # 对模块子功能进行标注
+    def test_creat_VM_page1133(self):
+        self.main.goto_cserver()
+        self.main.goto_serverpage().creat_VM_page1()
+        pagedata = self.main.goto_serverpage().creat_VM_page1133()
+        testdata = self.data['TH-CP-VM-0011']  # 创建个数输入框输入特殊字符
+        assert testdata['title_name'] == pagedata[0]
+
+    # (4)创建个数输入框输入大于100验证
+    @allure.title('<1-1-3创建个数输入框验证/创建个数输入框输入大于100验证')  # 对模块子功能进行标注
+    def test_creat_VM_page1134(self):
+        self.main.goto_cserver()
+        self.main.goto_serverpage().creat_VM_page1()
+        pagedata = self.main.goto_serverpage().creat_VM_page1134()
+        testdata = self.data['TH-CP-VM-0012']  # 创建个数输入框输入大于100
+        print(pagedata)
+        assert testdata['title_name'] == pagedata[0]
+
+    # (5)创建个数输入框输入小于1验证
+    @allure.title('<1-1-3创建个数输入框验证/创建个数输入框输入小于1验证')  # 对模块子功能进行标注
+    def test_creat_VM_page1135(self):
+        self.main.goto_cserver()
+        self.main.goto_serverpage().creat_VM_page1()
+        pagedata = self.main.goto_serverpage().creat_VM_page1135()
+        testdata = self.data['TH-CP-VM-0013']  # 创建个数输入框输入小于1
+        assert testdata['title_name'] == pagedata[0]
+
+
+    # <1 自定义
+    # <1-2 CPU、内存信息页参数校验
+    @allure.title('添加云服务器/CPU、内存信息页参数校验')  #对模块子功能进行标注
+    def test_creat_VM_page2(self):
+        self.main.goto_cserver()
+        self.main.goto_serverpage().creat_VM_page2()
+
+    # <1-2-1处理器输入框验证
+    # (1)处理器输入默认值验证
+    @allure.title('<1-2-1处理器输入框验证/处理器输入默认值验证')  # 对模块子功能进行标注
+    def test_creat_VM_page1211(self):
+        self.main.goto_cserver()
+        self.main.goto_serverpage().creat_VM_page2()
+        pagedata = self.main.goto_serverpage().creat_VM_page1211()
+        print(pagedata)
+        testdata = self.data['TH-CP-VM-0014']  # 创建个数输入框默认值
+        assert testdata['server_num'] == pagedata[0]
+
+    # (2)处理器输入框输入为空验证
+    @allure.title('<1-2-1处理器输入框验证/处理器输入框输入为空验证')  # 对模块子功能进行标注
+    def test_creat_VM_page1212(self):
+        self.main.goto_cserver()
+        self.main.goto_serverpage().creat_VM_page2()
+        pagedata = self.main.goto_serverpage().creat_VM_page1212()
+        print(pagedata)
+        testdata = self.data['TH-CP-VM-0015']  # 创建个数输入框输入为空
+        assert testdata['server1_num'] == pagedata[0][0]
+        assert testdata['server2_num'] == pagedata[1]
+
+    # (3)处理器输入框输入特殊字符验证
+    @allure.title('<1-2-1处理器输入框验证/处理器输入框输入特殊字符验证')  # 对模块子功能进行标注
+    def test_creat_VM_page1213(self):
+        self.main.goto_cserver()
+        self.main.goto_serverpage().creat_VM_page2()
+        pagedata = self.main.goto_serverpage().creat_VM_page1213()
+        print(pagedata)
+        testdata = self.data['TH-CP-VM-0016']  # 创建个数输入框输入特殊字符
+        assert testdata['title_name'] == pagedata[0]
+
+    # (4)处理器输入框输入大于2验证
+    @allure.title('<1-2-1处理器输入框验证/处理器输入框输入特殊字符验证')  # 对模块子功能进行标注
+    def test_creat_VM_page1214(self):
+        self.main.goto_cserver()
+        self.main.goto_serverpage().creat_VM_page2()
+        pagedata = self.main.goto_serverpage().creat_VM_page1214()
+        print(pagedata)
+        testdata = self.data['TH-CP-VM-0017']  # 创建个数输入框输入大于2
+        assert testdata['title_name'] == pagedata[0]
+
+    # (5)处理器输入框输入小于1验证
+    @allure.title('<1-2-1处理器输入框验证/处理器输入框输入小于1验证')  # 对模块子功能进行标注
+    def test_creat_VM_page1215(self):
+        self.main.goto_cserver()
+        self.main.goto_serverpage().creat_VM_page2()
+        pagedata = self.main.goto_serverpage().creat_VM_page1215()
+        print(pagedata)
+        testdata = self.data['TH-CP-VM-0018']  # 创建个数输入框输入小于1
+        assert testdata['title_name'] == pagedata[0]
+
+    # <1-2-2插槽数输入框验证
+    # (1)插槽数输入默认值验证
+    @allure.title('<1-2-2插槽数输入框验证/插槽数输入默认值验证')  # 对模块子功能进行标注
+    def test_creat_VM_page1221(self):
+        self.main.goto_cserver()
+        self.main.goto_serverpage().creat_VM_page2()
+        pagedata = self.main.goto_serverpage().creat_VM_page1221()
+        print(pagedata)
+        testdata = self.data['TH-CP-VM-0019']  # 插槽数输入框默认值
+        assert testdata['server_num'] == pagedata[0]
+
+    # (2)插槽数输入框输入为空验证
+    @allure.title('<1-2-2插槽数输入框验证/插槽数输入框输入为空验证')  # 对模块子功能进行标注
+    def test_creat_VM_page1222(self):
+        self.main.goto_cserver()
+        self.main.goto_serverpage().creat_VM_page2()
+        pagedata = self.main.goto_serverpage().creat_VM_page1222()
+        testdata = self.data['TH-CP-VM-0020']  # 插槽数输入框输入为空
+        print(pagedata)
+        assert testdata['server1_num'] == pagedata[0][0]
+        assert testdata['server2_num'] == pagedata[1]
+
+    # (3)插槽数输入框输入特殊字符验证
+    @allure.title('<1-2-2插槽数输入框验证/插槽数输入框输入特殊字符验证')  # 对模块子功能进行标注
+    def test_creat_VM_page1223(self):
+        self.main.goto_cserver()
+        self.main.goto_serverpage().creat_VM_page2()
+        pagedata = self.main.goto_serverpage().creat_VM_page1223()
+        testdata = self.data['TH-CP-VM-0021']  # 插槽数输入框输入特殊字符
+        print(pagedata)
+        assert testdata['title_name'] == pagedata[0]
+
+    # (4)插槽数输入框输入大于4验证
+    @allure.title('<1-2-2插槽数输入框验证/插槽数输入框输入大于4验证')  # 对模块子功能进行标注
+    def test_creat_VM_page1224(self):
+        self.main.goto_cserver()
+        self.main.goto_serverpage().creat_VM_page2()
+        pagedata = self.main.goto_serverpage().creat_VM_page1224()
+        testdata = self.data['TH-CP-VM-0022']  # 插槽数输入框输入大于2
+        print(pagedata)
+        assert testdata['title_name'] == pagedata[0]
+
+    # (5)插槽数输入框输入小于1验证
+    @allure.title('<1-2-2插槽数输入框验证/插槽数输入框输入小于1验证')  # 对模块子功能进行标注
+    def test_creat_VM_page1225(self):
+        self.main.goto_cserver()
+        self.main.goto_serverpage().creat_VM_page2()
+        pagedata = self.main.goto_serverpage().creat_VM_page1225()
+        testdata = self.data['TH-CP-VM-0023']  # 插槽数输入框输入小于1
+        print(pagedata)
+        assert testdata['title_name'] == pagedata[0]
+
+    # <1-2-3插槽核数输入框验证
+    # (1)插槽核数输入默认值验证
+    @allure.title('<1-2-3插槽核数输入框验证/插槽核数输入默认值验证')  # 对模块子功能进行标注
+    def test_creat_VM_page1231(self):
+        self.main.goto_cserver()
+        self.main.goto_serverpage().creat_VM_page2()
+        pagedata = self.main.goto_serverpage().creat_VM_page1231()
+        testdata = self.data['TH-CP-VM-0024']  # 插槽核数输入框默认值
+        print(pagedata)
+        assert testdata['server_num'] == pagedata[0]
+
+    # (2)插槽核数输入框输入为空验证
+    @allure.title('<1-2-3插槽核数输入框验证/插槽核数输入框输入为空验证')  # 对模块子功能进行标注
+    def test_creat_VM_page1232(self):
+        self.main.goto_cserver()
+        self.main.goto_serverpage().creat_VM_page2()
+        pagedata = self.main.goto_serverpage().creat_VM_page1232()
+        testdata = self.data['TH-CP-VM-0025']  # 插槽核数输入框输入为空
+        print(pagedata)
+        assert testdata['server1_num'] == pagedata[0][0]
+        assert testdata['server2_num'] == pagedata[1]
+
+
+    # (3)插槽核数输入框输入特殊字符验证
+    @allure.title('<1-2-3插槽核数输入框验证/插槽核数输入框输入特殊字符验证')  # 对模块子功能进行标注
+    def test_creat_VM_page1233(self):
+        self.main.goto_cserver()
+        self.main.goto_serverpage().creat_VM_page2()
+        pagedata = self.main.goto_serverpage().creat_VM_page1233()
+        testdata = self.data['TH-CP-VM-0026']  # 插槽核数输入框输入特殊字符
+        print(pagedata)
+        assert testdata['title_name'] == pagedata[0]
+
+    # (4)插槽核数输入框输入大于24验证
+    @allure.title('<1-2-3插槽核数输入框验证/插槽核数输入框输入大于24验证')  # 对模块子功能进行标注
+    def test_creat_VM_page1234(self):
+        self.main.goto_cserver()
+        self.main.goto_serverpage().creat_VM_page2()
+        pagedata = self.main.goto_serverpage().creat_VM_page1234()
+        testdata = self.data['TH-CP-VM-0027']  # 插槽核数输入框输入大于24
+        print(pagedata)
+        assert testdata['title_name'] == pagedata[0]
+
+    # (5)插槽核数输入框输入小于1验证
+    @allure.title('<1-2-3插槽核数输入框验证/插槽核数输入框输入小于1验证')  # 对模块子功能进行标注
+    def test_creat_VM_page1235(self):
+        self.main.goto_cserver()
+        self.main.goto_serverpage().creat_VM_page2()
+        pagedata = self.main.goto_serverpage().creat_VM_page1235()
+        testdata = self.data['TH-CP-VM-0028']  # 插槽核数输入框输入小于1
+        print(pagedata)
+        assert testdata['title_name'] == pagedata[0]
+
+    # <1-2-4内存大小输入框验证
+    # (1)内存大小输入默认值验证
+    @allure.title('<1-2-4内存大小输入框验证/内存大小输入默认值验证')  # 对模块子功能进行标注
+    def test_creat_VM_page1241(self):
+        self.main.goto_cserver()
+        self.main.goto_serverpage().creat_VM_page2()
+        pagedata = self.main.goto_serverpage().creat_VM_page1241()
+        testdata = self.data['TH-CP-VM-0029']  # 内存大小输入框默认值
+        print(pagedata)
+        assert testdata['server_num'] == pagedata[0]
+
+    # (2)内存大小输入框输入为空验证
+    @allure.title('<1-2-4内存大小输入框验证/内存大小输入框输入为空验证')  # 对模块子功能进行标注
+    def test_creat_VM_page1242(self):
+        self.main.goto_cserver()
+        self.main.goto_serverpage().creat_VM_page2()
+        pagedata = self.main.goto_serverpage().creat_VM_page1242()
+        testdata = self.data['TH-CP-VM-0030']  # 内存大小输入框输入为空
+        print(pagedata)
+        assert testdata['server1_num'] == pagedata[0][0]
+        assert testdata['server2_num'] == pagedata[1]
+
+    # (3)内存大小输入框输入特殊字符验证
+    @allure.title('<1-2-4内存大小输入框验证/内存大小输入框输入特殊字符验证')  # 对模块子功能进行标注
+    def test_creat_VM_page1243(self):
+        self.main.goto_cserver()
+        self.main.goto_serverpage().creat_VM_page2()
+        pagedata = self.main.goto_serverpage().creat_VM_page1243()
+        testdata = self.data['TH-CP-VM-0031']  # 内存大小输入框输入特殊字符
+        print(pagedata)
+        assert testdata['title_name'] == pagedata[0]
+
+    # (4)内存大小输入框输入大于256验证
+    @allure.title('<1-2-4内存大小输入框验证/内存大小输入框输入大于256验证')  # 对模块子功能进行标注
+    def test_creat_VM_page1244(self):
+        self.main.goto_cserver()
+        self.main.goto_serverpage().creat_VM_page2()
+        pagedata = self.main.goto_serverpage().creat_VM_page1244()
+        testdata = self.data['TH-CP-VM-0032']  # 内存大小输入框输入大于256
+        print(pagedata)
+        assert testdata['title_name'] == pagedata[0]
+
+    # (5)内存大小输入框输入小于1验证
+    @allure.title('<1-2-4内存大小输入框验证/内存大小输入框输入小于1验证')  # 对模块子功能进行标注
+    def test_creat_VM_page1245(self):
+        self.main.goto_cserver()
+        self.main.goto_serverpage().creat_VM_page2()
+        pagedata = self.main.goto_serverpage().creat_VM_page1245()
+        testdata = self.data['TH-CP-VM-0033']  # 内存大小输入框输入小于0.5
+        print(pagedata)
+        assert testdata['title_name'] == pagedata[0]
+
+    # <1-2-5基准类型下拉框验证
+    # (1)基准类型下拉框选择 arm/Phytium/Tengyun-S2500
+    @allure.title('<1-2-5基准类型下拉框验证/基准类型下拉框选择 arm/Phytium/Tengyun-S2500')  # 对模块子功能进行标注
+    def test_creat_VM_page1251(self):
+        self.main.goto_cserver()
+        self.main.goto_serverpage().creat_VM_page2()
+        pagedata = self.main.goto_serverpage().creat_VM_page1251()
+        testdata = self.data['TH-CP-VM-0034']  # 操作系统下拉框选项
+        print(pagedata)
+        assert testdata['system_name'] == pagedata[0]
+
+    # <1 自定义
+    # <1-3 存储信息页参数校验
+    #云硬盘/自定义
+    @allure.title('存储信息页参数校验')  # 对模块子功能进行标注
+    def test_creat_VM_page3(self):
+        self.main.goto_cserver()
+        self.main.goto_serverpage().creat_VM_page3()
+
+    # <1-3-1磁盘大小输入框验证
+    # (1)磁盘大小默认为空时弱提示验证
+    @allure.title('<1-3-1磁盘大小输入框验证/磁盘大小默认为空时弱提示验证')  # 对模块子功能进行标注
+    def test_creat_VM_page1311(self):
+        self.main.goto_cserver()
+        self.main.goto_serverpage().creat_VM_page3()
+        pagedata = self.main.goto_serverpage().creat_VM_page1311()
+        testdata = self.data['TH-CP-VM-0035']  # 磁盘大小输入框默认为空时弱提示
+        print(pagedata)
+        assert testdata['server_num'] == pagedata
+
+    # (2)磁盘大小输入框输入为空验证
+    @allure.title('<1-3-1磁盘大小输入框验证/磁盘大小输入框输入为空验证')  # 对模块子功能进行标注
+    def test_creat_VM_page1312(self):
+        self.main.goto_cserver()
+        self.main.goto_serverpage().creat_VM_page3()
+        pagedata = self.main.goto_serverpage().creat_VM_page1312()
+        testdata = self.data['TH-CP-VM-0036']  # 磁盘大小输入框输入为空
+        print(pagedata)
+        assert testdata['server_num'] == pagedata[0]
+
+    # (3)磁盘大小输入框输入特殊字符验证
+    @allure.title('<1-3-1磁盘大小输入框验证/磁盘大小输入框输入特殊字符验证')  # 对模块子功能进行标注
+    def test_creat_VM_page1313(self):
+        self.main.goto_cserver()
+        self.main.goto_serverpage().creat_VM_page3()
+        pagedata = self.main.goto_serverpage().creat_VM_page1313()
+        testdata = self.data['TH-CP-VM-0037']  # 磁盘大小输入框输入特殊字符
+        print(pagedata)
+        assert testdata['server_num'] == pagedata[0]
+
+    # (4)磁盘大小输入框输入大于256T验证
+    @allure.title('<1-3-1磁盘大小输入框验证/磁盘大小输入框输入大于256T验证')  # 对模块子功能进行标注
+    def test_creat_VM_page1314(self):
+        self.main.goto_cserver()
+        self.main.goto_serverpage().creat_VM_page3()
+        pagedata = self.main.goto_serverpage().creat_VM_page1314()
+        testdata04 = self.data['TH-CP-VM-0038']  # 磁盘大小输入框输入大于256T
+        print(pagedata)
+        assert testdata04['server1_num'] == pagedata[0]
+        assert testdata04['server2_num'] == pagedata[1]
+
+    # (5)内存大小输入框输入小于0.5验证
+    @allure.title('<1-3-1磁盘大小输入框验证/内存大小输入框输入小于0.5验证')  # 对模块子功能进行标注
+    def test_creat_VM_page1315(self):
+        self.main.goto_cserver()
+        self.main.goto_serverpage().creat_VM_page3()
+        pagedata = self.main.goto_serverpage().creat_VM_page1315()
+        testdata = self.data['TH-CP-VM-0039']  # 内存大小输入框输入小于0.5
+        print(pagedata)
+        assert testdata['server_num'] == pagedata[0]
+
+    # <1-3-2驱动类型选择项验证
+    # (1)默认选择scsi验证(tabindex="0")
+    @allure.title('<1-3-1磁盘大小输入框验证/磁盘大小输入框输入大于256T验证')  # 对模块子功能进行标注
+    def test_creat_VM_page1321(self):
+        self.main.goto_cserver()
+        self.main.goto_serverpage().creat_VM_page3()
+        pagedata = self.main.goto_serverpage().creat_VM_page1315()
+        testdata06 = self.data['TH-CP-VM-0040']
+        assert testdata06['server1_num'] == pagedata[5]
+        assert testdata06['server2_num'] == pagedata[6]
+
+        # <1-3-3存储池下拉框验证
+        testdata07 = self.data['TH-CP-VM-0041']
+        assert testdata07['server_num'] == pagedata[7][0]
+
+        # <1-3-4卷名称输入框验证
+        # (1)卷名称输入框默认值验证
+        testdata08 = self.data['TH-CP-VM-0042']
+        assert testdata08['server_num'] == pagedata[8]
+        # (2)卷名称输入框输入为空验证
+        testdata09 = self.data['TH-CP-VM-0043']
+        assert testdata09['server1_num'] == pagedata[9][0]
+        assert testdata09['server2_num'] == pagedata[10]
+        # (3)卷名称输入框输入特殊字符验证
+        testdata10 = self.data['TH-CP-VM-0044']
+        assert testdata10['server_num'] == pagedata[11][0]
+
+        # (4)卷名称输入框输入大于32位字符验证
+        testdata11 = self.data['TH-CP-VM-0045']
+        assert testdata11['server_num'] == pagedata[12][0]
+
+        # <1-3-5副本数下拉框验证
+        testdata12 = self.data['TH-CP-VM-0046']
+        assert testdata12['server1_num'] == pagedata[13]
+        assert testdata12['server2_num'] == pagedata[14]
+
+        # <1-3-6云盘类型下拉框验证
+        testdata13 = self.data['TH-CP-VM-0047']
+        assert testdata13['server1_num'] == pagedata[15]
+        assert testdata13['server2_num'] == pagedata[16]
+
+        # <1-3-7存储介质下拉框验证
+        testdata14 = self.data['TH-CP-VM-0048']
+        assert testdata14['server1_num'] == pagedata[17]
+        assert testdata14['server2_num'] == pagedata[18]
+
+        # <1-3-8链路冗余下拉框验证
+        testdata15 = self.data['TH-CP-VM-0049']
+        assert testdata15['server1_num'] == pagedata[19]
+        assert testdata15['server2_num'] == pagedata[20]
+
+    # <1 自定义
+    # <1-4 网卡信息页参数校验
+    @allure.title('网卡信息页参数校验')  # 对模块子功能进行标注
+    def test_creat_VM_page4(self):
+        self.main.goto_cserver()
+        pagedata = self.main.goto_serverpage().creat_VM_page4()
+        print(pagedata)
+
+        # # <1-4-1添加网卡功能验证
+        # testdata01 = self.data['TH-CP-VM-0050']
+        # assert testdata01['server_num'] == pagedata[0][0]
+
+        # # <1-4-2网卡信息折叠功能验证
+        # testdata02 = self.data['TH-CP-VM-0051']
+        # assert testdata02['server_num'] == pagedata[1]
+
+        # # <1-4-3网卡下拉框验证
+        # testdata14 = self.data['TH-CP-VM-0052']
+        # assert testdata14['server1_num'] == pagedata[2]
+        # assert testdata14['server2_num'] == pagedata[3]
+
+        # #<1-4-4适配器下拉框验证
+        # testdata15 = self.data['TH-CP-VM-0053']
+        # assert testdata15['server1_num'] == pagedata[4]
+        # assert testdata15['server2_num'] == pagedata[5]
+
+        # #<1-4-5多队列设置开关验证
+        # testdata15 = self.data['TH-CP-VM-0054']
+        # assert testdata15['server1_num'] == pagedata[6]
+        # assert testdata15['server2_num'] == pagedata[7]
+
+        # <1-4-6队列数输入框验证
+        #(1)队列数输入框默认值验证
+        # testdata16 = self.data['TH-CP-VM-0055']
+        # assert testdata16['server_num'] == pagedata[8]
+        # #(2)队列数输入框输入为空验证
+        # testdata09 = self.data['TH-CP-VM-0056']
+        # assert testdata09['server1_num'] == pagedata[9][0]
+        # assert testdata09['server2_num'] == pagedata[10]
+        # # (3)队列数输入框输入特殊字符验证
+        # testdata10 = self.data['TH-CP-VM-0057']
+        # assert testdata10['server_num'] == pagedata[11][0]
+        # #(4)队列数输入框输入大于2验证
+        # testdata11 = self.data['TH-CP-VM-0058']
+        # assert testdata11['server_num'] == pagedata[12][0]
+        # #(5)队列数输入框输入小于1验证
+        # testdata11 = self.data['TH-CP-VM-0059']
+        # assert testdata11['server_num'] == pagedata[13][0]
+
+        # <1-4-7虚拟交换机下拉框验证
+        # testdata12 = self.data['TH-CP-VM-0060']
+        # assert testdata12['server1_num'] == pagedata[14]
+        # assert testdata13['server2_num'] == pagedata[15]
 
 
 
 
 
 
-    # # 2.1.2 模板模块功能验证
+
+        # # 2.1.2 模板模块功能验证
     # def test_search_clusterUI21(self):
     #     self.main.goto_cmouldpage().search_clustersUI21()
 
