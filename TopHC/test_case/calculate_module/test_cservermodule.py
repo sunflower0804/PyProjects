@@ -546,16 +546,30 @@ class TestServicePage:
 
     # <1-3-2驱动类型选择项验证
     # (1)默认选择scsi验证(tabindex="0")
-    @allure.title('<1-3-1磁盘大小输入框验证/磁盘大小输入框输入大于256T验证')  # 对模块子功能进行标注
+    @allure.title('<1-3-2驱动类型选择项验证/默认选择scsi验证')  # 对模块子功能进行标注
     def test_creat_VM_page1321(self):
         self.main.goto_cserver()
         self.main.goto_serverpage().creat_VM_page3()
-        pagedata = self.main.goto_serverpage().creat_VM_page1315()
-        testdata06 = self.data['TH-CP-VM-0040']
-        assert testdata06['server1_num'] == pagedata[5]
-        assert testdata06['server2_num'] == pagedata[6]
+        pagedata = self.main.goto_serverpage().creat_VM_page1321()
+        testdata = self.data['TH-CP-VM-0040']
+        print(pagedata)
+        assert testdata['server_num'] == pagedata[0]
 
-        # <1-3-3存储池下拉框验证
+    # (2)选择ide验证(tabindex="0")
+    @allure.title('<1-3-2驱动类型选择项验证/选择ide验证')  # 对模块子功能进行标注
+    def test_creat_VM_page1322(self):
+        self.main.goto_cserver()
+        self.main.goto_serverpage().creat_VM_page3()
+        pagedata = self.main.goto_serverpage().creat_VM_page1315()
+        testdata = self.data['TH-CP-VM-0040']
+        assert testdata['server_num'] == pagedata[0]
+
+    # <1-3-3存储池下拉框验证
+    @allure.title('<1-3-1磁盘大小输入框验证/磁盘大小输入框输入大于256T验证')  # 对模块子功能进行标注
+    def test_creat_VM_page1331(self):
+        self.main.goto_cserver()
+        self.main.goto_serverpage().creat_VM_page3()
+        pagedata = self.main.goto_serverpage().creat_VM_page1315()
         testdata07 = self.data['TH-CP-VM-0041']
         assert testdata07['server_num'] == pagedata[7][0]
 

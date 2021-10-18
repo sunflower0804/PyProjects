@@ -349,24 +349,31 @@ class ServicePage(BasePage):
         return service
 
     # <1-3-2驱动类型选择项验证
-    # (1)驱动类型选择项验证(tabindex="0")
+    # (1)默认选择scsi验证(tabindex="0")
     def creat_VM_page1321(self):
-        data1 = self.data['TH-CP-VM-0042']['data1']  # 获取驱动类型默认选择项元素属性tabindex="0"
-        service1 = self.text(data1['by'], data1['locator'], attr=data1['attr'])
-        data2 = self.data['TH-CP-VM-0042']['data2']  #选择ide验证(tabindex="0")
-        self.steps(data2)
-        data3 = self.data['TH-CP-VM-0042']['data3']
-        service2 = self.text(data3['by'], data3['locator'], attr=data3['attr'])
-        data4 = self.data['TH-CP-VM-0042']['data4']  # 恢复默认选项scsi
-        self.steps(data4)
-        return service1, service2
+        data = self.data['TH-CP-VM-0042']  # 获取驱动类型默认选择项元素属性tabindex="0"
+        service = self.text(data['by'], data['locator'], attr=data['attr'])
+        return service
 
-        # <1-3-3存储池下拉框验证
-        data12 = self.data['TH-CP-VM-0043']
-        service08 = self.steps(data12)
+    # (2)选择ide验证(tabindex="0")
+    def creat_VM_page1322(self):
+        data1 = self.data['TH-CP-VM1-0042']['data1']  #选择ide验证(tabindex="0")
+        self.steps(data1)
+        data2 = self.data['TH-CP-VM-0042']['data2']
+        service = self.text(data2['by'], data2['locator'], attr=data2['attr'])
+        data3 = self.data['TH-CP-VM-0042']['data3']  # 恢复默认选项scsi
+        self.steps(data3)
+        return service
 
-        # <1-3-4卷名称输入框验证
-        # (1)卷名称输入框默认值验证
+    # <1-3-3存储池下拉框验证
+    def creat_VM_page1331(self):
+        data = self.data['TH-CP-VM-0043']
+        service = self.steps(data)
+        return service
+
+    # <1-3-4卷名称输入框验证
+    # (1)卷名称输入框默认值验证
+    def creat_VM_page1341(self):
         data14 = self.data['TH-CP-VM-0044']['data1']
         service09 = self.input_text(data14['by'], data14['locator'])  #定位到卷名称输入框，获取默认值：test001-volume1
         data15 = self.data['TH-CP-VM-0044']['data2']  #清除默认值

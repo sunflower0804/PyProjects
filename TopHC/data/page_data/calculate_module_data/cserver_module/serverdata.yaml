@@ -870,27 +870,26 @@ TH-CP-VM-0041:
     value: '2'
 
 #<1-3-2驱动类型选择项验证
-#(1)驱动类型选择项验证
+#(1)默认选择scsi验证(tabindex="0")
 TH-CP-VM-0042:
-  #默认选择scsi验证(tabindex="0")
-  data1:
-    by: xpath
-    locator: //div[@class="el-radio-group radio-target-device"]/label[4]
-    attr: tabindex
+  by: xpath
+  locator: //div[@class="el-radio-group radio-target-device"]/label[4]
+  attr: tabindex
 
-  #选择ide验证(tabindex="0")
-  data2:
+#(2)选择ide验证(tabindex="0")
+TH-CP-VM1-0042:
+  data1:
     - by: xpath
       locator: //div[@class="el-radio-group radio-target-device"]/label[1]
       action: click
 
-  data3:
+  data2:
     by: xpath
     locator: //div[@class="el-radio-group radio-target-device"]/label[1]
     attr: tabindex
 
     #恢复默认选项scsi
-  data4:
+  data3:
     - by: xpath
       locator: //div[@class="el-radio-group radio-target-device"]/label[4]
       action: click
