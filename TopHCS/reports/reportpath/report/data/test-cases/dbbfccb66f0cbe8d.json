@@ -1,0 +1,110 @@
+{
+  "uid" : "dbbfccb66f0cbe8d",
+  "name" : "<1-5-2软驱下拉框验证/软驱下拉框默认为空验证",
+  "fullName" : "test_case.calculate_module.test_cservermodule.TestServicePage#test_creat_VM_page1521",
+  "historyId" : "e8a07059d40c523baf0833026a7f9eee",
+  "time" : {
+    "start" : 1635131551588,
+    "stop" : 1635131551652,
+    "duration" : 64
+  },
+  "status" : "failed",
+  "statusMessage" : "AssertionError: assert '请选择仓库地址' == '请选择'\n  - 请选择\n  + 请选择仓库地址",
+  "statusTrace" : "self = <TopHC.test_case.calculate_module.test_cservermodule.TestServicePage object at 0x0000024BFE0CBA30>\n\n    @allure.title('<1-5-2软驱下拉框验证/软驱下拉框默认为空验证')\n    def test_creat_VM_page1521(self):\n        # self.main.goto_cserver()\n        # self.main.goto_serverpage().creat_VM_page5()\n        pagedata = self.main.goto_serverpage().creat_VM_page1521()\n        testdata = self.data['TH-CP-VM-0097']\n        print(pagedata)\n>       assert testdata['server1_num'] == pagedata[0]\nE       AssertionError: assert '请选择仓库地址' == '请选择'\nE         - 请选择\nE         + 请选择仓库地址\n\n..\\test_case\\calculate_module\\test_cservermodule.py:1246: AssertionError",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ {
+    "name" : "xunit_setup_class_fixture_TestServicePage",
+    "time" : {
+      "start" : 1635130786451,
+      "stop" : 1635130789105,
+      "duration" : 2654
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "hasContent" : false,
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false
+  } ],
+  "testStage" : {
+    "status" : "failed",
+    "statusMessage" : "AssertionError: assert '请选择仓库地址' == '请选择'\n  - 请选择\n  + 请选择仓库地址",
+    "statusTrace" : "self = <TopHC.test_case.calculate_module.test_cservermodule.TestServicePage object at 0x0000024BFE0CBA30>\n\n    @allure.title('<1-5-2软驱下拉框验证/软驱下拉框默认为空验证')\n    def test_creat_VM_page1521(self):\n        # self.main.goto_cserver()\n        # self.main.goto_serverpage().creat_VM_page5()\n        pagedata = self.main.goto_serverpage().creat_VM_page1521()\n        testdata = self.data['TH-CP-VM-0097']\n        print(pagedata)\n>       assert testdata['server1_num'] == pagedata[0]\nE       AssertionError: assert '请选择仓库地址' == '请选择'\nE         - 请选择\nE         + 请选择仓库地址\n\n..\\test_case\\calculate_module\\test_cservermodule.py:1246: AssertionError",
+    "steps" : [ ],
+    "attachments" : [ {
+      "uid" : "2aaa34c5b554bcbb",
+      "name" : "log",
+      "source" : "2aaa34c5b554bcbb.txt",
+      "type" : "text/plain",
+      "size" : 131
+    } ],
+    "parameters" : [ ],
+    "hasContent" : true,
+    "stepsCount" : 0,
+    "attachmentsCount" : 1,
+    "shouldDisplayMessage" : true
+  },
+  "afterStages" : [ {
+    "name" : "xunit_setup_class_fixture_TestServicePage::0",
+    "time" : {
+      "start" : 1635131847252,
+      "stop" : 1635131847252,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "hasContent" : false,
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false
+  } ],
+  "labels" : [ {
+    "name" : "story",
+    "value" : "云服务器子模块--云服务器页面"
+  }, {
+    "name" : "feature",
+    "value" : "计算-->云服务器模块"
+  }, {
+    "name" : "parentSuite",
+    "value" : "test_case.calculate_module"
+  }, {
+    "name" : "suite",
+    "value" : "test_cservermodule"
+  }, {
+    "name" : "subSuite",
+    "value" : "TestServicePage"
+  }, {
+    "name" : "host",
+    "value" : "DESKTOP-SKQ5DMP"
+  }, {
+    "name" : "thread",
+    "value" : "21196-MainThread"
+  }, {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "package",
+    "value" : "test_case.calculate_module.test_cservermodule"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : true,
+  "retry" : true,
+  "extra" : {
+    "categories" : [ ],
+    "tags" : [ ]
+  },
+  "source" : "dbbfccb66f0cbe8d.json",
+  "parameterValues" : [ ]
+}

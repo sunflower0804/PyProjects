@@ -1,0 +1,125 @@
+{
+  "uid" : "fc86ad8733c83cf9",
+  "name" : "网卡信息页参数校验",
+  "fullName" : "test_case.calculate_module.test_cservermodule.TestServicePage#test_creat_VM_page4",
+  "historyId" : "79dc491f4b0b71c151243b55312bde93",
+  "time" : {
+    "start" : 1635133341006,
+    "stop" : 1635133349308,
+    "duration" : 8302
+  },
+  "status" : "passed",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ {
+    "name" : "xunit_setup_class_fixture_TestServicePage",
+    "time" : {
+      "start" : 1635133236567,
+      "stop" : 1635133239978,
+      "duration" : 3411
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "hasContent" : false,
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false
+  } ],
+  "afterStages" : [ {
+    "name" : "xunit_setup_class_fixture_TestServicePage::0",
+    "time" : {
+      "start" : 1635133495323,
+      "stop" : 1635133495323,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "hasContent" : false,
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false
+  } ],
+  "labels" : [ {
+    "name" : "story",
+    "value" : "云服务器子模块--云服务器页面"
+  }, {
+    "name" : "feature",
+    "value" : "计算-->云服务器模块"
+  }, {
+    "name" : "parentSuite",
+    "value" : "test_case.calculate_module"
+  }, {
+    "name" : "suite",
+    "value" : "test_cservermodule"
+  }, {
+    "name" : "subSuite",
+    "value" : "TestServicePage"
+  }, {
+    "name" : "host",
+    "value" : "DESKTOP-SKQ5DMP"
+  }, {
+    "name" : "thread",
+    "value" : "17536-MainThread"
+  }, {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "package",
+    "value" : "test_case.calculate_module.test_cservermodule"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ {
+      "uid" : "1919dadee8c89761",
+      "status" : "broken",
+      "statusDetails" : "selenium.common.exceptions.ElementClickInterceptedException: Message: element click intercepted: Element <span>...</span> is not clickable at point (1560, 97). Other element would receive the click: <div data-v-ef8f38e8=\"\" class=\"el-dialog__wrapper computer-create\" id=\"compute_instances_create_basic\" destroy-on-close=\"true\" style=\"z-index: 2272;\">...</div>\n  (Session info: chrome=94.0.4606.81)",
+      "time" : {
+        "start" : 1635130970622,
+        "stop" : 1635130972710,
+        "duration" : 2088
+      }
+    }, {
+      "uid" : "5ad1b4745ba254e4",
+      "status" : "passed",
+      "time" : {
+        "start" : 1635084472354,
+        "stop" : 1635084481163,
+        "duration" : 8809
+      }
+    }, {
+      "uid" : "eccb787d79ae6158",
+      "status" : "passed",
+      "time" : {
+        "start" : 1635083819062,
+        "stop" : 1635083827642,
+        "duration" : 8580
+      }
+    }, {
+      "uid" : "2a8cbd78ab6da9a7",
+      "status" : "passed",
+      "time" : {
+        "start" : 1635006648494,
+        "stop" : 1635006657096,
+        "duration" : 8602
+      }
+    } ],
+    "categories" : [ ],
+    "tags" : [ ]
+  },
+  "source" : "fc86ad8733c83cf9.json",
+  "parameterValues" : [ ]
+}

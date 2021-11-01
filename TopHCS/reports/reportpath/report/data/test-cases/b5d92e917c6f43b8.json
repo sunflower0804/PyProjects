@@ -1,0 +1,106 @@
+{
+  "uid" : "b5d92e917c6f43b8",
+  "name" : "<1-4-11接收速率输入框验证/接收速率输入框输入小于0验证",
+  "fullName" : "test_case.calculate_module.test_cservermodule.TestServicePage#test_creat_VM_page14115",
+  "historyId" : "15074676a1ccc8fca8c0ed673e3cd961",
+  "time" : {
+    "start" : 1635083887327,
+    "stop" : 1635083890372,
+    "duration" : 3045
+  },
+  "status" : "passed",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ {
+    "name" : "xunit_setup_class_fixture_TestServicePage",
+    "time" : {
+      "start" : 1635083710501,
+      "stop" : 1635083713668,
+      "duration" : 3167
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "hasContent" : false,
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false
+  } ],
+  "testStage" : {
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ {
+      "uid" : "e725c325ec935c63",
+      "name" : "log",
+      "source" : "e725c325ec935c63.txt",
+      "type" : "text/plain",
+      "size" : 113
+    } ],
+    "parameters" : [ ],
+    "hasContent" : true,
+    "stepsCount" : 0,
+    "attachmentsCount" : 1,
+    "shouldDisplayMessage" : false
+  },
+  "afterStages" : [ {
+    "name" : "xunit_setup_class_fixture_TestServicePage::0",
+    "time" : {
+      "start" : 1635083976900,
+      "stop" : 1635083976900,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "hasContent" : false,
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false
+  } ],
+  "labels" : [ {
+    "name" : "story",
+    "value" : "云服务器子模块--云服务器页面"
+  }, {
+    "name" : "feature",
+    "value" : "计算-->云服务器模块"
+  }, {
+    "name" : "parentSuite",
+    "value" : "test_case.calculate_module"
+  }, {
+    "name" : "suite",
+    "value" : "test_cservermodule"
+  }, {
+    "name" : "subSuite",
+    "value" : "TestServicePage"
+  }, {
+    "name" : "host",
+    "value" : "DESKTOP-SKQ5DMP"
+  }, {
+    "name" : "thread",
+    "value" : "2500-MainThread"
+  }, {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "package",
+    "value" : "test_case.calculate_module.test_cservermodule"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : true,
+  "retry" : true,
+  "extra" : {
+    "categories" : [ ],
+    "tags" : [ ]
+  },
+  "source" : "b5d92e917c6f43b8.json",
+  "parameterValues" : [ ]
+}

@@ -1,0 +1,15 @@
+{
+  "total" : 1,
+  "items" : [ {
+    "uid" : "d675f1c60c1ecd195dbb46d889d46ab6",
+    "name" : "test_case.calculate_module",
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 1,
+      "skipped" : 0,
+      "passed" : 134,
+      "unknown" : 0,
+      "total" : 135
+    }
+  } ]
+}

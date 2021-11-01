@@ -1,0 +1,3 @@
+INFO     Framework:basepage.py:152 键盘输入后清理
+INFO     Framework:basepage.py:116 元素文本信息为请输入自动创建云服务器个数（限制100）
+INFO     Framework:basepage.py:152 键盘输入后清理

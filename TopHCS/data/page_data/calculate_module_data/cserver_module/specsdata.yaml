@@ -1,0 +1,75 @@
+#云服务器模块
+# 3.规格页面
+# 3.1创建规格
+TH-CP-SPECS-0001:
+  #点击添加规格按钮
+  - by: xpath
+    locator: //*[@id="compute_virtual_create_compute_spec_btn"]
+    action: click
+
+  #出现创建规格弹窗页面
+  #规格名称输入框输入：specs
+  - by: xpath
+    locator: //input[@id="vmDiaAdd_specName"]
+    action: send
+    value: "specs"
+
+  #云服务器名称输入框输入：specs01
+  - by: xpath
+    locator: //input[@id="vmDiaAdd_vmname"]
+    action: send
+    value: "specs01"
+
+  #点击磁盘折叠按钮，展开磁盘信息
+  - by: xpath
+    locator: //div[@id="vmDiaAdd_basic_volumes0"]/div/div/i
+    action: click
+
+  #卷容量输入框输入：1
+  - by: xpath
+    locator: //input[@id="vmDiaAdd_basic_volumes_capacity"]
+    action: send
+    value: "1"
+
+  #其它保持默认配置，点击确认
+  - by: xpath
+    locator: //button[@id="vmDiaAdd_confirm"]
+    action: click
+
+  #捕获基于模板创建虚拟机成功的提示信息：”创建云服务器1个成功！“
+  - by: xpath
+    locator: //div[@class='vue-message vue-message--success']/p
+    action: text
+
+
+
+# 3.2删除规格
+TH-CP-SPECS-0002:
+  #搜索框中搜索创建的规格specs
+  - by: xpath
+    locator: //*[@id="compute_virtual_filtersVal"]
+    action: send
+    value: "specs"
+
+  - by: xpath
+    locator: //*[@id="compute_virtual_searchBtn"]
+    action: click
+
+  - by: xpath
+    locator: //*[@id="compute_virtual_filtersVal"]
+    action: clear
+
+  #点击删除规格按钮
+  - by: xpath
+    locator: (//*[@id="compute_virtual_specification_list_delete_btn"])[1]
+    action: click
+
+  #出现删除规格确认弹窗，点击确认
+  - by: xpath
+    locator: //button[@class="btn-confirm"]
+    action: click
+
+  #捕获基于模板创建虚拟机成功的提示信息：”创建云服务器1个成功！“
+  - by: xpath
+    locator: //div[@class='vue-message vue-message--success']/p
+    action: text

@@ -1,0 +1,647 @@
+# 1.云服务器模块
+# 1.1云服务器页面
+# 1.1.1云服务器页面/集群信息导航栏信息校验
+# (1)集群目录信息校验
+TH-CP-CLUSTER-0001:
+  cluster1: host3223-cvm3323   #集群1名称预期结果
+  cluster2: host3222-cvm3322   #集群2名称预期结果
+
+#（2）集群云服务器信息校验
+TH-CP-CLUSTER-0002:
+  vm1-name: a           #集群2下某个云服务器名称预期结果
+
+#（3）集群目录结构信息校验
+TH-CP-CLUSTER-0003:
+  group-name: '111'     #集群某个目录下某组名称预期结果
+
+#（4）集群目录下组的服务器信息校验
+TH-CP-CLUSTER-0004:
+  vm1-name: win7-64
+
+# 1.1.2.云服务器页面/集群信息导航栏功能校验
+# (1)集群目录新增组功能验证/正常场景
+TH-CP-CLUSTER-0005:
+  data01:
+  data02:
+    - by: xpath
+      locator: //*[@id="panel-c-scroll"]/div[1]/section/section/div[1]/section/div[2]/div/ul/li/ul/li[1]/ul/li/ul/li/ul/li[2]/div/div/div/div
+      action: click
+
+    - by: xpath
+      locator: //*[@id="compute_virtual_tabs_vmList"]/section/div[2]/div[1]/div[3]/table/tbody/tr[1]/td[2]/div/span/a
+      action: text
+
+#（6）集群目录新增组功能验证/异常场景
+TH-CP-CLUSTER-0006:
+  data01:
+  data02:
+    by: xpath
+    locator: //*[@id="panel-c-scroll"]/div[1]/section/section/div[1]/section/div[2]/div/ul/li/ul/li[1]/ul/li/ul/li/div/div/span/i
+  data03:
+    by: xpath
+    locator: //*[@id="el-tooltip-8985"]/div[1]/div/span[2]
+
+# (7)集群目录组名称重命名功能验证/正常场景
+
+#（8）集群目录组名称重命名功能验证/异常场景
+
+#（9）集群目录组添加云服务器入口验证
+
+#（10）集群目录组移动验证
+
+#（11）集群目录组删除验证
+
+
+# 1.2.1.云服务器页面/菜单栏功能校验
+#(1)虚拟机搜索/功能入口参数校验
+TH-CP-VM-0001:
+  text: 请输入名称、IP、Mac地址、uuid
+
+#(2)虚拟机搜索/功能验证/正常场景
+TH-CP-VM-0002:
+  vm_name: test001
+
+#(2)虚拟机搜索/功能验证/异常场景
+TH-CP-VM-0003:
+  vm_name: 暂无数据
+
+
+# 1.2.2.云服务器页面/菜单栏功能校验/虚拟机批量操作
+
+
+
+# 1.2.3.云服务器页面/菜单栏功能校验/添加云服务器
+#1.2.3.1 创建云服务器
+#<1 自定义
+#<1-1 基本信息页参数校验
+#<1-1-1云服务器输入框验证
+#(1)云服务器输入框弱提示验证
+TH-CP-VM-0004:
+  cservice_name: 请输入云服务器名称
+
+#(2)云服务器输入框输入为空验证
+TH-CP-VM-0005:
+  title_name: 名称不能为空
+
+#(3)云服务器输入框输入特殊字符验证
+TH-CP-VM-0006:
+  title_name: 名称不能含有特殊字符
+
+#(4)云服务器输入框输入特殊字符验证
+TH-CP-VM-0007:
+  title3_name: 名称由1~32位字符组成
+
+#<1-1-2操作系统下拉框验证
+#(1)操作系统下拉框选择 others
+TH-CP-VM-0008:
+  system_name: FreeBSD
+
+#<1-1-3创建个数输入框验证
+#(1)创建个数输入框默认值验证
+TH-CP-VM-0009:
+  server_num: '1'
+
+#(2)创建个数输入框输入为空验证
+TH-CP-VM-0010:
+  server1_num: 云服务器创建个数不能为空
+  server2_num: 请输入自动创建云服务器个数（限制100）
+
+#(3)创建个数输入框输入特殊字符验证
+TH-CP-VM-0011:
+  title_name: 云服务器创建个数输入错误！
+
+#(4)创建个数输入框输入大于100验证
+TH-CP-VM-0012:
+  title_name: 云服务器创建个数不能超过100
+
+#(5)创建个数输入框输入小于1验证
+TH-CP-VM-0013:
+  title_name: 云服务器创建个数输入错误！
+
+#<1-2 CPU、内存信息页参数校验
+#<1-2-1处理器输入框验证
+#(1)处理器输入框默认值验证
+TH-CP-VM-0014:
+  server_num: '2'
+
+#(2)处理器输入框输入为空验证
+TH-CP-VM-0015:
+  server1_num: CPU核数不能为空！
+  server2_num: 请输入处理器
+
+#(3)处理器输入框输入特殊字符验证
+TH-CP-VM-0016:
+  title_name: CPU核数只能为正整数！
+
+#(4)处理器输入框输入大于2验证
+TH-CP-VM-0017:
+  title_name: CPU核数不能大于CPU最大核数
+
+#(5)处理器输入框输入小于1验证
+TH-CP-VM-0018:
+  title_name: CPU核数只能为正整数！
+
+#<1-2-2处理器输入框验证
+#(1)处理器输入框默认值验证
+TH-CP-VM-0019:
+  server_num: '1'
+
+#(2)处理器输入框输入为空验证
+TH-CP-VM-0020:
+  server1_num: 插槽数不能为空
+  server2_num: 请输入处理器插槽数
+
+#(3)处理器输入框输入特殊字符验证
+TH-CP-VM-0021:
+  title_name: 请输入正整数
+
+#(4)处理器输入框输入大于2验证
+TH-CP-VM-0022:
+  title_name: 插槽数不能大于4
+
+#(5)处理器输入框输入小于1验证
+TH-CP-VM-0023:
+  title_name: 请输入正整数
+
+#<1-2-3插槽核数输入框验证
+#(1)插槽核数输入框默认值验证
+TH-CP-VM-0024:
+  server_num: '2'
+
+#(2)插槽核数输入框输入为空验证
+TH-CP-VM-0025:
+  server1_num: 插槽核数不能为空
+  server2_num: 请输入处理器插槽核数
+
+#(3)插槽核数输入框输入特殊字符验证
+TH-CP-VM-0026:
+  title_name: 请输入正整数
+
+#(4)插槽核数输入框输入大于24验证
+TH-CP-VM-0027:
+  title_name: 插槽核数不能大于24
+
+#(5)插槽核数输入框输入小于1验证
+TH-CP-VM-0028:
+  title_name: 请输入正整数
+
+#<1-2-4内存大小输入框验证
+#(1)内存大小输入框默认值验证
+TH-CP-VM-0029:
+  server_num: '4'
+
+#(2)内存大小输入框输入为空验证
+TH-CP-VM-0030:
+  server1_num: 内存不能为空
+  server2_num: 请输入设置内存大小
+
+#(3)内存大小输入框输入特殊字符验证
+TH-CP-VM-0031:
+  title_name: 内存输入必须是0.5的整数倍
+
+#(4)内存大小输入框输入大于256验证
+TH-CP-VM-0032:
+  title_name: 内存不能超过最大内存256G
+
+#(5)内存大小输入框输入小于1验证
+TH-CP-VM-0033:
+  title_name: 内存输入必须是0.5的整数倍
+
+#<1-2-5操作系统下拉框验证
+#(1)操作系统下拉框选择 others
+TH-CP-VM-0034:
+  system_name: 'arm / Phytium / Tengyun-S2500'
+
+
+#<1-3 存储信息页参数校验
+#云硬盘/自定义
+#<1-3-1磁盘大小输入框验证
+#(1)磁盘大小输入框默认为空时弱提示验证
+TH-CP-VM-0035:
+  server_num: 请输入卷容量
+
+#(1)磁盘大小输入框输入为空时提示信息验证
+TH-CP-VM-0036:
+  server_num: 卷容量不能为空
+
+#(3)磁盘大小输入框输入特殊字符验证
+TH-CP-VM-0037:
+  server_num: 卷容量输入必须是0.5的整数倍
+
+#(4)磁盘大小输入框输入大于256T验证：1111111
+TH-CP-VM-0038:
+  server1_num: 卷容量不能高于256T
+  server2_num: 单卷容量超过最小域副本容量上限安全值，请均衡各域容量！(建议后期容量不够后再扩容)
+
+#(5)磁盘大小输入框输入小于0.5验证
+TH-CP-VM-0039:
+  server_num: 卷容量输入必须是0.5的整数倍
+
+#<1-3-2驱动类型选择项验证
+#(1)默认选择scsi验证(tabindex="0")
+TH-CP-VM-0040:
+  server_num: '0'
+
+#(2)选择ide验证(tabindex="0")
+TH-CP-VM1-0040:
+  server_num: '0'
+
+#<1-3-3存储池下拉框验证
+TH-CP-VM-0041:
+  server_num: 'lakers1'
+
+#<1-3-4卷名称输入框验证
+#(1)卷名称输入框默认值验证
+TH-CP-VM-0042:
+  server_num: 'test001-volume1'
+
+#(2)卷名称输入框输入为空验证
+TH-CP-VM-0043:
+  server1_num: 卷名称不能为空
+  server2_num: 请输入卷名称
+
+# (3)卷名称输入框输入特殊字符验证
+TH-CP-VM-0044:
+  server_num: 卷名称不能含有特殊字符
+
+#(4)卷名称输入框输入大于32位字符验证
+TH-CP-VM-0045:
+  server_num: 卷名称由1~32位字符组成
+
+#<1-3-5副本数下拉框验证
+TH-CP-VM-0046:
+  server_num: '2'
+
+TH-CP-VM1-0046:
+  server_num: '1'
+
+#<1-3-6云盘类型下拉框验证
+# (1)云盘类型默认值验证：普通云盘1.0
+TH-CP-VM-0047:
+  server_num: 普通云盘1.0
+
+# (2)云盘类型选择值验证：高效云盘
+TH-CP-VM1-0047:
+  server_num: 高效云盘
+
+#<1-3-7云盘类型下拉框验证
+# (1)存储介质默认值验证：机械硬盘
+TH-CP-VM-0048:
+  server_num: 机械硬盘
+
+# (2)存储介质选择值验证：固态硬盘
+TH-CP-VM1-0048:
+  server_num: 固态硬盘
+
+# <1-3-8链路冗余下拉框验证
+# (1)链路冗余默认值验证：1
+TH-CP-VM-0049:
+  server_num: '1'
+
+# (2)链路冗余选择值验证：3
+TH-CP-VM1-0049:
+  server_num: '3'
+
+
+#<1-4 网卡信息页参数校验
+#<1-4-1新增网卡验证
+TH-CP-VM-0050:
+  server_num: 网卡2
+
+#<1-4-2网卡信息折叠功能验证
+TH-CP-VM-0051:
+  server1_num: False
+  server2_num: True  #网卡信息展开时显示正常
+
+#<1-4-3网卡下拉框验证
+# (1)网卡类型默认值验证：本地网络(存在虚拟交换机选项)
+TH-CP-VM-0052:
+  server_num: 虚拟交换机
+
+# (2)网卡类型选择值验证：VPC网络(存在VPC交换机选项)
+TH-CP-VM1-0052:
+  server_num: VPC交换机
+
+# <1-4-4适配器下拉框验证
+# (1)适配器类型默认值验证：virtio
+TH-CP-VM-0053:
+  server_num: virtio
+
+# (2)适配器类型选择值验证：rtl8139
+TH-CP-VM1-0053:
+  server_num: rtl8139
+
+# <1-4-5多队列设置开关验证
+TH-CP-VM-0054:
+  server_num: False
+
+TH-CP-VM1-0054:
+  server_num: True
+
+# <1-4-6队列数输入框验证
+#(1)队列数输入框默认值验证
+TH-CP-VM-0055:
+  server_num: '1'
+
+#(2)队列数输入框输入为空验证
+TH-CP-VM-0056:
+  server1_num: 队列数不能为空
+  server2_num: 请输入队列数
+
+# (3)队列数输入框输入特殊字符验证
+TH-CP-VM-0057:
+  server_num: 队列数为正整数
+
+#(4)队列数输入框输入大于2验证
+TH-CP-VM-0058:
+  server_num: 队列数不能超过当前cpu数（当前cpu数为2）
+
+#(5)队列数输入框输入小于1验证
+TH-CP-VM-0059:
+  server_num: 队列数为正整数
+
+# <1-4-7虚拟交换机下拉框验证
+# (1)虚拟交换机默认值验证
+TH-CP-VM-0060:
+  server1_num: compute
+  server2_num: 计算97
+
+# (2)虚拟交换机下拉框选择值验证
+TH-CP-VM1-0060:
+  server_num: storage
+
+#QOS设置
+#发送
+# <1-4-8速率输入框验证
+#(1)速率输入框默认值验证
+TH-CP-VM-0061:
+  server_num: '0'
+
+#(2)发送速率输入输入为空验证
+TH-CP-VM-0062:
+  server_num: 请输入速率
+
+# (3)发送速率输入框输入特殊字符验证
+TH-CP-VM-0063:
+  server_num: 请输入0或者正整数
+
+
+# (4)发送速率输入框输入特殊字符验证
+TH-CP-VM-0064:
+  server_num: 输入上限4194303
+
+#(5)发送速率输入框输入小于0验证
+TH-CP-VM-0065:
+  server_num: 请输入0或者正整数
+
+# <1-4-9发送峰值输入框验证
+# (1)发送峰值输入框默认值验证
+TH-CP-VM-0066:
+  server_num: '0'
+
+#(2)发送峰值输入框输入为空验证
+TH-CP-VM-0067:
+  server_num: 请输入速率
+
+# (3)发送峰值输入框输入特殊字符验证
+TH-CP-VM-0068:
+  server_num: 请输入0或者正整数
+
+
+# (4)发送峰值输入框输入特殊字符验证
+TH-CP-VM-0069:
+  server_num: 输入上限4194303
+
+#(5)发送峰值输入框输入小于0验证
+TH-CP-VM-0070:
+  server_num: 请输入0或者正整数
+
+# <1-4-10发送突发值输入框验证
+# (1)发送突发值输入框默认值验证
+TH-CP-VM-0071:
+  server_num: '0'
+
+#(2)发送突发值输入框输入为空验证
+TH-CP-VM-0072:
+  server_num: 请输入突发值
+
+# (3)发送突发值输入框输入特殊字符验证
+TH-CP-VM-0073:
+  server_num: 请输入0或者正整数
+
+# (4)发送突发值输入框输入特殊字符验证
+TH-CP-VM-0074:
+  server_num: 输入上限4194303
+
+#(5)发送突发值输入框输入小于0验证
+TH-CP-VM-0075:
+  server_num: 请输入0或者正整数
+
+#QOS设置
+#接收
+# <1-4-111接收速率输入框验证
+#(1)接收速率输入框默认值验证
+TH-CP-VM-0076:
+  server_num: '0'
+
+#(2)接收速率输入输入为空验证
+TH-CP-VM-0077:
+  server_num: 请输入速率
+
+# (3)接收速率输入框输入特殊字符验证
+TH-CP-VM-0078:
+  server_num: 请输入0或者正整数
+
+
+# (4)接收速率输入框输入特殊字符验证
+TH-CP-VM-0079:
+  server_num: 输入上限4194303
+
+#(5)接收速率输入框输入小于0验证
+TH-CP-VM-0080:
+  server_num: 请输入0或者正整数
+
+# <1-4-112接收峰值输入框验证
+# (1)接收峰值输入框默认值验证
+TH-CP-VM-0081:
+  server_num: '0'
+
+#(2)接收峰值输入框输入为空验证
+TH-CP-VM-0082:
+  server_num: 请输入速率
+
+# (3)接收峰值输入框输入特殊字符验证
+TH-CP-VM-0083:
+  server_num: 请输入0或者正整数
+
+# (4)接收峰值输入框输入特殊字符验证
+TH-CP-VM-0084:
+  server_num: 输入上限4194303
+
+#(5)接收峰值输入框输入小于0验证
+TH-CP-VM-0085:
+  server_num: 请输入0或者正整数
+
+# <1-4-113接收突发值输入框验证
+# (1)发送突发值输入框默认值验证
+TH-CP-VM-0086:
+  server_num: '0'
+
+#(2)接收突发值输入框输入为空验证
+TH-CP-VM-0087:
+  server_num: 请输入突发值
+
+# (3)接收突发值输入框输入特殊字符验证
+TH-CP-VM-0088:
+  server_num: 请输入0或者正整数
+
+# (4)接收突发值输入框输入特殊字符验证
+TH-CP-VM-0089:
+  server_num: 输入上限4194303
+
+#(5)接收突发值输入框输入小于0验证
+TH-CP-VM-0090:
+  server_num: 请输入0或者正整数
+
+# <1-5-1光驱下拉框验证
+# (1)光驱下拉框默认为空验证（弱提示）
+TH-CP-VM-0095:
+  server1_num: 请选择仓库地址
+  server2_num: 请选择光驱
+
+# (2)光驱下拉框选择值验证
+TH-CP-VM-0096:
+  server1_num: lakers
+  server2_num: cn_windows_7_enterprise_x64_dvd_x15-70741.iso
+
+# <1-5-2软驱下拉框验证
+# (1)软驱下拉框默认为空验证（弱提示）
+TH-CP-VM-0097:
+  server1_num: 请选择仓库地址
+  server2_num: 请选择软驱
+
+# (2)软驱下拉框选择值验证
+TH-CP-VM-0098:
+  server1_num: lakers
+  server2_num: virtio-win-0.1.141_amd64.vfd
+
+#<1-5-3显示选择项验证
+#(1)默认选择VGA验证(tabindex="0")
+TH-CP-VM-0099:
+  server_num: '0'
+
+#(2)选择vGPU验证(tabindex="0")
+TH-CP-VM-0100:
+  server_num: '0'
+
+#<1-5-4高可用选择项验证
+#(1)默认选择ON验证(tabindex="0")
+TH-CP-VM-0101:
+  server_num: 重要云服务器
+
+#(2)选择OFF验证(tabindex="0")
+TH-CP-VM-0102:
+  server_num: '0'
+
+#<1-5-5重要云服务器选择项验证
+#(1)默认选择中验证(tabindex="0")
+TH-CP-VM-0103:
+  server_num: '0'
+
+#(2)选择高验证(tabindex="0")
+TH-CP-VM-0104:
+  server_num: '0'
+
+#<1-5-6巨页内存选择项验证
+#(1)默认选择OFF验证(tabindex="0")
+TH-CP-VM-0105:
+  server_num: '0'
+
+#(2)选择ON验证(tabindex="0")
+TH-CP-VM-0106:
+  server_num: '0'
+
+#<1-5-7启动选择项验证
+#(1)默认选择BIOS验证(tabindex="0")
+TH-CP-VM-0107:
+  server_num: '0'
+
+#(2)选择UEFI验证(tabindex="0")
+TH-CP-VM-0108:
+  server_num: '0'
+
+#<1-5-8异常检测选择项验证
+#(1)默认选择ON验证(tabindex="0")
+TH-CP-VM-0109:
+  server_num: '0'
+
+#(2)选择OFF验证(tabindex="0")
+TH-CP-VM-0110:
+  server_num: '0'
+
+#<1-5-9VNC选择项验证
+#(1)默认选择OFF验证(tabindex="0")
+TH-CP-VM-0111:
+  server_num: '0'
+
+#(2)选择ON验证(tabindex="0")
+TH-CP-VM-0112:
+  server_num: '0'
+
+#<1-5-10内存安全选择项验证
+#(1)默认选择OFF验证(tabindex="0")
+TH-CP-VM-0113:
+  server_num: '0'
+
+#(2)选择ON验证(tabindex="0")
+TH-CP-VM-0114:
+  server_num: '0'
+
+#<1-5-11嵌套虚拟化选择项验证
+#(1)默认选择OFF验证(tabindex="0")
+TH-CP-VM-0115:
+  server_num: '0'
+
+#(2)选择ON验证(tabindex="0")
+TH-CP-VM-0116:
+  server_num: '0'
+
+#<1-5-12数据本地化选择项验证
+#(1)默认选择OFF验证(tabindex="0")
+TH-CP-VM-0117:
+  server_num: '0'
+
+#(2)选择ON验证(tabindex="0")
+TH-CP-VM-0118:
+  server_num: '0'
+
+#<1-5-13启用双活选择项验证
+#(1)默认选择OFF验证(tabindex="0")
+TH-CP-VM-0119:
+  server_num: '0'
+
+#(2)选择ON验证(tabindex="0")
+TH-CP-VM-0120:
+  server_num: '0'
+
+#<1-5-14绑定主资源池选择项验证
+#(1)默认选择OFF验证(tabindex="0")
+TH-CP-VM-0121:
+  server_num: '-1'  #置灰
+
+#(2)选择ON验证(tabindex="0") (前置条件：已开启双活)
+TH-CP-VM-0122:
+  server_num: '0'
+
+#<1-5-15启动配置选择项验证
+#(1)默认选择自动验证(tabindex="0")
+TH-CP-VM-0123:
+  server_num: '0'
+
+#(2)选择主机验证(出现主机列表，存在栏位：”宿主机“)
+TH-CP-VM-0124:
+  server_num: 宿主机
+
+# (3)选择标签验证(出现主机列表，存在栏位：”标签名称“)
+TH-CP-VM-0125:
+  server_num: 标签名称

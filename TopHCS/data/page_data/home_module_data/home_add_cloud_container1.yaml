@@ -1,0 +1,20 @@
+- by: id
+  locator: overview_nav_container
+  action: click
+
+- by: xpath
+  locator: /html/body/div[3]/div/div[2]/form/div[1]/div/div[4]/div/div[1]/input
+  action: send
+  value: test1
+
+- by: xpath
+  locator: /html/body/div[3]/div/div[2]/form/div[1]/div/div[4]/div/div[2]
+  action: text
+
+
+
+
+
+
+
+

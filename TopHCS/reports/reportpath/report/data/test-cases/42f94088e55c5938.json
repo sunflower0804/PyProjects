@@ -1,0 +1,110 @@
+{
+  "uid" : "42f94088e55c5938",
+  "name" : "<1-4-8发送速率输入框验证/发送速率输入框默认值验证",
+  "fullName" : "test_case.calculate_module.test_cservermodule.TestServicePage#test_creat_VM_page1481",
+  "historyId" : "10f862ea34c4ea76dbfd4356ef09ad9e",
+  "time" : {
+    "start" : 1635131134188,
+    "stop" : 1635131134220,
+    "duration" : 32
+  },
+  "status" : "failed",
+  "statusMessage" : "AssertionError: assert '0' == '2'\n  - 2\n  + 0",
+  "statusTrace" : "self = <TopHC.test_case.calculate_module.test_cservermodule.TestServicePage object at 0x0000024BFE2930D0>\n\n    @allure.title('<1-4-8发送速率输入框验证/发送速率输入框默认值验证')\n    def test_creat_VM_page1481(self):\n        # self.main.goto_cserver()\n        # self.main.goto_serverpage().creat_VM_page4()\n        pagedata = self.main.goto_serverpage().creat_VM_page1481()\n        testdata = self.data['TH-CP-VM-0061']\n        print(pagedata)\n>       assert testdata['server_num'] == pagedata\nE       AssertionError: assert '0' == '2'\nE         - 2\nE         + 0\n\n..\\test_case\\calculate_module\\test_cservermodule.py:886: AssertionError",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ {
+    "name" : "xunit_setup_class_fixture_TestServicePage",
+    "time" : {
+      "start" : 1635130786451,
+      "stop" : 1635130789105,
+      "duration" : 2654
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "hasContent" : false,
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false
+  } ],
+  "testStage" : {
+    "status" : "failed",
+    "statusMessage" : "AssertionError: assert '0' == '2'\n  - 2\n  + 0",
+    "statusTrace" : "self = <TopHC.test_case.calculate_module.test_cservermodule.TestServicePage object at 0x0000024BFE2930D0>\n\n    @allure.title('<1-4-8发送速率输入框验证/发送速率输入框默认值验证')\n    def test_creat_VM_page1481(self):\n        # self.main.goto_cserver()\n        # self.main.goto_serverpage().creat_VM_page4()\n        pagedata = self.main.goto_serverpage().creat_VM_page1481()\n        testdata = self.data['TH-CP-VM-0061']\n        print(pagedata)\n>       assert testdata['server_num'] == pagedata\nE       AssertionError: assert '0' == '2'\nE         - 2\nE         + 0\n\n..\\test_case\\calculate_module\\test_cservermodule.py:886: AssertionError",
+    "steps" : [ ],
+    "attachments" : [ {
+      "uid" : "c910b53c15d6bdde",
+      "name" : "log",
+      "source" : "c910b53c15d6bdde.txt",
+      "type" : "text/plain",
+      "size" : 57
+    } ],
+    "parameters" : [ ],
+    "hasContent" : true,
+    "stepsCount" : 0,
+    "attachmentsCount" : 1,
+    "shouldDisplayMessage" : true
+  },
+  "afterStages" : [ {
+    "name" : "xunit_setup_class_fixture_TestServicePage::0",
+    "time" : {
+      "start" : 1635131847252,
+      "stop" : 1635131847252,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "hasContent" : false,
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false
+  } ],
+  "labels" : [ {
+    "name" : "story",
+    "value" : "云服务器子模块--云服务器页面"
+  }, {
+    "name" : "feature",
+    "value" : "计算-->云服务器模块"
+  }, {
+    "name" : "parentSuite",
+    "value" : "test_case.calculate_module"
+  }, {
+    "name" : "suite",
+    "value" : "test_cservermodule"
+  }, {
+    "name" : "subSuite",
+    "value" : "TestServicePage"
+  }, {
+    "name" : "host",
+    "value" : "DESKTOP-SKQ5DMP"
+  }, {
+    "name" : "thread",
+    "value" : "21196-MainThread"
+  }, {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "package",
+    "value" : "test_case.calculate_module.test_cservermodule"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : true,
+  "retry" : true,
+  "extra" : {
+    "categories" : [ ],
+    "tags" : [ ]
+  },
+  "source" : "42f94088e55c5938.json",
+  "parameterValues" : [ ]
+}

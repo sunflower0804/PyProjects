@@ -1,0 +1,140 @@
+{
+  "uid" : "1c0609b46a9582a5",
+  "name" : "<1-2-3插槽核数输入框验证/插槽核数输入默认值验证",
+  "fullName" : "test_case.calculate_module.test_cservermodule.TestServicePage#test_creat_VM_page1231",
+  "historyId" : "cd3830a2406ad1276903255470df6c3e",
+  "time" : {
+    "start" : 1635133278882,
+    "stop" : 1635133278906,
+    "duration" : 24
+  },
+  "status" : "passed",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ {
+    "name" : "xunit_setup_class_fixture_TestServicePage",
+    "time" : {
+      "start" : 1635133236567,
+      "stop" : 1635133239978,
+      "duration" : 3411
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "hasContent" : false,
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false
+  } ],
+  "testStage" : {
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ {
+      "uid" : "cc928706fc66b59c",
+      "name" : "log",
+      "source" : "cc928706fc66b59c.txt",
+      "type" : "text/plain",
+      "size" : 57
+    } ],
+    "parameters" : [ ],
+    "hasContent" : true,
+    "stepsCount" : 0,
+    "attachmentsCount" : 1,
+    "shouldDisplayMessage" : false
+  },
+  "afterStages" : [ {
+    "name" : "xunit_setup_class_fixture_TestServicePage::0",
+    "time" : {
+      "start" : 1635133495323,
+      "stop" : 1635133495323,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "hasContent" : false,
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false
+  } ],
+  "labels" : [ {
+    "name" : "story",
+    "value" : "云服务器子模块--云服务器页面"
+  }, {
+    "name" : "feature",
+    "value" : "计算-->云服务器模块"
+  }, {
+    "name" : "parentSuite",
+    "value" : "test_case.calculate_module"
+  }, {
+    "name" : "suite",
+    "value" : "test_cservermodule"
+  }, {
+    "name" : "subSuite",
+    "value" : "TestServicePage"
+  }, {
+    "name" : "host",
+    "value" : "DESKTOP-SKQ5DMP"
+  }, {
+    "name" : "thread",
+    "value" : "17536-MainThread"
+  }, {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "package",
+    "value" : "test_case.calculate_module.test_cservermodule"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ {
+      "uid" : "984bcd1ef4a52b3a",
+      "status" : "passed",
+      "time" : {
+        "start" : 1635130829191,
+        "stop" : 1635130829224,
+        "duration" : 33
+      }
+    }, {
+      "uid" : "ee5e85eac9a129ae",
+      "status" : "passed",
+      "time" : {
+        "start" : 1635084407023,
+        "stop" : 1635084407068,
+        "duration" : 45
+      }
+    }, {
+      "uid" : "b04a2a3eac59af46",
+      "status" : "passed",
+      "time" : {
+        "start" : 1635083754799,
+        "stop" : 1635083754830,
+        "duration" : 31
+      }
+    }, {
+      "uid" : "8cba80b8231cf5eb",
+      "status" : "passed",
+      "time" : {
+        "start" : 1635006583850,
+        "stop" : 1635006583883,
+        "duration" : 33
+      }
+    } ],
+    "categories" : [ ],
+    "tags" : [ ]
+  },
+  "source" : "1c0609b46a9582a5.json",
+  "parameterValues" : [ ]
+}

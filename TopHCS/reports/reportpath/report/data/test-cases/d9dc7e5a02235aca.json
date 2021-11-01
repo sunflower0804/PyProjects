@@ -1,0 +1,141 @@
+{
+  "uid" : "d9dc7e5a02235aca",
+  "name" : "<1-5-8异常检测选择项验证/默认选择ON验证",
+  "fullName" : "test_case.calculate_module.test_cservermodule.TestServicePage#test_creat_VM_page1581",
+  "historyId" : "7d3f2975851b5901a5e7d58f51cc57f7",
+  "time" : {
+    "start" : 1635133458655,
+    "stop" : 1635133458682,
+    "duration" : 27
+  },
+  "status" : "passed",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ {
+    "name" : "xunit_setup_class_fixture_TestServicePage",
+    "time" : {
+      "start" : 1635133236567,
+      "stop" : 1635133239978,
+      "duration" : 3411
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "hasContent" : false,
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false
+  } ],
+  "testStage" : {
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ {
+      "uid" : "e7e54a2985d8a233",
+      "name" : "log",
+      "source" : "e7e54a2985d8a233.txt",
+      "type" : "text/plain",
+      "size" : 57
+    } ],
+    "parameters" : [ ],
+    "hasContent" : true,
+    "stepsCount" : 0,
+    "attachmentsCount" : 1,
+    "shouldDisplayMessage" : false
+  },
+  "afterStages" : [ {
+    "name" : "xunit_setup_class_fixture_TestServicePage::0",
+    "time" : {
+      "start" : 1635133495323,
+      "stop" : 1635133495323,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "hasContent" : false,
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false
+  } ],
+  "labels" : [ {
+    "name" : "story",
+    "value" : "云服务器子模块--云服务器页面"
+  }, {
+    "name" : "feature",
+    "value" : "计算-->云服务器模块"
+  }, {
+    "name" : "parentSuite",
+    "value" : "test_case.calculate_module"
+  }, {
+    "name" : "suite",
+    "value" : "test_cservermodule"
+  }, {
+    "name" : "subSuite",
+    "value" : "TestServicePage"
+  }, {
+    "name" : "host",
+    "value" : "DESKTOP-SKQ5DMP"
+  }, {
+    "name" : "thread",
+    "value" : "17536-MainThread"
+  }, {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "package",
+    "value" : "test_case.calculate_module.test_cservermodule"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ {
+      "uid" : "c705659edbe22d9b",
+      "status" : "broken",
+      "statusDetails" : "AttributeError: 'NoneType' object has no attribute 'get_attribute'",
+      "time" : {
+        "start" : 1635131662064,
+        "stop" : 1635131672199,
+        "duration" : 10135
+      }
+    }, {
+      "uid" : "9ac2ab05b9988a02",
+      "status" : "passed",
+      "time" : {
+        "start" : 1635084594188,
+        "stop" : 1635084594226,
+        "duration" : 38
+      }
+    }, {
+      "uid" : "37012bbd5c143346",
+      "status" : "passed",
+      "time" : {
+        "start" : 1635083940510,
+        "stop" : 1635083940542,
+        "duration" : 32
+      }
+    }, {
+      "uid" : "ada5b80261569a3",
+      "status" : "passed",
+      "time" : {
+        "start" : 1635006771154,
+        "stop" : 1635006771190,
+        "duration" : 36
+      }
+    } ],
+    "categories" : [ ],
+    "tags" : [ ]
+  },
+  "source" : "d9dc7e5a02235aca.json",
+  "parameterValues" : [ ]
+}

@@ -1,0 +1,92 @@
+{
+  "uid" : "9467575d3b7ce8e4",
+  "name" : "<1-4-3网卡下拉框验证/网卡类型默认值验证：本地网络",
+  "fullName" : "test_case.calculate_module.test_cservermodule.TestServicePage#test_creat_VM_page1431",
+  "historyId" : "c6e8a0d7d6bc47a501a0ab8e2595ff95",
+  "time" : {
+    "start" : 1635130990507,
+    "stop" : 1635131000922,
+    "duration" : 10415
+  },
+  "status" : "broken",
+  "statusMessage" : "AttributeError: 'NoneType' object has no attribute 'text'",
+  "statusTrace" : "self = <TopHC.test_case.calculate_module.test_cservermodule.TestServicePage object at 0x0000024BFE028430>\n\n    @allure.title('<1-4-3网卡下拉框验证/网卡类型默认值验证：本地网络')\n    def test_creat_VM_page1431(self):\n        # self.main.goto_cserver()\n        # self.main.goto_serverpage().creat_VM_page4()\n>       pagedata = self.main.goto_serverpage().creat_VM_page1431()\n\n..\\test_case\\calculate_module\\test_cservermodule.py:742: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\n..\\page_object\\calculate_module\\cservermodule.py:504: in creat_VM_page1431\n    service = self.steps(data)\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\n\nself = <TopHC.page_object.calculate_module.cservermodule.ServicePage object at 0x0000024BFE028070>\ndata = [{'action': 'text', 'by': 'xpath', 'locator': '(//div[@class=\"el-collapse-item__content\"])[1]/div[3]/label'}]\n\n    def steps(self, data):  # path为yaml文件路径\n        texts = []\n        for step in data:  # 对yaml文件进行遍历，以便执行多个动作\n            if \"by\" in step.keys():\n                element = self.find(step[\"by\"], step[\"locator\"])\n            else:\n                element = None\n    \n            if \"action\" in step.keys():\n                action = step[\"action\"]\n                if action == \"click\":\n                    sleep(1)\n                    element.click()\n                if action == \"send\":\n                    #self.send(step[\"by\"], step[\"locator\"], value=step[\"value\"])\n                    element.click()\n                    sleep(1)      #未加等待时间时会导致输入的字符被清除\n                    #element.set_value(step[\"value\"])\n                    element.send_keys(step[\"value\"])\n                if action == \"clear\":\n                    self.clear_books(step[\"by\"], step[\"locator\"])\n                if action == \"text\":\n                    # element.text\n>                   texts.append(element.text)\nE                   AttributeError: 'NoneType' object has no attribute 'text'\n\n..\\base\\basepage.py:194: AttributeError",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ {
+    "name" : "xunit_setup_class_fixture_TestServicePage",
+    "time" : {
+      "start" : 1635130786451,
+      "stop" : 1635130789105,
+      "duration" : 2654
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "hasContent" : false,
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false
+  } ],
+  "afterStages" : [ {
+    "name" : "xunit_setup_class_fixture_TestServicePage::0",
+    "time" : {
+      "start" : 1635131847252,
+      "stop" : 1635131847252,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "hasContent" : false,
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false
+  } ],
+  "labels" : [ {
+    "name" : "story",
+    "value" : "云服务器子模块--云服务器页面"
+  }, {
+    "name" : "feature",
+    "value" : "计算-->云服务器模块"
+  }, {
+    "name" : "parentSuite",
+    "value" : "test_case.calculate_module"
+  }, {
+    "name" : "suite",
+    "value" : "test_cservermodule"
+  }, {
+    "name" : "subSuite",
+    "value" : "TestServicePage"
+  }, {
+    "name" : "host",
+    "value" : "DESKTOP-SKQ5DMP"
+  }, {
+    "name" : "thread",
+    "value" : "21196-MainThread"
+  }, {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "package",
+    "value" : "test_case.calculate_module.test_cservermodule"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : true,
+  "retry" : true,
+  "extra" : {
+    "categories" : [ ],
+    "tags" : [ ]
+  },
+  "source" : "9467575d3b7ce8e4.json",
+  "parameterValues" : [ ]
+}

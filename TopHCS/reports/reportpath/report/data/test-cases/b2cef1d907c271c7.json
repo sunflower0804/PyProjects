@@ -1,0 +1,124 @@
+{
+  "uid" : "b2cef1d907c271c7",
+  "name" : "添加云服务器/CPU、内存信息页参数校验",
+  "fullName" : "test_case.calculate_module.test_cservermodule.TestServicePage#test_creat_VM_page2",
+  "historyId" : "1247c11e67ef0d0152b048e82841ae00",
+  "time" : {
+    "start" : 1635133262266,
+    "stop" : 1635133267225,
+    "duration" : 4959
+  },
+  "status" : "passed",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ {
+    "name" : "xunit_setup_class_fixture_TestServicePage",
+    "time" : {
+      "start" : 1635133236567,
+      "stop" : 1635133239978,
+      "duration" : 3411
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "hasContent" : false,
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false
+  } ],
+  "afterStages" : [ {
+    "name" : "xunit_setup_class_fixture_TestServicePage::0",
+    "time" : {
+      "start" : 1635133495323,
+      "stop" : 1635133495323,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "hasContent" : false,
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false
+  } ],
+  "labels" : [ {
+    "name" : "story",
+    "value" : "云服务器子模块--云服务器页面"
+  }, {
+    "name" : "feature",
+    "value" : "计算-->云服务器模块"
+  }, {
+    "name" : "parentSuite",
+    "value" : "test_case.calculate_module"
+  }, {
+    "name" : "suite",
+    "value" : "test_cservermodule"
+  }, {
+    "name" : "subSuite",
+    "value" : "TestServicePage"
+  }, {
+    "name" : "host",
+    "value" : "DESKTOP-SKQ5DMP"
+  }, {
+    "name" : "thread",
+    "value" : "17536-MainThread"
+  }, {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "package",
+    "value" : "test_case.calculate_module.test_cservermodule"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ {
+      "uid" : "c0b88d2e42b8cb17",
+      "status" : "passed",
+      "time" : {
+        "start" : 1635130811673,
+        "stop" : 1635130816760,
+        "duration" : 5087
+      }
+    }, {
+      "uid" : "923dab5c0da1d7af",
+      "status" : "passed",
+      "time" : {
+        "start" : 1635084389236,
+        "stop" : 1635084394362,
+        "duration" : 5126
+      }
+    }, {
+      "uid" : "40822ccc9ff52b85",
+      "status" : "passed",
+      "time" : {
+        "start" : 1635083737204,
+        "stop" : 1635083742203,
+        "duration" : 4999
+      }
+    }, {
+      "uid" : "148d296bb153f070",
+      "status" : "passed",
+      "time" : {
+        "start" : 1635006566177,
+        "stop" : 1635006571365,
+        "duration" : 5188
+      }
+    } ],
+    "categories" : [ ],
+    "tags" : [ ]
+  },
+  "source" : "b2cef1d907c271c7.json",
+  "parameterValues" : [ ]
+}

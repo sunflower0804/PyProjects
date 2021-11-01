@@ -1,0 +1,1800 @@
+#云服务器模块
+# 1.云服务器页面
+# 1.1新建云服务器
+# 111创建云服务器
+# 111-1自定义
+#创建云服务器的全流程
+#依次点击添加云服务器-->创建云服务器，进入基本信息页
+TH-CP-VM-0000:
+  data1: &demo00001
+    - by: xpath
+      locator: //*[@id="compute_virtual_create_compute_btn"]/span
+      action: click
+
+    - by: xpath
+      locator: //*[@id="compute_instances_create_basic_auto"]/div[1]
+      action: click
+
+#进入CPU、内存信息页
+  data2: &demo00002
+    - by: id
+      locator: compute_instances_create_name
+      action: send
+      value: '0000'
+
+    - by: xpath
+      locator: //div[@class="dialog-footer-submit"]/button[1]
+      action: click
+
+#进入存储信息页
+  data3: &demo00003
+      - by: xpath
+        locator: //div[@class="el-row"]/div[2]/div/button[2]
+        action: click
+
+#进入网卡信息页
+  data4: &demo00004
+    - by: id
+      locator: compute_instances_create_volume_capacity1
+      action: send
+      value: '1'
+
+    - by: xpath
+      locator: //div[@class="el-row"]/div[2]/div/button[2]
+      action: click
+
+#进入高级配置信息页
+  data5: &demo00005
+    - by: xpath
+      locator: //div[@class="el-row"]/div[2]/div/button[2]
+      action: click
+
+#进入完成页
+  data6: &demo00006
+    - by: xpath
+      locator: //div[@class="el-row"]/div[2]/div/button[2]
+      action: click
+
+#点击确认按钮完成虚拟机的创建
+    - by: xpath
+      locator: //*[@id="compute_instances_create_basic"]/div/div[2]/section/div/div[2]/div/button[2]
+      action: click
+
+#(1)存储类型1（云硬盘scsi+云盘2.0）
+TH-CP-VM-0001:
+  #依次点击添加云服务器-->创建云服务器-->进入基本信息页-->#进入CPU、内存信息页-->进入存储信息页
+  data1: *demo00001
+  data2: *demo00002
+  data3: *demo00003
+
+  #设置磁盘信息
+  data4:
+    #磁盘大小为1
+    - by: id
+      locator: compute_instances_create_volume_capacity1
+      action: send
+      value: '1'
+
+    #点击云盘类型下拉框
+    - by: id
+      locator: compute_instances_create_volume_auto_vsdVendor1
+      action: click
+
+    #移动鼠标，选择下拉框中的云盘2.0
+    - by: xpath
+      locator: (//div[@class="el-select-dropdown el-popper"])[6]/div/div/ul/li[2]
+      action: click
+
+    #点击存储介质下拉框
+    - by: id
+      locator: compute_instances_create_auto_drive_type1
+      action: click
+
+    #移动鼠标，选择下拉框中的固态硬盘
+    - by: xpath
+      locator: (//div[@class="el-select-dropdown el-popper"])[22]/div/div/ul/li[2]
+      action: click
+
+    #进入网卡信息页
+    - by: xpath
+      locator: //div[@class="el-row"]/div[2]/div/button[2]
+      action: click
+
+    #进入高级配置信息页-->进入完成页,并创建完成
+  data5: *demo00005
+  data6: *demo00006
+
+    #获取创建成功提示信息：“创建云服务器1个成功”
+  data7:
+    - by: xpath
+      locator: //div[@class='vue-message vue-message--success']/p
+      action: text
+
+#（2）存储类型2（云硬盘iscsi+高效云盘）
+TH-CP-VM-0002:
+  #依次点击添加云服务器-->创建云服务器-->进入基本信息页-->#进入CPU、内存信息页-->进入存储信息页
+  data1: *demo00001
+  data2:
+    - by: id
+      locator: compute_instances_create_name
+      action: send
+      value: '0001'
+
+    - by: xpath
+      locator: //div[@class="dialog-footer-submit"]/button[1]
+      action: click
+
+  data3: *demo00003
+
+  #设置磁盘信息
+  data4:
+    #磁盘大小为1
+    - by: id
+      locator: compute_instances_create_volume_capacity1
+      action: send
+      value: '1'
+
+    #点击云盘类型下拉框
+    - by: id
+      locator: compute_instances_create_volume_auto_vsdVendor1
+      action: click
+
+    #移动鼠标，选择下拉框中的高效云盘
+    - by: xpath
+      locator: (//div[@class="el-select-dropdown el-popper"])[6]/div/div/ul/li[3]
+      action: click
+
+    #点击存储介质下拉框
+    - by: id
+      locator: compute_instances_create_auto_drive_type1
+      action: click
+
+    #移动鼠标，选择下拉框中的机械硬盘
+    - by: xpath
+      locator: (//div[@class="el-select-dropdown el-popper"])[22]/div/div/ul/li[1]
+      action: click
+
+    #进入网卡信息页
+    - by: xpath
+      locator: //div[@class="el-row"]/div[2]/div/button[2]
+      action: click
+
+    #进入高级配置信息页-->进入完成页,并创建完成
+  data5: *demo00005
+  data6: *demo00006
+
+    #获取创建成功提示信息：“创建云服务器1个成功”
+  data7:
+    - by: xpath
+      locator: //div[@class='vue-message vue-message--success']/p
+      action: text
+
+#(3)存储类型3（共享存储+云盘1.0）
+TH-CP-VM-0003:
+  #依次点击添加云服务器-->创建云服务器-->进入基本信息页-->#进入CPU、内存信息页-->进入存储信息页
+  data1: *demo00001
+  data2:
+    - by: id
+      locator: compute_instances_create_name
+      action: send
+      value: '0002'
+
+    - by: xpath
+      locator: //div[@class="dialog-footer-submit"]/button[1]
+      action: click
+
+  data3: *demo00003
+
+  #设置磁盘信息
+  data4:
+    #磁盘大小为1
+    - by: id
+      locator: compute_instances_create_volume_capacity1
+      action: send
+      value: '1'
+
+    #选择共享存储池
+    - by: xpath
+      locator: (//div[@class="el-form-item__content"])[7]/div/label[2]
+      action: click
+
+    #磁盘大小为1
+    - by: xpath
+      locator: (//div[@class="el-form-item__content"])[21]/div/input
+      action: send
+      value: 1
+
+    #进入网卡信息页
+    - by: xpath
+      locator: //div[@class="el-row"]/div[2]/div/button[2]
+      action: click
+
+    #进入高级配置信息页-->进入完成页,并创建完成
+  data5: *demo00005
+  data6: *demo00006
+
+  #获取创建成功提示信息：“创建云服务器1个成功”
+  data7:
+    - by: xpath
+      locator: //div[@class='vue-message vue-message--success']/p
+      action: text
+
+# 111-2创建云服务器/来源于模板
+# (1)创建模板0000
+TH-CP-VMML-0004:
+#  #点击云服务器列表中名称栏上建，确保虚拟机0000在列表中的第一个
+#  data1:
+#    - by: xpath
+#      locator: (//div[@class="el-table__header-wrapper"])[1]/table/thead/tr/th[2]/div/span/i[1]
+#      action: click
+    #搜索框中搜索虚拟机0000
+  - by: xpath
+    locator: (//div[@class=" optiscroll-content"])[4]/section/section/div/div/div/input
+    action: send
+    value: '0000'
+
+  - by: xpath
+    locator: (//div[@class=" optiscroll-content"])[4]/section/section/div/div/button/span
+    action: click
+
+  - by: xpath
+    locator: (//div[@class=" optiscroll-content"])[4]/section/section/div/div/div/input
+    action: clear
+
+  #鼠标置于虚拟机0000的编辑按钮，出现编辑列表
+  - by: xpath
+    locator: //tbody/tr/td[16]/div/div/button/i[3]
+    action: move
+
+  #鼠标移至编辑列表中的模板选项，并点击
+  - by: xpath
+    locator: //body[@class="theme-white"]/ul/li[9]
+    action: move_click
+
+  #出现云服务器模板弹窗
+  #修改模板虚拟机的名称：0000-template-1026163107-->0000
+  #先清理模板默认名称
+  - by: xpath
+    locator: //div[@class="el-form-item__content"]/div/div/input
+    action: clear
+
+  - by: xpath
+    locator: //div[@class="el-form-item__content"]/div/div/input
+    action: send
+    value: '0000'   #需要加引号
+
+  #点击确认按钮,模板创建成功
+  - by: xpath
+    locator: (//div[@class="el-dialog__footer"])[14]/div/button
+    action: click
+
+  #获取创建模板成功提示信息：“创建云服务器1个成功”
+  - by: xpath
+    locator: //div[@class='vue-message vue-message--success']/p
+    action: text
+
+#(2)模板创建云服务器
+#根据模板0000创建云服务器
+TH-CP-VM-0004:
+  #点击添加云服务器-->创建云服务器-->进入基本信息页
+  data1: *demo00001
+  #选择模板创建
+  #点击模板按钮
+  data2:
+    - by: xpath
+      locator: (//div[@class="el-form-item__content"])[1]/div/label/span
+      action: click
+
+  #选择模板下拉框选项中选择模板0000
+    - by: xpath
+      locator: (//div[@class="el-form-item__content"])[2]/div/div/input
+      action: click
+
+    - by: xpath
+      locator: (//div[@class="el-select-dropdown el-popper"])[17]/div/div/ul/li
+      action: click
+
+    #云服务输入框输入名称：0000
+    - by: xpath
+      locator: (//div[@class="el-form-item__content"])[3]/div/input
+      action: send
+      value: '0000'
+
+    #进入cpu、内存信息页
+    - by: xpath
+      locator: //div[@class="dialog-footer-submit"]/button[1]
+      action: click
+
+  #进入存储信息页
+  data3: *demo00003
+
+  #进入网卡信息页
+  data4:
+    - by: xpath
+      locator: //div[@class="el-row"]/div[2]/div/button[2]
+      action: click
+
+  #进入高级配置信息页-->进入完成页,并创建完成
+  data5: *demo00005
+  data6: *demo00006
+
+  #获取创建成功提示信息：“创建云服务器1个成功”
+  data7:
+    - by: xpath
+      locator: //div[@class='vue-message vue-message--success']/p
+      action: text
+
+#111-3创建云服务器/来源于规格
+#基于已有规格创建云服务器
+TH-CP-VM-0005:
+  #点击添加云服务器-->创建云服务器-->进入基本信息页
+  data1: *demo00001
+  #选择模板创建
+  #点击模板按钮
+  data2:
+    - by: xpath
+      locator: (//div[@class="el-form-item__content"])[1]/div/label[2]/span
+      action: click
+
+  #选择规格下拉框选项中选择微型虚拟机（共享）
+    - by: xpath
+      locator: (//div[@class="el-form-item__content"])[2]/div/div/input
+      action: click
+
+    - by: xpath
+      locator: (//div[@class="el-select-dropdown el-popper"])[17]/div/div/ul/li
+      action: click
+
+    #云服务输入框输入名称：0003
+    - by: xpath
+      locator: (//div[@class="el-form-item__content"])[3]/div/input
+      action: send
+      value: '0003'
+
+    #进入cpu、内存信息页
+    - by: xpath
+      locator: //div[@class="dialog-footer-submit"]/button[1]
+      action: click
+
+  #进入存储信息页
+  data3: *demo00003
+
+  #进入网卡信息页
+  data4:
+    - by: xpath
+      locator: //div[@class="el-row"]/div[2]/div/button[2]
+      action: click
+
+  #进入高级配置信息页-->进入完成页,并创建完成
+  data5: *demo00005
+  data6: *demo00006
+
+  #获取创建成功提示信息：“创建云服务器1个成功”
+  data7:
+    - by: xpath
+      locator: //div[@class='vue-message vue-message--success']/p
+      action: text
+
+# 1.2 编辑云服务器 0000
+# 121添加设备
+TH-CP-EDIT_VM-0000:
+    #搜索框中搜索虚拟机0000
+  - by: xpath
+    locator: (//div[@class=" optiscroll-content"])[4]/section/section/div/div/div/input
+    action: send
+    value: '0000'
+
+  - by: xpath
+    locator: (//div[@class=" optiscroll-content"])[4]/section/section/div/div/button/span
+    action: click
+
+  - by: xpath
+    locator: (//div[@class=" optiscroll-content"])[4]/section/section/div/div/div/input
+    action: clear
+
+    #鼠标置于虚拟机0000的名称按钮，出现虚拟机详情信息列表
+  - by: xpath
+    locator: //tbody/tr/td[2]/div/span/a/i
+    action: click
+
+    #鼠标移至虚拟机基本信息页中的编辑按钮，出现编辑列表
+  - by: xpath
+    locator: //body[@class="theme-white"]/div/div/div[2]/div/div/section/section/div[2]/div[2]/div[2]/div/section/div[3]/div/button
+    action: move
+
+  #鼠标移至编辑列表中的编辑/添加设备选项，并点击
+  - by: xpath
+    locator: (//ul[@class="el-dropdown-menu el-popper"])[5]/li[15]
+    action: move_click
+
+  #出现编辑设备弹窗，点击添加硬件按钮
+  - by: xpath
+    locator: //div[@class="cont-bottom"]/div/button
+    action: click
+
+  #出现添加硬件上拉框，鼠标移动至添加网卡选项，并点击
+  - by: xpath
+    locator: //div[@class="btn-list"]/div[2]/p
+    action: move_click
+
+  #出现添加网卡弹窗，默认配置，点击添加确定按钮
+  - by: xpath
+    locator: (//div[@class="dialog-footer"])[4]/button/span
+    action: click
+
+  #捕获添加网卡成功的提示信息：”“
+  - by: xpath
+    locator: //div[@class='vue-message vue-message--success']/p
+    action: text
+
+  #点击确认按钮，关闭编辑弹窗
+  - by: xpath
+    locator: (//*[@id="instances_edit_device_close"])[1]/span
+    action: click
+
+  #关闭虚拟即详细信息页
+  - by: xpath
+    locator: //body[@class="theme-white"]/div/div/div[2]/div/div/section/section/div[2]/div[2]/div[2]/div/section/div[3]/i
+    action: click
+
+  # 122删除设备
+TH-CP-EDIT_VM-0001:
+  #搜索框中搜索虚拟机0000
+  - by: xpath
+    locator: (//div[@class=" optiscroll-content"])[4]/section/section/div/div/div/input
+    action: send
+    value: '0000'
+
+  - by: xpath
+    locator: (//div[@class=" optiscroll-content"])[4]/section/section/div/div/button/span
+    action: click
+
+  - by: xpath
+    locator: (//div[@class=" optiscroll-content"])[4]/section/section/div/div/div/input
+    action: clear
+
+    #鼠标置于虚拟机0000的名称按钮，出现虚拟机详情信息列表
+  - by: xpath
+    locator: //tbody/tr/td[2]/div/span/a/i
+    action: click
+
+    #鼠标移至虚拟机基本信息页中的编辑按钮，出现编辑列表
+  - by: xpath
+    locator: //body[@class="theme-white"]/div/div/div[2]/div/div/section/section/div[2]/div[2]/div[2]/div/section/div[3]/div/button
+    action: move
+
+  #鼠标移至编辑列表中的编辑/添加设备选项，并点击
+  - by: xpath
+    locator: (//ul[@class="el-dropdown-menu el-popper"])[5]/li[15]
+    action: move_click
+
+  #出现编辑设备弹窗，点击网卡按钮
+  - by: xpath
+    locator: //div[@class="device-guide"]/p[2]/i
+    action: click
+
+  #点击第二张网卡的删除按钮
+  - by: xpath
+    locator: (//div[@class="container-content"])[2]/div[2]/div/span[2]/i
+    action: click
+
+  #出现提示弹窗，点击确认
+  - by: xpath
+    locator: //div[@class="confirm-box-footer"]/div/button[1]
+    action: click
+
+  #等待6s，捕获删除成功的提示信息：”xxx卸载成功“
+  - by: xpath
+    locator: //div[@class='vue-message vue-message--success']/p
+    action: text
+
+  #等待3S，点击确认按钮，关闭编辑弹窗
+  - by: xpath
+    locator: (//*[@id="instances_edit_device_close"])[1]/span
+    action: click
+
+  #关闭虚拟即详细信息页
+  - by: xpath
+    locator: //body[@class="theme-white"]/div/div/div[2]/div/div/section/section/div[2]/div[2]/div[2]/div/section/div[3]/i
+    action: click
+
+  # 1.3 删除云服务器
+  # 131彻底删除         0001
+TH-CP-DETEL_VM-0001:
+#搜索框中搜索虚拟机0001
+  - by: xpath
+    locator: (//div[@class=" optiscroll-content"])[4]/section/section/div/div/div/input
+    action: send
+    value: '0001'
+
+  - by: xpath
+    locator: (//div[@class=" optiscroll-content"])[4]/section/section/div/div/button/span
+    action: click
+
+  - by: xpath
+    locator: (//div[@class=" optiscroll-content"])[4]/section/section/div/div/div/input
+    action: clear
+
+ #鼠标置于虚拟机0001的编辑按钮，出现编辑列表
+  - by: xpath
+    locator: //tbody/tr/td[16]/div/div/button/i[3]
+    action: move
+
+  #鼠标移至编辑列表中的删除选项，并点击
+  - by: xpath
+    locator: //body[@class="theme-white"]/ul/li[13]
+    action: move_click
+
+  #出现云服务器删除弹窗
+  #勾选彻底删除选项
+  - by: xpath
+    locator: (//div[@class="el-dialog__footer"])[14]/div/label[2]/span/span
+    action: click
+
+    #再点击确认按钮
+  - by: xpath
+    locator: (//div[@class="el-dialog__footer"])[14]/div/button[1]
+    action: click
+
+    #捕获删除成功的提示信息
+  - by: xpath
+    locator: //div[@class='vue-message vue-message--success']/p
+    action: text
+
+
+# 132彻底删除+同步删除卷   0002
+TH-CP-DETEL_VM-0002:
+#搜索框中搜索虚拟机0002
+  - by: xpath
+    locator: (//div[@class=" optiscroll-content"])[4]/section/section/div/div/div/input
+    action: send
+    value: '0002'
+
+  - by: xpath
+    locator: (//div[@class=" optiscroll-content"])[4]/section/section/div/div/button/span
+    action: click
+
+  - by: xpath
+    locator: (//div[@class=" optiscroll-content"])[4]/section/section/div/div/div/input
+    action: clear
+
+ #鼠标置于虚拟机0002的编辑按钮，出现编辑列表
+  - by: xpath
+    locator: //tbody/tr/td[16]/div/div/button/i[3]
+    action: move
+
+  #鼠标移至编辑列表中的删除选项，并点击
+  - by: xpath
+    locator: //body[@class="theme-white"]/ul/li[13]
+    action: move_click
+
+  #出现云服务器删除弹窗
+  #勾选同步删除卷选项+彻底删除选项
+  - by: xpath
+    locator: (//div[@class="el-dialog__footer"])[14]/div/label[1]/span/span
+    action: click
+
+  - by: xpath
+    locator: (//div[@class="el-dialog__footer"])[14]/div/label[2]/span/span
+    action: click
+
+    #再点击确认按钮
+  - by: xpath
+    locator: (//div[@class="el-dialog__footer"])[14]/div/button[1]
+    action: click
+
+  #捕获删除成功的提示信息
+  - by: xpath
+    locator: //div[@class='vue-message vue-message--success']/p
+    action: text
+
+# 133非彻底删除                  0003
+TH-CP-DETEL_VM-0003:
+#搜索框中搜索虚拟机0003
+  - by: xpath
+    locator: (//div[@class=" optiscroll-content"])[4]/section/section/div/div/div/input
+    action: send
+    value: '0003'
+
+  - by: xpath
+    locator: (//div[@class=" optiscroll-content"])[4]/section/section/div/div/button/span
+    action: click
+
+  - by: xpath
+    locator: (//div[@class=" optiscroll-content"])[4]/section/section/div/div/div/input
+    action: clear
+
+ #鼠标置于虚拟机0003的编辑按钮，出现编辑列表
+  - by: xpath
+    locator: //tbody/tr/td[16]/div/div/button/i[3]
+    action: move
+
+  #鼠标移至编辑列表中的删除选项，并点击
+  - by: xpath
+    locator: //body[@class="theme-white"]/ul/li[13]
+    action: move_click
+
+  #出现云服务器删除弹窗
+  #点击确认按钮
+  - by: xpath
+    locator: (//div[@class="el-dialog__footer"])[14]/div/button[1]
+    action: click
+
+    #捕获删除成功的提示信息
+  - by: xpath
+    locator: //div[@class='vue-message vue-message--success']/p
+    action: text
+
+# 1.1.2 迁入虚拟机0004   (前置条件：存在已开启converter的虚拟机，且满足迁移条件)
+TH-CP-IMMIGRATE_VM-0001:
+  #依次点击添加云服务器--》迁入云服务器
+  - by: xpath
+    locator: //*[@id="compute_virtual_create_compute_btn"]/span
+    action: click
+
+  - by: xpath
+    locator: //*[@id="compute_instances_create_basic_clone"]/div[1]
+    action: click
+
+    #出现云服务器导入弹窗
+    #输入正确的迁移工具地址：10.30.44.115:6666
+  - by: xpath
+    locator: //input[@id="compute_instances_create_basic_clone_ipPort"]
+    action: send
+    value: '10.30.44.115:6666'
+
+    #点击确认按钮
+  - by: xpath
+    locator: //*[@id="compute_instances_create_basic_confirm"]/span
+    action: click
+
+    #大概4s后出现迁移创建弹窗
+    #输入云服务器名称
+  - by: xpath
+    locator: (//div[@class="el-input el-input--small"])[3]/input
+    action: send
+    value: '0004'
+
+    #其它配置默认，点击确认按钮
+  - by: xpath
+    locator: (//*[@id="compute_instances_create_confirm"])[2]
+    action: click
+
+    #捕获创建成功的提示信息
+  - by: xpath
+    locator: //div[@class='vue-message vue-message--success']/p
+    action: text
+
+# 113 导入云服务器(前置条件：镜像仓库中存在ova/tva模板)
+# 113-1镜像仓库导入
+#(1)ova导入
+TH-CP-EXPORT_VM-0001:
+  #依次点击添加云服务器--》导入云服务器
+  - by: xpath
+    locator: //*[@id="compute_virtual_create_compute_btn"]/span
+    action: click
+
+  - by: xpath
+    locator: //*[@id="compute_instances_create_basic_export"]/div[1]
+    action: click
+
+  #出现选择导入方式弹窗（默认镜像仓库导入）
+  #选择仓库地址kwj(选择下拉框中输入kwj)
+  - by: xpath
+    locator: //input[@id="compute_instances_create_basic_ova_repository"]
+    action: send
+    value: 'kwj'
+
+  #选择下拉框中的kwj选项
+  - by: xpath
+    locator: //li[@id="compute_instances_create_basic_ova_repository0"]
+    action: move_click
+
+  #选择ova/tva文件(选择下拉框中的win7-64.ova)
+  - by: xpath
+    locator: //input[@id="compute_instances_create_basic_ovaImageName"]
+    action: send
+    value: 'win7-64.ova'
+
+  #选择下拉框中的win7-64.ova选项
+  - by: xpath
+    locator: //li[@id="compute_instances_create_basic_ovaImageName0"]
+    action: move_click
+
+  #点击确认按钮
+  - by: xpath
+    locator: (//div[@class="el-dialog__footer"])[14]/span/button
+    action: click
+
+  #出现导入创建页面
+  #修改云服务器默认名称为0005
+  - by: xpath
+    locator: (//div[@class="el-form-item__content"])[46]/div/input
+    action: clear
+
+  - by: xpath
+    locator: (//div[@class="el-form-item__content"])[46]/div/input
+    action: send
+    value: '0005'
+
+  #其它全部默认，点击确认按钮
+  - by: xpath
+    locator: (//div[@class="dialog-footer-submit"])[3]/button[1]
+    action: click
+
+  #捕获创建成功的提示信息
+  - by: xpath
+    locator: //div[@class='vue-message vue-message--success']/p
+    action: text
+
+#(2)tva导入
+TH-CP-EXPORT_VM-0002:
+  #依次点击添加云服务器--》导入云服务器
+  - by: xpath
+    locator: //*[@id="compute_virtual_create_compute_btn"]/span
+    action: click
+
+  - by: xpath
+    locator: //*[@id="compute_instances_create_basic_export"]/div[1]
+    action: click
+
+  #出现选择导入方式弹窗（默认镜像仓库导入）
+  #选择仓库地址kwj(选择下拉框中输入kwj)
+  - by: xpath
+    locator: //input[@id="compute_instances_create_basic_ova_repository"]
+    action: send
+    value: 'kwj'
+
+  #选择下拉框中的kwj选项
+  - by: xpath
+    locator: //li[@id="compute_instances_create_basic_ova_repository0"]
+    action: move_click
+
+  #选择ova/tva文件(选择下拉框中的red7.tva)
+  - by: xpath
+    locator: //input[@id="compute_instances_create_basic_ovaImageName"]
+    action: send
+    value: 'red7.tva'
+
+  #选择下拉框中的red7.tva选项
+  - by: xpath
+    locator: //li[@id="compute_instances_create_basic_ovaImageName1"]
+    action: move_click
+
+  #点击确认按钮
+  - by: xpath
+    locator: (//div[@class="el-dialog__footer"])[14]/span/button
+    action: click
+
+  #出现导入创建页面
+  #修改云服务器默认名称为0006
+  - by: xpath
+    locator: (//div[@class="el-form-item__content"])[46]/div/input
+    action: clear
+
+  - by: xpath
+    locator: (//div[@class="el-form-item__content"])[46]/div/input
+    action: send
+    value: '0006'
+
+  #其它配置默认，点击确认按钮
+  - by: xpath
+    locator: (//div[@class="dialog-footer-submit"])[3]/button[1]
+    action: click
+
+  #捕获创建成功的提示信息
+  - by: xpath
+    locator: //div[@class='vue-message vue-message--success']/p
+    action: text
+
+# 113-2存储介质导入
+# (1)ova导入
+TH-CP-EXPORT_VM-0003:
+  #依次点击添加云服务器--》导入云服务器
+  - by: xpath
+    locator: //*[@id="compute_virtual_create_compute_btn"]/span
+    action: click
+
+  - by: xpath
+    locator: //*[@id="compute_instances_create_basic_export"]/div[1]
+    action: click
+
+  #出现选择导入方式弹窗（选择存储介质导入）
+  #点击存储介质按钮
+  - by: xpath
+    locator: (//div[@class="el-dialog__header"])[16]/../div[2]/form/div/div//label[2]/span[1]
+    action: click
+
+  #点击主机ip下拉框
+  - by: xpath
+    locator: (//div[@class="el-dialog__header"])[16]/../div[2]/form/div[2]/div/div/div/div/input
+    action: click
+
+  #选择主机ip下拉框中的10.30.32.23
+  - by: xpath
+    locator: (//ul[@class="el-scrollbar__view el-select-dropdown__list"]/li[3])[10]
+    action: click
+
+  #点击ova/tva文件下拉框
+  - by: xpath
+    locator: (//input[@placeholder="请选择导入文件"])
+    action: click
+
+  #出现云服务器导入路径弹窗
+  #点击系统按钮
+  - by: xpath
+    locator: (//div[@class="diskItem"])/i
+    action: click
+
+  #进入文件详情目录
+  #点击data目录按钮
+  - by: xpath
+    locator: (//div[@class="folderList"])/span[4]
+    action: click
+
+  #进入ova/tva模板详情列表
+  #选择第一个ova模板
+  - by: xpath
+    locator: (//div[@class="folderList"])/span[1]/i
+    action: click
+
+  #点击确认按钮  (//div[@class="el-dialog__footer"])[14]/div/button[1]
+  - by: xpath
+    locator: (//div[@class="el-dialog__footer"])[14]/div/button[1]
+    action: click
+
+  #自动返回到导入方式弹窗
+  #点击确认
+  - by: xpath
+    locator: (//div[@class="el-dialog__footer"])[13]/span/button[1]
+    action: click
+
+  #出现导入创建页面
+  #修改云服务器默认名称为0007
+  - by: xpath
+    locator: (//div[@class="el-form-item__content"])[46]/div/input
+    action: clear
+
+  - by: xpath
+    locator: (//div[@class="el-form-item__content"])[46]/div/input
+    action: send
+    value: '0007'
+
+  #其它配置默认，点击确认按钮(//div[@class="dialog-footer-submit"])[3]/button
+  - by: xpath
+    locator: (//div[@class="dialog-footer-submit"])[3]/button[1]
+    action: click
+
+  #捕获创建成功的提示信息
+  - by: xpath
+    locator: //div[@class='vue-message vue-message--success']/p
+    action: text
+
+# (2)tva导入
+TH-CP-EXPORT_VM-0004:
+  #依次点击添加云服务器--》导入云服务器
+  - by: xpath
+    locator: //*[@id="compute_virtual_create_compute_btn"]/span
+    action: click
+
+  - by: xpath
+    locator: //*[@id="compute_instances_create_basic_export"]/div[1]
+    action: click
+
+  #出现选择导入方式弹窗（选择存储介质导入）
+  #点击存储介质按钮
+  - by: xpath
+    locator: (//div[@class="el-dialog__header"])[16]/../div[2]/form/div/div//label[2]/span[1]
+    action: click
+
+  #点击主机ip下拉框
+  - by: xpath
+    locator: (//div[@class="el-dialog__header"])[16]/../div[2]/form/div[2]/div/div/div/div/input
+    action: click
+
+  #选择主机ip下拉框中的10.30.32.23
+  - by: xpath
+    locator: (//ul[@class="el-scrollbar__view el-select-dropdown__list"]/li[3])[10]
+    action: click
+
+  #点击ova/tva文件下拉框
+  - by: xpath
+    locator: (//input[@placeholder="请选择导入文件"])
+    action: click
+
+  #出现云服务器导入路径弹窗
+  #点击系统按钮
+  - by: xpath
+    locator: (//div[@class="diskItem"])/i
+    action: click
+
+  #进入文件详情目录
+  #点击data目录按钮
+  - by: xpath
+    locator: (//div[@class="folderList"])/span[4]
+    action: click
+
+  #进入ova/tva模板详情列表
+  #选择第二个ova模板
+  - by: xpath
+    locator: (//div[@class="folderList"])/span[2]/i
+    action: click
+
+  #点击确认按钮
+  - by: xpath
+    locator: (//div[@class="el-dialog__footer"])[14]/div/button[1]
+    action: click
+
+  #自动返回到导入方式弹窗
+  #点击确认
+  - by: xpath
+    locator: (//div[@class="el-dialog__footer"])[13]/span/button[1]
+    action: click
+
+  #出现导入创建页面
+  #修改云服务器默认名称为0008
+  - by: xpath
+    locator: (//div[@class="el-form-item__content"])[46]/div/input
+    action: clear
+
+  - by: xpath
+    locator: (//div[@class="el-form-item__content"])[46]/div/input
+    action: send
+    value: '0008'
+
+  #其它配置默认，点击确认按钮(//div[@class="dialog-footer-submit"])[3]/button
+  - by: xpath
+    locator: (//div[@class="dialog-footer-submit"])[3]/button[1]
+    action: click
+
+  #捕获创建成功的提示信息
+  - by: xpath
+    locator: //div[@class='vue-message vue-message--success']/p
+    action: text
+
+# 1.4 云服务器的操作  0000
+#141开机
+TH-CP-OPERATE_VM-0001:
+#搜索框中搜索虚拟机0000
+  - by: xpath
+    locator: (//div[@class=" optiscroll-content"])[4]/section/section/div/div/div/input
+    action: send
+    value: '0000'
+
+  - by: xpath
+    locator: (//div[@class=" optiscroll-content"])[4]/section/section/div/div/button/span
+    action: click
+
+  - by: xpath
+    locator: (//div[@class=" optiscroll-content"])[4]/section/section/div/div/div/input
+    action: clear
+
+ #鼠标置于虚拟机0000的开机按钮，并点击
+  - by: xpath
+    locator: //tbody/tr/td[16]/div/button
+    action: move_click
+
+  #捕获开机成功的提示信息
+  - by: xpath
+    locator: //div[@class='vue-message vue-message--success']/p
+    action: text
+
+#142重启
+TH-CP-OPERATE_VM-0002:
+#搜索框中搜索虚拟机0000
+  data1:
+    - by: xpath
+      locator: (//div[@class=" optiscroll-content"])[4]/section/section/div/div/div/input
+      action: send
+      value: '0000'
+
+    - by: xpath
+      locator: (//div[@class=" optiscroll-content"])[4]/section/section/div/div/button/span
+      action: click
+
+    - by: xpath
+      locator: (//div[@class=" optiscroll-content"])[4]/section/section/div/div/div/input
+      action: clear
+
+#鼠标置于虚拟机0000的编辑按钮，出现编辑列表
+    - by: xpath
+      locator: //tbody/tr/td[16]/div/div/button/i[3]
+      action: move
+
+  #鼠标移至编辑列表中的重启选项，并点击
+    - by: xpath
+      locator: //body[@class="theme-white"]/ul/li[2]
+      action: move_click
+
+  #出现云服务器重启弹窗
+  #点击确认按钮
+    - by: xpath
+      locator: (//div[@class="el-dialog__footer"])[14]/div/button[1]
+      action: click
+
+  #捕获重启成功的提示信息
+  data2:
+    - by: xpath
+      locator: //div[@class='vue-message vue-message--success']/p
+      action: text
+
+#143挂起
+TH-CP-OPERATE_VM-0003:
+#搜索框中搜索虚拟机0000
+  - by: xpath
+    locator: (//div[@class=" optiscroll-content"])[4]/section/section/div/div/div/input
+    action: send
+    value: '0000'
+
+  - by: xpath
+    locator: (//div[@class=" optiscroll-content"])[4]/section/section/div/div/button/span
+    action: click
+
+  - by: xpath
+    locator: (//div[@class=" optiscroll-content"])[4]/section/section/div/div/div/input
+    action: clear
+
+#鼠标置于虚拟机0000的编辑按钮，出现编辑列表
+  - by: xpath
+    locator: //tbody/tr/td[16]/div/div/button/i[3]
+    action: move
+
+  #鼠标移至编辑列表中的挂起选项，并点击
+  - by: xpath
+    locator: //body[@class="theme-white"]/ul/li[3]
+    action: move_click
+
+  #出现云服务器挂起弹窗
+  #点击确认按钮
+  - by: xpath
+    locator: (//div[@class="el-dialog__footer"])[14]/div/button[1]
+    action: click
+
+  #捕获挂起成功的提示信息
+  - by: xpath
+    locator: //div[@class='vue-message vue-message--success']/p
+    action: text
+
+#144恢复
+TH-CP-OPERATE_VM-0004:
+#搜索框中搜索虚拟机0000
+  - by: xpath
+    locator: (//div[@class=" optiscroll-content"])[4]/section/section/div/div/div/input
+    action: send
+    value: '0000'
+
+  - by: xpath
+    locator: (//div[@class=" optiscroll-content"])[4]/section/section/div/div/button/span
+    action: click
+
+  - by: xpath
+    locator: (//div[@class=" optiscroll-content"])[4]/section/section/div/div/div/input
+    action: clear
+
+#鼠标置于虚拟机0000的编辑按钮，出现编辑列表
+  - by: xpath
+    locator: //tbody/tr/td[16]/div/div/button/i[3]
+    action: move
+
+  #鼠标移至编辑列表中的恢复选项，并点击
+  - by: xpath
+    locator: //body[@class="theme-white"]/ul/li[4]
+    action: move_click
+
+  #出现云服务器恢复弹窗
+  #点击确认按钮
+  - by: xpath
+    locator: (//div[@class="el-dialog__footer"])[14]/div/button[1]
+    action: click
+
+  #捕获恢复成功的提示信息
+  - by: xpath
+    locator: //div[@class='vue-message vue-message--success']/p
+    action: text
+
+
+#145休眠
+TH-CP-OPERATE_VM-0005:
+#搜索框中搜索虚拟机0000
+  - by: xpath
+    locator: (//div[@class=" optiscroll-content"])[4]/section/section/div/div/div/input
+    action: send
+    value: '0000'
+
+  - by: xpath
+    locator: (//div[@class=" optiscroll-content"])[4]/section/section/div/div/button/span
+    action: click
+
+  - by: xpath
+    locator: (//div[@class=" optiscroll-content"])[4]/section/section/div/div/div/input
+    action: clear
+
+#鼠标置于虚拟机0000的编辑按钮，出现编辑列表
+  - by: xpath
+    locator: //tbody/tr/td[16]/div/div/button/i[3]
+    action: move
+
+  #鼠标移至编辑列表中的休眠选项，并点击
+  - by: xpath
+    locator: //body[@class="theme-white"]/ul/li[5]
+    action: move_click
+
+  #出现云服务器休眠弹窗
+  #点击确认按钮
+  - by: xpath
+    locator: (//div[@class="el-dialog__footer"])[14]/div/button[1]
+    action: click
+
+  #捕获休眠成功的提示信息
+  - by: xpath
+    locator: //div[@class='vue-message vue-message--success']/p
+    action: text
+
+#146唤醒
+TH-CP-OPERATE_VM-0006:
+#搜索框中搜索虚拟机0000
+  - by: xpath
+    locator: (//div[@class=" optiscroll-content"])[4]/section/section/div/div/div/input
+    action: send
+    value: '0000'
+
+  - by: xpath
+    locator: (//div[@class=" optiscroll-content"])[4]/section/section/div/div/button/span
+    action: click
+
+  - by: xpath
+    locator: (//div[@class=" optiscroll-content"])[4]/section/section/div/div/div/input
+    action: clear
+
+#鼠标置于虚拟机0000的编辑按钮，出现编辑列表
+  - by: xpath
+    locator: //tbody/tr/td[16]/div/div/button/i[3]
+    action: move
+
+  #鼠标移至编辑列表中的唤醒选项，并点击
+  - by: xpath
+    locator: //body[@class="theme-white"]/ul/li[6]
+    action: move_click
+
+  #出现云服务器唤醒弹窗
+  #点击确认按钮
+  - by: xpath
+    locator: (//div[@class="el-dialog__footer"])[14]/div/button[1]
+    action: click
+
+  #捕获唤醒成功的提示信息
+  - by: xpath
+    locator: //div[@class='vue-message vue-message--success']/p
+    action: text
+
+#147导出PDF
+TH-CP-OPERATE_VM-0007:
+#搜索框中搜索虚拟机0000
+  - by: xpath
+    locator: (//div[@class=" optiscroll-content"])[4]/section/section/div/div/div/input
+    action: send
+    value: '0000'
+
+  - by: xpath
+    locator: (//div[@class=" optiscroll-content"])[4]/section/section/div/div/button/span
+    action: click
+
+  - by: xpath
+    locator: (//div[@class=" optiscroll-content"])[4]/section/section/div/div/div/input
+    action: clear
+
+  #鼠标置于虚拟机0000的编辑按钮，出现编辑列表
+  - by: xpath
+    locator: //tbody/tr/td[16]/div/div/button/i[3]
+    action: move
+
+  #鼠标移至编辑列表中的导出PDF选项，并点击
+  - by: xpath
+    locator: //body[@class="theme-white"]/ul/li[10]
+    action: move_click
+
+  #云服务器导出PDF弹窗
+  #获取云服务器导出PDF信息
+  - by: xpath
+    locator: //p[@class="vmReport"]
+    action: text
+
+  #点击确认按钮
+  - by: xpath
+    locator: (//div[@class="el-dialog__footer"])[14]/div/button[1]
+    action: click
+
+#148关机
+TH-CP-OPERATE_VM-0008:
+#搜索框中搜索虚拟机0001
+  data1:
+    - by: xpath
+      locator: (//div[@class=" optiscroll-content"])[4]/section/section/div/div/div/input
+      action: send
+      value: '0000'
+
+    - by: xpath
+      locator: (//div[@class=" optiscroll-content"])[4]/section/section/div/div/button/span
+      action: click
+
+    - by: xpath
+      locator: (//div[@class=" optiscroll-content"])[4]/section/section/div/div/div/input
+      action: clear
+
+ #鼠标置于虚拟机0000的编辑按钮，出现编辑列表
+    - by: xpath
+      locator: //tbody/tr/td[16]/div/div/button/i[3]
+      action: move
+
+  #鼠标移至编辑列表中的关机选项，并点击
+    - by: xpath
+      locator: //body[@class="theme-white"]/ul/li[1]
+      action: move_click
+
+  #出现云服务器关闭弹窗
+  #点击确认按钮
+    - by: xpath
+      locator: (//div[@class="el-dialog__footer"])[14]/div/button[1]
+      action: click
+
+    #捕获删除成功的提示信息
+  data2:
+    - by: xpath
+      locator: //div[@class='vue-message vue-message--success']/p
+      action: text
+
+#149分配(当前租户下存在租户用户)
+TH-CP-OPERATE_VM-0009:
+#搜索框中搜索虚拟机0000
+  - by: xpath
+    locator: (//div[@class=" optiscroll-content"])[4]/section/section/div/div/div/input
+    action: send
+    value: '0000'
+
+  - by: xpath
+    locator: (//div[@class=" optiscroll-content"])[4]/section/section/div/div/button/span
+    action: click
+
+  - by: xpath
+    locator: (//div[@class=" optiscroll-content"])[4]/section/section/div/div/div/input
+    action: clear
+
+  #鼠标置于虚拟机0000的编辑按钮，出现编辑列表
+  - by: xpath
+    locator: //tbody/tr/td[16]/div/div/button/i[3]
+    action: move
+
+  #鼠标移至编辑列表中的分配选项，并点击
+  - by: xpath
+    locator: //body[@class="theme-white"]/ul/li[11]
+    action: move_click
+
+  #云服务器分配弹窗
+  #点击选择用户下拉框
+  - by: xpath
+    locator: //input[@id="compute_instances_dialogOpt_userChange"]
+    action: click
+
+  #选择下拉框中的第一个租户并点击
+  - by: xpath
+    locator: (//ul[@class="el-scrollbar__view el-select-dropdown__list"])[2]/li
+    action: move_click
+
+  #点击确认按钮
+  - by: xpath
+    locator: (//div[@class="el-dialog__footer"])[14]/div/button[1]
+    action: click
+
+  #获取分配成功的提示信息
+  - by: xpath
+    locator: //div[@class='vue-message vue-message--success']/p
+    action: text
+
+#150移动
+TH-CP-OPERATE_VM-0010:
+#搜索框中搜索虚拟机0000
+  - by: xpath
+    locator: (//div[@class=" optiscroll-content"])[4]/section/section/div/div/div/input
+    action: send
+    value: '0000'
+
+  - by: xpath
+    locator: (//div[@class=" optiscroll-content"])[4]/section/section/div/div/button/span
+    action: click
+
+  - by: xpath
+    locator: (//div[@class=" optiscroll-content"])[4]/section/section/div/div/div/input
+    action: clear
+
+  #鼠标置于虚拟机0000的编辑按钮，出现编辑列表
+  - by: xpath
+    locator: //tbody/tr/td[16]/div/div/button/i[3]
+    action: move
+
+  #鼠标移至编辑列表中的移动选项，并点击
+  - by: xpath
+    locator: //body[@class="theme-white"]/ul/li[12]
+    action: move_click
+
+  #云服务器移动弹窗
+  #点击选择分组下拉框
+  - by: xpath
+    locator: //span[@id="compute_instances_move_groupPath"]/div
+    action: move_click
+
+  #选择一级下拉框中的第一个选项并点击
+  - by: xpath
+    locator: //li[@class="el-cascader-menu__item el-cascader-menu__item--extensible"]
+    action: move_click
+
+  #选择二级下拉框中的第一个选项并点击
+  - by: xpath
+    locator: //li[@class="el-cascader-menu__item el-cascader-menu__item--extensible"]
+    action: move_click
+
+  #选择三级下拉框中的第一个选项并点击 el-cascader-menu__item
+  - by: xpath
+    locator: //li[@class="el-cascader-menu__item el-cascader-menu__item--extensible"]
+    action: move_click
+
+  #选择四级下拉框中的第一个选项并点击
+  - by: xpath
+    locator: //li[@class="el-cascader-menu__item"]
+    action: move_click
+
+  #点击确认按钮
+  - by: xpath
+    locator: (//div[@class="el-dialog__footer"])[14]/div/button[1]
+    action: click
+
+  #获取分配成功的提示信息
+  - by: xpath
+    locator: //div[@class='vue-message vue-message--success']/p
+    action: text
+
+#1411启动顺序
+TH-CP-OPERATE_VM-0011:
+    #搜索框中搜索虚拟机0000
+  - by: xpath
+    locator: (//div[@class=" optiscroll-content"])[4]/section/section/div/div/div/input
+    action: send
+    value: '0000'
+
+  - by: xpath
+    locator: (//div[@class=" optiscroll-content"])[4]/section/section/div/div/button/span
+    action: click
+
+  - by: xpath
+    locator: (//div[@class=" optiscroll-content"])[4]/section/section/div/div/div/input
+    action: clear
+
+    #鼠标置于虚拟机0000的名称按钮，出现虚拟机详情信息列表
+  - by: xpath
+    locator: //tbody/tr/td[2]/div/span/a/i
+    action: click
+
+    #鼠标移至虚拟机基本信息页中的编辑按钮，出现编辑列表
+  - by: xpath
+    locator: //body[@class="theme-white"]/div/div/div[2]/div/div/section/section/div[2]/div[2]/div[2]/div/section/div[3]/div/button
+    action: move
+
+  #鼠标移至编辑列表中的启动顺序选项，并点击
+  - by: xpath
+    locator: (//ul[@class="el-dropdown-menu el-popper"])[5]/li[14]
+    action: move_click
+
+  #出现云服务器启动顺序弹窗，鼠标拖拽选项改变启动顺序
+#  - by: xpath
+#    locator: //div[@class="cont-bottom"]/div/button
+#    action: click
+
+  #点击确认按钮
+  - by: xpath
+    locator: (//button[@id="compute_instances_dialog_vmOpt_confirm"])
+    action: click
+
+  #获取改变启动顺序成功的提示信息
+  - by: xpath
+    locator: //div[@class='vue-message vue-message--success']/p
+    action: text
+
+  #点击确认按钮，关闭编辑弹窗
+  - by: xpath
+    locator: (//*[@id="instances_edit_device_close"])[1]/span
+    action: click
+
+  #关闭虚拟即详细信息页
+  - by: xpath
+    locator: //body[@class="theme-white"]/div/div/div[2]/div/div/section/section/div[2]/div[2]/div[2]/div/section/div[3]/i
+    action: click
+
+#1412迁移
+#1412-1集群内迁移
+TH-CP-MIGRATE_VM-0001:
+  data0: &demo0000
+    #搜索框中搜索虚拟机0000
+    - by: xpath
+      locator: (//div[@class=" optiscroll-content"])[4]/section/section/div/div/div/input
+      action: send
+      value: '0000'
+
+    - by: xpath
+      locator: (//div[@class=" optiscroll-content"])[4]/section/section/div/div/button/span
+      action: click
+
+    - by: xpath
+      locator: (//div[@class=" optiscroll-content"])[4]/section/section/div/div/div/input
+      action: clear
+
+ #鼠标置于虚拟机0000的开机按钮，并点击
+    - by: xpath
+      locator: //tbody/tr/td[16]/div/button
+      action: move_click
+
+  #鼠标置于虚拟机0000的名称按钮，出现虚拟机详情信息列表
+    - by: xpath
+      locator: //tbody/tr/td[2]/div/span/a/i
+      action: click
+
+  #鼠标移至虚拟机基本信息页中的编辑按钮，出现编辑列表
+    - by: xpath
+      locator: //body[@class="theme-white"]/div/div/div[2]/div/div/section/section/div[2]/div[2]/div[2]/div/section/div[3]/div/button
+      action: move
+
+  #鼠标移至编辑列表中的迁移选项，并点击
+    - by: xpath
+      locator: (//ul[@class="el-dropdown-menu el-popper"])[5]/li[8]
+      action: move_click
+
+  #出现云服务器迁移弹窗
+  data1:
+    #点击集群内迁移选项
+    - by: xpath
+      locator: (//div[@id="compute_instances_dialogOpt_hostmigrate"])/div[1]
+      action: click
+
+    #出现云服务器迁移列表
+    #勾选列表中第二台主机
+    - by: xpath
+      locator: (//span[@class="el-checkbox__inner"])[5]
+      action: click
+
+    #点击确认按钮
+    - by: xpath
+      locator: (//button[@id="compute_instances_dialogOpt_confirm"])
+      action: click
+
+   #获取迁移成功的提示信息
+    - by: xpath
+      locator: //div[@class='vue-message vue-message--success']/p
+      action: text
+
+    #关闭虚拟即详细信息页
+    - by: xpath
+      locator: //body[@class="theme-white"]/div/div/div[2]/div/div/section/section/div[2]/div[2]/div[2]/div/section/div[3]/i
+      action: click
+
+#1412-2跨集群迁移（存在目的集群）
+TH-CP-MIGRATE_VM-0002:
+  data0: *demo0000
+
+  #出现云服务器迁移弹窗
+  data1:
+    #点击跨集群迁移迁移选项
+    - by: xpath
+      locator: (//div[@id="compute_instances_dialogOpt_clustermigrate"])/div[1]
+      action: click
+
+    #出现云服务器迁移列表
+    #目标集群下拉框选择目标集群
+    ##############暂无环境
+
+    #获取迁移成功的提示信息
+    - by: xpath
+      locator: //div[@class='vue-message vue-message--success']/p
+      action: text
+
+    #关闭虚拟即详细信息页
+    - by: xpath
+      locator: //body[@class="theme-white"]/div/div/div[2]/div/div/section/section/div[2]/div[2]/div[2]/div/section/div[3]/i
+      action: click
+
+#1412-3迁移到vsphere（存在目的集群）
+TH-CP-MIGRATE_VM-0003:
+  data0: *demo0000
+
+  #出现云服务器迁移弹窗
+  data1:
+    #迁移到vsphere
+    - by: xpath
+      locator: (//div[@id="compute_instances_dialogOpt_vspheremigrate"])/div[1]
+      action: click
+
+    #出现云服务器迁移列表
+    #目标集群下拉框选择目标集群
+    ##############暂无环境
+
+    #获取迁移成功的提示信息
+    - by: xpath
+      locator: //div[@class='vue-message vue-message--success']/p
+      action: text
+
+    #关闭虚拟即详细信息页
+    - by: xpath
+      locator: //body[@class="theme-white"]/div/div/div[2]/div/div/section/section/div[2]/div[2]/div[2]/div/section/div[3]/i
+      action: click
+
+#1413克隆
+#1413-1全量克隆
+#（1）不基于快照
+TH-CP-CLONE_VM-0001:
+  data0: &demo0001
+    #搜索框中搜索虚拟机0000
+    - by: xpath
+      locator: (//div[@class=" optiscroll-content"])[4]/section/section/div/div/div/input
+      action: send
+      value: '0000'
+
+    - by: xpath
+      locator: (//div[@class=" optiscroll-content"])[4]/section/section/div/div/button/span
+      action: click
+
+    - by: xpath
+      locator: (//div[@class=" optiscroll-content"])[4]/section/section/div/div/div/input
+      action: clear
+
+ #鼠标置于虚拟机0000的开机按钮，并点击
+    - by: xpath
+      locator: //tbody/tr/td[16]/div/button
+      action: move_click
+
+  #鼠标置于虚拟机0000的名称按钮，出现虚拟机详情信息列表
+    - by: xpath
+      locator: //tbody/tr/td[2]/div/span/a/i
+      action: click
+
+  #鼠标移至虚拟机基本信息页中的编辑按钮，出现编辑列表
+    - by: xpath
+      locator: //body[@class="theme-white"]/div/div/div[2]/div/div/section/section/div[2]/div[2]/div[2]/div/section/div[3]/div/button
+      action: move
+
+  #鼠标移至编辑列表中的克隆选项，并点击
+    - by: xpath
+      locator: (//ul[@class="el-dropdown-menu el-popper"])[5]/li[11]
+      action: move_click
+
+  #出现云服务器克隆弹窗
+  data1:
+  #修改克隆出的云服务器默认名称  (//button[@id="compute_instances_dialog_vmOpt_confirm"])
+    - by: xpath
+      locator: //input[@id="compute_instances_dialogOpt_clone_name"]
+      action: clear
+
+    - by: xpath
+      locator: //input[@id="compute_instances_dialogOpt_clone_name"]
+      action: send
+      value: '0000-clone1'
+
+    #其它配置信息默认
+    #点击确认
+    - by: xpath
+      locator: (//button[@id="compute_instances_dialog_vmOpt_confirm"])
+      action: click
+
+  #获取全量克隆成功的提示信息
+    - by: xpath
+      locator: //div[@class='vue-message vue-message--success']/p
+      action: text
+
+    #关闭虚拟即详细信息页
+    - by: xpath
+      locator: //body[@class="theme-white"]/div/div/div[2]/div/div/section/section/div[2]/div[2]/div[2]/div/section/div[3]/i
+      action: click
+
+  #彻底删除全量克隆出的虚拟机0000-clone1
+    - by: xpath
+      locator: (//div[@class=" optiscroll-content"])[4]/section/section/div/div/div/input
+      action: send
+      value: '0000-clone1'
+
+  data2: &demo0002
+    - by: xpath
+      locator: (//div[@class=" optiscroll-content"])[4]/section/section/div/div/button/span
+      action: click
+
+    - by: xpath
+      locator: (//div[@class=" optiscroll-content"])[4]/section/section/div/div/div/input
+      action: clear
+
+  #鼠标置于虚拟机0000-clone1的编辑按钮，出现编辑列表
+    - by: xpath
+      locator: //tbody/tr/td[16]/div/div/button/i[3]
+      action: move
+
+  #鼠标移至编辑列表中的删除选项，并点击
+    - by: xpath
+      locator: //body[@class="theme-white"]/ul/li[13]
+      action: move_click
+
+  #出现云服务器删除弹窗
+  #勾选同步删除卷选项+彻底删除选项
+    - by: xpath
+      locator: (//div[@class="el-dialog__footer"])[14]/div/label[1]/span/span
+      action: click
+
+    - by: xpath
+      locator: (//div[@class="el-dialog__footer"])[14]/div/label[2]/span/span
+      action: click
+
+    #再点击确认按钮
+    - by: xpath
+      locator: (//div[@class="el-dialog__footer"])[14]/div/button[1]
+      action: click
+
+    #捕获删除成功的提示信息
+    - by: xpath
+      locator: //div[@class='vue-message vue-message--success']/p
+      action: text
+
+#（2）基于快照
+TH-CP-CLONE_VM-0002:
+  data0: *demo0001
+
+ #出现云服务器克隆弹窗
+  data1:
+  #修改克隆出的云服务器默认名称  (//button[@id="compute_instances_dialog_vmOpt_confirm"])
+    - by: xpath
+      locator: //input[@id="compute_instances_dialogOpt_clone_name"]
+      action: clear
+
+    - by: xpath
+      locator: //input[@id="compute_instances_dialogOpt_clone_name"]
+      action: send
+      value: '0000-kz-clone1'
+
+  #点击创建快照按钮
+    - by: xpath
+      locator: (//div[@class="clone-snap-create"])
+      action: click
+
+  #获取创建快照成功的提示信息
+    - by: xpath
+      locator: //div[@class='vue-message vue-message--success']/p
+      action: text
+
+    #其它配置信息默认
+    #点击确认
+    - by: xpath
+      locator: (//button[@id="compute_instances_dialog_vmOpt_confirm"])
+      action: click
+
+    #关闭虚拟即详细信息页
+    - by: xpath
+      locator: //body[@class="theme-white"]/div/div/div[2]/div/div/section/section/div[2]/div[2]/div[2]/div/section/div[3]/i
+      action: click
+
+  #获取全量快照克隆成功的提示信息
+    - by: xpath
+      locator:  //div[@class='vue-message vue-message--success']/p
+      action: text
+
+    - by: xpath
+      locator: (//div[@class=" optiscroll-content"])[4]/section/section/div/div/div/input
+      action: send
+      value: '0000-kz-clone1'
+
+  #彻底删除全量克隆出的虚拟机0000-kz-clone1
+  data2: *demo0002
+
+#1413-2链接克隆
+TH-CP-CLONE_VM-0003:
+  data0: *demo0001
+
+ #出现云服务器克隆弹窗
+  data1:
+  #选择链接克隆选项
+    - by: xpath
+      locator: //label[@id='compute_instances_dialogOpt_clone_type2']
+      action: click
+
+  #修改克隆出的云服务器默认名称  (//button[@id="compute_instances_dialog_vmOpt_confirm"])
+    - by: xpath
+      locator: //input[@id="compute_instances_dialogOpt_clone_name"]
+      action: clear
+
+    - by: xpath
+      locator: //input[@id="compute_instances_dialogOpt_clone_name"]
+      action: send
+      value: '0000-lj-clone1'
+
+  #点击创建快照按钮
+    - by: xpath
+      locator: (//div[@class="clone-snap-create"])
+      action: click
+
+  #获取创建快照成功的提示信息
+    - by: xpath
+      locator: //div[@class='vue-message vue-message--success']/p
+      action: text
+
+    #其它配置信息默认
+    #点击确认
+    - by: xpath
+      locator: (//button[@id="compute_instances_dialog_vmOpt_confirm"])
+      action: click
+
+    #关闭虚拟即详细信息页
+    - by: xpath
+      locator: //body[@class="theme-white"]/div/div/div[2]/div/div/section/section/div[2]/div[2]/div[2]/div/section/div[3]/i
+      action: click
+
+  #获取全量快照克隆成功的提示信息
+    - by: xpath
+      locator:  //div[@class='vue-message vue-message--success']/p
+      action: text
+
+    - by: xpath
+      locator: (//div[@class=" optiscroll-content"])[4]/section/section/div/div/div/input
+      action: send
+      value: '0000-lj-clone1'
+
+  #彻底删除全量克隆出的虚拟机0000-lj-clone1
+  data2: *demo0002
+
+#1413-3跨租户克隆 (前置条件：存在已创建好的租户)
+TH-CP-CLONE_VM-0004:
+  data0: *demo0001
+
+ #出现云服务器克隆弹窗
+  data1:
+  #开启跨租户克隆按钮
+    - by: xpath
+      locator: (//span[@class='el-switch__core'])[2]
+      action: move_click
+
+  #修改克隆出的云服务器默认名称  (//button[@id="compute_instances_dialog_vmOpt_confirm"])
+    - by: xpath
+      locator: //input[@id="compute_instances_dialogOpt_clone_name"]
+      action: clear
+
+    - by: xpath
+      locator: //input[@id="compute_instances_dialogOpt_clone_name"]
+      action: send
+      value: '0000-kzh-clone1'
+
+  #点击租户下拉框
+    - by: xpath
+      locator: //input[@id="compute_instances_dialogOpt_tenant"]
+      action: click
+
+  #选择租户下拉框中的内容
+    - by: xpath
+      locator: (//span[text()="0001"])
+      action: move_click
+
+  #点击存储池
+    - by: xpath
+      locator: (//input[@class="el-input__inner"])[13]
+      action: click
+
+  #选择存储池下拉框中的内容
+    - by: xpath
+      locator: //span[text()="p00l-0001"]
+      action: move_click
+
+    #其它配置信息默认
+    #点击确认
+    - by: xpath
+      locator: (//button[@id="compute_instances_dialog_vmOpt_confirm"])
+      action: click
+
+    #关闭虚拟机详细信息页
+    - by: xpath
+      locator: //body[@class="theme-white"]/div/div/div[2]/div/div/section/section/div[2]/div[2]/div[2]/div/section/div[3]/i
+      action: click
+
+  #获取跨租户克隆成功的提示信息
+    - by: xpath
+      locator:  //div[@class='vue-message vue-message--success']/p
+      action: text
+
