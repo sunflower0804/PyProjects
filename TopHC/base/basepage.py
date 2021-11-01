@@ -151,6 +151,11 @@ class BasePage():
         self.find(*loc).send_keys(Keys.BACK_SPACE)
         logs.info('键盘输入后清理')
 
+    def keys_PageDown(self):
+        '''键盘操作方向键：向下翻页'''
+        ActionChains(self._driver).send_keys(Keys.PAGE_DOWN).perform()
+        logs.info('键盘操作:向下翻页')
+
     # 7、表单切换
     def switch_iframe(self, *loc):
         return self._driver.switch_to.frame(self.find(*loc))

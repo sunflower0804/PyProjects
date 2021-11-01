@@ -1,9 +1,12 @@
 from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
 
-from TopHC.base.basepage import BasePage
+
 
 # 从首页进入计算模块的首页-->云服务器页面
+from TopHC.base.basepage import BasePage
+
+
 class CserviceHome(BasePage):
     def goto_cserver(self):
         self.move_mouse(By.ID, 'navBar_item_计算_content')

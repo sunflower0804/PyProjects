@@ -326,8 +326,11 @@ class ServicePage(BasePage):
 
     # (2)磁盘大小输入框输入为空验证
     def creat_VM_page1312(self):
-        data = self.data['TH-CP-VM-0038']  # 获取磁盘大小输入框输入为空后下方的提示信息元素
-        service = self.steps(data)
+        data1 = self.data['TH-CP-VM-0038']['data1']   # 获取磁盘大小输入框输入为空后下方的提示信息元素
+        self.steps(data1)
+        sleep(7)
+        data2 = self.data['TH-CP-VM-0038']['data2']   # 获取磁盘大小输入框输入为空后下方的提示信息元素
+        service = self.steps(data2)
         return service
 
     # (3)磁盘大小输入框输入特殊字符验证
@@ -359,189 +362,749 @@ class ServicePage(BasePage):
     def creat_VM_page1322(self):
         data1 = self.data['TH-CP-VM1-0042']['data1']  #选择ide验证(tabindex="0")
         self.steps(data1)
-        data2 = self.data['TH-CP-VM-0042']['data2']
+        data2 = self.data['TH-CP-VM1-0042']['data2']
         service = self.text(data2['by'], data2['locator'], attr=data2['attr'])
-        data3 = self.data['TH-CP-VM-0042']['data3']  # 恢复默认选项scsi
+        data3 = self.data['TH-CP-VM1-0042']['data3']  # 恢复默认选项scsi
         self.steps(data3)
         return service
 
     # <1-3-3存储池下拉框验证
     def creat_VM_page1331(self):
-        data = self.data['TH-CP-VM-0043']
-        service = self.steps(data)
+        data1 = self.data['TH-CP-VM-0043']['data1']
+        self.steps(data1)
+        data2 = self.data['TH-CP-VM-0043']['data2']
+        service = self.input_text(data2['by'], data2['locator'])
         return service
 
     # <1-3-4卷名称输入框验证
     # (1)卷名称输入框默认值验证
     def creat_VM_page1341(self):
-        data14 = self.data['TH-CP-VM-0044']['data1']
-        service09 = self.input_text(data14['by'], data14['locator'])  #定位到卷名称输入框，获取默认值：test001-volume1
-        data15 = self.data['TH-CP-VM-0044']['data2']  #清除默认值
-        self.steps(data15)
-        # (2)卷名称输入框输入为空验证
-        data16 = self.data['TH-CP-VM-0045']['data1']  #输入框下方提示信息获取：“卷名称不能为空”
-        service10 = self.steps(data16)
-        data17 = self.data['TH-CP-VM-0045']['data2']  #输入框弱提示信息获取：“请输入卷名称”
-        service11 = self.text(data17['by'], data17['locator'], attr=data17['attr'])
-        # (3)卷名称输入框输入特殊字符验证
-        data18 = self.data['TH-CP-VM-0046']  #输入框下方提示信息获取：“卷名称不能含有特殊字符”
-        service12 = self.steps(data18)
-        # (4)卷名称输入框输入大于32位字符验证
-        data19 = self.data['TH-CP-VM-0047']  #输入框下方提示信息获取：“卷名称由1~32位字符组成”
-        service13 = self.steps(data19)
+        data = self.data['TH-CP-VM-0044']
+        service = self.input_text(data['by'], data['locator'])  #定位到卷名称输入框，获取默认值：test001-volume1
+        return service
 
-        # <1-3-5副本数下拉框验证
-        data20 = self.data['TH-CP-VM-0048']['data1']  #副本数下拉框默认值验证
-        service14 = self.input_text(data20['by'], data20['locator'])
-        data21 = self.data['TH-CP-VM-0048']['data2']
-        self.steps(data21)
-        data22 = self.data['TH-CP-VM-0048']['data3']
-        service15 = self.input_text(data22['by'], data22['locator'])
+    # (2)卷名称输入框输入为空验证
+    def creat_VM_page1342(self):
+        data1 = self.data['TH-CP-VM-0045']['data1']  #输入框下方提示信息获取：“卷名称不能为空”
+        service1 = self.steps(data1)
+        data2 = self.data['TH-CP-VM-0045']['data2']  #输入框弱提示信息获取：“请输入卷名称”
+        service2 = self.text(data2['by'], data2['locator'], attr=data2['attr'])
+        return service1, service2
 
-        # <1-3-6云盘类型下拉框验证
-        data23 = self.data['TH-CP-VM-0049']['data1']  #云盘类型下拉框默认值验证
-        service16 = self.input_text(data23['by'], data23['locator'])
-        data24 = self.data['TH-CP-VM-0049']['data2']
-        self.steps(data24)
-        data25 = self.data['TH-CP-VM-0049']['data3']  #云盘类型选择值验证：高效云盘
-        service17 = self.input_text(data25['by'], data25['locator'])
+    # (3)卷名称输入框输入特殊字符验证
+    def creat_VM_page1343(self):
+        data = self.data['TH-CP-VM-0046']  #输入框下方提示信息获取：“卷名称不能含有特殊字符”
+        service = self.steps(data)
+        return service
 
-        # <1-3-7存储介质下拉框验证
-        data26 = self.data['TH-CP-VM-0050']['data1']  #存储介质下拉框默认值验证
-        service18 = self.input_text(data26['by'], data26['locator'])
-        data27 = self.data['TH-CP-VM-0050']['data2']
-        self.steps(data27)
-        data28 = self.data['TH-CP-VM-0050']['data3']  #存储介质选择值验证：固态硬盘
-        service19 = self.input_text(data28['by'], data28['locator'])
+    # (4)卷名称输入框输入大于32位字符验证
+    def creat_VM_page1344(self):
+        data = self.data['TH-CP-VM-0047']  #输入框下方提示信息获取：“卷名称由1~32位字符组成”
+        service = self.steps(data)
+        return service
 
-        # <1-3-8链路冗余下拉框验证
-        data29 = self.data['TH-CP-VM-0051']['data1']  #存储介质下拉框默认值验证
-        service20 = self.input_text(data29['by'], data29['locator'])
-        data30 = self.data['TH-CP-VM-0051']['data2']
-        self.steps(data30)
-        data31 = self.data['TH-CP-VM-0051']['data3']  #存储介质选择值验证：固态硬盘
-        service21 = self.input_text(data31['by'], data31['locator'])
-        data32 = self.data['TH-CP-VM-0051']['data4']
-        self.steps(data32)
-        return service01, service02, service03, service04, service05, \
-               service06, service07, \
-               service08, \
-               service10, service11, service12, service13, \
-               service14, service15,\
-               service16, service17,\
-               service18, service19, \
-               service20, service21,
+    # <1-3-5副本数下拉框验证
+    # (1)副本数默认值验证
+    def creat_VM_page1351(self):
+        data = self.data['TH-CP-VM-0048']  #副本数下拉框默认值验证
+        service = self.input_text(data['by'], data['locator'])
+        return service
 
+    # (2)副本数选择值验证
+    def creat_VM_page1352(self):
+        data1 = self.data['TH-CP-VM1-0048']['data1']
+        self.steps(data1)
+        data2 = self.data['TH-CP-VM1-0048']['data2']
+        service = self.input_text(data2['by'], data2['locator'])
+        return service
 
+    # <1-3-6云盘类型下拉框验证
+    # (1)云盘类型默认值验证：普通云盘1.0
+    def creat_VM_page1361(self):
+        data = self.data['TH-CP-VM-0049']  #云盘类型下拉框默认值验证
+        service = self.input_text(data['by'], data['locator'])
+        return service
+
+    # (2)云盘类型选择值验证：高效云盘
+    def creat_VM_page1362(self):
+        data1 = self.data['TH-CP-VM1-0049']['data1']
+        self.steps(data1)
+        data2 = self.data['TH-CP-VM1-0049']['data2']  #云盘类型选择值验证：高效云盘
+        service = self.input_text(data2['by'], data2['locator'])
+        return service
+
+    # <1-3-7存储介质下拉框验证
+    # (1)存储介质默认值验证：机械硬盘
+    def creat_VM_page1371(self):
+        data = self.data['TH-CP-VM-0050']  #存储介质下拉框默认值验证
+        service = self.input_text(data['by'], data['locator'])
+        return service
+
+    # (2)存储介质选择值验证：固态硬盘
+    def creat_VM_page1372(self):
+        data1 = self.data['TH-CP-VM1-0050']['data1']
+        self.steps(data1)
+        data2 = self.data['TH-CP-VM1-0050']['data2']  #存储介质选择值验证：固态硬盘
+        service = self.input_text(data2['by'], data2['locator'])
+        return service
+
+    # <1-3-8链路冗余下拉框验证
+    # (1)链路冗余默认值验证：1
+    def creat_VM_page1381(self):
+        data = self.data['TH-CP-VM-0051']  #存储介质下拉框默认值验证
+        service = self.input_text(data['by'], data['locator'])
+        return service
+
+    # (2)链路冗余选择值验证：3
+    def creat_VM_page1382(self):
+        data1 = self.data['TH-CP-VM1-0051']['data1']
+        self.steps(data1)
+        data2 = self.data['TH-CP-VM1-0051']['data2']  #存储介质选择值验证：固态硬盘
+        service = self.input_text(data2['by'], data2['locator'])
+        data3 = self.data['TH-CP-VM1-0051']['data3']
+        self.steps(data3)
+        return service
+
+    #1-4 网卡信息页
     def creat_VM_page4(self):
-        data0 = self.data['TH-CP-VM-0052']['data01']   #获取添加云服务器-->创建云服务器元素
-        self.steps(data0)  # 依次点击添加云服务器-->创建云服务器，进入基本信息页
-        data01 = self.data['TH-CP-VM-0052']['data02']  #获取进入到CPU、内存信息页的元素
-        self.steps(data01)  # 进入CPU、内存信息页
-        data02 = self.data['TH-CP-VM-0052']['data03'] #获取进入到存储信息页的元素
-        self.steps(data02)  # 进入存储信息页
-        data03 = self.data['TH-CP-VM-0052']['data04'] #获取进入到网卡信息页的元素
-        self.steps(data03)  # 进入网卡信息页
+        data1 = self.data['TH-CP-VM-0052']['data1']   #获取添加云服务器-->创建云服务器元素
+        self.steps(data1)  # 依次点击添加云服务器-->创建云服务器，进入基本信息页
+        data2 = self.data['TH-CP-VM-0052']['data2']  #获取进入到CPU、内存信息页的元素
+        self.steps(data2)  # 进入CPU、内存信息页
+        data3 = self.data['TH-CP-VM-0052']['data3'] #获取进入到存储信息页的元素
+        self.steps(data3)  # 进入存储信息页
+        data4 = self.data['TH-CP-VM-0052']['data4'] #获取进入到网卡信息页的元素
+        self.steps(data4)  # 进入网卡信息页
 
-        # # <1-4-1新增网卡功能验证
-        # # (1)新增网卡验证
-        # data04 = self.data['TH-CP-VM-0053']  #新增一个网卡成功后删除
-        # service01 = self.steps(data04)
+    # <1-4-1新增网卡功能验证
+    # (1)新增网卡验证
+    def creat_VM_page1411(self):
+        data = self.data['TH-CP-VM-0053']  #新增一个网卡成功后删除
+        service = self.steps(data)
+        return service
 
-        # <1-4-2网卡信息折叠功能验证
-        # (1)网卡信息折叠功能验证
-        data05 = self.data['TH-CP-VM-0054']  #点击网卡折叠按钮
-        service02 = self.steps(data05)
+    # <1-4-2网卡信息折叠功能验证
+    # (1)网卡信息折叠功能验证
+    def creat_VM_page1421(self):
+        data1 = self.data['TH-CP-VM-0054']["data1"]  #点击网卡折叠按钮
+        self.steps(data1)
+        sleep(2)
+        data2 = self.data['TH-CP-VM-0054']["data2"]
+        service1 = self.check_element_exist(data2['by'], data2['locator'])
+        data3 = self.data['TH-CP-VM-0054']["data3"]
+        self.steps(data3)       #再次点击网卡折叠按钮
+        data4 = self.data['TH-CP-VM-0054']["data4"]
+        service2 = self.check_element_exist(data4['by'], data4['locator'])
+        return service1, service2
 
-        # # <1-4-3网卡下拉框验证
-        # data06 = self.data['TH-CP-VM-0055'] #网卡下拉框验证
-        # service03 = self.steps(data06)
+    # <1-4-3网卡下拉框验证
+    # (1)网卡类型默认值验证：本地网络(存在虚拟交换机选项)
+    def creat_VM_page1431(self):
+        data = self.data['TH-CP-VM-0055'] #网卡下拉框验证
+        service = self.steps(data)
+        return service
 
-        # # <1-4-4适配器下拉框验证
-        # data07 = self.data['TH-CP-VM-0056']['data1']  #存储介质下拉框默认值验证
-        # service04 = self.input_text(data07['by'], data07['locator'])
-        # data08 = self.data['TH-CP-VM-0056']['data2']
-        # self.steps(data08)
-        # data09 = self.data['TH-CP-VM-0056']['data3']  #存储介质选择值验证：固态硬盘
-        # service05 = self.input_text(data09['by'], data09['locator'])
+    # (2)网卡类型选择值验证：VPC网络(存在VPC交换机选项)
+    def creat_VM_page1432(self):
+        data = self.data['TH-CP-VM1-0055']  # 网卡下拉框验证
+        service = self.steps(data)
+        return service
 
-        ## <1-4-5多队列设置开关验证
-        # data10 = self.data['TH-CP-VM-0057']['data1']
-        # service06 = self.check_element_exist(data10['by'], data10['locator'])  #默认关闭状态验证(关闭状态下队列数信息不存在,即返回Flase)
-        # data11 = self.data['TH-CP-VM-0057']['data2']     #开启多队列
-        # self.steps(data11)
-        # data12 = self.data['TH-CP-VM-0057']['data3']
-        # service07 = self.check_element_exist(data12['by'], data12['locator'])   #开启状态验证(开启状态下队列数信息存在,即返回True)
+    # <1-4-4适配器下拉框验证
+    # (1)适配器类型默认值验证：virtio
+    def creat_VM_page1441(self):
+        data = self.data['TH-CP-VM-0056']
+        service = self.input_text(data['by'], data['locator'])
+        return service
 
-        # # <1-4-6队列数输入框验证
-        # # (1)队列数输入框默认值验证
-        # data15 = self.data['TH-CP-VM-0058']['data1']
-        # service09 = self.input_text(data15['by'], data15['locator'])  # 定位到队列数输入框，获取默认值：1
-        # data16 = self.data['TH-CP-VM-0058']['data2']  # 清除默认值
-        # self.steps(data16)
-        # # (2)队列数输入框输入为空验证
-        # data17 = self.data['TH-CP-VM-0059']['data1']  # 输入框下方提示信息获取：“队列数不能为空”
-        # service10 = self.steps(data17)
-        # data18 = self.data['TH-CP-VM-0059']['data2']  # 输入框弱提示信息获取：“请输入队列数”
-        # service11 = self.text(data18['by'], data18['locator'], attr=data18['attr'])
-        # # (3)队列数输入框输入特殊字符验证
-        # data19 = self.data['TH-CP-VM-0060']  # 输入框下方提示信息获取：“队列数为正整数”
-        # service12 = self.steps(data19)
-        # # (4)队列数输入框输入大于2验证
-        # data20 = self.data['TH-CP-VM-0061']  # 输入框下方提示信息获取：“队列数不能超过当前cpu数（当前cpu数为2）”
-        # service13 = self.steps(data20)
-        # # (5)队列数输入框输入小于1验证
-        # data21 = self.data['TH-CP-VM-0062']  # 输入框下方提示信息获取：“队列数为正整数”
-        # service14 = self.steps(data21)
+    # (2)适配器类型选择值验证：rtl8139
+    def creat_VM_page1442(self):
+        data1 = self.data['TH-CP-VM1-0056']['data1']
+        self.steps(data1)
+        data2 = self.data['TH-CP-VM1-0056']['data2']  #存储介质选择值验证：固态硬盘
+        service = self.input_text(data2['by'], data2['locator'])
+        return service
 
-        # <1-4-7虚拟交换机下拉框验证（前置条件：存在创建好的虚拟交换机compute、manage；compute下存在端口“计算”、“计算98”）
-        # # <1-4-3虚拟交换机下拉框验证
-        # data22 = self.data['TH-CP-VM-0063']['data1']  #虚拟交换机下拉框默认值验证
-        # service15 = self.input_text(data22['by'], data22['locator'])
-        # data23 = self.data['TH-CP-VM-0063']['data2']  #虚拟交换机端口下拉框默认值验证
-        # service16 = self.input_text(data23['by'], data23['locator'])
-        # data24 = self.data['TH-CP-VM-0063']['data3']
-        # self.steps(data24)
+    # <1-4-5多队列设置开关验证
+    # (1)默认关闭状态验证(关闭状态下队列数输入框不存在)
+    def creat_VM_page1451(self):
+        data = self.data['TH-CP-VM-0057']
+        service = self.check_element_exist(data['by'], data['locator'])  #默认关闭状态验证(关闭状态下队列数信息不存在,即返回Flase)
+        return service
 
-        # # <1-4-8速率输入框验证
-        # (1)速率输入框默认值验证
-        data25 = self.data['TH-CP-VM-0064']['data1']
-        service17 = self.input_text(data25['by'], data25['locator'])  # 定位到速率输入框，获取默认值：0
-        data26 = self.data['TH-CP-VM-0064']['data2']  # 清除默认值
-        self.steps(data26)
-        # (2)速率输入框输入为空验证
-        data27 = self.data['TH-CP-VM-0065']['data1']
-        service18 = self.steps(data27)
-        data28 = self.data['TH-CP-VM-0065']['data2']  # 输入框弱提示信息获取：“请输入队列数”
-        service19 = self.text(data28['by'], data28['locator'], attr=data28['attr'])
-        # (3)速率输入框输入特殊字符验证
-        data29 = self.data['TH-CP-VM-0060']  # 输入框下方提示信息获取：“队列数为正整数”
-        service20 = self.steps(data29)
-        # (4)速率输入框输入大于2验证
-        data30 = self.data['TH-CP-VM-0061']  # 输入框下方提示信息获取：“队列数不能超过当前cpu数（当前cpu数为2）”
-        service21 = self.steps(data30)
-        # (5)速率输入框输入小于0验证
-        data31 = self.data['TH-CP-VM-0062']  # 输入框下方提示信息获取：“队列数为正整数”
-        service22 = self.steps(data31)
+    # (2)开启状态验证(开启状态下队列数输入框存在)
+    def creat_VM_page1452(self):
+        data1 = self.data['TH-CP-VM1-0057']['data1']     #开启多队列
+        self.steps(data1)
+        data2 = self.data['TH-CP-VM1-0057']['data2']
+        service = self.check_element_exist(data2['by'], data2['locator'])   #开启状态验证(开启状态下队列数信息存在,即返回True)
+        data3 = self.data['TH-CP-VM1-0057']['data3']  # 关闭多队列
+        self.steps(data3)
+        return service
 
+    # <1-4-6队列数输入框验证
+    # (1)队列数输入框默认值验证
+    def creat_VM_page1461(self):
+        data1 = self.data['TH-CP-VM-0058']['data1']  #开启多队列
+        self.steps(data1)
+        data2 = self.data['TH-CP-VM-0058']['data2']
+        service = self.input_text(data2['by'], data2['locator'])  # 定位到队列数输入框，获取默认值：1
+        return service
 
-        # return service01, \
-        #        service02, \
-        #        service03, \
-        #        service04, service05, \
-        #        service06, service07, \
-        #        service09, service10, service11, service12, service13, service14, \
-        #        service15,service16, \
-        return
+    # (2)队列数输入框输入为空验证
+    def creat_VM_page1462(self):
+        data1 = self.data['TH-CP-VM-0059']['data1']  # 输入框下方提示信息获取：“队列数不能为空”
+        service1 = self.steps(data1)
+        data2 = self.data['TH-CP-VM-0059']['data2']  # 输入框弱提示信息获取：“请输入队列数”
+        service2 = self.text(data2['by'], data2['locator'], attr=data2['attr'])
+        return service1, service2
 
+    # (3)队列数输入框输入特殊字符验证
+    def creat_VM_page1463(self):
+        data = self.data['TH-CP-VM-0060']  # 输入框下方提示信息获取：“队列数为正整数”
+        service = self.steps(data)
+        return service
 
+    # (4)队列数输入框输入大于2验证
+    def creat_VM_page1464(self):
+        data = self.data['TH-CP-VM-0061']  # 输入框下方提示信息获取：“队列数不能超过当前cpu数（当前cpu数为2）”
+        service = self.steps(data)
+        return service
 
+    # (5)队列数输入框输入小于1验证
+    def creat_VM_page1465(self):
+        data = self.data['TH-CP-VM-0062']  # 输入框下方提示信息获取：“队列数为正整数”
+        service = self.steps(data)
+        return service
 
+    # <1-4-7虚拟交换机下拉框验证（前置条件：存在创建好的虚拟交换机compute、manage；compute下存在端口“计算”、“计算98”）
+    # <1-4-7虚拟交换机下拉框验证
+    # (1)虚拟交换机默认值验证
+    def creat_VM_page1471(self):
+        data1 = self.data['TH-CP-VM-0063']['data1']  #虚拟交换机下拉框默认值验证
+        service1 = self.input_text(data1['by'], data1['locator'])
+        data2 = self.data['TH-CP-VM-0063']['data2']  #虚拟交换机端口下拉框默认值验证
+        service2 = self.input_text(data2['by'], data2['locator'])
+        return service1, service2
 
+    # (2)虚拟交换机下拉框选择值验证
+    def creat_VM_page1472(self):
+        data1 = self.data['TH-CP-VM1-0063']['data1']
+        self.steps(data1)
+        data2 = self.data['TH-CP-VM1-0063']['data2']
+        service = self.input_text(data2['by'], data2['locator'])
+        return service
 
+    # QOS设置
+    # 发送
+    # <1-4-8发送速率输入框验证
+    #(1)发送速率输入框默认值验证
+    def creat_VM_page1481(self):
+        data = self.data['TH-CP-VM-0064']
+        service = self.input_text(data['by'], data['locator'])  # 定位到速率输入框，获取默认值：0
+        return service
 
+    # (2)发送速率输入框输入为空验证
+    def creat_VM_page1482(self):
+        data1 = self.data['TH-CP-VM-0065']['data1']
+        self.steps(data1)
+        data2 = self.data['TH-CP-VM-0065']['data2']   #输入框弱提示信息获取：“请输入速率”
+        service = self.text(data2['by'], data2['locator'], attr=data2['attr'])
+        return service
 
+    # (3)发送速率输入框输入特殊字符验证
+    def creat_VM_page1483(self):
+        data = self.data['TH-CP-VM-0066']   #输入框下方提示信息获取：“请输入0或者正整数”
+        service = self.steps(data)
+        return service
 
+    #(4)发送速率输入框输入大于4194303验证
+    def creat_VM_page1484(self):
+        data = self.data['TH-CP-VM-0067']  #输入框下方提示信息获取：“输入上限4194303”
+        service = self.steps(data)
+        return service
+
+    #(5)发送速率输入框输入小于0验证
+    def creat_VM_page1485(self):
+        data = self.data['TH-CP-VM-0068']  #输入框下方提示信息获取：“请输入0或者正整数”
+        service = self.steps(data)
+        return service
+
+    # <1-4-9发送峰值输入框验证
+    # (1)发送峰值输入框默认值验证
+    def creat_VM_page1491(self):
+        data = self.data['TH-CP-VM-0069']
+        service = self.input_text(data['by'], data['locator'])  # 定位到速率输入框，获取默认值：0
+        return service
+
+    #(2)发送峰值输入框输入为空验证
+    def creat_VM_page1492(self):
+        data1 = self.data['TH-CP-VM-0070']['data1']
+        self.steps(data1)
+        data2 = self.data['TH-CP-VM-0070']['data2']  #输入框弱提示信息获取：“请输入速率”
+        service = self.text(data2['by'], data2['locator'], attr=data2['attr'])
+        return service
+
+    #(3)发送峰值输入框输入特殊字符验证
+    def creat_VM_page1493(self):
+        data = self.data['TH-CP-VM-0071']  #输入框下方提示信息获取：“请输入0或者正整数”
+        service = self.steps(data)
+        return service
+
+    #(4)发送峰值输入框输入大于4194303验证
+    def creat_VM_page1494(self):
+        data = self.data['TH-CP-VM-0072']  #输入框下方提示信息获取：“输入上限4194303”
+        service = self.steps(data)
+        return service
+
+    #(5)发送峰值输入框输入小于0验证
+    def creat_VM_page1495(self):
+        data = self.data['TH-CP-VM-0073']  #输入框下方提示信息获取：“请输入0或者正整数”
+        service = self.steps(data)
+        return service
+
+    # <1-4-10发送突发值输入框验证
+    # (1)发送突发值输入框默认值验证
+    def creat_VM_page14101(self):
+        data = self.data['TH-CP-VM-0074']
+        service = self.input_text(data['by'], data['locator'])  # 定位到速率输入框，获取默认值：0
+        return service
+
+    # (2)发送突发值输入框输入为空验证
+    def creat_VM_page14102(self):
+        data1 = self.data['TH-CP-VM-0075']['data1']
+        self.steps(data1)
+        data2 = self.data['TH-CP-VM-0075']['data2']  #输入框弱提示信息获取：“请输入突发值”
+        service = self.text(data2['by'], data2['locator'], attr=data2['attr'])
+        return service
+
+    # (3)发送突发值输入框输入特殊字符验证
+    def creat_VM_page14103(self):
+        data = self.data['TH-CP-VM-0076']  #输入框下方提示信息获取：“请输入0或者正整数”
+        service = self.steps(data)
+        return service
+
+    # (4)发送突发值输入框输入大于4194303验证
+    def creat_VM_page14104(self):
+        data = self.data['TH-CP-VM-0077']  # #输入框下方提示信息获取：“输入上限4194303”
+        service = self.steps(data)
+        return service
+
+    # (5)发送突发值输入框输入小于0验证
+    def creat_VM_page14105(self):
+        data = self.data['TH-CP-VM-0078']  #输入框下方提示信息获取：“请输入0或者正整数”
+        service = self.steps(data)
+        return service
+
+    # QOS设置
+    # 接收
+    # 切换到接收栏
+    def creat_VM_page14110(self):
+        data = self.data['TH-CP-VM-0079']
+        self.steps(data)  #点击接收按钮
+
+    # <1-4-11接收速率输入框验证
+    # (1)接收速率输入框默认值验证
+    def creat_VM_page14111(self):
+        data = self.data['TH-CP-VM-0080']
+        service = self.input_text(data['by'], data['locator'])  # 定位到速率输入框，获取默认值：0
+        return service
+
+    # (2)接收速率输入框输入为空验证
+    def creat_VM_page14112(self):
+        data1 = self.data['TH-CP-VM-0081']['data1']
+        self.steps(data1)
+        data2 = self.data['TH-CP-VM-0081']['data2']  # 输入框弱提示信息获取：“请输入速率”
+        service = self.text(data2['by'], data2['locator'], attr=data2['attr'])
+        return service
+
+    # (3)接收速率输入框输入特殊字符验证
+    def creat_VM_page14113(self):
+        data = self.data['TH-CP-VM-0082']  # 输入框下方提示信息获取：“请输入0或者正整数”
+        service = self.steps(data)
+        return service
+
+    # (4)接收速率输入框输入大于4194303验证
+    def creat_VM_page14114(self):
+        data = self.data['TH-CP-VM-0083']  # 输入框下方提示信息获取：“输入上限4194303”
+        service = self.steps(data)
+        return service
+
+    # (5)接收速率输入框输入小于0验证
+    def creat_VM_page14115(self):
+        data = self.data['TH-CP-VM-0084']  # 输入框下方提示信息获取：“请输入0或者正整数”
+        service = self.steps(data)
+        return service
+
+    # <1-4-12接收峰值输入框验证
+    # (1)接收峰值输入框默认值验证
+    def creat_VM_page14121(self):
+        data = self.data['TH-CP-VM-0085']
+        service = self.input_text(data['by'], data['locator'])  # 定位到速率输入框，获取默认值：0
+        return service
+
+    # (2)接收峰值输入框输入为空验证
+    def creat_VM_page14122(self):
+        data1 = self.data['TH-CP-VM-0086']['data1']
+        self.steps(data1)
+        data2 = self.data['TH-CP-VM-0086']['data2']  # 输入框弱提示信息获取：“请输入速率”
+        service = self.text(data2['by'], data2['locator'], attr=data2['attr'])
+        return service
+
+    # (3)接收峰值输入框输入特殊字符验证
+    def creat_VM_page14123(self):
+        data = self.data['TH-CP-VM-0087']  # 输入框下方提示信息获取：“请输入0或者正整数”
+        service = self.steps(data)
+        return service
+
+    # (4)接收峰值输入框输入大于4194303验证
+    def creat_VM_page14124(self):
+        data = self.data['TH-CP-VM-0088']  # 输入框下方提示信息获取：“输入上限4194303”
+        service = self.steps(data)
+        return service
+
+    # (5)接收峰值输入框输入小于0验证
+    def creat_VM_page14125(self):
+        data = self.data['TH-CP-VM-0089']  # 输入框下方提示信息获取：“请输入0或者正整数”
+        service = self.steps(data)
+        return service
+
+    # <1-4-13接收突发值输入框验证
+    # (1)接收突发值输入框默认值验证
+    def creat_VM_page14131(self):
+        data = self.data['TH-CP-VM-0090']
+        service = self.input_text(data['by'], data['locator'])  # 定位到速率输入框，获取默认值：0
+        return service
+
+    # (2)接收突发值输入框输入为空验证
+    def creat_VM_page14132(self):
+        data1 = self.data['TH-CP-VM-0091']['data1']
+        self.steps(data1)
+        data2 = self.data['TH-CP-VM-0091']['data2']  # 输入框弱提示信息获取：“请输入突发值”
+        service = self.text(data2['by'], data2['locator'], attr=data2['attr'])
+        return service
+
+    # (3)接收突发值输入框输入特殊字符验证
+    def creat_VM_page14133(self):
+        data = self.data['TH-CP-VM-0092']  # 输入框下方提示信息获取：“请输入0或者正整数”
+        service = self.steps(data)
+        return service
+
+    # (4)接收突发值输入框输入大于4194303验证
+    def creat_VM_page14134(self):
+        data = self.data['TH-CP-VM-0093']  # #输入框下方提示信息获取：“输入上限4194303”
+        service = self.steps(data)
+        return service
+
+    # (5)接收突发值输入框输入小于0验证
+    def creat_VM_page14135(self):
+        data = self.data['TH-CP-VM-0094']  # 输入框下方提示信息获取：“请输入0或者正整数”
+        service = self.steps(data)
+        return service
+
+    #1-5 高级配置页
+    def creat_VM_page5(self):
+        data1 = self.data['TH-CP-VM-0095']['data1']   #获取添加云服务器-->创建云服务器元素
+        self.steps(data1)  # 依次点击添加云服务器-->创建云服务器，进入基本信息页
+        data2 = self.data['TH-CP-VM-0095']['data2']  #获取进入到CPU、内存信息页的元素
+        self.steps(data2)  # 进入CPU、内存信息页
+        data3 = self.data['TH-CP-VM-0095']['data3'] #获取进入到存储信息页的元素
+        self.steps(data3)  # 进入存储信息页
+        data4 = self.data['TH-CP-VM-0095']['data4'] #获取进入到网卡信息页的元素
+        self.steps(data4)  # 进入网卡信息页
+        data5 = self.data['TH-CP-VM-0095']['data5'] #获取进入到高级配置页的元素
+        self.steps(data5)  # 进入高级配置页
+
+    # <1-5-1光驱下拉框验证
+    # (1)光驱下拉框默认为空验证
+    def creat_VM_page1511(self):
+        data1 = self.data['TH-CP-VM-0096']['data1']
+        service1 = self.text(data1['by'], data1['locator'], attr=data1['attr'])   # 仓库下拉框弱提示信息获取：“请选择仓库地址”
+        data2 = self.data['TH-CP-VM-0096']['data2']  # 光驱下拉框弱提示信息获取：“请选择光驱地址”
+        service2 = self.text(data2['by'], data2['locator'], attr=data2['attr'])
+        return service1, service2
+
+    # (2)光驱下拉框选择值验证
+    def creat_VM_page1512(self):
+        data1 = self.data['TH-CP-VM-0097']['data1']
+        self.steps(data1)
+        data2 = self.data['TH-CP-VM-0097']['data2']
+        service1 = self.input_text(data2['by'], data2['locator'])    # 仓库下拉框选择项信息获取： ”lakers“
+        data3 = self.data['TH-CP-VM-0097']['data3']
+        service2 = self.input_text(data3['by'], data3['locator'])    # 光驱下拉框选择项信息获取： ""
+        return service1, service2
+
+    # <1-5-2软驱下拉框验证
+    # (1)软驱下拉框默认为空验证
+    def creat_VM_page1521(self):
+        data1 = self.data['TH-CP-VM-0098']['data1']
+        service1 = self.text(data1['by'], data1['locator'], attr=data1['attr'])  # 仓库下拉框弱提示信息获取：“请选择仓库地址”
+        data2 = self.data['TH-CP-VM-0098']['data2']  # 软驱下拉框弱提示信息获取：“请选择软驱地址”
+        service2 = self.text(data2['by'], data2['locator'], attr=data2['attr'])
+        return service1, service2
+
+    # (2)软驱下拉框选择值验证
+    def creat_VM_page1522(self):
+        data1 = self.data['TH-CP-VM-0099']['data1']
+        self.steps(data1)
+        data2 = self.data['TH-CP-VM-0099']['data2']
+        service1 = self.input_text(data2['by'], data2['locator'])   # 仓库下拉框选择项信息获取： ”lakers“
+        data3 = self.data['TH-CP-VM-0099']['data3']
+        service2 = self.input_text(data3['by'], data3['locator'])   # 软驱下拉框选择项信息获取： ""
+        return service1, service2
+
+    # <1-5-3显示选择项验证
+    # (1)默认选择VGA验证(tabindex="0")
+    def creat_VM_page1531(self):
+        data = self.data['TH-CP-VM-0100']
+        service = self.text(data['by'], data['locator'], attr=data['attr'])
+        return service
+
+    # (2)选择vGPU验证(tabindex="0")
+    def creat_VM_page1532(self):
+        data1 = self.data['TH-CP-VM-0101']['data1']
+        self.steps(data1)
+        data2 = self.data['TH-CP-VM-0101']['data2']
+        service = self.text(data2['by'], data2['locator'], attr=data2['attr'])
+        data3 = self.data['TH-CP-VM-0101']['data3']
+        self.steps(data3)
+        return service
+
+    # <1-5-4高可用选择项验证
+    # (1)默认选择ON验证(tabindex="0")
+    def creat_VM_page1541(self):
+        data = self.data['TH-CP-VM-0102']
+        service = self.steps(data)
+        return service
+
+    # (2)选择OFF验证(tabindex="0")
+    def creat_VM_page1542(self):
+        data1 = self.data['TH-CP-VM-0103']['data1']
+        self.steps(data1)
+        data2 = self.data['TH-CP-VM-0103']['data2']
+        service = self.text(data2['by'], data2['locator'], attr=data2['attr'])
+        data3 = self.data['TH-CP-VM-0103']['data3']
+        self.steps(data3)
+        return service
+
+    # <1-5-5重要云服务器选择项验证
+    # (1)默认选择中验证(tabindex="0")
+    def creat_VM_page1551(self):
+        data = self.data['TH-CP-VM-0104']
+        service = self.text(data['by'], data['locator'], attr=data['attr'])
+        return service
+
+    # (2)选择高验证(tabindex="0")
+    def creat_VM_page1552(self):
+        data1 = self.data['TH-CP-VM-0105']['data1']
+        self.steps(data1)
+        data2 = self.data['TH-CP-VM-0105']['data2']
+        service = self.text(data2['by'], data2['locator'], attr=data2['attr'])
+        data3 = self.data['TH-CP-VM-0105']['data3']
+        self.steps(data3)
+        return service
+
+    # <1-5-6巨页内存选择项验证
+    # (1)默认选择OFF验证(tabindex="0")
+    def creat_VM_page1561(self):
+        data = self.data['TH-CP-VM-0106']
+        service = self.text(data['by'], data['locator'], attr=data['attr'])
+        return service
+
+    # (2)选择ON验证(tabindex="0")
+    def creat_VM_page1562(self):
+        data1 = self.data['TH-CP-VM-0107']['data1']
+        self.steps(data1)
+        data2 = self.data['TH-CP-VM-0107']['data2']
+        service = self.text(data2['by'], data2['locator'], attr=data2['attr'])
+        data3 = self.data['TH-CP-VM-0107']['data3']
+        self.steps(data3)
+        return service
+
+    # <1-5-7启动选择项验证
+    # (1)默认选择BIOS验证(tabindex="0")
+    def creat_VM_page1571(self):
+        data = self.data['TH-CP-VM-0108']
+        service = self.text(data['by'], data['locator'], attr=data['attr'])
+        return service
+
+    # (2)选择UEFI验证(tabindex="0")
+    def creat_VM_page1572(self):
+        data1 = self.data['TH-CP-VM-0109']['data1']
+        self.steps(data1)
+        data2 = self.data['TH-CP-VM-0109']['data2']
+        service = self.text(data2['by'], data2['locator'], attr=data2['attr'])
+        data3 = self.data['TH-CP-VM-0109']['data3']
+        self.steps(data3)
+        return service
+
+    # <1-5-8异常检测选择项验证
+    # (1)默认选择ON验证(tabindex="0")
+    def creat_VM_page1581(self):
+        data = self.data['TH-CP-VM-0110']
+        service = self.text(data['by'], data['locator'], attr=data['attr'])
+        return service
+
+    # (2)选择UEFI验证(tabindex="0")
+    def creat_VM_page1582(self):
+        data1 = self.data['TH-CP-VM-0111']['data1']
+        self.steps(data1)
+        data2 = self.data['TH-CP-VM-0111']['data2']
+        service = self.text(data2['by'], data2['locator'], attr=data2['attr'])
+        data3 = self.data['TH-CP-VM-0111']['data3']
+        self.steps(data3)
+        return service
+
+    # <1-5-9VNC选择项验证
+    # (1)默认选择OFF验证(tabindex="0")
+    def creat_VM_page1591(self):
+        data = self.data['TH-CP-VM-0112']
+        service = self.text(data['by'], data['locator'], attr=data['attr'])
+        return service
+
+    # (2)选择ON验证(tabindex="0")
+    def creat_VM_page1592(self):
+        data1 = self.data['TH-CP-VM-0113']['data1']
+        self.steps(data1)
+        data2 = self.data['TH-CP-VM-0113']['data2']
+        service = self.text(data2['by'], data2['locator'], attr=data2['attr'])
+        data3 = self.data['TH-CP-VM-0113']['data3']
+        self.steps(data3)
+        return service
+
+    # <1-5-10内存安全选择项验证
+    # (1)默认选择OFF验证(tabindex="0")
+    def creat_VM_page15101(self):
+        data = self.data['TH-CP-VM-0114']
+        service = self.text(data['by'], data['locator'], attr=data['attr'])
+        return service
+
+    # (2)选择ON验证(tabindex="0")
+    def creat_VM_page15102(self):
+        data1 = self.data['TH-CP-VM-0115']['data1']
+        self.steps(data1)
+        data2 = self.data['TH-CP-VM-0115']['data2']
+        service = self.text(data2['by'], data2['locator'], attr=data2['attr'])
+        data3 = self.data['TH-CP-VM-0115']['data3']
+        self.steps(data3)
+        return service
+
+    # <1-5-11嵌套虚拟化选择项验证
+    # (1)默认选择OFF验证(tabindex="0")
+    def creat_VM_page15111(self):
+        data = self.data['TH-CP-VM-0116']
+        service = self.text(data['by'], data['locator'], attr=data['attr'])
+        return service
+
+    # (2)选择ON验证(tabindex="0")
+    def creat_VM_page15112(self):
+        data1 = self.data['TH-CP-VM-0117']['data1']
+        self.steps(data1)
+        data2 = self.data['TH-CP-VM-0117']['data2']
+        service = self.text(data2['by'], data2['locator'], attr=data2['attr'])
+        data3 = self.data['TH-CP-VM-0117']['data3']
+        self.steps(data3)
+        return service
+
+    # <1-5-12数据本地化选择项验证
+    # (1)默认选择OFF验证(tabindex="0")
+    def creat_VM_page15121(self):
+        data = self.data['TH-CP-VM-0118']
+        service = self.text(data['by'], data['locator'], attr=data['attr'])
+        return service
+
+    # (2)选择ON验证(tabindex="0")
+    def creat_VM_page15122(self):
+        data1 = self.data['TH-CP-VM-0119']['data1']
+        self.steps(data1)
+        data2 = self.data['TH-CP-VM-0119']['data2']
+        service = self.text(data2['by'], data2['locator'], attr=data2['attr'])
+        data3 = self.data['TH-CP-VM-0119']['data3']
+        self.steps(data3)
+        return service
+
+    # <1-5-13启用双活选择项验证
+    # (1)默认选择OFF验证(tabindex="0")
+    def creat_VM_page15131(self):
+        data = self.data['TH-CP-VM-0120']
+        service = self.text(data['by'], data['locator'], attr=data['attr'])
+        return service
+
+    # (2)选择ON验证(tabindex="0")
+    def creat_VM_page15132(self):
+        data1 = self.data['TH-CP-VM-0121']['data1']
+        self.steps(data1)
+        data2 = self.data['TH-CP-VM-0121']['data2']
+        service = self.text(data2['by'], data2['locator'], attr=data2['attr'])
+        data3 = self.data['TH-CP-VM-0121']['data3']
+        self.steps(data3)
+        return service
+
+    # <1-5-14绑定主资源池选择项验证 （前置条件：存在两个资源池）
+    # (1)默认选择OFF验证(tabindex="0")
+    def creat_VM_page15141(self):
+        data = self.data['TH-CP-VM-0122']
+        service = self.text(data['by'], data['locator'], attr=data['attr'])
+        return service
+
+    # (2)选择ON验证(tabindex="0")
+    def creat_VM_page15142(self):
+        data1 = self.data['TH-CP-VM-0123']['data1']
+        self.steps(data1)
+        data2 = self.data['TH-CP-VM-0123']['data2']
+        service = self.text(data2['by'], data2['locator'], attr=data2['attr'])
+        data3 = self.data['TH-CP-VM-0123']['data3']
+        self.steps(data3)
+        return service
+
+    # <1-5-15启动配置选择项验证
+    # (1)默认选择自动验证(tabindex="0")
+    def creat_VM_page15151(self):
+        data1 = self.data['TH-CP-VM-0125']['data1']
+        self.steps(data1)
+        self.keys_PageDown()
+        data2 = self.data['TH-CP-VM-0124']['data2']
+        service = self.text(data2['by'], data2['locator'], attr=data2['attr'])
+        return service
+
+    # (2)选择主机验证(出现主机列表，存在栏位：”宿主机“)
+    def creat_VM_page15152(self):
+        data1 = self.data['TH-CP-VM-0125']['data1']
+        self.steps(data1)
+        self.keys_PageDown()
+        data2 = self.data['TH-CP-VM-0125']['data2']
+        self.steps(data2)
+        self.keys_PageDown()
+        data3 = self.data['TH-CP-VM-0125']['data3']
+        service = self.steps(data3)
+        return service
+
+    # (3)选择标签验证(出现主机列表，存在栏位：”标签名称“)
+    def creat_VM_page15153(self):
+        data1 = self.data['TH-CP-VM-0126']['data1']
+        self.steps(data1)
+        self.keys_PageDown()
+        data2 = self.data['TH-CP-VM-0126']['data2']
+        self.steps(data2)
+        self.keys_PageDown()
+        data3 = self.data['TH-CP-VM-0126']['data3']
+        service = self.steps(data3)
+        return service
+
+    #1-6 完成页
+    def creat_VM_page6(self):
+        data1 = self.data['TH-CP-VM-0127']['data1']   #获取添加云服务器-->创建云服务器元素
+        self.steps(data1)  # 依次点击添加云服务器-->创建云服务器，进入基本信息页
+        data2 = self.data['TH-CP-VM-0127']['data2']  #获取进入到CPU、内存信息页的元素
+        self.steps(data2)  # 进入CPU、内存信息页
+        data3 = self.data['TH-CP-VM-0127']['data3'] #获取进入到存储信息页的元素
+        self.steps(data3)  # 进入存储信息页
+        data4 = self.data['TH-CP-VM-0127']['data4'] #获取进入到网卡信息页的元素
+        self.steps(data4)  # 进入网卡信息页
+        data5 = self.data['TH-CP-VM-0127']['data5'] #获取进入到高级配置页的元素
+        self.steps(data5)  # 进入高级配置页
+        data6 = self.data['TH-CP-VM-0127']['data6'] #获取进入到高级配置页的元素
+        self.steps(data6)  # 进入完成页
 
 
 
@@ -559,7 +1122,6 @@ class ServicePage(BasePage):
     #(6)集群目录组名称重命名功能验证
     def update_group(self):
         return self.steps(r'D:\WorkTools\PyProjects\TopHC\data\page_data\calculate_module_data\cserver_module\cal_cserver_updategroup.yaml')
-
 
 
 

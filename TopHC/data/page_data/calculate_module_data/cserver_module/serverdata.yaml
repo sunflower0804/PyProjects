@@ -1,122 +1,123 @@
 # 1.云服务器模块
 # 1.1云服务器页面
-# 1.1.1云服务器页面/集群信息导航栏信息校验
-# (1)集群目录信息校验
-TH-CP-CLUSTER-0001:
-  #获取集群名称元素位置并点击
-  - by: xpath
-    locator: //*[@id="panel-c-scroll"]/div[1]/section/section/div[1]/section/div[2]/div/ul/li/ul/li[2]/div/div/div/div
-    action: click
-
-  #获取集群1名称元素名称
-  - by: xpath
-    locator: //*[@id="panel-c-scroll"]/div[1]/section/section/div[1]/section/div[2]/div/ul/li/ul/li[1]/div/div/div/div
-    action: text
-
-  #获取集群2名称元素名称
-  - by: xpath
-    locator: //*[@id="panel-c-scroll"]/div[1]/section/section/div[1]/section/div[2]/div/ul/li/ul/li[2]/div/div/div/div
-    action: text
-
-#（2）集群云服务器信息校验
-TH-CP-CLUSTER-0002:
-  #获取集群2名称元素位置并点击
-  - by: xpath
-    locator: //*[@id="panel-c-scroll"]/div[1]/section/section/div[1]/section/div[2]/div/ul/li/ul/li[2]/div/div/div/div
-    action: click
-
-  #获取集群2下某个云服务器名称
-  - by: xpath
-    locator: //*[@id="compute_virtual_tabs_vmList"]/section/div[2]/div[1]/div[3]/table/tbody/tr[1]/td[2]/div/span/a
-    action: text
-
-#（3）集群目录结构信息校验
-TH-CP-CLUSTER-0003:
-  #进入集群下的目录
-  data01: &demo
-    - by: xpath
-      locator: //*[@id="panel-c-scroll"]/div[1]/section/section/div[1]/section/div[2]/div/ul/li/ul/li[1]/div/span
-      action: click
-
-    - by: xpath
-      locator: //*[@id="panel-c-scroll"]/div[1]/section/section/div[1]/section/div[2]/div/ul/li/ul/li[1]/ul/li/div/span
-      action: click
-
-    - by: xpath
-      locator: //*[@id="panel-c-scroll"]/div[1]/section/section/div[1]/section/div[2]/div/ul/li/ul/li[1]/ul/li/ul/li/div/span
-      action: click
-
-  #获取集群目录下的组名称
-  data02:
-    - by: xpath
-      locator: //*[@id="panel-c-scroll"]/div[1]/section/section/div[1]/section/div[2]/div/ul/li/ul/li[1]/ul/li/ul/li/ul/li[1]/div/div/div/div
-      action: text
-
-  #依次关闭集群下的目录
-  data03: &demo1
-    - by: xpath
-      locator: //*[@id="panel-c-scroll"]/div[1]/section/section/div[1]/section/div[2]/div/ul/li/ul/li[1]/ul/li/ul/li/div/span
-      action: click
-
-    - by: xpath
-      locator: //*[@id="panel-c-scroll"]/div[1]/section/section/div[1]/section/div[2]/div/ul/li/ul/li[1]/ul/li/div/span
-      action: click
-
-    - by: xpath
-      locator: //*[@id="panel-c-scroll"]/div[1]/section/section/div[1]/section/div[2]/div/ul/li/ul/li[1]/div/span
-      action: click
-
-#（4）集群目录服务器信息校验
-TH-CP-CLUSTER-0004:
-  #进入集群下的目录
-  data01: *demo
-
-  #获取集群目录某个组下云服务器名称
-  data02:
-    - by: xpath
-      locator: //*[@id="panel-c-scroll"]/div[1]/section/section/div[1]/section/div[2]/div/ul/li/ul/li[1]/ul/li/ul/li/ul/li[2]/div/div/div/div
-      action: click
-
-    - by: xpath
-      locator: //*[@id="compute_virtual_tabs_vmList"]/section/div[2]/div[1]/div[3]/table/tbody/tr[1]/td[2]/div/span/a
-      action: text
-
-  #依次关闭集群下的目录
-  data03: *demo1
-
-# 1.1.2.云服务器页面/集群信息导航栏功能校验
-# (5)集群目录新增组功能验证/正常场景？？？
-TH-CP-CLUSTER-0005:
-  #进入集群下的目录
-  data01: *demo
-
-  data02:
-    by: xpath
-    locator: //*[@id="panel-c-scroll"]/div[1]/section/section/div[1]/section/div[2]/div/ul/li/ul/li[1]/ul/li/ul/li/ul/li[1]/div/div/span/i
-
-  data03:
-    by: css
-    locator: //div[@id='el-tooltip-7673']/div/div[2]/span[2]
-
-#（6）集群目录新增组功能验证 / 异常场景 ???
-TH-CP-CLUSTER-0006:
-  data01: *demo
-  data02:
-    by: xpath
-    locator: //*[@id="panel-c-scroll"]/div[1]/section/section/div[1]/section/div[2]/div/ul/li/ul/li[1]/ul/li/ul/li/div/div/span/i
-  data03:
-    by: xpath
-    locator: //*[@id="el-tooltip-8985"]/div[1]/div/span[2]
-
-# (7)集群目录组名称重命名功能验证/正常场景
-
-#（8）集群目录组名称重命名功能验证/异常场景
-
-#（9）集群目录组添加云服务器入口验证
-
-#（10）集群目录组移动验证
-
-#（11）集群目录组删除验证
+#1.1.1云服务器页面/租户信息导航栏信息校验
+#1.1.1云服务器页面/集群信息导航栏信息校验
+## (1)集群目录信息校验
+#TH-CP-CLUSTER-0001:
+#  #获取集群名称元素位置并点击
+#  - by: xpath
+#    locator: //*[@id="panel-c-scroll"]/div[1]/section/section/div[1]/section/div[2]/div/ul/li/ul/li[2]/div/div/div/div
+#    action: click
+#
+#  #获取集群1名称元素名称
+#  - by: xpath
+#    locator: //*[@id="panel-c-scroll"]/div[1]/section/section/div[1]/section/div[2]/div/ul/li/ul/li[1]/div/div/div/div
+#    action: text
+#
+#  #获取集群2名称元素名称
+#  - by: xpath
+#    locator: //*[@id="panel-c-scroll"]/div[1]/section/section/div[1]/section/div[2]/div/ul/li/ul/li[2]/div/div/div/div
+#    action: text
+#
+##（2）集群云服务器信息校验
+#TH-CP-CLUSTER-0002:
+#  #获取集群2名称元素位置并点击
+#  - by: xpath
+#    locator: //*[@id="panel-c-scroll"]/div[1]/section/section/div[1]/section/div[2]/div/ul/li/ul/li[2]/div/div/div/div
+#    action: click
+#
+#  #获取集群2下某个云服务器名称
+#  - by: xpath
+#    locator: //*[@id="compute_virtual_tabs_vmList"]/section/div[2]/div[1]/div[3]/table/tbody/tr[1]/td[2]/div/span/a
+#    action: text
+#
+##（3）集群目录结构信息校验
+#TH-CP-CLUSTER-0003:
+#  #进入集群下的目录
+#  data01: &demo
+#    - by: xpath
+#      locator: //*[@id="panel-c-scroll"]/div[1]/section/section/div[1]/section/div[2]/div/ul/li/ul/li[1]/div/span
+#      action: click
+#
+#    - by: xpath
+#      locator: //*[@id="panel-c-scroll"]/div[1]/section/section/div[1]/section/div[2]/div/ul/li/ul/li[1]/ul/li/div/span
+#      action: click
+#
+#    - by: xpath
+#      locator: //*[@id="panel-c-scroll"]/div[1]/section/section/div[1]/section/div[2]/div/ul/li/ul/li[1]/ul/li/ul/li/div/span
+#      action: click
+#
+#  #获取集群目录下的组名称
+#  data02:
+#    - by: xpath
+#      locator: //*[@id="panel-c-scroll"]/div[1]/section/section/div[1]/section/div[2]/div/ul/li/ul/li[1]/ul/li/ul/li/ul/li[1]/div/div/div/div
+#      action: text
+#
+#  #依次关闭集群下的目录
+#  data03: &demo1
+#    - by: xpath
+#      locator: //*[@id="panel-c-scroll"]/div[1]/section/section/div[1]/section/div[2]/div/ul/li/ul/li[1]/ul/li/ul/li/div/span
+#      action: click
+#
+#    - by: xpath
+#      locator: //*[@id="panel-c-scroll"]/div[1]/section/section/div[1]/section/div[2]/div/ul/li/ul/li[1]/ul/li/div/span
+#      action: click
+#
+#    - by: xpath
+#      locator: //*[@id="panel-c-scroll"]/div[1]/section/section/div[1]/section/div[2]/div/ul/li/ul/li[1]/div/span
+#      action: click
+#
+##（4）集群目录服务器信息校验
+#TH-CP-CLUSTER-0004:
+#  #进入集群下的目录
+#  data01: *demo
+#
+#  #获取集群目录某个组下云服务器名称
+#  data02:
+#    - by: xpath
+#      locator: //*[@id="panel-c-scroll"]/div[1]/section/section/div[1]/section/div[2]/div/ul/li/ul/li[1]/ul/li/ul/li/ul/li[2]/div/div/div/div
+#      action: click
+#
+#    - by: xpath
+#      locator: //*[@id="compute_virtual_tabs_vmList"]/section/div[2]/div[1]/div[3]/table/tbody/tr[1]/td[2]/div/span/a
+#      action: text
+#
+#  #依次关闭集群下的目录
+#  data03: *demo1
+#
+## 1.1.2.云服务器页面/集群信息导航栏功能校验
+## (5)集群目录新增组功能验证/正常场景？？？
+#TH-CP-CLUSTER-0005:
+#  #进入集群下的目录
+#  data01: *demo
+#
+#  data02:
+#    by: xpath
+#    locator: //*[@id="panel-c-scroll"]/div[1]/section/section/div[1]/section/div[2]/div/ul/li/ul/li[1]/ul/li/ul/li/ul/li[1]/div/div/span/i
+#
+#  data03:
+#    by: css
+#    locator: //div[@id='el-tooltip-7673']/div/div[2]/span[2]
+#
+##（6）集群目录新增组功能验证 / 异常场景 ???
+#TH-CP-CLUSTER-0006:
+#  data01: *demo
+#  data02:
+#    by: xpath
+#    locator: //*[@id="panel-c-scroll"]/div[1]/section/section/div[1]/section/div[2]/div/ul/li/ul/li[1]/ul/li/ul/li/div/div/span/i
+#  data03:
+#    by: xpath
+#    locator: //*[@id="el-tooltip-8985"]/div[1]/div/span[2]
+#
+## (7)集群目录组名称重命名功能验证/正常场景
+#
+##（8）集群目录组名称重命名功能验证/异常场景
+#
+##（9）集群目录组添加云服务器入口验证
+#
+##（10）集群目录组移动验证
+#
+##（11）集群目录组删除验证
 
 # 1.2.1.云服务器页面/菜单栏功能校验
 #(1)虚拟机搜索/功能入口参数校验
@@ -784,24 +785,26 @@ TH-CP-VM-0037:
 
 #(2)磁盘大小输入框输入为空验证
 TH-CP-VM-0038:
-  - by: id
-    locator: compute_instances_create_volume_capacity1
-    action: clear
+  data1:
+    - by: id
+      locator: compute_instances_create_volume_capacity1
+      action: clear
 
-  - by: id
-    locator: compute_instances_create_volume_capacity1
-    action: send
-    value: ''
+    - by: id
+      locator: compute_instances_create_volume_capacity1
+      action: send
+      value: ''
 
   #输入为空后点击下一步按钮才会出现提示信息
-  - by: xpath
-    locator: //div[@class="el-row"]/div[2]/div/button[2]
-    action: click
+    - by: xpath
+      locator: //div[@class="el-row"]/div[2]/div/button[2]
+      action: click
 
   #输入为空后云服务器输入框下方的提示信息获取
-  - by: xpath
-    locator: //div[@class="el-form-item__error"]
-    action: text
+  data2:
+    - by: xpath
+      locator: //div[@class="el-form-item__error"]
+      action: text
 
 #(3)磁盘大小输入框输入特殊字符验证
 TH-CP-VM-0039:
@@ -896,36 +899,35 @@ TH-CP-VM1-0042:
 
 #<1-3-3存储池下拉框验证
 TH-CP-VM-0043:
+  data1:
   #点击存储池下拉框
-  - by: id
-    locator: compute_instances_create_auto_pool_uuid1
-    action: click
+    - by: id
+      locator: compute_instances_create_auto_pool_uuid1
+      action: click
 
   #移动鼠标，选择下拉框中的已有存储池选项
-  - by: xpath
-    locator: /html/body/div[4]/div[1]/div[1]/ul/li
-    action: click
+    - by: xpath
+      locator: (//div[@class="el-select-dropdown el-popper"])[22]/div/div/ul/li
+      action: click
 
-  - by: xpath
-    locator: /html/body/div[4]/div[1]/div[1]/ul/li
-    action: text
+  data2:
+    by: xpath
+    locator: (//div[@class="el-input el-input--small el-input--suffix"])[2]/input
 
 #<1-3-4卷名称输入框验证
 #(1)卷名称输入框默认值验证
 #定位到卷名称输入框，获取默认值：test001-volume1
 TH-CP-VM-0044:
-  data1:
-    by: id
-    locator: compute_instances_create_volume_name1
-
-  data2:
-    - by: id
-      locator: compute_instances_create_volume_name1
-      action: clear
+  by: id
+  locator: compute_instances_create_volume_name1
 
 #(2)卷名称输入框输入为空验证
 TH-CP-VM-0045:
   data1:
+    - by: id
+      locator: compute_instances_create_volume_name1
+      action: clear
+
     - by: id
       locator: compute_instances_create_volume_name1
       action: send
@@ -946,6 +948,10 @@ TH-CP-VM-0045:
 TH-CP-VM-0046:
   - by: id
     locator: compute_instances_create_volume_name1
+    action: clear
+
+  - by: id
+    locator: compute_instances_create_volume_name1
     action: send
     value: '#￥%……&**'
 
@@ -954,12 +960,12 @@ TH-CP-VM-0046:
     locator:  //div[@class="el-form-item__error"]
     action: text
 
+#(4)卷名称输入框输入大于32位字符验证
+TH-CP-VM-0047:
   - by: id
     locator: compute_instances_create_volume_name1
     action: clear
 
-#(4)卷名称输入框输入大于32位字符验证
-TH-CP-VM-0047:
   - by: id
     locator: compute_instances_create_volume_name1
     action: send
@@ -981,113 +987,111 @@ TH-CP-VM-0047:
     value: 'test001-volume1'
 
 #<1-3-5副本数下拉框验证
+# (1)副本数默认值验证
 TH-CP-VM-0048:
-  #副本数默认值验证
+  by: id
+  locator: compute_instances_create_volume_auto_replica1
+
+# (2)副本数选择值验证
+#点击副本数下拉框
+TH-CP-VM1-0048:
   data1:
-    by: id
-    locator: compute_instances_create_volume_auto_replica1
-
-
-  #点击副本数下拉框
-  data2:
-    - by: id
-      locator: compute_instances_create_volume_auto_replica1
+    - by: xpath
+      locator: (//div[@class="el-form-item__content"])[13]/div/div/input
       action: click
 
   #移动鼠标，选择下拉框中的已有选项
     - by: xpath
-      locator: /html/body/div[4]/div[1]/div[1]/ul/li[1]
+      locator: (//div[@class="el-select-dropdown__wrap el-scrollbar__wrap"])[22]/ul/li
       action: click
 
-  #副本数选择值验证
-  data3:
+  data2:
     by: id
     locator: compute_instances_create_volume_auto_replica1
 
 #<1-3-6云盘类型下拉框验证
+# (1)云盘类型默认值验证：普通云盘1.0
 TH-CP-VM-0049:
-  #云盘类型默认值验证：普通云盘1.0
-  data1:
-    by: id
-    locator: compute_instances_create_volume_auto_vsdVendor1
+  by: id
+  locator: compute_instances_create_volume_auto_vsdVendor1
 
+# (2)云盘类型选择值验证：高效云盘
+TH-CP-VM1-0049:
   #点击云盘类型下拉框
-  data2:
+  data1:
     - by: id
       locator: compute_instances_create_volume_auto_vsdVendor1
       action: click
 
   #移动鼠标，选择下拉框中的已有选项
     - by: xpath
-      locator: (//div[@class="el-select-dropdown__wrap el-scrollbar__wrap"])[6]/ul[1]/li[3]
+      locator: (//div[@class="el-select-dropdown el-popper"])[4]/div/div/ul/li[3]
       action: click
 
-  #云盘类型选择值验证：高效云盘
-  data3:
+  data2:
     by: id
     locator: compute_instances_create_volume_auto_vsdVendor1
 
 #<1-3-7存储介质下拉框验证
+# (1)存储介质默认值验证：机械硬盘
 TH-CP-VM-0050:
-  #存储介质默认值验证：机械硬盘
-  data1:
-    by: id
-    locator: compute_instances_create_auto_drive_type1
+  by: id
+  locator: compute_instances_create_auto_drive_type1
 
+# (2)存储介质选择值验证：固态硬盘
+TH-CP-VM1-0050:
   #点击存储介质下拉框
-  data2:
+  data1:
     - by: id
       locator: compute_instances_create_auto_drive_type1
       action: click
 
   #移动鼠标，选择下拉框中的已有选项
     - by: xpath
-      locator: /html/body/div[4]/div[1]/div[1]/ul/li[2]
+      locator: (//div[@class="el-select-dropdown el-popper"])[22]/div/div/ul/li[2]
       action: click
 
-  #存储介质选择值验证：固态硬盘
-  data3:
+  data2:
     by: id
     locator: compute_instances_create_auto_drive_type1
 
 #<1-3-8链路冗余下拉框验证
+# (1)链路冗余默认值验证：1
 TH-CP-VM-0051:
-  #链路冗余默认值验证：1
-  data1:
-    by: id
-    locator: compute_instances_create_volume_auto_redundancy1
+  by: id
+  locator: compute_instances_create_volume_auto_redundancy1
 
+# (2)链路冗余选择值验证：3
+TH-CP-VM1-0051:
   #点击链路冗余下拉框
-  data2:
+  data1:
     - by: id
       locator: compute_instances_create_volume_auto_redundancy1
       action: click
 
   #移动鼠标，选择下拉框中的已有选项
     - by: xpath
-      locator: (//div[@class="el-select-dropdown__wrap el-scrollbar__wrap"])[8]/ul[1]/li[3]
+      locator: (//div[@class="el-select-dropdown el-popper"])[5]/div/div/ul/li[3]
       action: click
 
-  #链路冗余选择值验证：3
-  data3:
+  data2:
     by: id
     locator: compute_instances_create_volume_auto_redundancy1
 
   #关闭存储信息页
-  data4:
+  data3:
     - by: xpath
       locator: //*[@id="compute_instances_create_basic"]/div/div[1]/button/i
       action: click
 
 
-#<1-3 存储信息页参数校验
-#云硬盘/自定义
+#<1-4 网卡信息页参数校验
 #依次点击添加云服务器-->创建云服务器-->进入基本信息页-->进入CPU、内存信息页-->进入存储信息页-->进入网卡信息页
 TH-CP-VM-0052:
-  data01: *demo00041
-  data02: *demo00042
-  data03: *demo00043
-  data04:
+  data1: *demo00041
+  data2: *demo00042
+  data3: *demo00043
+  data4: &demo00044
     - by: id
       locator: compute_instances_create_volume_capacity1
       action: send
@@ -1116,28 +1120,35 @@ TH-CP-VM-0053:
 
 #<1-4-2网卡信息折叠功能验证
 TH-CP-VM-0054:
-  data1: &q1
+  data1:
     - by: xpath
       locator: (//div[@class="el-collapse-item is-active"])[1]/div[1]/div[1]/span[1]/span[1]
       action: click
 
   #点击折叠按钮后网卡信息为空
-  data2: &q2
+  data2:
     by: xpath
     locator: (//div[@class="el-collapse-item__content"])[1]/div[1]/label[1]   #适配器
 
   #再次点击折叠按钮后网卡信息正常显示
-  data3: *q1
+  data3:
+    - by: xpath
+      locator: (//div[@class="el-collapse-item"])[1]/div[1]/div/i
+      action: click
 
-  data4: *q2
+  data4:
+    by: xpath
+    locator: (//div[@class="el-collapse-item__content"])[1]/div[1]/label[1]
 
 #<1-4-3网卡下拉框验证
+# (1)网卡类型默认值验证：本地网络(存在虚拟交换机选项)
 TH-CP-VM-0055:
-  #网卡类型默认值验证：本地网络(存在虚拟交换机选项)
   - by: xpath
-    locator: (//div[@class="el-collapse-item__content"])[1]/div[4]/label
+    locator: (//div[@class="el-collapse-item__content"])[1]/div[3]/label
     action: text
 
+# (2)网卡类型选择值验证：VPC网络(存在VPC交换机选项)
+TH-CP-VM1-0055:
   #点击网卡下拉框
   - by: xpath
     locator: (//div[@class="el-input el-input--small el-input--suffix"])[2]/input
@@ -1145,70 +1156,94 @@ TH-CP-VM-0055:
 
   #移动鼠标，选择下拉框中的已有选项
   - by: xpath
-    locator: /html/body/div[4]/div[1]/div[1]/ul/li[1]
+    locator: //body[@class="theme-white el-popup-parent--hidden"]/div[4]/div/div/ul/li
     action: click
 
-  #网卡类型选择值验证：VPC网络(存在VPC交换机选项)
   - by: xpath
-    locator: (//div[@class="el-collapse-item__content"])[1]/div[6]/label
+    locator: (//div[@class="el-collapse-item__content"])[1]/div[5]/label
     action: text
 
-# <1-4-4适配器下拉框验证
-TH-CP-VM-0056:
-  #适配器类型默认值验证：virtio
-  data1:
-    by: xpath
-    locator: (//div[@class="el-collapse-item__content"])[1]/div[1]/div[1]/div/div/input
+  #再次点击网卡下拉框
+  - by: xpath
+    locator: (//div[@class="el-input el-input--small el-input--suffix"])[2]/input
+    action: click
 
+  #移动鼠标，恢复默认选项（本地网络）
+  - by: xpath
+    locator: //body[@class="theme-white el-popup-parent--hidden"]/div[4]/div/div/ul/li[2]
+    action: click
+
+# <1-4-4适配器下拉框验证
+# (1)适配器类型默认值验证：virtio
+TH-CP-VM-0056:
+  by: xpath
+  locator: (//div[@class="el-collapse-item__content"])[1]/div[1]/div[1]/div/div/input
+
+# (2)适配器类型选择值验证：rtl8139
+TH-CP-VM1-0056:
   #点击适配器下拉框
-  data2:
+  data1:
     - by: xpath
       locator: (//div[@class="el-collapse-item__content"])[1]/div[1]/div[1]/div/div/input
       action: click
 
   #移动鼠标，选择下拉框中的已有选项
     - by: xpath
-      locator: (//body[@class="theme-white el-popup-parent--hidden"])/div[5]/div/div/ul/li[3]
+      locator: (//div[@class='el-select-dropdown el-popper'])[22]/div/div/ul/li[3]
       action: click
 
-  #适配器类型选择值验证：rtl8139
-  data3:
+  data2:
     by: xpath
     locator: (//div[@class="el-collapse-item__content"])[1]/div[1]/div[1]/div/div/input
 
 # <1-4-5多队列设置开关验证
+# (1)默认关闭状态验证(关闭状态下队列数输入框不存在)
 TH-CP-VM-0057:
-  #默认关闭状态验证(关闭状态下队列数输入框不存在)
-  data1:
-    by: xpath
-    locator: (//div[@class="el-form-item__content"])[10]/div/input
+  by: xpath
+  locator: (//div[@class="el-form-item__content"])[10]/div/input
 
+# (2)开启状态验证(开启状态下队列数输入框存在)
+TH-CP-VM1-0057:
   #开启多队列
-  data2:
+  data1:
     - by: xpath
-      locator: (//div[@class="el-form-item__content"])[9]/div/input
+      locator: (//div[@class="el-form-item__content"])[9]/div/span
       action: click
 
-  #开启状态验证(开启状态下队列数输入框存在)
-  data3:
+  data2:
     by: xpath
     locator: (//div[@class="el-form-item__content"])[10]/div/input
+
+  #恢复默认关闭多队列
+  data3:
+    - by: xpath
+      locator: (//div[@class="el-form-item__content"])[9]/div/span
+      action: click
 
 # <1-4-6队列数输入框验证
-#定位到队列数输入框，获取默认值：1
+# (1)队列数输入框默认值验证
 TH-CP-VM-0058:
+  #开启多队列
   data1:
-    by: xpath
-    locator: (//div[@class="el-form-item__content"])[10]/div/input
+    - by: xpath
+      locator: (//div[@class="el-form-item__content"])[9]/div/span
+      action: click
 
   data2:
-    - by: xpath
-      locator: (//div[@class="el-form-item__content"])[10]/div/input
-      action: clear
+    by: xpath
+    locator: (//div[@class="el-form-item__content"])[10]/div/input
 
 #(2)队列数输入框输入为空验证
 TH-CP-VM-0059:
   data1:
+#    - by: xpath
+#      locator: (//div[@class="el-form-item__content"])[9]/div/span
+#      action: click
+
+    - by: xpath
+      locator: (//div[@class="el-form-item__content"])[10]/div/input
+      action: clear
+
     - by: xpath
       locator: (//div[@class="el-form-item__content"])[10]/div/input
       action: send
@@ -1227,6 +1262,14 @@ TH-CP-VM-0059:
 
 #(3)队列数输入框输入特殊字符验证
 TH-CP-VM-0060:
+#  - by: xpath
+#    locator: (//div[@class="el-form-item__content"])[9]/div/span
+#    action: click
+
+  - by: xpath
+    locator: (//div[@class="el-form-item__content"])[10]/div/input
+    action: clear
+
   - by: xpath
     locator: (//div[@class="el-form-item__content"])[10]/div/input
     action: send
@@ -1237,12 +1280,16 @@ TH-CP-VM-0060:
     locator: (//div[@class="el-form-item__content"])[10]/div[2]
     action: text
 
+#(4)队列数输入框输入大于2验证
+TH-CP-VM-0061:
+#  - by: xpath
+#    locator: (//div[@class="el-form-item__content"])[9]/div/span
+#    action: click
+
   - by: xpath
     locator: (//div[@class="el-form-item__content"])[10]/div/input
     action: clear
 
-#(4)队列数输入框输入大于2验证
-TH-CP-VM-0061:
   - by: xpath
     locator: (//div[@class="el-form-item__content"])[10]/div/input
     action: send
@@ -1253,12 +1300,16 @@ TH-CP-VM-0061:
     locator: (//div[@class="el-form-item__content"])[10]/div[2]
     action: text
 
+#(5)队列数输入框输入小于1验证
+#TH-CP-VM-0062:
+#  - by: xpath
+#    locator: (//div[@class="el-form-item__content"])[9]/div/span
+#    action: click
+
   - by: xpath
     locator: (//div[@class="el-form-item__content"])[10]/div/input
     action: clear
 
-#(5)队列数输入框输入小于1验证
-TH-CP-VM-0062:
   - by: xpath
     locator: (//div[@class="el-form-item__content"])[10]/div/input
     action: send
@@ -1279,7 +1330,14 @@ TH-CP-VM-0062:
     action: send
     value: 1
 
+  #关闭队列按钮
+  - by: xpath
+    locator: (//div[@class="el-form-item__content"])[9]/div/span
+    action: click
+
+
 # <1-4-7虚拟交换机下拉框验证（前置条件：存在创建好的虚拟交换机compute、manage；compute下存在端口“计算”、“计算98”）
+# (1)虚拟交换机默认值验证
 TH-CP-VM-0063:
   #虚拟交换机默认值验证：compute
   data1:
@@ -1291,42 +1349,54 @@ TH-CP-VM-0063:
     by: id
     locator: compute_instances_create_interface_portGroup
 
-  #点击虚拟交换机下拉框
-  data3:
+# (2)虚拟交换机下拉框选择值验证
+#点击虚拟交换机下拉框
+TH-CP-VM1-0063:
+  data1:
     - by: id
       locator: compute_instances_create_interface_localNetworkType
       action: click
 
-#QOS设置
-#发送
-# <1-4-6速率输入框验证
-#定位到速率输入框，获取默认值：0
-TH-CP-VM-0064:
-  data1:
-    by: xpath
-    locator: (//div[@class="el-input el-input--small el-input-group el-input-group--append"])[1]/input
+    - by: xpath
+      locator: (//ul[@class="el-scrollbar__view el-select-dropdown__list"])[22]/li[3]
+      action: click
 
   data2:
+    by: id
+    locator: compute_instances_create_interface_localNetworkType
+
+#QOS设置
+#发送
+# <1-4-8发送速率输入框验证
+#(1)发送速率输入框默认值验证：0
+TH-CP-VM-0064:
+  by: xpath
+  locator: (//div[@class="el-input el-input--small el-input-group el-input-group--append"])[1]/input
+
+#(2)发送速率输入框输入为空验证
+TH-CP-VM-0065:
+  data1:
     - by: xpath
       locator: (//div[@class="el-input el-input--small el-input-group el-input-group--append"])[1]/input
       action: clear
 
-#(2)速率输入框输入为空验证
-TH-CP-VM-0065:
-  data1:
     - by: xpath
       locator: (//div[@class="el-input el-input--small el-input-group el-input-group--append"])[1]/input
       action: send
       value: ''
 
-  #输入框弱提示信息获取：“请输入队速率”
+  #输入框弱提示信息获取：“请输入速率”
   data2:
     by: xpath
     locator: (//div[@class="el-form-item__content"])[17]/div/input
     attr: placeholder
 
-#(3)速率输入框输入特殊字符验证
+#(3)发送速率输入框输入特殊字符验证
 TH-CP-VM-0066:
+  - by: xpath
+    locator: (//div[@class="el-input el-input--small el-input-group el-input-group--append"])[1]/input
+    action: clear
+
   - by: xpath
     locator: (//div[@class="el-input el-input--small el-input-group el-input-group--append"])[1]/input
     action: send
@@ -1334,15 +1404,15 @@ TH-CP-VM-0066:
 
   #输入框下方提示信息获取：“请输入0或者正整数”
   - by: xpath
-    locator: (//div[@class="el-form-item__content"])[17]/div[2]
+    locator: (//div[@class="el-form-item__content"])[16]/div[2]
     action: text
 
+#(4)发送速率输入框输入大于4194303验证
+TH-CP-VM-0067:
   - by: xpath
     locator: (//div[@class="el-input el-input--small el-input-group el-input-group--append"])[1]/input
     action: clear
 
-#(4)速率输入框输入大于4194303验证
-TH-CP-VM-0067:
   - by: xpath
     locator: (//div[@class="el-input el-input--small el-input-group el-input-group--append"])[1]/input
     action: send
@@ -1350,15 +1420,15 @@ TH-CP-VM-0067:
 
   #输入框下方提示信息获取：“输入上限4194303”
   - by: xpath
-    locator: (//div[@class="el-form-item__content"])[17]/div[2]
+    locator: (//div[@class="el-form-item__content"])[16]/div[2]
     action: text
 
+#(5)发送速率输入框输入小于0验证
+TH-CP-VM-0068:
   - by: xpath
     locator: (//div[@class="el-input el-input--small el-input-group el-input-group--append"])[1]/input
     action: clear
 
-#(5)速率输入框输入小于0验证
-TH-CP-VM-0068:
   - by: xpath
     locator: (//div[@class="el-input el-input--small el-input-group el-input-group--append"])[1]/input
     action: send
@@ -1366,7 +1436,7 @@ TH-CP-VM-0068:
 
   #输入框下方提示信息获取：“请输入0或者正整数”
   - by: xpath
-    locator: (//div[@class="el-form-item__content"])[17]/div[2]
+    locator: (//div[@class="el-form-item__content"])[16]/div[2]
     action: text
 
   - by: xpath
@@ -1378,3 +1448,929 @@ TH-CP-VM-0068:
     locator: (//div[@class="el-input el-input--small el-input-group el-input-group--append"])[1]/input
     action: send
     value: 0
+
+# <1-4-9发送峰值输入框验证
+# (1)发送峰值输入框默认值验证
+TH-CP-VM-0069:
+  by: xpath
+  locator: (//div[@class="el-input el-input--small el-input-group el-input-group--append"])[2]/input
+
+#(2)发送峰值输入框输入为空验证
+TH-CP-VM-0070:
+  data1:
+    - by: xpath
+      locator: (//div[@class="el-input el-input--small el-input-group el-input-group--append"])[2]/input
+      action: clear
+
+    - by: xpath
+      locator: (//div[@class="el-input el-input--small el-input-group el-input-group--append"])[2]/input
+      action: send
+      value: ''
+
+  #输入框弱提示信息获取：“请输入速率”
+  data2:
+    by: xpath
+    locator: (//div[@class="el-input el-input--small el-input-group el-input-group--append"])[2]/input
+    attr: placeholder
+
+#(3)发送峰值输入框输入特殊字符验证
+TH-CP-VM-0071:
+  - by: xpath
+    locator: (//div[@class="el-input el-input--small el-input-group el-input-group--append"])[2]/input
+    action: clear
+
+  - by: xpath
+    locator: (//div[@class="el-input el-input--small el-input-group el-input-group--append"])[2]/input
+    action: send
+    value: '#￥%……&**'
+
+  #输入框下方提示信息获取：“请输入0或者正整数”
+  - by: xpath
+    locator: (//div[@class="el-form-item__content"])[17]/div[2]
+    action: text
+
+  - by: xpath
+    locator: (//div[@class="el-input el-input--small el-input-group el-input-group--append"])[2]/input
+    action: clear
+
+#(4)发送峰值输入框输入大于4194303验证
+TH-CP-VM-0072:
+  - by: xpath
+    locator: (//div[@class="el-input el-input--small el-input-group el-input-group--append"])[2]/input
+    action: clear
+
+  - by: xpath
+    locator: (//div[@class="el-input el-input--small el-input-group el-input-group--append"])[2]/input
+    action: send
+    value: 4194304
+
+  #输入框下方提示信息获取：“输入上限4194303”
+  - by: xpath
+    locator: (//div[@class="el-form-item__content"])[17]/div[2]
+    action: text
+
+#(5)发送峰值输入框输入小于0验证
+TH-CP-VM-0073:
+  - by: xpath
+    locator: (//div[@class="el-input el-input--small el-input-group el-input-group--append"])[2]/input
+    action: clear
+
+  - by: xpath
+    locator: (//div[@class="el-input el-input--small el-input-group el-input-group--append"])[2]/input
+    action: send
+    value: -1
+
+  #输入框下方提示信息获取：“请输入0或者正整数”
+  - by: xpath
+    locator: (//div[@class="el-form-item__content"])[17]/div[2]
+    action: text
+
+  - by: xpath
+    locator: (//div[@class="el-input el-input--small el-input-group el-input-group--append"])[2]/input
+    action: clear
+
+  #恢复默认值0
+  - by: xpath
+    locator: (//div[@class="el-input el-input--small el-input-group el-input-group--append"])[2]/input
+    action: send
+    value: 0
+
+# <1-4-10发送突发值输入框验证
+# (1)发送突发值输入框默认值验证
+TH-CP-VM-0074:
+  by: xpath
+  locator: (//div[@class="el-input el-input--small el-input-group el-input-group--append"])[3]/input
+
+#(2)发送突发值输入框输入为空验证
+TH-CP-VM-0075:
+  data1:
+    - by: xpath
+      locator: (//div[@class="el-input el-input--small el-input-group el-input-group--append"])[3]/input
+      action: clear
+
+    - by: xpath
+      locator: (//div[@class="el-input el-input--small el-input-group el-input-group--append"])[3]/input
+      action: send
+      value: ''
+
+  #输入框弱提示信息获取：“请输入队速率”
+  data2:
+    by: xpath
+    locator: (//div[@class="el-input el-input--small el-input-group el-input-group--append"])[3]/input
+    attr: placeholder
+
+#(3)发送突发值输入框输入特殊字符验证
+TH-CP-VM-0076:
+  - by: xpath
+    locator: (//div[@class="el-input el-input--small el-input-group el-input-group--append"])[3]/input
+    action: clear
+
+  - by: xpath
+    locator: (//div[@class="el-input el-input--small el-input-group el-input-group--append"])[3]/input
+    action: send
+    value: '#￥%……&**'
+
+  #输入框下方提示信息获取：“请输入0或者正整数”
+  - by: xpath
+    locator: (//div[@class="el-form-item__content"])[18]/div[2]
+    action: text
+
+  - by: xpath
+    locator: (//div[@class="el-input el-input--small el-input-group el-input-group--append"])[3]/input
+    action: clear
+
+#(4)发送突发值输入框输入大于4194303验证
+TH-CP-VM-0077:
+  - by: xpath
+    locator: (//div[@class="el-input el-input--small el-input-group el-input-group--append"])[3]/input
+    action: clear
+
+  - by: xpath
+    locator: (//div[@class="el-input el-input--small el-input-group el-input-group--append"])[3]/input
+    action: send
+    value: 4194304
+
+  #输入框下方提示信息获取：“输入上限4194303”
+  - by: xpath
+    locator: (//div[@class="el-form-item__content"])[18]/div[2]
+    action: text
+
+#(5)发送突发值输入框输入小于0验证
+TH-CP-VM-0078:
+  - by: xpath
+    locator: (//div[@class="el-input el-input--small el-input-group el-input-group--append"])[3]/input
+    action: clear
+
+  - by: xpath
+    locator: (//div[@class="el-input el-input--small el-input-group el-input-group--append"])[3]/input
+    action: send
+    value: -1
+
+  #输入框下方提示信息获取：“请输入0或者正整数”
+  - by: xpath
+    locator: (//div[@class="el-form-item__content"])[18]/div[2]
+    action: text
+
+  - by: xpath
+    locator: (//div[@class="el-input el-input--small el-input-group el-input-group--append"])[3]/input
+    action: clear
+
+  #恢复默认值0
+  - by: xpath
+    locator: (//div[@class="el-input el-input--small el-input-group el-input-group--append"])[3]/input
+    action: send
+    value: 0
+
+
+#QOS设置
+#接收
+#点击接收按钮
+TH-CP-VM-0079:
+  - by: xpath
+    locator: (//div[@class="el-form-item__content"])[15]/div/label[2]/span/span
+    action: click
+
+# <1-4-11接收速率输入框验证
+#(1)接收速率输入框默认值验证：0
+TH-CP-VM-0080:
+  by: xpath
+  locator: (//div[@class="el-input el-input--small el-input-group el-input-group--append"])[1]/input
+
+#(2)接收速率输入框输入为空验证
+TH-CP-VM-0081:
+  data1:
+    - by: xpath
+      locator: (//div[@class="el-input el-input--small el-input-group el-input-group--append"])[1]/input
+      action: clear
+
+    - by: xpath
+      locator: (//div[@class="el-input el-input--small el-input-group el-input-group--append"])[1]/input
+      action: send
+      value: ''
+
+  #输入框弱提示信息获取：“请输入速率”
+  data2:
+    by: xpath
+    locator: (//div[@class="el-form-item__content"])[17]/div/input
+    attr: placeholder
+
+#(3)接收速率输入框输入特殊字符验证
+TH-CP-VM-0082:
+  - by: xpath
+    locator: (//div[@class="el-input el-input--small el-input-group el-input-group--append"])[1]/input
+    action: clear
+
+  - by: xpath
+    locator: (//div[@class="el-input el-input--small el-input-group el-input-group--append"])[1]/input
+    action: send
+    value: '#￥%……&**'
+
+  #输入框下方提示信息获取：“请输入0或者正整数”
+  - by: xpath
+    locator: (//div[@class="el-form-item__content"])[16]/div[2]
+    action: text
+
+#(4)接收速率输入框输入大于4194303验证
+TH-CP-VM-0083:
+  - by: xpath
+    locator: (//div[@class="el-input el-input--small el-input-group el-input-group--append"])[1]/input
+    action: clear
+
+  - by: xpath
+    locator: (//div[@class="el-input el-input--small el-input-group el-input-group--append"])[1]/input
+    action: send
+    value: 4194304
+
+  #输入框下方提示信息获取：“输入上限4194303”
+  - by: xpath
+    locator: (//div[@class="el-form-item__content"])[16]/div[2]
+    action: text
+
+#(5)接收速率输入框输入小于0验证
+TH-CP-VM-0084:
+  - by: xpath
+    locator: (//div[@class="el-input el-input--small el-input-group el-input-group--append"])[1]/input
+    action: clear
+
+  - by: xpath
+    locator: (//div[@class="el-input el-input--small el-input-group el-input-group--append"])[1]/input
+    action: send
+    value: -1
+
+  #输入框下方提示信息获取：“请输入0或者正整数”
+  - by: xpath
+    locator: (//div[@class="el-form-item__content"])[16]/div[2]
+    action: text
+
+  - by: xpath
+    locator: (//div[@class="el-input el-input--small el-input-group el-input-group--append"])[1]/input
+    action: clear
+
+  #恢复默认值0
+  - by: xpath
+    locator: (//div[@class="el-input el-input--small el-input-group el-input-group--append"])[1]/input
+    action: send
+    value: 0
+
+# <1-4-12接收峰值输入框验证
+# (1)接收峰值输入框默认值验证
+TH-CP-VM-0085:
+  by: xpath
+  locator: (//div[@class="el-input el-input--small el-input-group el-input-group--append"])[2]/input
+
+#(2)接收峰值输入框输入为空验证
+TH-CP-VM-0086:
+  data1:
+    - by: xpath
+      locator: (//div[@class="el-input el-input--small el-input-group el-input-group--append"])[2]/input
+      action: clear
+
+    - by: xpath
+      locator: (//div[@class="el-input el-input--small el-input-group el-input-group--append"])[2]/input
+      action: send
+      value: ''
+
+  #输入框弱提示信息获取：“请输入速率”
+  data2:
+    by: xpath
+    locator: (//div[@class="el-input el-input--small el-input-group el-input-group--append"])[2]/input
+    attr: placeholder
+
+#(3)接收峰值输入框输入特殊字符验证
+TH-CP-VM-0087:
+  - by: xpath
+    locator: (//div[@class="el-input el-input--small el-input-group el-input-group--append"])[2]/input
+    action: clear
+
+  - by: xpath
+    locator: (//div[@class="el-input el-input--small el-input-group el-input-group--append"])[2]/input
+    action: send
+    value: '#￥%……&**'
+
+  #输入框下方提示信息获取：“请输入0或者正整数”
+  - by: xpath
+    locator: (//div[@class="el-form-item__content"])[17]/div[2]
+    action: text
+
+  - by: xpath
+    locator: (//div[@class="el-input el-input--small el-input-group el-input-group--append"])[2]/input
+    action: clear
+
+#(4)接收峰值输入框输入大于4194303验证
+TH-CP-VM-0088:
+  - by: xpath
+    locator: (//div[@class="el-input el-input--small el-input-group el-input-group--append"])[2]/input
+    action: clear
+
+  - by: xpath
+    locator: (//div[@class="el-input el-input--small el-input-group el-input-group--append"])[2]/input
+    action: send
+    value: 4194304
+
+  #输入框下方提示信息获取：“输入上限4194303”
+  - by: xpath
+    locator: (//div[@class="el-form-item__content"])[17]/div[2]
+    action: text
+
+#(5)接收峰值输入框输入小于0验证
+TH-CP-VM-0089:
+  - by: xpath
+    locator: (//div[@class="el-input el-input--small el-input-group el-input-group--append"])[2]/input
+    action: clear
+
+  - by: xpath
+    locator: (//div[@class="el-input el-input--small el-input-group el-input-group--append"])[2]/input
+    action: send
+    value: -1
+
+  #输入框下方提示信息获取：“请输入0或者正整数”
+  - by: xpath
+    locator: (//div[@class="el-form-item__content"])[17]/div[2]
+    action: text
+
+  - by: xpath
+    locator: (//div[@class="el-input el-input--small el-input-group el-input-group--append"])[2]/input
+    action: clear
+
+  #恢复默认值0
+  - by: xpath
+    locator: (//div[@class="el-input el-input--small el-input-group el-input-group--append"])[2]/input
+    action: send
+    value: 0
+
+# <1-4-13接收突发值输入框验证
+# (1)接收突发值输入框默认值验证
+TH-CP-VM-0090:
+  by: xpath
+  locator: (//div[@class="el-input el-input--small el-input-group el-input-group--append"])[3]/input
+
+#(2)接收突发值输入框输入为空验证
+TH-CP-VM-0091:
+  data1:
+    - by: xpath
+      locator: (//div[@class="el-input el-input--small el-input-group el-input-group--append"])[3]/input
+      action: clear
+
+    - by: xpath
+      locator: (//div[@class="el-input el-input--small el-input-group el-input-group--append"])[3]/input
+      action: send
+      value: ''
+
+  #输入框弱提示信息获取：“请输入队速率”
+  data2:
+    by: xpath
+    locator: (//div[@class="el-input el-input--small el-input-group el-input-group--append"])[3]/input
+    attr: placeholder
+
+#(3)接收突发值输入框输入特殊字符验证
+TH-CP-VM-0092:
+  - by: xpath
+    locator: (//div[@class="el-input el-input--small el-input-group el-input-group--append"])[3]/input
+    action: clear
+
+  - by: xpath
+    locator: (//div[@class="el-input el-input--small el-input-group el-input-group--append"])[3]/input
+    action: send
+    value: '#￥%……&**'
+
+  #输入框下方提示信息获取：“请输入0或者正整数”
+  - by: xpath
+    locator: (//div[@class="el-form-item__content"])[18]/div[2]
+    action: text
+
+#(4)接收突发值输入框输入大于4194303验证
+TH-CP-VM-0093:
+  - by: xpath
+    locator: (//div[@class="el-input el-input--small el-input-group el-input-group--append"])[3]/input
+    action: clear
+
+  - by: xpath
+    locator: (//div[@class="el-input el-input--small el-input-group el-input-group--append"])[3]/input
+    action: send
+    value: 4194304
+
+  #输入框下方提示信息获取：“输入上限4194303”
+  - by: xpath
+    locator: (//div[@class="el-form-item__content"])[18]/div[2]
+    action: text
+
+#(5)接收突发值输入框输入小于0验证
+TH-CP-VM-0094:
+  - by: xpath
+    locator: (//div[@class="el-input el-input--small el-input-group el-input-group--append"])[3]/input
+    action: clear
+
+  - by: xpath
+    locator: (//div[@class="el-input el-input--small el-input-group el-input-group--append"])[3]/input
+    action: send
+    value: -1
+
+  #输入框下方提示信息获取：“请输入0或者正整数”
+  - by: xpath
+    locator: (//div[@class="el-form-item__content"])[18]/div[2]
+    action: text
+
+  - by: xpath
+    locator: (//div[@class="el-input el-input--small el-input-group el-input-group--append"])[3]/input
+    action: clear
+
+  #恢复默认值0
+  - by: xpath
+    locator: (//div[@class="el-input el-input--small el-input-group el-input-group--append"])[3]/input
+    action: send
+    value: 0
+
+  #关闭网卡信息页面
+  - by: xpath
+    locator: //*[@id="compute_instances_create_basic"]/div/div[1]/button/i
+    action: click
+
+#<1-5 高级配置信息页参数校验
+#依次点击添加云服务器-->创建云服务器-->进入基本信息页-->进入CPU、内存信息页-->进入存储信息页-->进入网卡信息页
+TH-CP-VM-0095:
+  data1: *demo00041
+  data2: *demo00042
+  data3: *demo00043
+  data4: *demo00044
+  data5: &demo00045
+    - by: xpath
+      locator: //div[@class="el-row"]/div[2]/div/button[2]
+      action: click
+
+# <1-5-1光驱下拉框验证
+# (1)光驱下拉框默认为空验证
+TH-CP-VM-0096:
+  #仓库下拉框弱提示信息获取：“请选择仓库地址”
+  data1:
+    by: xpath
+    locator: (//div[@class="el-input el-input--small el-input--suffix"])[2]/input
+    attr: placeholder
+
+  #光驱下拉框弱提示信息获取：“请选择光驱”
+  data2:
+    by: xpath
+    locator: (//div[@class="el-input el-input--small el-input--suffix"])[3]/input
+    attr: placeholder
+
+# (2)光驱下拉框选择值验证
+TH-CP-VM-0097:
+  #点击仓库下拉框
+  data1:
+    - by: xpath
+      locator: (//div[@class="el-input el-input--small el-input--suffix"])[2]/input
+      action: click
+
+  #选择仓库下拉框中第一个选项并点击
+    - by: xpath
+      locator: (//div[@class="el-select-dropdown el-popper"])[16]/div/div/ul/li
+      action: click
+
+  #点击光驱下拉框
+    - by: xpath
+      locator: (//div[@class="el-input el-input--small el-input--suffix"])[3]/input
+      action: click
+
+  #选择光驱下拉框中对应第一个选项并点击
+    - by: xpath
+      locator: (//div[@class="el-select-dropdown el-popper"])[16]/div/div/ul/li/span
+      action: click
+
+  #仓库下拉框选择项验证”
+  data2:
+    by: xpath
+    locator: (//div[@class="el-input el-input--small el-input--suffix"])[2]/input
+
+  #光驱下拉框选择项验证”
+  data3:
+    by: xpath
+    locator: (//div[@class="el-input el-input--small el-input--suffix"])[3]/input
+
+# <1-5-2软驱下拉框验证
+# (1)软驱下拉框默认为空验证
+TH-CP-VM-0098:
+  #仓库下拉框弱提示信息获取：“请选择仓库地址”
+  data1:
+    by: xpath
+    locator: (//div[@class="el-input el-input--small el-input--suffix"])[4]/input
+    attr: placeholder
+
+  #软驱下拉框弱提示信息获取：“请选择软驱”
+  data2:
+    by: xpath
+    locator: (//div[@class="el-input el-input--small el-input--suffix"])[5]/input
+    attr: placeholder
+
+# (2)软驱下拉框选择值验证
+TH-CP-VM-0099:
+  #点击仓库下拉框
+  data1:
+    - by: xpath
+      locator: (//div[@class="el-input el-input--small el-input--suffix"])[4]/input
+      action: click
+
+  #选择仓库下拉框中第一个选项并点击
+    - by: xpath
+      locator: (//div[@class="el-select-dropdown el-popper"])[16]/div/div/ul/li
+      action: click
+
+  #点击软驱下拉框
+    - by: xpath
+      locator: (//div[@class="el-input el-input--small el-input--suffix"])[5]/input
+      action: click
+
+  #选择软驱下拉框中对应第一个选项并点击
+    - by: xpath
+      locator: (//div[@class="el-select-dropdown el-popper"])[16]/div/div/ul/li/span
+      action: click
+
+  #仓库下拉框选择项验证”
+  data2:
+    by: xpath
+    locator: (//div[@class="el-input el-input--small el-input--suffix"])[4]/input
+
+  #软驱下拉框选择项验证”
+  data3:
+    by: xpath
+    locator: (//div[@class="el-input el-input--small el-input--suffix"])[5]/input
+
+#<1-5-3显示选择项验证
+#(1)默认选择VGA验证(tabindex="0")
+TH-CP-VM-0100:
+  by: xpath
+  locator: //div[@class="el-radio-group video-cont"]/label
+  attr: tabindex
+
+#(2)选择vGPU验证(tabindex="0")
+TH-CP-VM-0101:
+  data1:
+    - by: xpath
+      locator: //div[@class="el-radio-group video-cont"]/label[4]
+      action: click
+
+  data2:
+    by: xpath
+    locator: //div[@class="el-radio-group video-cont"]/label[4]
+    attr: tabindex
+
+  #恢复默认选项VGA
+  data3:
+    - by: xpath
+      locator: //div[@class="el-radio-group video-cont"]/label
+      action: click
+
+#<1-5-4高可用选择项验证
+#(1)默认选择ON验证(tabindex="0")
+TH-CP-VM-0102:
+    - by: xpath
+      locator: (//div[@class="el-form-item high-form-item"])[5]/div/label/span[2]   #出现重要云服务器栏
+      action: text
+
+#(2)选择选择OFF验证(tabindex="0")
+TH-CP-VM-0103:
+  data1:
+    - by: xpath
+      locator: (//div[@class="el-radio-group"])[2]/label[2]
+      action: click
+
+  data2:
+    by: xpath
+    locator: (//div[@class="el-radio-group"])[2]/label[2]
+    attr: tabindex
+
+  #恢复默认选项OFF
+  data3:
+    - by: xpath
+      locator: (//div[@class="el-radio-group"])[2]/label
+      action: click
+
+#<1-5-5重要云服务器选择项验证
+#(1)默认选择中验证(tabindex="0")
+TH-CP-VM-0104:
+  by: xpath
+  locator: (//div[@class="el-form-item high-form-item"])[5]/div/div/label[2]
+  attr: tabindex
+
+#(2)选择高验证(tabindex="0")
+TH-CP-VM-0105:
+  data1:
+    - by: xpath
+      locator: (//div[@class="el-form-item high-form-item"])[5]/div/div/label
+      action: click
+
+  data2:
+    by: xpath
+    locator: (//div[@class="el-form-item high-form-item"])[5]/div/div/label
+    attr: tabindex
+
+  #恢复默认状态
+  data3:
+    - by: xpath
+      locator: (//div[@class="el-form-item high-form-item"])[5]/div/div/label[2]  #关闭高可用
+      action: click
+
+#<1-5-6巨页内存选择项验证
+#(1)默认选择OFF验证(tabindex="0")
+TH-CP-VM-0106:
+  by: xpath
+  locator: (//div[@class="el-radio-group"])[4]/label[2]
+  attr: tabindex
+
+#(2)选择ON验证(tabindex="0")
+TH-CP-VM-0107:
+  data1:
+    - by: xpath
+      locator: (//div[@class="el-radio-group"])[4]/label
+      action: click
+
+  data2:
+    by: xpath
+    locator: (//div[@class="el-radio-group"])[4]/label
+    attr: tabindex
+
+  #恢复默认选项OFF
+  data3:
+    - by: xpath
+      locator: (//div[@class="el-radio-group"])[4]/label[2]
+      action: click
+
+#<1-5-7启动选择项验证
+#(1)默认选择BIOS验证(tabindex="0")
+TH-CP-VM-0108:
+  by: xpath
+  locator: (//div[@class="el-radio-group"])[5]/label
+  attr: tabindex
+
+#(2)选择UEFI验证(tabindex="0")
+TH-CP-VM-0109:
+  data1:
+    - by: xpath
+      locator: (//div[@class="el-radio-group"])[5]/label[2]
+      action: click
+
+  data2:
+    by: xpath
+    locator: (//div[@class="el-radio-group"])[5]/label[2]
+    attr: tabindex
+
+  #恢复默认选项BIOS
+  data3:
+    - by: xpath
+      locator: (//div[@class="el-radio-group"])[5]/label
+      action: click
+
+#<1-5-8异常检测选择项验证
+#(1)默认选择ON验证(tabindex="0")
+TH-CP-VM-0110:
+  by: xpath
+  locator: (//div[@class="el-radio-group"])[6]/label
+  attr: tabindex
+
+#(2)选择OFF验证(tabindex="0")
+TH-CP-VM-0111:
+  data1:
+    - by: xpath
+      locator: (//div[@class="el-radio-group"])[6]/label[2]
+      action: click
+
+  data2:
+    by: xpath
+    locator: (//div[@class="el-radio-group"])[6]/label[2]
+    attr: tabindex
+
+  #恢复默认选项ON
+  data3:
+    - by: xpath
+      locator: (//div[@class="el-radio-group"])[6]/label
+      action: click
+
+#<1-5-9VNC选择项验证
+#(1)默认选择OFF验证(tabindex="0")
+TH-CP-VM-0112:
+  by: xpath
+  locator: (//div[@class="el-radio-group"])[7]/label[2]
+  attr: tabindex
+
+#(2)选择ON验证(tabindex="0")
+TH-CP-VM-0113:
+  data1:
+    - by: xpath
+      locator: (//div[@class="el-radio-group"])[7]/label
+      action: click
+
+  data2:
+    by: xpath
+    locator: (//div[@class="el-radio-group"])[7]/label
+    attr: tabindex
+
+  #恢复默认选项OFF
+  data3:
+    - by: xpath
+      locator: (//div[@class="el-radio-group"])[7]/label[2]
+      action: click
+
+#<1-5-10内存安全选择项验证
+#(1)默认选择OFF验证(tabindex="0")
+TH-CP-VM-0114:
+  by: xpath
+  locator: (//div[@class="el-radio-group"])[8]/label[2]
+  attr: tabindex
+
+#(2)选择ON验证(tabindex="0")
+TH-CP-VM-0115:
+  data1:
+    - by: xpath
+      locator: (//div[@class="el-radio-group"])[8]/label
+      action: click
+
+  data2:
+    by: xpath
+    locator: (//div[@class="el-radio-group"])[8]/label
+    attr: tabindex
+
+  #恢复默认选项OFF
+  data3:
+    - by: xpath
+      locator: (//div[@class="el-radio-group"])[8]/label[2]
+      action: click
+
+
+#<1-5-11嵌套虚拟化选择项验证
+#(1)默认选择OFF验证(tabindex="0")
+TH-CP-VM-0116:
+  by: xpath
+  locator: (//div[@class="el-radio-group"])[9]/label[2]
+  attr: tabindex
+
+#(2)选择ON验证(tabindex="0")
+TH-CP-VM-0117:
+  data1:
+    - by: xpath
+      locator: (//div[@class="el-radio-group"])[9]/label
+      action: click
+
+  data2:
+    by: xpath
+    locator: (//div[@class="el-radio-group"])[9]/label
+    attr: tabindex
+
+  #恢复默认选项OFF
+  data3:
+    - by: xpath
+      locator: (//div[@class="el-radio-group"])[9]/label[2]
+      action: click
+
+#<1-5-12数据本地化选择项验证
+#(1)默认选择OFF验证(tabindex="0")
+TH-CP-VM-0118:
+  by: xpath
+  locator: (//div[@class="el-radio-group"])[10]/label[2]
+  attr: tabindex
+
+#(2)选择ON验证(tabindex="0")
+TH-CP-VM-0119:
+  data1:
+    - by: xpath
+      locator: (//div[@class="el-radio-group"])[10]/label
+      action: click
+
+  data2:
+    by: xpath
+    locator: (//div[@class="el-radio-group"])[10]/label
+    attr: tabindex
+
+  #恢复默认选项OFF
+  data3:
+    - by: xpath
+      locator: (//div[@class="el-radio-group"])[10]/label[2]
+      action: click
+
+
+#<1-5-13启用双活选择项验证
+#(1)默认选择OFF验证(tabindex="0")
+TH-CP-VM-0120:
+  by: xpath
+  locator: (//div[@class="el-radio-group"])[11]/label[2]
+  attr: tabindex
+
+#(2)选择ON验证(tabindex="0")
+TH-CP-VM-0121:
+  data1:
+    - by: xpath
+      locator: (//div[@class="el-radio-group"])[11]/label
+      action: click
+
+  data2:
+    by: xpath
+    locator: (//div[@class="el-radio-group"])[11]/label
+    attr: tabindex
+
+  #恢复默认选项OFF
+  data3:
+    - by: xpath
+      locator: (//div[@class="el-radio-group"])[11]/label[2]
+      action: click
+
+
+#<1-5-14绑定主资源池选择项验证
+#(1)默认选择OFF验证(tabindex="0")
+TH-CP-VM-0122:
+  by: xpath
+  locator: (//div[@class="el-radio-group"])[12]/label[2]
+  attr: tabindex
+
+#(2)选择ON验证(tabindex="0")(前置条件：已开启双活)
+TH-CP-VM-0123:
+  data1:
+    - by: xpath
+      locator: (//div[@class="el-radio-group"])[11]/label   #开启双活
+      action: click
+
+    - by: xpath
+      locator: (//div[@class="el-radio-group"])[12]/label
+      action: click
+
+  data2:
+    by: xpath
+    locator: (//div[@class="el-radio-group"])[12]/label
+    attr: tabindex
+
+  #恢复默认选项OFF
+  data3:
+    - by: xpath
+      locator: (//div[@class="el-radio-group"])[12]/label[2]
+      action: click
+
+#<1-5-15启动配置选择项验证
+#(1)默认选择自动验证(tabindex="0")
+TH-CP-VM-0124:
+  data1:
+    - by: xpath
+      locator: (//div[@class="el-radio-group"])[11]/../div[2]
+      action: click
+
+  data2:
+    by: xpath
+    locator: (//div[@class="el-radio-group"])[13]/label[1]
+    attr: tabindex
+
+#(2)选择主机验证(出现主机列表，存在栏位：”宿主机“)
+TH-CP-VM-0125:
+  data1:
+    - by: xpath
+      locator: (//div[@class="el-radio-group"])[11]/../div[2]
+      action: click
+
+  data2:
+    - by: xpath
+      locator: (//div[@class="el-radio-group"])[13]/label[2]
+      action: click
+
+  data3:
+    - by: xpath
+      locator: (//div[@class="el-table__header-wrapper"])[2]//th[2]/div  #存在宿主机列表
+      action: text
+
+# (3)选择标签验证(出现主机列表，存在栏位：”标签名称“)
+TH-CP-VM-0126:
+  data1:
+    - by: xpath
+      locator: (//div[@class="el-radio-group"])[11]/../div[2]
+      action: click
+
+  data2:
+    - by: xpath
+      locator: (//div[@class="el-radio-group"])[13]/label[3]
+      action: click
+
+  data3:
+    - by: xpath
+      locator: (//div[@class="el-table__header-wrapper"])[4]/table/thead/tr/th[2]/div  #存在标签列表
+      action: text
+
+  #恢复默认选项OFF
+    - by: xpath
+      locator: (//div[@class="el-radio-group"])[13]/label
+      action: click
+
+  #关闭网卡信息页面
+    - by: xpath
+      locator: //*[@id="compute_instances_create_basic"]/div/div[1]/button/i
+      action: click
+
+#<1-6 高级配置信息页参数校验
+#依次点击添加云服务器-->创建云服务器-->进入基本信息页-->进入CPU、内存信息页-->进入存储信息页-->进入网卡信息页-->进入高级配置页-->进入完成页
+TH-CP-VM-0127:
+  data1: *demo00041
+  data2: *demo00042
+  data3: *demo00043
+  data4: *demo00044
+  data5: *demo00045
+  data6:
+    - by: xpath
+      locator: //div[@class="el-row"]/div[2]/div/button[2]
+      action: click
+
+  #关闭高级配置信息页面
+    - by: xpath
+      locator: //*[@id="compute_instances_create_basic"]/div/div[1]/button/i
+      action: click
