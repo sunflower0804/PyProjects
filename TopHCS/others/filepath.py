@@ -19,8 +19,19 @@ class Filepath:
     ReportPath = BasePath + r'\TopHCS\report'
 
     #各模块测试数据路径
-    #1.首页模块
+    #浏览器驱动路径
+    DriverPath = BasePath + '\TopHCS\others\driver'
 
+    #0.登录模块
+    # 0.1 登录页面
+    # （1）测试步骤数据
+    LoginDataPath = DataPath + '\page_data\login_module\login.yaml'
+    # # （2）测试用例数据
+    # LoginTestDataPath = DataPath + r'\test_data\hmoe_module_data\home_module\logintest.yaml'
+    # # （3）测试用例
+    # LoginTestPath = TestPath + r'\calculate_module\test_loginpage.py'
+
+    #1.首页模块
 
     #2.计算模块
     #2.1 云服务器模块

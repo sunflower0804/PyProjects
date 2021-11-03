@@ -1,6 +1,5 @@
 import allure
 import pytest
-from selenium.webdriver.common.by import By
 
 from TopHCS.base.main import Main
 from TopHCS.others.filepath import readFilepath
@@ -113,13 +112,14 @@ class TestServicePage:
     # 133非彻底删除    0003
     @allure.title('1.3 删除云服务器/133非彻底删除')
     def test_detel_VM3(self):
-        # self.main.goto_cserver()
+        self.main.goto_cserver()
         pagedata = self.main.goto_serverpage().detel_VM3()
         print(pagedata)
         assert '云服务器0003删除成功！' == pagedata[0]
 
     # 1.1.2 迁入虚拟机(前置条件：存在已开启converter的虚拟机，且满足迁移条件)
     @allure.title('1.1.2 迁入虚拟机')
+    @pytest.mark.skipif(1 > 7, '不满足迁移条件跳过这条用例')
     def test_immigrate_VM1(self):
         # self.main.goto_cserver()
         pagedata = self.main.goto_serverpage().immigrate_VM1()
@@ -146,6 +146,7 @@ class TestServicePage:
     # 1.1.3-2存储介质导入
     # (1)ova导入
     @allure.title('113 导入云服务器/1.1.3-2存储介质导入/(1)ova导入')
+    @pytest.mark.skipif(1 > 7, '不满足条件跳过这条用例')
     def test_export_VM3(self):
         # self.main.goto_cserver()
         pagedata = self.main.goto_serverpage().export_VM3()
@@ -154,6 +155,7 @@ class TestServicePage:
 
     # (2)tva导入
     @allure.title('113 导入云服务器/1.1.3-2存储介质导入/(2)tva导入')
+    @pytest.mark.skipif(1 > 7, '不满足条件跳过这条用例')
     def test_export_VM4(self):
         # self.main.goto_cserver()
         pagedata = self.main.goto_serverpage().export_VM4()
@@ -195,6 +197,7 @@ class TestServicePage:
 
     #145休眠
     @allure.title('1.4 云服务器的操作/145休眠')
+    @pytest.mark.flaky(reruns=3, reruns_delay=2) #失败后两秒重试，重试3次
     def test_operate_VM5(self):
         # self.main.goto_cserver()
         pagedata = self.main.goto_serverpage().operate_VM5()
@@ -211,6 +214,7 @@ class TestServicePage:
 
     #147导出PDF(开机状态)
     @allure.title('1.4 云服务器的操作/147导出PDF')
+    @pytest.mark.flaky(reruns=3, reruns_delay=2)  # 失败后两秒重试，重试3次
     def test_operate_VM7(self):
         # self.main.goto_cserver()
         pagedata = self.main.goto_serverpage().operate_VM7()
@@ -219,8 +223,9 @@ class TestServicePage:
 
     #148关机
     @allure.title('1.4 云服务器的操作/148关机')
+    @pytest.mark.flaky(reruns=3, reruns_delay=2)  # 失败后两秒重试，重试3次
     def test_operate_VM8(self):
-        # self.main.goto_cserver()
+        self.main.goto_cserver()
         pagedata = self.main.goto_serverpage().operate_VM8()
         print(pagedata)
         assert '云服务器0000关闭成功！' == pagedata[0]
@@ -268,7 +273,7 @@ class TestServicePage:
 
     #1412-3迁移到vsphere（存在目的集群） ###还未写完
     @allure.title('1.4 云服务器的操作/1412迁移/1412-3迁移到vsphere')
-    def test_migrate_VM2(self):
+    def test_migrate_VM3(self):
         # self.main.goto_cserver()
         pagedata = self.main.goto_serverpage().migrate_VM3()
         print(pagedata)
@@ -279,7 +284,7 @@ class TestServicePage:
     #（1）不基于快照
     @allure.title('1.4 云服务器的操作/1413克隆/1413-1全量克隆/（1）不基于快照')
     def test_clone_VM1(self):
-        self.main.goto_cserver()
+        # self.main.goto_cserver()
         pagedata = self.main.goto_serverpage().clone_VM1()
         print(pagedata)
         assert '云服务器成功发起1个克隆请求,云服务器正在克隆中,结果请稍后查看' == pagedata[0][0]
@@ -288,7 +293,7 @@ class TestServicePage:
     #（2）基于快照
     @allure.title('1.4 云服务器的操作/1413克隆/1413-1全量克隆/（2）基于快照')
     def test_clone_VM2(self):
-        self.main.goto_cserver()
+        # self.main.goto_cserver()
         pagedata = self.main.goto_serverpage().clone_VM2()
         print(pagedata)
         assert '云服务器成功发起1个克隆请求,云服务器正在克隆中,结果请稍后查看' == pagedata[0][1]
@@ -297,7 +302,7 @@ class TestServicePage:
     # 1413-2链接克隆
     @allure.title('1.4 云服务器的操作/1413克隆/1413-2链接克隆')
     def test_clone_VM3(self):
-        self.main.goto_cserver()
+        # self.main.goto_cserver()
         pagedata = self.main.goto_serverpage().clone_VM3()
         print(pagedata)
         assert '云服务器成功发起1个克隆请求,云服务器正在克隆中,结果请稍后查看' == pagedata[0][1]
@@ -346,7 +351,7 @@ class TestMouldPage:
 
 # 3.规格页面
 @allure.feature('计算-->云服务器模块')   #对模块功能进行标注
-@allure.story('模板页面')  ##对模块子功能进行标注
+@allure.story('规格页面')  ##对模块子功能进行标注
 class TestSpecsPage:
     def setup_class(self):
         self.main = Main(driver=None)
@@ -354,7 +359,7 @@ class TestSpecsPage:
     filepath = readFilepath.SpecsTestPath
     data = loadyaml(filepath)
 
-    @allure.title('模板页面入口校验')  # 对模块子功能进行标注
+    @allure.title('规格页面入口校验')  # 对模块子功能进行标注
     def test_cservice(self):
         self.main.goto_cserver()
 
@@ -373,6 +378,122 @@ class TestSpecsPage:
         pagedata = self.main.goto_specs().delete_specs2()
         print(pagedata)
         assert '规格specs删除成功！' == pagedata[0]
+
+
+
+# 4.备份页面
+@allure.feature('计算-->云服务器模块')   #对模块功能进行标注
+@allure.story('备份页面')  ##对模块子功能进行标注
+class TestSpecsPage:
+    def setup_class(self):
+        self.main = Main(driver=None)
+
+    filepath = readFilepath.BackupTestPath
+    data = loadyaml(filepath)
+
+    @allure.title('备份页面入口校验')  # 对模块子功能进行标注
+    def test_cservice(self):
+        self.main.goto_cserver()
+
+    # 4.1远端导入备份
+    @allure.title('4.1远端导入备份')
+    def test_remote_backup1(self):
+        self.main.goto_cserver()
+        pagedata = self.main.goto_backup().remote_backup1()
+        print(pagedata)
+        # assert '创建云服务器1个成功！' == pagedata[0]
+
+    # 4.2远端备份恢复
+    @allure.title('4.2远端备份恢复')
+    def test_remote_backup2(self):
+        self.main.goto_cserver()
+        pagedata = self.main.goto_backup().remote_backup2()
+        print(pagedata)
+        #assert '规格specs删除成功！' == pagedata[0]
+
+
+# 5.策略页面
+@allure.feature('计算-->云服务器模块')   #对模块功能进行标注
+@allure.story('备份页面')  ##对模块子功能进行标注
+class TestStrategyPage:
+    def setup_class(self):
+        self.main = Main(driver=None)
+
+    filepath = readFilepath.StrategyTestPath
+    data = loadyaml(filepath)
+
+    @allure.title('备份页面入口校验')  # 对模块子功能进行标注
+    def test_cservice(self):
+        self.main.goto_cserver()
+
+    # 5.1 开关机策略
+    #（1）创建开关机策略
+    @allure.title('5.1 开关机策略/创建开关机策略')
+    def test_creat_strategy11(self):
+        self.main.goto_cserver()
+        pagedata = self.main.goto_strategy().creat_strategy11()
+        print(pagedata)
+        assert '提交开关机策略成功！' == pagedata[0]
+
+    #（2）开启/关闭开关机策略
+    @allure.title('5.1 开关机策略/(开启/关闭)开关机策略')
+    def test_updown_strategy11(self):
+        self.main.goto_cserver()
+        pagedata = self.main.goto_strategy().updown_strategy11()
+        print(pagedata)
+        assert '停止策略成功！' == pagedata[0][0]
+        assert '启动策略成功！' == pagedata[1][0]
+
+    #（3）编辑开关机策略
+    @allure.title('5.1 开关机策略/编辑开关机策略')
+    def test_edit_strategy11(self):
+        self.main.goto_cserver()
+        pagedata = self.main.goto_strategy().edit_strategy11()
+        print(pagedata)
+        assert '编辑开关机策略成功！' == pagedata[0]
+
+    #（4）删除开关机策略
+    @allure.title('5.1 开关机策略/删除开关机策略')
+    def test_del_strategy11(self):
+        self.main.goto_cserver()
+        pagedata = self.main.goto_strategy().edit_del11()
+        print(pagedata)
+        assert '删除开关机策略成功！' == pagedata[0]
+
+    # 5.2 快照策略
+    #（1）创建快照策略
+    @allure.title('5.2 快照策略/创建快照策略')
+    def test_creat_strategy21(self):
+        self.main.goto_cserver()
+        pagedata = self.main.goto_strategy().creat_strategy21()
+        print(pagedata)
+        assert '提交快照策略成功！' == pagedata[0]
+
+    #（2）开启/关闭快照策略
+    @allure.title('5.2 快照策略/(开启/关闭)快照策略')
+    def test_updown_strategy21(self):
+        self.main.goto_cserver()
+        pagedata = self.main.goto_strategy().updown_strategy21()
+        print(pagedata)
+        assert '停止策略成功！' == pagedata[0][0]
+        assert '启动策略成功！' == pagedata[1][0]
+
+    #（3）编辑快照策略
+    @allure.title('5.2 快照策略/编辑快照策略')
+    def test_edit_strategy21(self):
+        self.main.goto_cserver()
+        pagedata = self.main.goto_strategy().edit_strategy21()
+        print(pagedata)
+        assert '编辑快照策略成功！' == pagedata[0]
+
+    #（4）删除快照策略
+    @allure.title('5.2 快照策略/删除快照策略')
+    def test_del_strategy21(self):
+        self.main.goto_cserver()
+        pagedata = self.main.goto_strategy().del_strategy21()
+        print(pagedata)
+        assert '删除策略成功！' == pagedata[0]
+
 
 '''
 allure常用特性

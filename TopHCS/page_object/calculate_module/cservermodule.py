@@ -373,34 +373,115 @@ class SpecsPage(BasePage):
 
 # 4.备份页面
 class BackupPage(BasePage):
-    filepath = readFilepath.ServerDataPath
+    filepath = readFilepath.BackupDataPath
     data = loadyaml(filepath)      #获取测试驱动数据文件，并解析
 
     # 4.1远端导入备份
     def remote_backup1(self):
-        data0 = self.data['TH-CP-BACKUP-0001']
-        self.steps(data0)  #跳转到云服务器克隆弹窗
-        data1 = self.data['TH-CP-CLONE_VM-0004']['data1']
-        self.steps(data1)
-        return self.steps(data1)  #捕获跨租户克隆成功的提示信息
+        data = self.data['TH-CP-BACKUP-0001']
+        return self.steps(data)  #捕获远端导入备份成功的提示信息
 
     # 4.2远端备份恢复
     def remote_backup2(self):
-        data0 = self.data['TH-CP-CLONE_VM-0004']['data0']
-        self.steps(data0)  #跳转到云服务器克隆弹窗
-        data1 = self.data['TH-CP-CLONE_VM-0004']['data1']
-        self.steps(data1)
-        return self.steps(data1)  #捕获跨租户克隆成功的提示信息
+        data = self.data['TH-CP-BACKUP-0002']
+        return self.steps(data)  #捕获远端导入备份恢复成功的提示信息
+
 
 # 5.策略页面
 class StrategyPage(BasePage):
-    filepath = readFilepath.ServerDataPath
+    filepath = readFilepath.StrategyDataPath
     data = loadyaml(filepath)      #获取测试驱动数据文件，并解析
 
-    # 1413-3跨租户克隆  #报错
-    def clone_VMwww(self):
-        data0 = self.data['TH-CP-CLONE_VM-0004']['data0']
-        self.steps(data0)  #跳转到云服务器克隆弹窗
-        data1 = self.data['TH-CP-CLONE_VM-0004']['data1']
-        self.steps(data1)
-        return self.steps(data1)  #捕获跨租户克隆成功的提示信息
+    # 5.1 开关机策略
+    # （1）创建开关机策略
+    def creat_strategy11(self):
+        data = self.data['TH-CP-STRATEGY-0001']
+        return self.steps(data)  #捕获创建开关机策略成功的提示信息
+
+    # （2）开启/关闭开关机策略
+    def updown_strategy11(self):
+        data0 = self.data['TH-CP-STRATEGY-0002']['data0']
+        self.steps(data0)
+        data1 = self.data['TH-CP-STRATEGY-0002']['data1']
+        result1 = self.steps(data1)  #捕获停止开关机策略成功的提示信息
+        sleep(2)
+        data2 = self.data['TH-CP-STRATEGY-0002']['data2']
+        result2 = self.steps(data2)  # 捕获开启开关机策略成功的提示信息
+        return result1, result2
+
+    # （3）编辑开关机策略
+    def edit_strategy11(self):
+        data0 = self.data['TH-CP-STRATEGY-0003']['data0']
+        self.steps(data0)
+        data1 = self.data['TH-CP-STRATEGY-0003']['data1']
+        return self.steps(data1)  #捕获编辑开关机策略成功的提示信息
+
+    # （4）删除开关机策略
+    def del_strategy11(self):
+        data0 = self.data['TH-CP-STRATEGY-0004']['data0']
+        self.steps(data0)
+        data1 = self.data['TH-CP-STRATEGY-0004']['data1']
+        return self.steps(data1)  #捕获删除开关机策略成功的提示信息
+
+
+    # 5.2 创建快照策略
+    # （1）创建快照策略
+    def creat_strategy21(self):
+        data = self.data['TH-CP-STRATEGY-0005']
+        return self.steps(data)  #捕获创建快照策略成功的提示信息
+
+    # （2）开启/关闭快照策略
+    def updown_strategy21(self):
+        data0 = self.data['TH-CP-STRATEGY-0006']['data0']
+        self.steps(data0)
+        data1 = self.data['TH-CP-STRATEGY-0006']['data1']
+        result1 = self.steps(data1)  # 捕获停止快照策略成功的提示信息
+        sleep(2)
+        data2 = self.data['TH-CP-STRATEGY-0006']['data2']
+        result2 = self.steps(data2)  # 捕获开启快照策略成功的提示信息
+        return result1, result2
+
+    # （3）编辑快照策略
+    def edit_strategy21(self):
+        data0 = self.data['TH-CP-STRATEGY-0007']['data0']
+        self.steps(data0)
+        data1 = self.data['TH-CP-STRATEGY-0007']['data1']
+        return self.steps(data1)  # 捕获编辑快照策略成功的提示信息
+
+    # （4）删除快照策略
+    def del_strategy21(self):
+        data0 = self.data['TH-CP-STRATEGY-0008']['data0']
+        self.steps(data0)
+        data1 = self.data['TH-CP-STRATEGY-0008']['data1']
+        return self.steps(data1)  # 捕获删除快照策略成功的提示信息
+
+    # 5.3 创建备份策略
+    # （1）创建备份策略
+    def creat_strategy31(self):
+        data = self.data['TH-CP-STRATEGY-0009']
+        return self.steps(data)  #捕获创建备份策略成功的提示信息
+
+    # （2）开启/关闭备份策略
+    def updown_strategy31(self):
+        data0 = self.data['TH-CP-STRATEGY-0010']['data0']
+        self.steps(data0)
+        data1 = self.data['TH-CP-STRATEGY-0010']['data1']
+        result1 = self.steps(data1)  # 捕获停止备份策略成功的提示信息
+        sleep(2)
+        data2 = self.data['TH-CP-STRATEGY-0010']['data2']
+        result2 = self.steps(data2)  # 捕获开启备份策略成功的提示信息
+        return result1, result2
+
+    # （3）编辑备份策略
+    def edit_strategy31(self):
+        data0 = self.data['TH-CP-STRATEGY-0011']['data0']
+        self.steps(data0)
+        data1 = self.data['TH-CP-STRATEGY-0011']['data1']
+        return self.steps(data1)  # 捕获编辑备份策略成功的提示信息
+
+    # （4）删除备份策略
+    def del_strategy31(self):
+        data0 = self.data['TH-CP-STRATEGY-0011']['data0']
+        self.steps(data0)
+        data1 = self.data['TH-CP-STRATEGY-0011']['data1']
+        return self.steps(data1)  # 捕获删除备份策略成功的提示信息

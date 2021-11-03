@@ -1,21 +1,565 @@
-cluster1:
+#云服务器模块
+# 5.策略页面
+# 5.1 开关机策略
+#（1）创建开关机策略
+TH-CP-STRATEGY-0001:
+  #默认为开关机策略页面
+  #点击新增策略按钮
   - by: xpath
-    locator: //*[@id="panel-c-scroll"]/div[1]/section/section/div[1]/section/div[2]/div/ul/li/ul/li[2]/div/div/div/div
+    locator: //button[@id="compute_virtual_strategy_Set"]
     action: click
 
+  #出现创建开关机策略弹窗
+  #基本信息页
+  #策略名称输入框输入：strategy-kg1
   - by: xpath
-    locator: //*[@id="panel-c-scroll"]/div[1]/section/section/div[1]/section/div[2]/div/ul/li/ul/li[1]/div/div/div/div
-    action: text
+    locator: //input[@placeholder="请输入策略名称"]
+    action: send
+    value: "strategy-kg1"
 
+  #点击策略频率下拉框
   - by: xpath
-    locator: //*[@id="panel-c-scroll"]/div[1]/section/section/div[1]/section/div[2]/div/ul/li/ul/li[2]/div/div/div/div
-    action: text
-
-cluster2:
-  - by: xpath
-    locator: //*[@id="panel-c-scroll"]/div[1]/section/section/div[1]/section/div[2]/div/ul/li/ul/li[1]/div/div/div/div
+    locator: //input[@placeholder="请选择策略频率"]
     action: click
 
+  #备份频率下拉框选择”每天“并点击
   - by: xpath
-    locator: //*[@id="panel-c-scroll"]/div[1]/section/section/div[1]/section/div[2]/div/ul/li/ul/li[1]/div/div/div/div
+    locator: (//div[@class="el-select-dropdown__wrap el-scrollbar__wrap"])[5]/ul/li[1]
+    action: move_click
+
+  #点击下一次开机日历控件
+  - by: xpath
+    locator: //input[@id="switch_strategy_last_start"]
+    action: click
+
+  #移动并点击此刻按钮
+  - by: xpath
+    locator: //button[@class="el-button el-picker-panel__link-btn el-button--text el-button--mini"]
+    action: move_click
+
+  #其它配置默认，点击下一步按钮
+  - by: xpath
+    locator: //button[@id="compute_strategy_create_next_step"]
+    action: click
+
+  #跳转至选择云服务器页面，点击确认按钮
+  - by: xpath
+    locator: //button[@id="compute_strategy_create_confirm"]
+    action: click
+
+  #捕获创建开关机策略成功的提示信息：”提交开关机策略成功！“
+  - by: xpath
+    locator: //div[@class='vue-message vue-message--success']/p
     action: text
+
+#（2）开启/关闭开关机策略
+TH-CP-STRATEGY-0002:
+  data0: &demo0000
+  #搜索框中搜索已创建的开关机策略：strategy-kg1
+    - by: xpath
+      locator: //input[@id="compute_virtual_filtersVal"]
+      action: send
+      value: "strategy-kg1"
+
+    - by: xpath
+      locator: //button[@id="compute_virtual_searchBtn"]
+      action: click
+
+    - by: xpath
+      locator: //input[@id="compute_virtual_filtersVal"]
+      action: clear
+
+  #(2-1)停止开关机策略
+  #鼠标移动至该策略的操作栏，出现操作类型下拉列表
+  data1:
+    - by: xpath
+      locator: //button[@id="compute_instances_computes_operate_btn"]
+      action: move
+
+  #移动至停止选项并点击
+    - by: xpath
+      locator: //div[@class="xl-chrome-ext-bar"]/../ul/li[2]
+      action: move_click
+
+  #捕获停止开关机策略成功的提示信息：”关闭开关机策略成功！“
+    - by: xpath
+      locator: //div[@class='vue-message vue-message--success']/p
+      action: text
+
+  ##(2-2)开启开关机策略
+  #鼠标移动至该策略的操作栏，出现操作类型下拉列表
+  data2:
+    - by: xpath
+      locator: //button[@id="compute_instances_computes_operate_btn"]
+      action: move
+
+  #移动至开启选项并点击
+    - by: xpath
+      locator: //div[@class="xl-chrome-ext-bar"]/../ul/li[1]
+      action: move_click
+
+  #捕获开启开关机策略成功的提示信息：”开启开关机策略成功！“
+    - by: xpath
+      locator: //div[@class='vue-message vue-message--success']/p
+      action: text
+
+#（3）编辑开关机策略
+#鼠标移动至该策略的操作栏，出现操作类型下拉列表
+TH-CP-STRATEGY-0003:
+  data0: *demo0000
+  data1:
+    - by: xpath
+      locator: //button[@id="compute_instances_computes_operate_btn"]
+      action: move
+
+  #移动至编辑选项并点击
+    - by: xpath
+      locator: //div[@class="xl-chrome-ext-bar"]/../ul/li[3]
+      action: move_click
+
+  #出现编辑开关机策略弹窗
+  #基本信息页
+  #策略描述输入框输入：#####￥￥%……
+    - by: xpath
+      locator: //textarea[@placeholder="请输入策略描述"]
+      action: send
+      value: "修改策略描述#####￥￥%……"
+
+  #点击策略频率下拉框
+    - by: xpath
+      locator: //input[@placeholder="请选择策略频率"]
+      action: click
+
+  #修改备份频率下拉框选择”每周“并点击
+    - by: xpath
+      locator: (//div[@class="el-select-dropdown__wrap el-scrollbar__wrap"])[5]/ul/li[2]
+      action: move_click
+
+  #其它配置默认，点击下一步按钮
+    - by: xpath
+      locator: //button[@id="compute_strategy_create_next_step"]
+      action: click
+
+  #跳转至选择云服务器页面，点击确认按钮
+    - by: xpath
+      locator: //button[@id="compute_strategy_create_confirm"]
+      action: click
+
+  #捕获编辑开关机策略成功的提示信息：”编辑开关机策略成功！“
+    - by: xpath
+      locator: //div[@class='vue-message vue-message--success']/p
+      action: text
+
+#（4）删除开关机策略
+#鼠标移动至该策略的操作栏，出现操作类型下拉列表
+TH-CP-STRATEGY-0004:
+  data0: *demo0000
+  data1:
+    - by: xpath
+      locator: //button[@id="compute_instances_computes_operate_btn"]
+      action: move
+
+  #移动至删除选项并点击
+    - by: xpath
+      locator: //div[@class="xl-chrome-ext-bar"]/../ul/li[5]
+      action: move_click
+
+  #捕获删除开关机策略成功的提示信息：”删除开关机策略成功！“
+    - by: xpath
+      locator: //div[@class='vue-message vue-message--success']/p
+      action: text
+
+# 5.2 快照策略
+#（1）创建快照策略
+TH-CP-STRATEGY-0005:
+  #点击快照策略栏，进入快照策略页面
+  - by: xpath
+    locator: //div[text()="快照策略"]
+    action: click
+
+  #点击新增策略按钮
+  - by: xpath
+    locator: //button[@id="compute_virtual_strategy_Set"]
+    action: click
+
+  #出现创建开关机策略弹窗
+  #基本信息页
+  #策略名称输入框输入：strategy-kz1
+  - by: xpath
+    locator: //input[@placeholder="请输入策略名称"]
+    action: send
+    value: "strategy-kz1"
+
+  #点击策略频率下拉框
+  - by: xpath
+    locator: //input[@placeholder="请选择策略频率"]
+    action: click
+
+  #备份频率下拉框选择”每天“并点击
+  - by: xpath
+    locator: (//div[@class="el-select-dropdown__wrap el-scrollbar__wrap"])[5]/ul/li[1]
+    action: move_click
+
+  #点击下一次执行日历控件
+  - by: xpath
+    locator: (//input[@placeholder="选择日期时间"])[2]
+    action: click
+
+  #移动并点击此刻按钮
+  - by: xpath
+    locator: //button[@class="el-button el-picker-panel__link-btn el-button--text el-button--mini"]
+    action: move_click
+
+  #保留数量输入框输入：“2”
+  - by: xpath
+    locator: //input[@placeholder="请输入保留数量"]
+    action: send
+    value: "2"
+
+  #其它配置默认，点击下一步按钮
+  - by: xpath
+    locator: //button[@id="compute_strategy_create_next_step"]
+    action: click
+
+  #跳转至选择云服务器页面，点击确认按钮
+  - by: xpath
+    locator: //button[@id="compute_strategy_create_confirm"]
+    action: click
+
+  #捕获创建开关机策略成功的提示信息：”提交快照策略成功！“
+  - by: xpath
+    locator: //div[@class='vue-message vue-message--success']/p
+    action: text
+
+#（2）开启/关闭快照策略
+TH-CP-STRATEGY-0006:
+  data0: &demo0001
+  #点击快照策略栏，进入快照策略页面
+    - by: xpath
+      locator: //div[text()="快照策略"]
+      action: click
+
+  #搜索框输入创建的快照策略名称
+    - by: xpath
+      locator: //input[@id="compute_virtual_filtersVal"]
+      action: send
+      value: "strategy-kz1"
+
+  #点击查询按钮
+    - by: xpath
+      locator: //button[@id="compute_virtual_searchBtn"]
+      action: click
+
+    - by: xpath
+      locator: //input[@id="compute_virtual_filtersVal"]
+      action: clear
+
+  #(2-1)停止快照策略
+  #鼠标移动至该策略的操作栏，出现操作类型下拉列表
+  data1:
+    - by: xpath
+      locator: //button[@id="compute_instances_computes_operate_btn"]
+      action: move
+
+  #移动至停止选项并点击
+    - by: xpath
+      locator: //div[@class="xl-chrome-ext-bar"]/../ul/li[2]
+      action: move_click
+
+  #捕获停止开关机策略成功的提示信息：”关闭开关机策略成功！“
+    - by: xpath
+      locator: //div[@class='vue-message vue-message--success']/p
+      action: text
+
+  ##(2-2)开启快照策略
+  #鼠标移动至该策略的操作栏，出现操作类型下拉列表
+  data2:
+    - by: xpath
+      locator: //button[@id="compute_instances_computes_operate_btn"]
+      action: move
+
+  #移动至开启选项并点击
+    - by: xpath
+      locator: //div[@class="xl-chrome-ext-bar"]/../ul/li[1]
+      action: move_click
+
+  #捕获开启开关机策略成功的提示信息：”开启开关机策略成功！“
+    - by: xpath
+      locator: //div[@class='vue-message vue-message--success']/p
+      action: text
+
+#（3）编辑快照策略
+#鼠标移动至该策略的操作栏，出现操作类型下拉列表
+TH-CP-STRATEGY-0007:
+  data0: *demo0001
+  data1:
+    #鼠标移动至该策略的操作栏，出现操作类型下拉列表
+    - by: xpath
+      locator: //button[@id="compute_instances_computes_operate_btn"]
+      action: move
+
+    #移动至编辑选项并点击
+    - by: xpath
+      locator: //div[@class="xl-chrome-ext-bar"]/../ul/li[3]
+      action: move_click
+
+  #出现编辑开关机策略弹窗
+  #基本信息页
+  #策略描述输入框输入：#####￥￥%……
+    - by: xpath
+      locator: //textarea[@placeholder="请输入策略描述"]
+      action: send
+      value: "修改策略描述#####￥￥%……"
+
+  #点击策略频率下拉框
+    - by: xpath
+      locator: //input[@placeholder="请选择策略频率"]
+      action: click
+
+  #修改备份频率下拉框选择”每周“并点击
+    - by: xpath
+      locator: (//div[@class="el-select-dropdown__wrap el-scrollbar__wrap"])[5]/ul/li[2]
+      action: move_click
+
+  #其它配置默认，点击下一步按钮
+    - by: xpath
+      locator: //button[@id="compute_strategy_create_next_step"]
+      action: click
+
+  #跳转至选择云服务器页面，点击确认按钮
+    - by: xpath
+      locator: //button[@id="compute_strategy_create_confirm"]
+      action: click
+
+  #捕获编辑开关机策略成功的提示信息：”编辑开关机策略成功！“
+    - by: xpath
+      locator: //div[@class='vue-message vue-message--success']/p
+      action: text
+
+#（4）删除快照策略
+#鼠标移动至该策略的操作栏，出现操作类型下拉列表
+TH-CP-STRATEGY-0008:
+  data0: *demo0001
+  data1:
+    - by: xpath
+      locator: //button[@id="compute_instances_computes_operate_btn"]
+      action: move
+
+  #移动至删除选项并点击
+    - by: xpath
+      locator: //div[@class="xl-chrome-ext-bar"]/../ul/li[5]
+      action: move_click
+
+  #出现确认弹窗，点击确认按钮
+    - by: xpath
+      locator: //button[@class="btn-confirm"]
+      action: click
+
+  #捕获删除开关机策略成功的提示信息：”删除开关机策略成功！“
+    - by: xpath
+      locator: //div[@class='vue-message vue-message--success']/p
+      action: text
+
+
+
+# 5.3 备份策略
+#（1）创建备份策略
+TH-CP-STRATEGY-0009:
+  #点击备份策略栏，进入备份策略页面
+  - by: xpath
+    locator: //div[text()="备份策略"]
+    action: click
+
+  #点击新增策略按钮
+  - by: xpath
+    locator: //button[@id="compute_virtual_strategy_Set"]
+    action: click
+
+  #出现创建开关机策略弹窗
+  #基本信息页
+  #策略名称输入框输入：strategy-bf1
+  - by: xpath
+    locator: //input[@placeholder="请输入策略名称"]
+    action: send
+    value: "strategy-bf1"
+
+  #点击策略频率下拉框
+  - by: xpath
+    locator: //input[@placeholder="请选择策略频率"]
+    action: click
+
+  #备份频率下拉框选择”每天“并点击
+  - by: xpath
+    locator: (//div[@class="el-select-dropdown__wrap el-scrollbar__wrap"])[6]/ul/li[2]
+    action: move_click
+
+  #点击开始时间日历控件
+  - by: xpath
+    locator: (//input[@placeholder="选择日期时间"])[2]
+    action: click
+
+  #移动并点击此刻按钮
+  - by: xpath
+    locator: //button[@class="el-button el-picker-panel__link-btn el-button--text el-button--mini"]
+    action: move_click
+
+  #点击备份点下拉框
+  - by: xpath
+    locator: //input[@placeholder="请选择备份点"]
+    action: click
+
+  #移动至备份点下拉框中第一个选项并点击
+  - by: xpath
+    locator: (//div[@class="el-select-dropdown__wrap el-scrollbar__wrap"])[6]/ul/li
+    action: move_click
+
+  #保留数量输入框输入：“2”
+  - by: xpath
+    locator: //input[@placeholder="请输入保留数量"]
+    action: send
+    value: "2"
+
+  #其它配置默认，点击下一步按钮
+  - by: xpath
+    locator: //button[@id="compute_strategy_create_next_step"]
+    action: click
+
+  #跳转至选择云服务器页面，点击确认按钮
+  - by: xpath
+    locator: //button[@id="compute_strategy_create_confirm"]
+    action: click
+
+  #捕获创建开关机策略成功的提示信息：”提交备份策略成功！“
+  - by: xpath
+    locator: //div[@class='vue-message vue-message--success']/p
+    action: text
+
+#（2）开启/关闭快照策略
+TH-CP-STRATEGY-0010:
+  data0: &demo0002
+  #点击快照策略栏，进入快照策略页面
+    - by: xpath
+      locator: //div[text()="快照策略"]
+      action: click
+
+  #搜索框输入创建的快照策略名称
+    - by: xpath
+      locator: //input[@id="compute_virtual_filtersVal"]
+      action: send
+      value: "strategy-kz1"
+
+  #点击查询按钮
+    - by: xpath
+      locator: //button[@id="compute_virtual_searchBtn"]
+      action: click
+
+    - by: xpath
+      locator: //input[@id="compute_virtual_filtersVal"]
+      action: clear
+
+  #(2-1)停止快照策略
+  #鼠标移动至该策略的操作栏，出现操作类型下拉列表
+  data1:
+    - by: xpath
+      locator: //button[@id="compute_instances_computes_operate_btn"]
+      action: move
+
+  #移动至停止选项并点击
+    - by: xpath
+      locator: //div[@class="xl-chrome-ext-bar"]/../ul/li[2]
+      action: move_click
+
+  #捕获停止开关机策略成功的提示信息：”关闭开关机策略成功！“
+    - by: xpath
+      locator: //div[@class='vue-message vue-message--success']/p
+      action: text
+
+  ##(2-2)开启快照策略
+  #鼠标移动至该策略的操作栏，出现操作类型下拉列表
+  data2:
+    - by: xpath
+      locator: //button[@id="compute_instances_computes_operate_btn"]
+      action: move
+
+  #移动至开启选项并点击
+    - by: xpath
+      locator: //div[@class="xl-chrome-ext-bar"]/../ul/li[1]
+      action: move_click
+
+  #捕获开启开关机策略成功的提示信息：”开启开关机策略成功！“
+    - by: xpath
+      locator: //div[@class='vue-message vue-message--success']/p
+      action: text
+
+#（3）编辑快照策略
+#鼠标移动至该策略的操作栏，出现操作类型下拉列表
+TH-CP-STRATEGY-0011:
+  data0: *demo0002
+  data1:
+    #鼠标移动至该策略的操作栏，出现操作类型下拉列表
+    - by: xpath
+      locator: //button[@id="compute_instances_computes_operate_btn"]
+      action: move
+
+    #移动至编辑选项并点击
+    - by: xpath
+      locator: //div[@class="xl-chrome-ext-bar"]/../ul/li[3]
+      action: move_click
+
+  #出现编辑开关机策略弹窗
+  #基本信息页
+  #策略描述输入框输入：#####￥￥%……
+    - by: xpath
+      locator: //textarea[@placeholder="请输入策略描述"]
+      action: send
+      value: "修改策略描述#####￥￥%……"
+
+  #点击策略频率下拉框
+    - by: xpath
+      locator: //input[@placeholder="请选择策略频率"]
+      action: click
+
+  #修改备份频率下拉框选择”每周“并点击
+    - by: xpath
+      locator: (//div[@class="el-select-dropdown__wrap el-scrollbar__wrap"])[5]/ul/li[2]
+      action: move_click
+
+  #其它配置默认，点击下一步按钮
+    - by: xpath
+      locator: //button[@id="compute_strategy_create_next_step"]
+      action: click
+
+  #跳转至选择云服务器页面，点击确认按钮
+    - by: xpath
+      locator: //button[@id="compute_strategy_create_confirm"]
+      action: click
+
+  #捕获编辑开关机策略成功的提示信息：”编辑开关机策略成功！“
+    - by: xpath
+      locator: //div[@class='vue-message vue-message--success']/p
+      action: text
+
+#（4）删除快照策略
+#鼠标移动至该策略的操作栏，出现操作类型下拉列表
+TH-CP-STRATEGY-0012:
+  data0: *demo0002
+  data1:
+    - by: xpath
+      locator: //button[@id="compute_instances_computes_operate_btn"]
+      action: move
+
+  #移动至删除选项并点击
+    - by: xpath
+      locator: //div[@class="xl-chrome-ext-bar"]/../ul/li[5]
+      action: move_click
+
+  #出现确认弹窗，点击确认按钮
+    - by: xpath
+      locator: //button[@class="btn-confirm"]
+      action: click
+
+  #捕获删除开关机策略成功的提示信息：”删除开关机策略成功！“
+    - by: xpath
+      locator: //div[@class='vue-message vue-message--success']/p
+      action: text
+

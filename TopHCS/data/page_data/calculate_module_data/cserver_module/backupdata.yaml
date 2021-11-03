@@ -39,14 +39,68 @@ TH-CP-BACKUP-0001:
 TH-CP-BACKUP-0002:
  #搜索框中搜索已导入的远端备份点ydbf
   - by: xpath
-    locator: //*[@id="function_backup_filter"]
+    locator: //input[@id="compute_virtual_backup_searchName"]
     action: send
-    value: "ydbf"
+    value: "bf1"
 
   - by: xpath
-    locator: //*[@id="compute_virtual_searchBtn"]
+    locator: //button[@id="compute_virtual_backup_search_btn"]
     action: click
 
   - by: xpath
-    locator: //*[@id="compute_virtual_filtersVal"]
+    locator: //input[@id="compute_virtual_backup_searchName"]
     action: clear
+
+  #点击备份恢复按钮
+  - by: xpath
+    locator: (//button[@id="compute_virtua_backup_restore"])[1]
+    action: click
+
+  #出现云服务器备份恢复弹窗
+  #云服务器输入框输入：ydbf-hf
+  - by: xpath
+    locator: //input[@id="compute_virtua_backup_restore_dialog_new_vm_name"]
+    action: send
+    value:  "ydbf-hf"
+
+  #点击资源池下拉框
+  - by: xpath
+    locator: //input[@id="compute_virtua_backup_restore_dialog_cluster"]
+    action: click
+
+  #移动鼠标至第一个选项并点击
+  - by: xpath
+    locator: //span[text()="default"]   #//span[text()="default"]
+    action: move_click
+
+  #磁盘一
+  #卷名称输入框输入：ydbf-hf001
+  - by: xpath
+    locator: (//input[@id="compute_virtua_backup_restore_dialog_volume_name"])[1]
+    action: send
+    value: "ydbf-hf001"
+
+  #点击存储池下拉框
+  - by: xpath
+    locator: (//input[@id="compute_virtua_backup_restore_dialog_pool_uuid"])[1]
+    action: click
+
+  #移动鼠标至第一个选项并点击
+  - by: xpath
+    locator: //span[text()="lakers1"]        #//span[text()="lakers1"]
+    action: move_click
+
+
+  #磁盘二
+  ####################
+
+  #其它配置默认
+  #点击确认
+  - by: xpath
+    locator: //button[@id="compute_virtua_backup_restore_dialog_comfrim"]
+    action: click
+
+  #捕获远端导入备份恢复成功的提示信息：”创建云服务器1个成功！“
+  - by: xpath
+    locator: //div[@class='vue-message vue-message--success']/p
+    action: text

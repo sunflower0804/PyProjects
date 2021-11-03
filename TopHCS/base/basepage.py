@@ -9,14 +9,17 @@ from selenium.webdriver.chrome.webdriver import WebDriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.wait import WebDriverWait
 
+from TopHCS.others.filepath import readFilepath
 from TopHCS.others.log import logs
-
+from TopHCS.others.yamlexcelload import loadyaml
 
 
 class BasePage():
     # 共同属性
-    _driver = None  # 类变量，需要在类函数之前进行赋值
-    _base_url = ''
+    driver = None  # 类变量，需要在类函数之前进行赋值
+    url = ''
+    filepath = readFilepath.LoginDataPath
+    data = loadyaml(filepath)  # 获取测试驱动数据文件，并解析
 
     # __init__:父类的构造方法，子类执行之前首先会去调用执行父类的构造方法
     def __init__(self, driver: WebDriver = None):  # driver的类型为 WebDriver = None
@@ -27,17 +30,44 @@ class BasePage():
         if driver is None:  # 如果外面没有对driver进行传值（即第一次调用），那么就对driver进行初始化
             options = Options()  # 使用 selenium 时，我们可能需要对 chrome 做一些特殊的设置，以完成我们期望的浏览器行为，比如阻止图片加载，阻止JavaScript执行 等动作。这些需要 selenium的 ChromeOptions 来帮助我们完成
             options.debugger_address = '127.0.0.1:9500'  # 开启浏览器调试模式：cmd命令窗口输入： chrome  --remote-debugging-port=端口1（随便取），回车
-            self._driver = webdriver.Chrome(options=options)
+            self.driver = webdriver.Chrome(options=options)
             sleep(2)
             # 加入隐式等待时间
             # 弊端：全局生效，但只要找到元素不管有没有完全加载就继续下一步，这样会造成操作失败
             #self._driver.implicitly_wait(10)
             # 解决办法:使用显示等待
         else:
-            self._driver = driver  # 后面每次有方法调用self._driver时，都是初始化之后的driver
+            self.driver = driver  # 后面每次有方法调用self._driver时，都是初始化之后的driver
 
-        if self._base_url != '':
-            self._driver.get(self._base_url)
+        if self.url != '':
+            self.driver.get(self.url)
+
+    # 虚构driver对象
+    # driver = webdriver.Chrome()
+
+    # # 构造函数
+    # def __init__(self, driver):
+    #     if driver is None:
+    #     #     options = Options()
+    #     #     self.driver = webdriver.Chrome(options=options)
+    #         options = webdriver.ChromeOptions()
+    #         # options.add_argument('--headless')   #无窗口模式
+    #         # options.add_argument('--incognito')  #无痕模式
+    #         options.add_argument('ignore-certificate-errors')  # 设置忽略ssl证书认证的错误，或者接收不信任的认证
+    #         self.driver = webdriver.Chrome(chrome_options=options)
+    #     else:
+    #         self.driver = driver  # 后面每次有方法调用self._driver时，都是初始化之后的driver
+    #     if self.url != '':
+    #         self.driver.get(self.url)
+    #         self.windowmax()
+    #         data = self.data['TH-LOGIN-0001']
+    #         self.steps(data)
+    #
+    #
+
+    # 访问url
+    def visit(self, url):
+        self.driver.get(url)  # 直接传入每次调用它的页面的url
 
     # 共同方法
     # 1、元素定位+显示等待
@@ -46,7 +76,7 @@ class BasePage():
         locs = loc
         aa = tuple(locs)
         try:
-            ele = WebDriverWait(self._driver, 10).until(EC.visibility_of_element_located(aa))
+            ele = WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(aa))
             return ele
         except Exception as e:
             print('{0}元素未找到'.format(loc[1]))
@@ -57,7 +87,7 @@ class BasePage():
         locs = loc
         aa = tuple(locs)
         try:
-            ele = WebDriverWait(self._driver, 10).until(EC.presence_of_all_elements_located(aa))
+            ele = WebDriverWait(self.driver, 10).until(EC.presence_of_all_elements_located(aa))
             return ele[index]
         except Exception as e:
             print('{0}元素{1}未找到'.format(loc[1], [index]))
@@ -66,7 +96,7 @@ class BasePage():
         '''判断元素是否存在'''
         locs = (by, loc)   #将传入的参数转换为元组
         try:
-            ele = WebDriverWait(self._driver, 1).until(EC.visibility_of_element_located(locs))
+            ele = WebDriverWait(self.driver, 1).until(EC.visibility_of_element_located(locs))
             result = ele.is_displayed()
             return result   #存在返回True
         except:
@@ -93,13 +123,13 @@ class BasePage():
     def move_mouse(self, *loc):
         '''移动鼠标至指定元素'''
         ele = self.find(*loc)
-        ActionChains(self._driver).move_to_element(ele).perform()
+        ActionChains(self.driver).move_to_element(ele).perform()
         logs.info('鼠标光标移动至{0}元素'.format(loc[1]))
 
     def move_and_click(self, *loc):
         '''移动鼠标至指定元素位置并点击'''
         ele = self.find(*loc)
-        ActionChains(self._driver).move_to_element(ele).click().perform()
+        ActionChains(self.driver).move_to_element(ele).click().perform()
         logs.info('鼠标光标移动至{0}元素并点击'.format(loc[1]))
 
     def movepage_and_click(self, by, loc):      #下拉框中有多页时的操作
@@ -107,9 +137,9 @@ class BasePage():
         '''判断元素是否存在'''
         locs = (by, loc)  # 将传入的参数转换为元组
         try:
-            WebDriverWait(self._driver, 1).until(EC.visibility_of_element_located(locs))
+            WebDriverWait(self.driver, 1).until(EC.visibility_of_element_located(locs))
             ele = self.find(*loc)
-            ActionChains(self._driver).move_to_element(ele).click().perform()
+            ActionChains(self.driver).move_to_element(ele).click().perform()
             logs.info('鼠标光标移动至{0}元素并点击'.format(loc[1]))
             return True  # 存在返回True
         except:
@@ -119,13 +149,13 @@ class BasePage():
     def move_to_offset(self):
         '''移动鼠标至指定坐标'''
         coordinates = (100, 100)
-        ActionChains(self._driver).move_by_offset(*coordinates).click().perform()
+        ActionChains(self.driver).move_by_offset(*coordinates).click().perform()
         logs.info('移动鼠标至坐标{0}'.format(coordinates))
 
     def drag_and_drop(self, *loc):
         '''鼠标拖拽元素至指定位置'''
         coordinates = (100, 100)
-        ActionChains(self._driver).move_by_offset(*coordinates).click().perform()
+        ActionChains(self.driver).move_by_offset(*coordinates).click().perform()
         logs.info('移动鼠标至坐标{0}'.format(coordinates))
 
     # 5、获取文本
@@ -134,7 +164,7 @@ class BasePage():
         locs = loc
         aa = tuple(locs) #将传入的参数转换为元组
         try:
-            ele = WebDriverWait(self._driver, 30).until(EC.presence_of_element_located(aa))
+            ele = WebDriverWait(self.driver, 30).until(EC.presence_of_element_located(aa))
             result = ele.text
             return result   #存在返回文本信息
         except:
@@ -164,16 +194,16 @@ class BasePage():
     # 6、键盘操作
     def keys_choose_all(self):
         '''键盘操作:control a :输入框文本全部选中'''
-        ActionChains(self._driver).key_down(Keys.CONTROL).send_keys('a').key_up(Keys.CONTROL).perform()
+        ActionChains(self.driver).key_down(Keys.CONTROL).send_keys('a').key_up(Keys.CONTROL).perform()
         logs.info('键盘操作:control a')
 
     def keys_delete(self):
         '''键盘操作Backspace: 删除'''
-        ActionChains(self._driver).send_keys(Keys.BACK_SPACE).perform()
+        ActionChains(self.driver).send_keys(Keys.BACK_SPACE).perform()
         logs.info('键盘操作:Backspace')
 
     def keys_send(self, value):
-        ActionChains(self._driver).send_keys(value).perform()
+        ActionChains(self.driver).send_keys(value).perform()
         logs.info('键盘输入:{0}'.format(value))
 
     def clear_books(self, *loc):
@@ -184,21 +214,21 @@ class BasePage():
 
     def keys_PageDown(self):
         '''键盘操作方向键：向下翻页'''
-        ActionChains(self._driver).send_keys(Keys.PAGE_DOWN).perform()
+        ActionChains(self.driver).send_keys(Keys.PAGE_DOWN).perform()
         logs.info('键盘操作:向下翻页')
 
     # 7、表单切换
     def switch_iframe(self, *loc):
-        return self._driver.switch_to.frame(self.find(*loc))
+        return self.driver.switch_to.frame(self.find(*loc))
 
     # 8、窗口切换封装
     def switch_window(self, n):
-        return self._driver.switch_to.window(self._driver.window_handles[n])
+        return self.driver.switch_to.window(self.driver.window_handles[n])
 
     # 9、去除元素只读属性
     def clear_readonly(self, *loc):
         ele = self.find(*loc)
-        self._driver.execute_script("arguments[0].removeAttribute('readonly')", ele)
+        self.driver.execute_script("arguments[0].removeAttribute('readonly')", ele)
         ele.clear()
 
 
@@ -251,9 +281,16 @@ class BasePage():
                     logs.info('获取文本信息:{0}成功'.format("text"))
         return texts
 
+    def windowmax(self, maximize_window=True, implicitly_wait=10):
+        if maximize_window:
+            logs.info(f'最大化浏览器窗口')
+            self.driver.maximize_window()
+        logs.info(f'设置隐式等待时间：{implicitly_wait}秒')
+        self.driver.implicitly_wait(implicitly_wait)
+
     def quit(self):
         '''浏览器退出'''
-        self._driver.quit()
+        self.driver.quit()
 
 
     #日志截图
@@ -278,4 +315,3 @@ class BasePage():
         self.find(By.XPATH,'//*[@id="copyDownload"]').click()  #悬停出现的文本内容“复制下载链接”的超链接,并点击
         return self.find(By.XPATH,'//*[@id="js_tips"]').text
 '''
-
