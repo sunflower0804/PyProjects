@@ -309,14 +309,23 @@ class TestServicePage:
         assert '云服务器0000-lj-clone1删除成功！' == pagedata[1][0]
 
     # 1413-3跨租户克隆  #报错：(//span[@class='el-switch__core'])[2]元素未找到
-    @allure.title('1.4 云服务器的操作/1413克隆/# 1413-3跨租户克隆')
+    @allure.title('1.4 云服务器的操作/1413克隆/1413-3跨租户克隆')
     def test_clone_VM4(self):
         self.main.goto_cserver()
         pagedata = self.main.goto_serverpage().clone_VM4()
         print(pagedata)
 
+    #1414导入
+    #1414-1镜像仓库导入
+    @allure.title('1.4 云服务器的操作/1414导入/1414-1镜像仓库导入')
+    def test_import_DISK1(self):
+        self.main.goto_cserver()
+        pagedata = self.main.goto_serverpage().import_DISK1()
+        print(pagedata)
 
-# 2模板
+
+
+# 2模板页面
 @allure.feature('计算-->云服务器模块')   #对模块功能进行标注
 @allure.story('模板页面')  ##对模块子功能进行标注
 class TestMouldPage:
@@ -456,7 +465,7 @@ class TestStrategyPage:
     @allure.title('5.1 开关机策略/删除开关机策略')
     def test_del_strategy11(self):
         self.main.goto_cserver()
-        pagedata = self.main.goto_strategy().edit_del11()
+        pagedata = self.main.goto_strategy().del_strategy11()
         print(pagedata)
         assert '删除开关机策略成功！' == pagedata[0]
 
@@ -494,7 +503,39 @@ class TestStrategyPage:
         print(pagedata)
         assert '删除策略成功！' == pagedata[0]
 
+    # 5.3 备份策略
+    #（1）创建备份策略
+    @allure.title('5.3 备份策略/备份快照策略')
+    def test_creat_strategy31(self):
+        self.main.goto_cserver()
+        pagedata = self.main.goto_strategy().creat_strategy31()
+        print(pagedata)
+        assert '提交备份策略成功！' == pagedata[0]
 
+    #（2）开启/关闭备份策略
+    @allure.title('5.3 备份策略/(开启/关闭)备份策略')
+    def test_updown_strategy31(self):
+        self.main.goto_cserver()
+        pagedata = self.main.goto_strategy().updown_strategy31()
+        print(pagedata)
+        assert '停止策略成功！' == pagedata[0][0]
+        assert '启动策略成功！' == pagedata[1][0]
+
+    #（3）编辑备份策略
+    @allure.title('5.3 备份策略/编辑备份策略')
+    def test_edit_strategy31(self):
+        self.main.goto_cserver()
+        pagedata = self.main.goto_strategy().edit_strategy31()
+        print(pagedata)
+        assert '编辑备份策略成功！' == pagedata[0]
+
+    #（4）删除备份策略
+    @allure.title('5.3 备份策略/删除备份策略')
+    def test_del_strategy31(self):
+        self.main.goto_cserver()
+        pagedata = self.main.goto_strategy().del_strategy31()
+        print(pagedata)
+        assert '删除策略成功！' == pagedata[0]
 '''
 allure常用特性
 希望在报告中看到测试功能，子功能或场景，测试步骤，包括测试附加信息可以使用@feature,@story,@step,@attach

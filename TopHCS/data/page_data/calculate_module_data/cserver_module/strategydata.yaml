@@ -283,7 +283,7 @@ TH-CP-STRATEGY-0006:
       locator: //div[@class="xl-chrome-ext-bar"]/../ul/li[1]
       action: move_click
 
-  #捕获开启开关机策略成功的提示信息：”开启开关机策略成功！“
+  #捕获开启开关机策略成功的提示信息：”开启快照策略成功！“
     - by: xpath
       locator: //div[@class='vue-message vue-message--success']/p
       action: text
@@ -434,19 +434,19 @@ TH-CP-STRATEGY-0009:
     locator: //div[@class='vue-message vue-message--success']/p
     action: text
 
-#（2）开启/关闭快照策略
+#（2）开启/关闭备份策略
 TH-CP-STRATEGY-0010:
   data0: &demo0002
-  #点击快照策略栏，进入快照策略页面
+  #点击快照策略栏，进入备份策略页面
     - by: xpath
-      locator: //div[text()="快照策略"]
+      locator: //div[text()="备份策略"]
       action: click
 
-  #搜索框输入创建的快照策略名称
+  #搜索框输入创建的备份策略名称
     - by: xpath
       locator: //input[@id="compute_virtual_filtersVal"]
       action: send
-      value: "strategy-kz1"
+      value: "strategy-bf1"
 
   #点击查询按钮
     - by: xpath
@@ -457,7 +457,7 @@ TH-CP-STRATEGY-0010:
       locator: //input[@id="compute_virtual_filtersVal"]
       action: clear
 
-  #(2-1)停止快照策略
+  #(2-1)停止备份策略
   #鼠标移动至该策略的操作栏，出现操作类型下拉列表
   data1:
     - by: xpath
@@ -469,12 +469,12 @@ TH-CP-STRATEGY-0010:
       locator: //div[@class="xl-chrome-ext-bar"]/../ul/li[2]
       action: move_click
 
-  #捕获停止开关机策略成功的提示信息：”关闭开关机策略成功！“
+  #捕获停止开关机策略成功的提示信息：”关闭备份策略成功！“
     - by: xpath
       locator: //div[@class='vue-message vue-message--success']/p
       action: text
 
-  ##(2-2)开启快照策略
+  ##(2-2)开启备份策略
   #鼠标移动至该策略的操作栏，出现操作类型下拉列表
   data2:
     - by: xpath
@@ -486,12 +486,12 @@ TH-CP-STRATEGY-0010:
       locator: //div[@class="xl-chrome-ext-bar"]/../ul/li[1]
       action: move_click
 
-  #捕获开启开关机策略成功的提示信息：”开启开关机策略成功！“
+  #捕获开启备份策略成功的提示信息：”开启备份策略成功！“
     - by: xpath
       locator: //div[@class='vue-message vue-message--success']/p
       action: text
 
-#（3）编辑快照策略
+#（3）编辑备份策略
 #鼠标移动至该策略的操作栏，出现操作类型下拉列表
 TH-CP-STRATEGY-0011:
   data0: *demo0002
@@ -519,9 +519,9 @@ TH-CP-STRATEGY-0011:
       locator: //input[@placeholder="请选择策略频率"]
       action: click
 
-  #修改备份频率下拉框选择”每周“并点击
+  #修改备份频率下拉框选择”周末“并点击
     - by: xpath
-      locator: (//div[@class="el-select-dropdown__wrap el-scrollbar__wrap"])[5]/ul/li[2]
+      locator: (//div[@class="el-select-dropdown__wrap el-scrollbar__wrap"])[6]/ul/li[3]
       action: move_click
 
   #其它配置默认，点击下一步按钮
@@ -534,12 +534,12 @@ TH-CP-STRATEGY-0011:
       locator: //button[@id="compute_strategy_create_confirm"]
       action: click
 
-  #捕获编辑开关机策略成功的提示信息：”编辑开关机策略成功！“
+  #捕获编辑开关机策略成功的提示信息：”编辑备份策略成功！“
     - by: xpath
       locator: //div[@class='vue-message vue-message--success']/p
       action: text
 
-#（4）删除快照策略
+#（4）删除备份策略
 #鼠标移动至该策略的操作栏，出现操作类型下拉列表
 TH-CP-STRATEGY-0012:
   data0: *demo0002
@@ -558,7 +558,7 @@ TH-CP-STRATEGY-0012:
       locator: //button[@class="btn-confirm"]
       action: click
 
-  #捕获删除开关机策略成功的提示信息：”删除开关机策略成功！“
+  #捕获删除开关机策略成功的提示信息：”删除备份策略成功！“
     - by: xpath
       locator: //div[@class='vue-message vue-message--success']/p
       action: text

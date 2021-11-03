@@ -1794,3 +1794,89 @@ TH-CP-CLONE_VM-0004:
       locator:  //div[@class='vue-message vue-message--success']/p
       action: text
 
+#1414导入
+#1414-1镜像仓库导入
+TH-CP-IMPORT_VM-0001:
+  #搜索框中搜索虚拟机0000
+  data0:
+    #搜索框中搜索虚拟机0000
+    - by: xpath
+      locator: (//div[@class=" optiscroll-content"])[4]/section/section/div/div/div/input
+      action: send
+      value: '0000'
+
+    - by: xpath
+      locator: (//div[@class=" optiscroll-content"])[4]/section/section/div/div/button/span
+      action: click
+
+    - by: xpath
+      locator: (//div[@class=" optiscroll-content"])[4]/section/section/div/div/div/input
+      action: clear
+
+  #鼠标置于虚拟机0000的编辑列表
+    - by: xpath
+      locator: (//button[@id="compute_instances_computes_operate_btn"])
+      action: move
+
+  #鼠标移动至编辑列表中的关机选项并点击
+    - by: xpath
+      locator: (//button[@id="compute_instances_computes_operate_btn"])
+      action: move
+
+  #鼠标置于虚拟机0000的名称按钮，出现虚拟机详情信息列表
+    - by: xpath
+      locator: //tbody/tr/td[2]/div/span/a/i
+      action: click
+
+  #鼠标移至虚拟机基本信息页中的编辑按钮，出现编辑列表
+    - by: xpath
+      locator: //body[@class="theme-white"]/div/div/div[2]/div/div/section/section/div[2]/div[2]/div[2]/div/section/div[3]/div/button
+      action: move
+
+  #鼠标移至编辑列表中的导入选项，并点击
+    - by: xpath
+      locator: (//li[@id="compute_instances_computes_inspect_operate_btn_import"])
+      action: move_click
+
+  #出现云服务器磁盘导入弹窗
+  #默认导入方式为镜像仓库
+  data1:
+  #点击镜像仓库下拉框
+    - by: xpath
+      locator: (//input[@placeholder="请选择镜像仓库"])
+      action: click
+
+  #移动至仓库下拉框中第二个选择项并点击
+    - by: xpath
+      locator: (//div[@class="el-select-dropdown__wrap el-scrollbar__wrap"])[5]/ul/li[2]
+      action: move_click
+
+  #点击选择镜像下拉框
+    - by: xpath
+      locator: (//input[@placeholder="请选择镜像"])
+      action: click
+
+  #移动至镜像下拉框中第二个选择项并点击
+    - by: xpath
+      locator: (//div[@class="el-select-dropdown__wrap el-scrollbar__wrap"])[5]/ul/li
+      action: move_click
+
+  #点击选择磁盘下拉框
+    - by: xpath
+      locator: (//input[@placeholder="磁盘"])
+      action: click
+
+  #移动至磁盘下拉框中第二个选择项并点击
+    - by: xpath
+      locator: (//div[@class="el-select-dropdown__wrap el-scrollbar__wrap"])[5]/ul/li
+      action: move_click
+
+  #点击确认按钮
+    - by: xpath
+      locator: (//button[@id="compute_instances_dialog_vmOpt_confirm"])
+      action: click
+
+  #获取镜像仓库导入成功的提示信息
+    - by: xpath
+      locator:  //div[@class='vue-message vue-message--success']/p
+      action: text

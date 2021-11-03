@@ -335,7 +335,14 @@ class ServicePage(BasePage):
         self.steps(data1)
         return self.steps(data1)  #捕获跨租户克隆成功的提示信息
 
-
+    #1414导入
+    #1414-1镜像仓库导入
+    def import_DISK1(self):
+        data0 = self.data['TH-CP-IMPORT_VM-0001']['data0']
+        self.steps(data0)  #跳转到云服务器磁盘导入弹窗
+        data1 = self.data['TH-CP-IMPORT_VM-0001']['data1']
+        self.steps(data1)
+        return self.steps(data1)  #捕获云服务器磁盘成功的提示信息
 
 # 2.模板页面
 class MouldPage(BasePage):
@@ -481,7 +488,7 @@ class StrategyPage(BasePage):
 
     # （4）删除备份策略
     def del_strategy31(self):
-        data0 = self.data['TH-CP-STRATEGY-0011']['data0']
+        data0 = self.data['TH-CP-STRATEGY-0012']['data0']
         self.steps(data0)
-        data1 = self.data['TH-CP-STRATEGY-0011']['data1']
+        data1 = self.data['TH-CP-STRATEGY-0012']['data1']
         return self.steps(data1)  # 捕获删除备份策略成功的提示信息
