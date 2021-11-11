@@ -1,44 +1,60 @@
+import allure
 import pytest
 import yaml
 
-from TopHC.base.main import Main
+from TopHCS.base.main import Main
+from TopHCS.others.filepath import readFilepath
+from TopHCS.others.yamlexcelload import loadyaml
 
 
-class TestSearchUI:
+#1.云容器页面
+class TestCcontainerPage:
     def setup(self):
         self.main = Main(driver=None)
 
-    # 2.1.1.2云服务器模块UI信息检查
-    # 1-1.集群目录结构信息校验
-    # (1)检查每个集群下目录信息
-    '''
-    前置条件：
-    1、测试环境存在集群cluster1、cluster2
-    2、存在租户zh1, 已添加cluster1、cluster2下的资源池
-    3、租户zh1在cluster1、cluster2下分别存在云服务器vm1、vm2
+    # filepath = readFilepath.CcontainerTestDataPath
+    # data = loadyaml(filepath)
 
-    操作步骤：
-    1、登录企业云系统当前租户选择zh1
-    2、进入计算 - -云服务器首页
-    3、检查集群信息列表
-    4、检查对应集群下的云服务器信息
+    @allure.title('云容器页面入口校验')  # 对模块子功能进行标注
+    def test_ccontainer(self):
+        self.main.goto_ccontainer()
 
-    预期结果：
-    3、集群信息列表中存在集群cluster1、cluster2，对应集群名称显示正确
-    4、cluster1中存在云服务器vm1、cluster1中存在云服务器vm1，对应云服务器名称显示正确
-    '''
-    @pytest.mark.parametrize("value1, value2", yaml.safe_load(open(
-        "cserver_module/test_search_text1.yaml")))
-    def test_search_text(self, value1, value2):
-        #tt = self.main.goto_cal_cserver_searchUI().search_clusters1()
-        print(value1)
-        print(value2)
-        #assert value1 == tt[0]
-        #assert value2 == tt[1]
+    # 1.1新建云容器（前置条件：已存在私有镜像仓库）
+    # 111单个创建
+    @allure.title('1.1新建云容器/111单个创建')
+    def test_add_Ccontainer1(self):
+        self.main.goto_ccontainer()
+        pagedata = self.main.goto_containerpage().add_Ccontainer1()
+        print(pagedata)
+        assert '创建云容器1个成功！' == pagedata[0]
 
-        #print(value1),value1,value2
-    #def test_search_text2(self):
-        #self.main.goto_cal_cserver_searchUI().search_clusters2()
+    # 112批量创建
+    @allure.title('1.1新建云容器/112批量创建')
+    def test_add_Ccontainer2(self):
+        self.main.goto_ccontainer()
+        pagedata = self.main.goto_containerpage().add_Ccontainer2()
+        print(pagedata)
+        assert '创建云容器3个成功！' == pagedata[0]
+
+    # 1.2编辑云容器
+    # 1.2.1云容器开机操作
+    # 121-1单个开启
+    @allure.title('1.2编辑云容器/1.2.1云容器开机操作/121-1单个开启')
+    def test_start_Ccontainer1(self):
+        self.main.goto_ccontainer()
+        pagedata = self.main.goto_containerpage().start_Ccontainer1()
+        print(pagedata)
+        assert '启动云容器1个成功！' == pagedata[0]
+
+    # 121-2批量开启
+    @allure.title('1.2编辑云容器/1.2.1云容器开机操作/121-2批量开启')
+    def test_start_Ccontainer2(self):
+        self.main.goto_ccontainer()
+        pagedata = self.main.goto_containerpage().start_Ccontainer2()
+        print(pagedata)
+        assert '启动云容器3个成功！' == pagedata[0]
 
 
-
+    # 122挂起
+    # 123恢复
+    # 124分配

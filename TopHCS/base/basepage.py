@@ -2,6 +2,8 @@
 
 from selenium.webdriver.support import expected_conditions as EC
 from time import sleep
+import time
+import os
 from selenium import webdriver
 from selenium.webdriver import ActionChains
 from selenium.webdriver.chrome.options import Options
@@ -18,7 +20,9 @@ class BasePage():
     # 共同属性
     driver = None  # 类变量，需要在类函数之前进行赋值
     url = ''
+
     filepath = readFilepath.LoginDataPath
+    imagespath = readFilepath.ImagePath
     data = loadyaml(filepath)  # 获取测试驱动数据文件，并解析
 
     # __init__:父类的构造方法，子类执行之前首先会去调用执行父类的构造方法
@@ -45,14 +49,18 @@ class BasePage():
     # 虚构driver对象
     # driver = webdriver.Chrome()
 
-    # # 构造函数
+    #登录
+    # 构造函数
     # def __init__(self, driver):
     #     if driver is None:
     #     #     options = Options()
     #     #     self.driver = webdriver.Chrome(options=options)
     #         options = webdriver.ChromeOptions()
-    #         # options.add_argument('--headless')   #无窗口模式
+    #         options.add_argument('--headless')   #无窗口模式
+    #         # options.add_argument('--disable-gpu')
+    #         options.add_argument("--window-size=1920,1080")   #窗口分辨率
     #         # options.add_argument('--incognito')  #无痕模式
+    #         # options.add_experimental_option('w3c', False)
     #         options.add_argument('ignore-certificate-errors')  # 设置忽略ssl证书认证的错误，或者接收不信任的认证
     #         self.driver = webdriver.Chrome(chrome_options=options)
     #     else:
@@ -62,6 +70,7 @@ class BasePage():
     #         self.windowmax()
     #         data = self.data['TH-LOGIN-0001']
     #         self.steps(data)
+    #         logs.info('登录成功')
     #
     #
 
@@ -76,9 +85,10 @@ class BasePage():
         locs = loc
         aa = tuple(locs)
         try:
-            ele = WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(aa))
+            ele = WebDriverWait(self.driver, 30).until(EC.visibility_of_element_located(aa))
             return ele
         except Exception as e:
+            self.save_screen_shot()
             print('{0}元素未找到'.format(loc[1]))
 
 
@@ -145,6 +155,16 @@ class BasePage():
         except:
             return False
 
+    def save_screen_shot(self, name='screen_shot'):
+        day, tm = time.strftime('%Y-%m-%d %H%M%S').split()
+        d = os.path.join(self.imagespath, day)
+        if not os.path.exists(d):
+            os.makedirs(d)
+            logs.debug(f'创建目录：{d}')
+        name = f'{name}_{tm}.png'
+        file = os.path.join(d, name)
+        self.driver.save_screenshot(file)
+        logs.info(f'保存截图：{file}')
 
     def move_to_offset(self):
         '''移动鼠标至指定坐标'''
@@ -164,7 +184,7 @@ class BasePage():
         locs = loc
         aa = tuple(locs) #将传入的参数转换为元组
         try:
-            ele = WebDriverWait(self.driver, 30).until(EC.presence_of_element_located(aa))
+            ele = WebDriverWait(self.driver, 40).until(EC.presence_of_element_located(aa))
             result = ele.text
             return result   #存在返回文本信息
         except:
@@ -238,6 +258,7 @@ class BasePage():
     #         steps = yaml.safe_load(f)  # 加载yaml文件
     def steps(self, data):  # path为yaml文件路径
         texts = []
+
         for step in data:  # 对yaml文件进行遍历，以便执行多个动作
             if "by" in step.keys():
                 element = self.find(step["by"], step["locator"])
@@ -248,8 +269,7 @@ class BasePage():
                 action = step["action"]
                 if action == "click":
                     sleep(1)
-                    element.click()
-                    logs.info('点击操作成功')
+                    self.click(step["by"], step["locator"])
                 if action == "send":
                     #self.send(step["by"], step["locator"], value=step["value"])
                     element.click()
@@ -274,7 +294,6 @@ class BasePage():
                     logs.info('移动鼠标操作成功')
                 if action == "move_click":
                     self.move_and_click(step["by"], step["locator"])
-                    logs.info('移动点击操作成功')
                 if action == "text":
                     # element.text
                     texts.append(self.find_text(step["by"], step["locator"]))
@@ -291,6 +310,7 @@ class BasePage():
     def quit(self):
         '''浏览器退出'''
         self.driver.quit()
+        logs.info('退出浏览器')
 
 
     #日志截图
