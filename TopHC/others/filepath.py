@@ -10,13 +10,13 @@ class Filepath:
     #获取当前项目的绝对路径
     BasePath = os.path.abspath(os.path.dirname(os.path.abspath(__file__))+'/../..')
     #获取数据yaml文件所在绝对路径
-    DataPath = BasePath + '\TopHC\data'
+    DataPath = BasePath + '\TopHCS\data'
     #获取测试用例文件所在路径
-    TestPath = BasePath + r'\TopHC\test_case'
+    TestPath = BasePath + r'\TopHCS\test_case'
     #日志文件所在路径
-    LogPath = BasePath + '\TopHC\log'
+    LogPath = BasePath + '\TopHCS\log'
     #HTML报告所在路径
-    ReportPath = BasePath + r'\TopHC\report'
+    ReportPath = BasePath + r'\TopHCS\report'
 
     #各模块测试数据路径
     #1.首页模块
@@ -87,7 +87,10 @@ class Filepath:
     # （1）测试步骤数据
     CcontainerDataPath = DataPath
     # （2）测试用例数据
-    CcontainerTestPath = DataPath
+    CcontainerTestDataPath = DataPath
+    # （3）测试用例
+    CcontainerTestPath = TestPath + r'\calculate_module\test_ccontainermodule.py'
+
     # 2.6.1 密钥页面
     # （1）测试步骤数据
     CiperDataPath = DataPath

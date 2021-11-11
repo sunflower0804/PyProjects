@@ -1,2 +1,0 @@
-INFO     Framework:basepage.py:157 键盘操作:向下翻页
-INFO     Framework:basepage.py:157 键盘操作:向下翻页

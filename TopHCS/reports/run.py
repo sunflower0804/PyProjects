@@ -14,7 +14,8 @@ from TopHC.others.filepath import readFilepath
 if __name__ == '__main__':
     #执行测试用例获得测试数据
     reportpath = readFilepath.ReportPath
-    testpath = readFilepath.ServerTestPath
+    #testpath = readFilepath.ServerTestPath
+    testpath = readFilepath.CcontainerTestPath
     pytest.main(['-s', testpath, '--alluredir', 'reportpath/allure-result'])
 
     #生成测试报告步骤：

@@ -1,3 +1,0 @@
-INFO     Framework:basepage.py:152 键盘输入后清理
-INFO     Framework:basepage.py:152 键盘输入后清理
-INFO     Framework:basepage.py:152 键盘输入后清理

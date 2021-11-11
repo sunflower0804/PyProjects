@@ -1,1 +1,0 @@
-INFO     Framework:basepage.py:116 元素文本信息为-1

@@ -1,3 +1,0 @@
-INFO     Framework:basepage.py:97 鼠标光标移动至navBar_item_计算_content元素
-INFO     Framework:basepage.py:103 鼠标光标移动至navBar_item_计算_content_云服务器元素并点击
-INFO     Framework:basepage.py:85 点击了//*[@id="tab-vmlist"]元素

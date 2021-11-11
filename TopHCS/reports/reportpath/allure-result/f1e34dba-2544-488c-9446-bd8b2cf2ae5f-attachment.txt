@@ -1,1 +1,0 @@
-INFO     Framework:basepage.py:130 元素文本信息为storage

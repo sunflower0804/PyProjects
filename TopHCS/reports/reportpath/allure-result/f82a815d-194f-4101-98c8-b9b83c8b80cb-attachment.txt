@@ -1,2 +1,0 @@
-INFO     Framework:basepage.py:116 元素文本信息为请选择
-INFO     Framework:basepage.py:116 元素文本信息为请选择

@@ -1,2 +1,0 @@
-INFO     Framework:basepage.py:130 元素文本信息为lakers
-INFO     Framework:basepage.py:130 元素文本信息为cn_windows_7_enterprise_x64_dvd_x15-70741.iso

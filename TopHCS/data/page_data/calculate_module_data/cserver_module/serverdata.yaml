@@ -73,7 +73,7 @@ TH-CP-VM-0001:
     - by: id
       locator: compute_instances_create_volume_capacity1
       action: send
-      value: '1'
+      value: '20'
 
     #点击云盘类型下拉框
     - by: id
@@ -243,12 +243,12 @@ TH-CP-VMML-0004:
 
   #鼠标置于虚拟机0000的编辑按钮，出现编辑列表
   - by: xpath
-    locator: //tbody/tr/td[16]/div/div/button/i[3]
+    locator: //button[@id="compute_instances_computes_operate_btn"]
     action: move
 
   #鼠标移至编辑列表中的模板选项，并点击
   - by: xpath
-    locator: //body[@class="theme-white"]/ul/li[9]
+    locator: //li[@id="compute_instances_computes_operate_btn_template"]
     action: move_click
 
   #出现云服务器模板弹窗
@@ -265,7 +265,7 @@ TH-CP-VMML-0004:
 
   #点击确认按钮,模板创建成功
   - by: xpath
-    locator: (//div[@class="el-dialog__footer"])[14]/div/button
+    locator: (//button[@id="compute_instances_dialog_vmOpt_confirm"])
     action: click
 
   #获取创建模板成功提示信息：“创建云服务器1个成功”
@@ -488,7 +488,7 @@ TH-CP-EDIT_VM-0001:
     locator: //div[@class='vue-message vue-message--success']/p
     action: text
 
-  #等待3S，点击确认按钮，关闭编辑弹窗
+  #点击确认按钮，关闭编辑弹窗
   - by: xpath
     locator: (//*[@id="instances_edit_device_close"])[1]/span
     action: click
@@ -686,7 +686,7 @@ TH-CP-EXPORT_VM-0001:
 
   #选择下拉框中的kwj选项
   - by: xpath
-    locator: //li[@id="compute_instances_create_basic_ova_repository1"]
+    locator: //li[@id="compute_instances_create_basic_ova_repository0"]
     action: move_click
 
   #选择ova/tva文件(选择下拉框中的win7-64.ova)
@@ -744,7 +744,7 @@ TH-CP-EXPORT_VM-0002:
 
   #选择下拉框中的kwj选项
   - by: xpath
-    locator: //li[@id="compute_instances_create_basic_ova_repository1"]
+    locator: //li[@id="compute_instances_create_basic_ova_repository0"]
     action: move_click
 
   #选择ova/tva文件(选择下拉框中的red7.tva)
@@ -803,12 +803,12 @@ TH-CP-EXPORT_VM-0003:
 
   #点击主机ip下拉框
   - by: xpath
-    locator: (//div[@class="el-dialog__header"])[16]/../div[2]/form/div[2]/div/div/div/div/input
+    locator: (//input[@placeholder="请选择主机IP"])
     action: click
 
-  #选择主机ip下拉框中的10.30.32.23
+  #选择主机ip下拉框中的第一个
   - by: xpath
-    locator: (//ul[@class="el-scrollbar__view el-select-dropdown__list"]/li[3])[10]
+    locator: (//ul[@class="el-scrollbar__view el-select-dropdown__list"])[17]/li[1]
     action: click
 
   #点击ova/tva文件下拉框
@@ -825,7 +825,7 @@ TH-CP-EXPORT_VM-0003:
   #进入文件详情目录
   #点击data目录按钮
   - by: xpath
-    locator: (//div[@class="folderList"])/span[4]
+    locator: (//span[@title="data"])
     action: click
 
   #进入ova/tva模板详情列表
@@ -885,12 +885,12 @@ TH-CP-EXPORT_VM-0004:
 
   #点击主机ip下拉框
   - by: xpath
-    locator: (//div[@class="el-dialog__header"])[16]/../div[2]/form/div[2]/div/div/div/div/input
+    locator: (//input[@placeholder="请选择主机IP"])
     action: click
 
-  #选择主机ip下拉框中的10.30.32.23
+  #选择主机ip下拉框中的第一个
   - by: xpath
-    locator: (//ul[@class="el-scrollbar__view el-select-dropdown__list"]/li[3])[10]
+    locator: (//ul[@class="el-scrollbar__view el-select-dropdown__list"])[17]/li[1]
     action: click
 
   #点击ova/tva文件下拉框
@@ -907,7 +907,7 @@ TH-CP-EXPORT_VM-0004:
   #进入文件详情目录
   #点击data目录按钮
   - by: xpath
-    locator: (//div[@class="folderList"])/span[4]
+    locator: (//span[@title="data"])
     action: click
 
   #进入ova/tva模板详情列表
@@ -999,7 +999,7 @@ TH-CP-OPERATE_VM-0002:
 
   #鼠标移至编辑列表中的重启选项，并点击
     - by: xpath
-      locator: //body[@class="theme-white"]/ul/li[2]
+      locator: (//li[@id="compute_instances_computes_operate_btn_restart"])
       action: move_click
 
   #出现云服务器重启弹窗
@@ -1037,7 +1037,7 @@ TH-CP-OPERATE_VM-0003:
 
   #鼠标移至编辑列表中的挂起选项，并点击
   - by: xpath
-    locator: //body[@class="theme-white"]/ul/li[3]
+    locator: (//li[@id="compute_instances_computes_operate_btn_hang"])
     action: move_click
 
   #出现云服务器挂起弹窗
@@ -1074,7 +1074,7 @@ TH-CP-OPERATE_VM-0004:
 
   #鼠标移至编辑列表中的恢复选项，并点击
   - by: xpath
-    locator: //body[@class="theme-white"]/ul/li[4]
+    locator: (//li[@id="compute_instances_computes_operate_btn_restore"])
     action: move_click
 
   #出现云服务器恢复弹窗
@@ -1112,7 +1112,7 @@ TH-CP-OPERATE_VM-0005:
 
   #鼠标移至编辑列表中的休眠选项，并点击
   - by: xpath
-    locator: //body[@class="theme-white"]/ul/li[5]
+    locator: (//li[@id="compute_instances_computes_operate_btn_save"])
     action: move_click
 
   #出现云服务器休眠弹窗
@@ -1149,7 +1149,7 @@ TH-CP-OPERATE_VM-0006:
 
   #鼠标移至编辑列表中的唤醒选项，并点击
   - by: xpath
-    locator: //body[@class="theme-white"]/ul/li[6]
+    locator: (//li[@id="compute_instances_computes_operate_btn_wake"])
     action: move_click
 
   #出现云服务器唤醒弹窗
@@ -1186,7 +1186,7 @@ TH-CP-OPERATE_VM-0007:
 
   #鼠标移至编辑列表中的导出PDF选项，并点击
   - by: xpath
-    locator: //body[@class="theme-white"]/ul/li[10]
+    locator: (//li[@id="compute_instances_computes_operate_btn_export_PDF"])
     action: move_click
 
   #云服务器导出PDF弹窗
@@ -1224,7 +1224,7 @@ TH-CP-OPERATE_VM-0008:
 
   #鼠标移至编辑列表中的关机选项，并点击
     - by: xpath
-      locator: //body[@class="theme-white"]/ul/li[1]
+      locator: (//li[@id="compute_instances_computes_operate_btn_shuntoff"])
       action: move_click
 
   #出现云服务器关闭弹窗
@@ -1262,7 +1262,7 @@ TH-CP-OPERATE_VM-0009:
 
   #鼠标移至编辑列表中的分配选项，并点击
   - by: xpath
-    locator: //body[@class="theme-white"]/ul/li[11]
+    locator: //li[@id="compute_instances_computes_operate_btn_allot"]
     action: move_click
 
   #云服务器分配弹窗
@@ -1309,7 +1309,7 @@ TH-CP-OPERATE_VM-0010:
 
   #鼠标移至编辑列表中的移动选项，并点击
   - by: xpath
-    locator: //body[@class="theme-white"]/ul/li[12]
+    locator: (//li[@id="compute_instances_computes_operate_btn_move"])
     action: move_click
 
   #云服务器移动弹窗
@@ -1325,18 +1325,18 @@ TH-CP-OPERATE_VM-0010:
 
   #选择二级下拉框中的第一个选项并点击
   - by: xpath
-    locator: //li[@class="el-cascader-menu__item el-cascader-menu__item--extensible"]
-    action: move_click
-
-  #选择三级下拉框中的第一个选项并点击 el-cascader-menu__item
-  - by: xpath
-    locator: //li[@class="el-cascader-menu__item el-cascader-menu__item--extensible"]
-    action: move_click
-
-  #选择四级下拉框中的第一个选项并点击
-  - by: xpath
     locator: //li[@class="el-cascader-menu__item"]
     action: move_click
+
+#  #选择三级下拉框中的第一个选项并点击 el-cascader-menu__item
+#  - by: xpath
+#    locator: //li[@class="el-cascader-menu__item--extensible"]
+#    action: move_click
+#
+#  #选择四级下拉框中的第一个选项并点击
+#  - by: xpath
+#    locator: //li[@class="el-cascader-menu__item"]
+#    action: move_click
 
   #点击确认按钮
   - by: xpath
@@ -1394,14 +1394,14 @@ TH-CP-OPERATE_VM-0011:
     locator: //div[@class='vue-message vue-message--success']/p
     action: text
 
-  #点击确认按钮，关闭编辑弹窗
-  - by: xpath
-    locator: (//*[@id="instances_edit_device_close"])[1]/span
-    action: click
+#  #点击确认按钮，关闭编辑弹窗
+#  - by: xpath
+#    locator: (//*[@id="instances_edit_device_close"])[1]/span
+#    action: click
 
-  #关闭虚拟即详细信息页
+  #关闭虚拟机详细信息页
   - by: xpath
-    locator: //body[@class="theme-white"]/div/div/div[2]/div/div/section/section/div[2]/div[2]/div[2]/div/section/div[3]/i
+    locator: (//*[@id="compute_instances_computes_close"])
     action: click
 
 #1412迁移
@@ -1450,9 +1450,9 @@ TH-CP-MIGRATE_VM-0001:
       action: click
 
     #出现云服务器迁移列表
-    #勾选列表中第二台主机
+    #勾选列表中第一台主机
     - by: xpath
-      locator: (//span[@class="el-checkbox__inner"])[5]
+      locator: (//span[@class="el-checkbox__inner"])[4]
       action: click
 
     #点击确认按钮
@@ -1584,7 +1584,7 @@ TH-CP-CLONE_VM-0001:
 
     #关闭虚拟即详细信息页
     - by: xpath
-      locator: //body[@class="theme-white"]/div/div/div[2]/div/div/section/section/div[2]/div[2]/div[2]/div/section/div[3]/i
+      locator: (//i[@id="compute_instances_computes_close"])
       action: click
 
   #彻底删除全量克隆出的虚拟机0000-clone1
@@ -1609,7 +1609,7 @@ TH-CP-CLONE_VM-0001:
 
   #鼠标移至编辑列表中的删除选项，并点击
     - by: xpath
-      locator: //body[@class="theme-white"]/ul/li[13]
+      locator: (//li[@id="compute_instances_computes_operate_btn_delete"])
       action: move_click
 
   #出现云服务器删除弹窗
@@ -1658,15 +1658,11 @@ TH-CP-CLONE_VM-0002:
       locator: //div[@class='vue-message vue-message--success']/p
       action: text
 
+  data2:
     #其它配置信息默认
     #点击确认
     - by: xpath
       locator: (//button[@id="compute_instances_dialog_vmOpt_confirm"])
-      action: click
-
-    #关闭虚拟即详细信息页
-    - by: xpath
-      locator: //body[@class="theme-white"]/div/div/div[2]/div/div/section/section/div[2]/div[2]/div[2]/div/section/div[3]/i
       action: click
 
   #获取全量快照克隆成功的提示信息
@@ -1674,13 +1670,18 @@ TH-CP-CLONE_VM-0002:
       locator:  //div[@class='vue-message vue-message--success']/p
       action: text
 
+    #关闭虚拟机详细信息页
+    - by: xpath
+      locator: (//i[@id="compute_instances_computes_close"])
+      action: click
+
     - by: xpath
       locator: (//div[@class=" optiscroll-content"])[4]/section/section/div/div/div/input
       action: send
       value: '0000-kz-clone1'
 
   #彻底删除全量克隆出的虚拟机0000-kz-clone1
-  data2: *demo0002
+  data3: *demo0002
 
 #1413-2链接克隆
 TH-CP-CLONE_VM-0003:
@@ -1719,9 +1720,9 @@ TH-CP-CLONE_VM-0003:
       locator: (//button[@id="compute_instances_dialog_vmOpt_confirm"])
       action: click
 
-    #关闭虚拟即详细信息页
+    #关闭虚拟机详细信息页
     - by: xpath
-      locator: //body[@class="theme-white"]/div/div/div[2]/div/div/section/section/div[2]/div[2]/div[2]/div/section/div[3]/i
+      locator: (//i[@id="compute_instances_computes_close"])
       action: click
 
   #获取全量快照克隆成功的提示信息
@@ -1763,9 +1764,9 @@ TH-CP-CLONE_VM-0004:
       locator: //input[@id="compute_instances_dialogOpt_tenant"]
       action: click
 
-  #选择租户下拉框中的内容
+  #选择租户下拉框中的第四个租户kwj
     - by: xpath
-      locator: (//span[text()="0001"])
+      locator: (//div[@class="el-select-dropdown el-popper"]/div/div/ul)[5]/li[4]
       action: move_click
 
   #点击存储池
@@ -1775,7 +1776,7 @@ TH-CP-CLONE_VM-0004:
 
   #选择存储池下拉框中的内容
     - by: xpath
-      locator: //span[text()="p00l-0001"]
+      locator: (//div[@class="el-select-dropdown el-popper"]/div/div/ul)[5]/li[1]
       action: move_click
 
     #其它配置信息默认
@@ -1784,21 +1785,21 @@ TH-CP-CLONE_VM-0004:
       locator: (//button[@id="compute_instances_dialog_vmOpt_confirm"])
       action: click
 
-    #关闭虚拟机详细信息页
-    - by: xpath
-      locator: //body[@class="theme-white"]/div/div/div[2]/div/div/section/section/div[2]/div[2]/div[2]/div/section/div[3]/i
-      action: click
-
   #获取跨租户克隆成功的提示信息
     - by: xpath
       locator:  //div[@class='vue-message vue-message--success']/p
       action: text
 
+    #关闭虚拟机详细信息页
+    - by: xpath
+      locator: (//i[@id="compute_instances_computes_close"])
+      action: click
+
 #1414导入
 #1414-1镜像仓库导入
 TH-CP-IMPORT_VM-0001:
   #搜索框中搜索虚拟机0000
-  data0:
+  data0: &demo0003
     #搜索框中搜索虚拟机0000
     - by: xpath
       locator: (//div[@class=" optiscroll-content"])[4]/section/section/div/div/div/input
@@ -1820,8 +1821,13 @@ TH-CP-IMPORT_VM-0001:
 
   #鼠标移动至编辑列表中的关机选项并点击
     - by: xpath
-      locator: (//button[@id="compute_instances_computes_operate_btn"])
-      action: move
+      locator: (//li[@id="compute_instances_computes_operate_btn_shuntoff"])
+      action: move_click
+
+  #出现关机提示弹窗，点击确认按钮
+    - by: xpath
+      locator: //button[@id="compute_instances_dialog_vmOpt_confirm"]
+      action: click
 
   #鼠标置于虚拟机0000的名称按钮，出现虚拟机详情信息列表
     - by: xpath
@@ -1830,7 +1836,7 @@ TH-CP-IMPORT_VM-0001:
 
   #鼠标移至虚拟机基本信息页中的编辑按钮，出现编辑列表
     - by: xpath
-      locator: //body[@class="theme-white"]/div/div/div[2]/div/div/section/section/div[2]/div[2]/div[2]/div/section/div[3]/div/button
+      locator: (//button[@id="compute_instances_computes_inspect_operate_btn"])
       action: move
 
   #鼠标移至编辑列表中的导入选项，并点击
@@ -1848,7 +1854,7 @@ TH-CP-IMPORT_VM-0001:
 
   #移动至仓库下拉框中第二个选择项并点击
     - by: xpath
-      locator: (//div[@class="el-select-dropdown__wrap el-scrollbar__wrap"])[5]/ul/li[2]
+      locator: (//div[@class="el-select-dropdown__wrap el-scrollbar__wrap"])[5]/ul/li[1]
       action: move_click
 
   #点击选择镜像下拉框
@@ -1858,7 +1864,7 @@ TH-CP-IMPORT_VM-0001:
 
   #移动至镜像下拉框中第二个选择项并点击
     - by: xpath
-      locator: (//div[@class="el-select-dropdown__wrap el-scrollbar__wrap"])[5]/ul/li
+      locator: (//div[@class="el-select-dropdown__wrap el-scrollbar__wrap"])[5]/ul/li[1]
       action: move_click
 
   #点击选择磁盘下拉框
@@ -1866,9 +1872,9 @@ TH-CP-IMPORT_VM-0001:
       locator: (//input[@placeholder="磁盘"])
       action: click
 
-  #移动至磁盘下拉框中第二个选择项并点击
+  #移动至磁盘下拉框中第一个选择项并点击
     - by: xpath
-      locator: (//div[@class="el-select-dropdown__wrap el-scrollbar__wrap"])[5]/ul/li
+      locator: (//div[@class="el-select-dropdown__wrap el-scrollbar__wrap"])[5]/ul/li[1]
       action: move_click
 
   #点击确认按钮
@@ -1880,3 +1886,2109 @@ TH-CP-IMPORT_VM-0001:
     - by: xpath
       locator:  //div[@class='vue-message vue-message--success']/p
       action: text
+
+  #处于虚拟机基本信息页面
+  data3: &demo0004
+#    #鼠标置于编辑按钮，出现编辑选项下拉框
+#    - by: xpath
+#      locator: (//button[@id="compute_instances_computes_inspect_operate_btn"])
+#      action: move
+#
+#    #点击下拉框中的启动按钮，开启虚拟机
+#    - by: xpath
+#      locator: (//li[@id="compute_instances_computes_inspect_operate_btn_start"])
+#      action: move_click
+
+    #关闭虚拟机基本信息页面
+    - by: xpath
+      locator: (//i[@id="compute_instances_computes_close"])
+      action: click
+
+
+#1414-2ISCSI导入
+TH-CP-IMPORT_VM-0002:
+  #搜索框中搜索虚拟机0000
+  data0: #搜索框中搜索虚拟机0005
+    - by: xpath
+      locator: (//div[@class=" optiscroll-content"])[4]/section/section/div/div/div/input
+      action: send
+      value: '0005'
+
+    - by: xpath
+      locator: (//div[@class=" optiscroll-content"])[4]/section/section/div/div/button/span
+      action: click
+
+    - by: xpath
+      locator: (//div[@class=" optiscroll-content"])[4]/section/section/div/div/div/input
+      action: clear
+
+  #鼠标置于虚拟机0005的编辑列表
+    - by: xpath
+      locator: (//button[@id="compute_instances_computes_operate_btn"])
+      action: move
+
+#  #鼠标移动至编辑列表中的关机选项并点击
+#    - by: xpath
+#      locator: (//li[@id="compute_instances_computes_operate_btn_shuntoff"])
+#      action: move_click
+#
+#  #出现关机提示弹窗，点击确认按钮
+#    - by: xpath
+#      locator: //button[@id="compute_instances_dialog_vmOpt_confirm"]
+#      action: click
+
+  #鼠标置于虚拟机0005的名称按钮，出现虚拟机详情信息列表
+    - by: xpath
+      locator: //tbody/tr/td[2]/div/span/a/i
+      action: click
+
+  #鼠标移至虚拟机基本信息页中的编辑按钮，出现编辑列表
+    - by: xpath
+      locator: (//button[@id="compute_instances_computes_inspect_operate_btn"])
+      action: move
+
+  #鼠标移至编辑列表中的导入选项，并点击
+    - by: xpath
+      locator: (//li[@id="compute_instances_computes_inspect_operate_btn_import"])
+      action: move_click
+
+  #出现云服务器磁盘导入弹窗
+  #默认导入方式为镜像仓库
+  data1:
+  #选择导入方式为ISCSI
+    - by: xpath
+      locator: //label[text()='导入方式']/../div/label[2]/span[1]
+      action: click
+
+  #源主机输入框输入ISCSI服务器IP：10.30.100.21
+    - by: xpath
+      locator: (//input[@placeholder="请输入ISCSI服务器IP(例:xx.xx.xx.xx)"])
+      action: send
+      value: "10.30.100.21"
+
+  #源端口输入框输入ISCSI端口：例3260
+    - by: xpath
+      locator: (//input[@placeholder="请输入ISCSI端口(例:3260)"])
+      action: send
+      value: "20211"
+
+  # IQN输入框输入ISCSI的IQN：
+    - by: xpath
+      locator: (//input[@placeholder="请输入ISCSI_IQN"])
+      action: send
+      value: "iqn.2018-11.topsec.com.cn:19fd687a-9898-419b-bedc-d009362ed19bid118482691"
+
+  # 点击磁盘下拉框
+    - by: xpath
+      locator: (//input[@placeholder="磁盘"])[2]
+      action: click
+
+  #鼠标置于磁盘下拉框中的第一个选项并点击
+    - by: xpath
+      locator: (//ul[@class="el-scrollbar__view el-select-dropdown__list"])[5]/li
+      action: move_click
+
+  #其它配置保持默认，点击确认按钮
+    - by: xpath
+      locator: (//button[@id="compute_instances_dialog_vmOpt_confirm"])
+      action: click
+
+  #获取ISCSI导入成功的提示信息
+    - by: xpath
+      locator:  //div[@class='vue-message vue-message--success']/p
+      action: text
+
+  #后置条件：恢复原状
+  data3: *demo0004
+
+#1415导出
+#1415-1磁盘导出
+TH-CP-EXPORTS_VM-0001:
+#搜索框中搜索虚拟机0000，跳转至出现云服务器导出弹窗
+  data0: &demo0005
+    #搜索框中搜索虚拟机0000
+    - by: xpath
+      locator: (//div[@class=" optiscroll-content"])[4]/section/section/div/div/div/input
+      action: send
+      value: '0006'
+
+    - by: xpath
+      locator: (//div[@class=" optiscroll-content"])[4]/section/section/div/div/button/span
+      action: click
+
+    - by: xpath
+      locator: (//div[@class=" optiscroll-content"])[4]/section/section/div/div/div/input
+      action: clear
+
+  #鼠标置于虚拟机0000的名称按钮，出现虚拟机详情信息列表
+    - by: xpath
+      locator: //tbody/tr/td[2]/div/span/a/i
+      action: click
+
+  #鼠标移至虚拟机基本信息页中的编辑按钮，出现编辑列表
+    - by: xpath
+      locator: //body[@class="theme-white"]/div/div/div[2]/div/div/section/section/div[2]/div[2]/div[2]/div/section/div[3]/div/button
+      action: move
+
+  #鼠标移至编辑列表中的导出选项，并点击
+    - by: xpath
+      locator: (//li[@id="compute_instances_computes_inspect_operate_btn_export"])
+      action: move_click
+
+  data1:
+  #出现云服务器导出弹窗
+  #点击选择磁盘导出
+    - by: xpath
+      locator: (//div[@id="compute_instances_dialogOpt_diskExport"])/div[1]
+      action: click
+
+  #出现云服务器磁盘导出弹窗
+  #点击磁盘下拉框
+    - by: xpath
+      locator: (//input[@id="compute_instances_dialogOpt_export_targetDevice"])
+      action: click
+
+  #选择下拉框中的磁盘sda
+    - by: xpath
+      locator: (//div[@class="el-select-dropdown__wrap el-scrollbar__wrap"])[5]/ul/li
+      action: move_click
+
+  #点击导入仓库下拉框
+    - by: xpath
+      locator: (//input[@id="compute_instances_dialog_export_reponsitroy_uuid"])
+      action: click
+
+  #选择下拉框中的镜像仓库 kwj 并点击
+    - by: xpath
+      locator: (//div[@class="el-select-dropdown__wrap el-scrollbar__wrap"])[5]/ul/li[2]
+      action: move_click
+
+  #镜像名输入框输入0000-sda
+    - by: xpath
+      locator: (//input[@id="compute_instances_dialogOpt_export_image_name"])
+      action: send
+      value: "0000-sda"
+
+  #点击镜像格式下拉框
+    - by: xpath
+      locator: (//input[@id="compute_instances_dialogOpt_export_imageCloud"])
+      action: click
+
+  #选择镜像格式下拉框中的选项已
+    - by: xpath
+      locator: (//div[@class="el-select-dropdown__wrap el-scrollbar__wrap"])[5]/ul/li[1]
+      action: move_click
+
+  #其它配置保持默认，点击确认按钮
+    - by: xpath
+      locator: //button[@id="compute_instances_dialogOpt_confirm"]
+      action: click
+
+  #获取磁盘导出成功的提示信息： 云服务器导出成功
+    - by: xpath
+      locator:  //div[@class='vue-message vue-message--success']/p
+      action: text
+
+  #关闭虚拟机基本信息页面
+    - by: xpath
+      locator: (//i[@id="compute_instances_computes_close"])
+      action: click
+
+#1415-2云服务器导出
+#（1）导出到镜像仓库
+TH-CP-EXPORTS_VM-0002:
+  #搜索框中搜索虚拟机0000，跳转至出现云服务器导出弹窗
+  data0:  #搜索框中搜索虚拟机0000
+    - by: xpath
+      locator: (//div[@class=" optiscroll-content"])[4]/section/section/div/div/div/input
+      action: send
+      value: '0005'
+
+    - by: xpath
+      locator: (//div[@class=" optiscroll-content"])[4]/section/section/div/div/button/span
+      action: click
+
+    - by: xpath
+      locator: (//div[@class=" optiscroll-content"])[4]/section/section/div/div/div/input
+      action: clear
+
+  #鼠标置于虚拟机0000的名称按钮，出现虚拟机详情信息列表
+    - by: xpath
+      locator: //tbody/tr/td[2]/div/span/a/i
+      action: click
+
+  #鼠标移至虚拟机基本信息页中的编辑按钮，出现编辑列表
+    - by: xpath
+      locator: //body[@class="theme-white"]/div/div/div[2]/div/div/section/section/div[2]/div[2]/div[2]/div/section/div[3]/div/button
+      action: move
+
+  #鼠标移至编辑列表中的导出选项，并点击
+    - by: xpath
+      locator: (//li[@id="compute_instances_computes_inspect_operate_btn_export"])
+      action: move_click
+
+  #出现云服务器导出弹窗
+  data1:
+  #点击选择云服务器导出
+    - by: xpath
+      locator: (//div[@id="compute_instances_dialogOpt_vmExport"])/div[1]
+      action: click
+
+  #出现云服务器导出弹窗，默认镜像仓库导出
+  #点击磁盘下拉框
+    - by: xpath
+      locator: (//input[@id="compute_instances_dialogOpt_exportOva_targetDevice"])
+      action: click
+
+  #选择下拉框中的磁盘sda
+    - by: xpath
+      locator: (//div[@class="el-select-dropdown__wrap el-scrollbar__wrap"])[6]/ul/li
+      action: move_click
+
+  #此时下拉框还未折叠，需要点击一下窗口空白区域
+    - by: xpath
+      locator: (//div[@class="el-form-item__content"])[1]/div/label[1]/span[1]
+      action: click
+
+  #点击导入仓库下拉框
+    - by: xpath
+      locator: (//input[@id="compute_instances_dialog_export_reponsitroy_uuid"])
+      action: click
+
+  #选择下拉框中的镜像仓库 kwj 并点击
+    - by: xpath
+      locator: (//div[@class="el-select-dropdown__wrap el-scrollbar__wrap"])[6]/ul/li[2]
+      action: move_click
+
+  #文件名输入框输入0000-vm1
+    - by: xpath
+      locator: (//input[@id="compute_instances_dialogOpt_exportOva_image_name"])
+      action: send
+      value: "0000-vm1"
+
+  #其它配置保持默认，点击确认按钮
+    - by: xpath
+      locator: //button[@id="compute_instances_dialogOpt_confirm"]
+      action: click
+
+  #获取磁盘导出成功的提示信息： 云服务器导出成功
+    - by: xpath
+      locator:  //div[@class='vue-message vue-message--success']/p
+      action: text
+
+  #关闭虚拟机基本信息页面
+    - by: xpath
+      locator: (//i[@id="compute_instances_computes_close"])
+      action: click
+
+#（2）导出到存储介质
+TH-CP-EXPORTS_VM-0003:
+  #搜索框中搜索虚拟机0000，跳转至出现云服务器导出弹窗
+  data0: *demo0005
+#出现云服务器导出弹窗
+  data1:
+  #点击选择云服务器导出
+    - by: xpath
+      locator: (//div[@id="compute_instances_dialogOpt_vmExport"])/div[1]
+      action: click
+
+  #出现云服务器导出弹窗，默认镜像仓库导出
+  #点击选择存储介质导出
+    - by: xpath
+      locator: (//div[@class="el-form-item__content"])[1]/div/label[2]/span[1]
+      action: click
+
+  #点击磁盘下拉框
+    - by: xpath
+      locator: (//input[@id="compute_instances_dialogOpt_exportOva_targetDevice"])
+      action: click
+
+  #选择下拉框中的磁盘sda
+    - by: xpath
+      locator: (//div[@class="el-select-dropdown__wrap el-scrollbar__wrap"])[6]/ul/li
+      action: move_click
+
+  #此时下拉框还未折叠，需要点击一下窗口空白区域
+    - by: xpath
+      locator: (//div[@class="el-form-item__content"])[1]/div/label[2]/span[1]
+      action: click
+
+  #文件名输入框输入0000-vm1
+    - by: xpath
+      locator: (//input[@id="compute_instances_dialogOpt_exportOva_image_name"])
+      action: send
+      value: "0000-vm2"
+
+  #点击主机IP下拉框
+    - by: xpath
+      locator: (//input[@placeholder="请选择主机IP"])
+      action: click
+
+  #选择存在存储介质的主机
+    - by: xpath
+      locator: (//div[@class="el-select-dropdown__wrap el-scrollbar__wrap"])[6]/ul/li
+      action: move_click
+
+  #点击导出路径下拉框
+    - by: xpath
+      locator: (//input[@placeholder="请选择导出路径"])
+      action: click
+
+  #出现云服务器导出路径弹窗
+  #####选择对应路径#####
+
+  #其它配置保持默认，点击确认按钮
+    - by: xpath
+      locator: //button[@id="compute_instances_dialogOpt_confirm"]
+      action: click
+
+  #获取磁盘导出成功的提示信息： 云服务器导出成功
+    - by: xpath
+      locator:  //div[@class='vue-message vue-message--success']/p
+      action: text
+
+  #关闭虚拟机基本信息页面
+    - by: xpath
+      locator: (//i[@id="compute_instances_computes_close"])
+      action: click
+
+#1.5云服务器基本信息页
+# 151 云服务器cpu操作
+# 151-1 关机状态下添加/减小cpu、修改基准类型
+TH-CP-BASIC_CPU-0001:
+#搜索框中搜索虚拟机0000
+  data0: &demo0006
+    #搜索框中搜索虚拟机0000
+    - by: xpath
+      locator: (//div[@class=" optiscroll-content"])[4]/section/section/div/div/div/input
+      action: send
+      value: '0000'
+
+    - by: xpath
+      locator: (//div[@class=" optiscroll-content"])[4]/section/section/div/div/button/span
+      action: click
+
+    - by: xpath
+      locator: (//div[@class=" optiscroll-content"])[4]/section/section/div/div/div/input
+      action: clear
+
+  #鼠标置于虚拟机0000的名称按钮，出现虚拟机基本信息页
+    - by: xpath
+      locator: //tbody/tr/td[2]/div/span/a/i
+      action: click
+
+  data1:
+  #虚拟机处于运行状态
+  #关闭虚拟机
+  #鼠标移至虚拟机基本信息页中的编辑按钮，出现编辑列表
+    - by: xpath
+      locator: //body[@class="theme-white"]/div/div/div[2]/div/div/section/section/div[2]/div[2]/div[2]/div/section/div[3]/div/button
+      action: move
+
+  #鼠标移至编辑列表中的关机选项，并点击
+    - by: xpath
+      locator: (//li[@id="compute_instances_computes_inspect_operate_btn_shuntoff"])
+      action: move_click
+
+  #出现确认弹窗
+  #点击确认按钮
+    - by: xpath
+      locator: (//button[@id="compute_instances_dialog_vmOpt_confirm"])
+      action: click
+
+  #展开处理器详情栏
+    - by: xpath
+      locator: (//span[@class="more-select-info"])[1]/i
+      action: click
+
+  data2:
+  #增加插槽核数
+  #点击修改插槽核数按钮
+    - by: xpath
+      locator: (//button[@id="vm_cpu_socket_coresShow"])
+      action: click
+
+  #插槽核数输入框输入清理原有值后输入
+    - by: xpath
+      locator: (//input[@id="cpu_socket_core"])
+      action: clear
+
+    - by: xpath
+      locator: (//input[@id="cpu_socket_core"])
+      action: send
+      value: "4"
+
+  #点击页面任一其它位置
+    - by: xpath
+      locator: (//span[text()="基本信息"])
+      action: click
+
+  #获取云服务器插槽核数修改成功的提示信息： 云服务器插槽核数修改成功
+    - by: xpath
+      locator:  //div[@class='vue-message vue-message--success']/p
+      action: text
+
+  #减小插槽核数
+  #点击修改插槽核数按钮
+    - by: xpath
+      locator: (//button[@id="vm_cpu_socket_coresShow"])
+      action: click
+
+  #插槽核数输入框输入清理原有值后输入
+    - by: xpath
+      locator: (//input[@id="cpu_socket_core"])
+      action: clear
+
+    - by: xpath
+      locator: (//input[@id="cpu_socket_core"])
+      action: send
+      value: "3"
+
+  #点击页面任一其它位置
+    - by: xpath
+      locator: (//span[text()="基本信息"])
+      action: click
+
+  #获取云服务器插槽核数修改成功的提示信息： 云服务器插槽核数修改成功
+    - by: xpath
+      locator:  //div[@class='vue-message vue-message--success']/p
+      action: text
+
+  data3:
+    #增加插槽数
+    #点击修改插槽数按钮
+    - by: xpath
+      locator: (//button[@id="vm_cpu_socketsShow"])
+      action: click
+
+    #插槽数输入框输入清理原有值后输入
+    - by: xpath
+      locator: (//input[@id="cpu_socket"])
+      action: clear
+
+    - by: xpath
+      locator: (//input[@id="cpu_socket"])
+      action: send
+      value: "4"
+
+    #点击页面任一其它位置
+    - by: xpath
+      locator: (//span[text()="基本信息"])
+      action: click
+
+    #获取云服务器插槽数修改成功的提示信息： 云服务器插槽数修改成功
+    - by: xpath
+      locator: //div[@class='vue-message vue-message--success']/p
+      action: text
+
+    #减小插槽数
+    #点击修改插槽数按钮
+    - by: xpath
+      locator: (//button[@id="vm_cpu_socketsShow"])
+      action: click
+
+    #插槽数输入框输入清理原有值后输入
+    - by: xpath
+      locator: (//input[@id="cpu_socket"])
+      action: clear
+
+    - by: xpath
+      locator: (//input[@id="cpu_socket"])
+      action: send
+      value: "3"
+
+    #点击页面任一其它位置
+    - by: xpath
+      locator: (//span[text()="基本信息"])
+      action: click
+
+    #获取云服务器插槽数修改成功的提示信息： 云服务器插槽数修改成功
+    - by: xpath
+      locator: //div[@class='vue-message vue-message--success']/p
+      action: text
+
+  data4:
+    #增加CPU数
+    #点击修改CPU数按钮
+    - by: xpath
+      locator: (//button[@id="vm_showCPU_edit"])
+      action: click
+
+    #CPU数输入框输入清理原有值后输入
+    - by: xpath
+      locator: (//input[@id="cpu"])
+      action: clear
+
+    - by: xpath
+      locator: (//input[@id="cpu"])
+      action: send
+      value: "4"
+
+    #点击页面任一其它位置
+    - by: xpath
+      locator: (//span[text()="基本信息"])
+      action: click
+
+    #获取云服务器CPU数修改成功的提示信息： 云服务器CPU数修改成功
+    - by: xpath
+      locator: //div[@class='vue-message vue-message--success']/p
+      action: text
+
+    #减小CPU数
+    #点击修改CPU数按钮
+    - by: xpath
+      locator: (//button[@id="vm_showCPU_edit"])
+      action: click
+
+    #CPU数输入框输入清理原有值后输入
+    - by: xpath
+      locator: (//input[@id="cpu"])
+      action: clear
+
+    - by: xpath
+      locator: (//input[@id="cpu"])
+      action: send
+      value: "1"
+
+    #点击页面任一其它位置
+    - by: xpath
+      locator: (//span[text()="基本信息"])
+      action: click
+
+    #获取云服务器CPU数修改成功的提示信息： 云服务器CPU数修改成功
+    - by: xpath
+      locator: //div[@class='vue-message vue-message--success']/p
+      action: text
+
+  #修改基准类型
+  data5:
+    #点击修改基准类型按钮
+    - by: xpath
+      locator: (//button[@id="vm_cpu_support_configShow"])
+      action: click
+
+    #出现修改基准类型弹窗
+    #点击基准类型下拉框
+    - by: xpath
+      locator: (//div[@class="el-input el-input--small el-input--suffix"])/span
+      action: move_click
+
+    #一级下拉框选择arm
+    - by: xpath
+      locator: (//span[text()="arm"])
+      action: move_click
+
+    #二级下拉框选择Phytium
+    - by: xpath
+      locator: (//span[text()="Phytium"])
+      action: move_click
+
+    #三级级下拉框选择FT-2000plus
+    - by: xpath
+      locator: (//span[text()="FT-2000plus"])
+      action: move_click
+
+    #点击确认按钮
+    - by: xpath
+      locator: (//div[@id="compute_instances_computes_inspect_set_baseline"])/div/div[3]/div/button[1]
+      action: click
+
+    #获取修改基准类型成功的提示信息： 修改基准类型成功
+    - by: xpath
+      locator: //div[@class='vue-message vue-message--success']/p
+      action: text
+
+  #后置条件，恢复原状
+  data6:
+    #点击修改基准类型按钮
+    - by: xpath
+      locator: (//button[@id="vm_cpu_support_configShow"])
+      action: click
+
+    #点击基准类型下拉框
+    - by: xpath
+      locator: (//div[@class="el-input el-input--small el-input--suffix"])
+      action: move_click
+
+    #一级下拉框选择x86
+    - by: xpath
+      locator: (//span[text()="x86"])
+      action: move_click
+
+    #二级下拉框选择Intel
+    - by: xpath
+      locator: (//span[text()="Intel"])
+      action: move_click
+
+    #三级级下拉框选择486
+    - by: xpath
+      locator: (//span[text()="486（yes）"])
+      action: move_click
+
+    #点击确认按钮
+    - by: xpath
+      locator: (//div[@id="compute_instances_computes_inspect_set_baseline"])/div/div[3]/div/button[1]
+      action: click
+
+    #折叠处理器详情栏
+    - by: xpath
+      locator: (//span[@class="more-select-info"])[1]/i
+      action: click
+
+  #鼠标移至虚拟机基本信息页中的编辑按钮，出现编辑列表
+    - by: xpath
+      locator: //body[@class="theme-white"]/div/div/div[2]/div/div/section/section/div[2]/div[2]/div[2]/div/section/div[3]/div/button
+      action: move
+
+  #鼠标移至编辑列表中的启动选项，并点击
+    - by: xpath
+      locator: (//li[@id="compute_instances_computes_inspect_operate_btn_start"])
+      action: move_click
+
+  #关闭虚拟机基本信息页
+    - by: xpath
+      locator: (//i[@id="compute_instances_computes_close"])
+      action: click
+
+
+# 151-2 开机状态下添加/减小cpu开机添加cpu
+TH-CP-BASIC_CPU-0002:
+  #搜索框中搜索虚拟机0000，跳转至基本信息页
+  data0: *demo0006
+
+  #虚拟机处于开机状态
+  data1:
+  #展开处理器详情栏
+    - by: xpath
+      locator: (//span[@class="more-select-info"])[1]
+      action: click
+
+    #增加CPU数
+    #点击修改CPU数按钮
+    - by: xpath
+      locator: (//button[@id="vm_showCPU_edit"])
+      action: click
+
+    #CPU数输入框输入清理原有值后输入
+    - by: xpath
+      locator: (//input[@id="cpu"])
+      action: clear
+
+    - by: xpath
+      locator: (//input[@id="cpu"])
+      action: send
+      value: "2"
+
+    #点击页面任一其它位置
+    - by: xpath
+      locator: (//span[text()="基本信息"])
+      action: click
+
+    #获取云服务器CPU数修改成功的值
+    - by: xpath
+      locator: (//button[@id="vm_showCPU_edit"])/../span[3]
+      action: text
+
+    #减小CPU数
+    #点击修改CPU数按钮
+    - by: xpath
+      locator: (//button[@id="vm_showCPU_edit"])
+      action: click
+
+    #CPU数输入框输入清理原有值后输入
+    - by: xpath
+      locator: (//input[@id="cpu"])
+      action: clear
+
+    - by: xpath
+      locator: (//input[@id="cpu"])
+      action: send
+      value: "1"
+
+    #获取云服务器CPU数修改失败的提示（输入框下方存在提示：“在非关机状态下：不能减少CPU访问数量”）
+    - by: xpath
+      locator: (//span[@class="el-form-item__error"])
+      action: text
+
+    #点击页面任一其它位置
+    - by: xpath
+      locator: (//span[text()="基本信息"])
+      action: click
+
+  #后置添加，恢复原状
+  #折叠处理器详情栏
+    - by: xpath
+      locator: (//span[@class="more-select-info"])[1]/i
+      action: click
+
+  #关闭虚拟机基本信息页
+    - by: xpath
+      locator: (//i[@id="compute_instances_computes_close"])
+      action: click
+
+# 151-3 开启/关闭预留cpu、cpu自动扩展
+TH-CP-BASIC_CPU-0003:
+  #搜索框中搜索虚拟机0000，跳转至基本信息页
+  data0: *demo0006
+
+  #虚拟机处于开机状态
+  #开启预留cpu
+  data1:
+  #展开处理器详情栏
+    - by: xpath
+      locator: (//span[@class="more-select-info"])[1]/i
+      action: click
+
+    #点击开启预留cpu按钮
+    - by: xpath
+      locator: (//div[@id="compute_instances_computes_inspect_cpu_reserve_enable"])/label/span
+      action: click
+
+    #获取开启预留cpu成功的提示信息
+    - by: xpath
+      locator: //div[@class='vue-message vue-message--success']/p
+      action: text
+
+  #增加一个下翻动作
+
+  #出现NUMA亲和性栏
+  #开启NUMA亲和性
+  data2:
+    #点击开启numa亲和性按钮
+    - by: xpath
+      locator: (//div[@id="compute_instances_computes_inspect_cpu_numa"])/label[1]/span[1]
+      action: click
+
+    #获取开启NUMA亲和性成功的提示信息
+    - by: xpath
+      locator: //div[@class='vue-message vue-message--success']/p
+      action: text
+
+  #开启cpu自动扩展
+  data3:
+    - by: xpath
+      locator: (//div[@id="compute_instances_computes_inspect_cpu_auto_expand_enable"])/label[1]/span[1]
+      action: click
+
+    #获取cpu自动扩展开启成功的提示信息
+    - by: xpath
+      locator: //div[@class='vue-message vue-message--success']/p
+      action: text
+
+    #出现自动扩展值编辑栏
+    #点击自动扩展值编辑按钮
+    - by: xpath
+      locator: (//button[@id="compute_instances_computes_inspect_max_expand_cpuShowShow"])
+      action: click
+
+    #自动扩展值输入框输入扩展值
+    #清理原有值
+    - by: xpath
+      locator: (//input[@id="max_expand_cpu"])
+      action: clear
+
+    #输入扩展值
+    - by: xpath
+      locator: (//input[@id="max_expand_cpu"])
+      action: send
+      value: "2"
+
+    #点击页面任一其它位置
+    - by: xpath
+      locator: (//span[text()="基本信息"])
+      action: click
+
+    #获取cpu自动扩展值修改成功的提示信息
+    - by: xpath
+      locator: //div[@class='vue-message vue-message--success']/p
+      action: text
+
+  #后置条件，恢复原状
+  data4:
+    #点击关闭cpu自动扩展按钮
+    - by: xpath
+      locator: (//div[@id="compute_instances_computes_inspect_cpu_auto_expand_enable"])/label[2]/span
+      action: click
+
+    #点击关闭numa亲和性按钮
+    - by: xpath
+      locator: (//div[@id="compute_instances_computes_inspect_cpu_numa"])/label[2]/span
+      action: click
+
+    #点击关闭预留cpu按钮
+    - by: xpath
+      locator: (//div[@id="compute_instances_computes_inspect_cpu_reserve_enable"])/label[2]/span
+      action: click
+
+  #折叠处理器详情栏
+    - by: xpath
+      locator: (//span[@class="more-select-info"])[1]/i
+      action: click
+
+  #关闭虚拟机基本信息页
+    - by: xpath
+      locator: (//i[@id="compute_instances_computes_close"])
+      action: click
+
+
+# 152云服务器内存操作
+# 152-1 关机状态下添加/减小内存、预留内存、内存自动扩展
+TH-CP-BASIC_MEM-0001:
+#搜索框中搜索虚拟机0000
+  data0: *demo0006
+  #搜索框中搜索虚拟机0000
+  #鼠标置于虚拟机0000的名称按钮，出现虚拟机基本信息页
+
+  data1: &demo0007
+  #虚拟机处于运行状态
+  #关闭虚拟机
+  #鼠标移至虚拟机基本信息页中的编辑按钮，出现编辑列表
+    - by: xpath
+      locator: //body[@class="theme-white"]/div/div/div[2]/div/div/section/section/div[2]/div[2]/div[2]/div/section/div[3]/div/button
+      action: move
+
+  #鼠标移至编辑列表中的关机选项，并点击
+    - by: xpath
+      locator: (//li[@id="compute_instances_computes_inspect_operate_btn_shuntoff"])
+      action: move_click
+
+  #出现确认弹窗
+  #点击确认按钮
+    - by: xpath
+      locator: (//button[@id="compute_instances_dialog_vmOpt_confirm"])
+      action: click
+
+  data2:
+    #展开内存详情栏
+    - by: xpath
+      locator: (//span[@class="more-select-info"])[2]/i
+      action: click
+
+    #增加内存数
+    #点击修改内存数按钮
+    - by: xpath
+      locator: (//button[@id="compute_instances_computes_inspect_memery_edit"])
+      action: click
+
+    #内存数输入框输入清理原有值后输入
+    - by: xpath
+      locator: (//input[@id="vm_memery"])
+      action: clear
+
+    - by: xpath
+      locator: (//input[@id="vm_memery"])
+      action: send
+      value: "6"
+
+    #点击页面任一其它位置
+    - by: xpath
+      locator: (//span[text()="基本信息"])
+      action: click
+
+    #获取内存数修改成功的提示信息
+    - by: xpath
+      locator: //div[@class='vue-message vue-message--success']/p
+      action: text
+
+    #减小内存数
+    #点击修改内存数按钮
+    - by: xpath
+      locator: (//button[@id="compute_instances_computes_inspect_memery_edit"])
+      action: click
+
+    #内存数输入框输入清理原有值后输入
+    - by: xpath
+      locator: (//input[@id="vm_memery"])
+      action: clear
+
+    - by: xpath
+      locator: (//input[@id="vm_memery"])
+      action: send
+      value: "2"
+
+    #点击页面任一其它位置
+    - by: xpath
+      locator: (//span[text()="基本信息"])
+      action: click
+
+    #获取内存数修改成功的提示信息
+    - by: xpath
+      locator: //div[@class='vue-message vue-message--success']/p
+      action: text
+
+  #开启预留内存
+  data3:
+    #点击开启预留内存按钮
+    - by: xpath
+      locator: (//div[@id="compute_instances_computes_inspect_mem_memory_reserve_enable"])/label[1]/span[1]
+      action: click
+
+    #获取开启预留内存成功的提示信息
+    - by: xpath
+      locator: //div[@class='vue-message vue-message--success']/p
+      action: text
+
+    #还原：点击关闭预留内存按钮
+    - by: xpath
+      locator: (//div[@id="compute_instances_computes_inspect_mem_memory_reserve_enable"])/label[2]/span[1]
+      action: click
+
+  #开启内存自动扩展
+  data4:
+    - by: xpath
+      locator: (//div[@id="compute_instances_computes_inspect_mem_memory_auto_expand_enable"])/label[1]/span[1]
+      action: click
+
+    #获取开启内存自动扩展成功的提示信息
+    - by: xpath
+      locator: //div[@class='vue-message vue-message--success']/p
+      action: text
+
+  #修改预留内存扩展值
+  data5:
+    #点击自动扩展值修改按钮
+    - by: xpath
+      locator: (//button[@id="compute_instances_computes_inspect_max_expand_mem_edit"])
+      action: click
+
+    #自动扩展值输入框输入
+    #清理已有值
+    - by: xpath
+      locator: (//input[@id="max_expand_mem"])
+      action: clear
+
+    #输入所需值
+    - by: xpath
+      locator: (//input[@id="max_expand_mem"])
+      action: send
+      value: "2"
+
+    #点击页面任一其它位置
+    - by: xpath
+      locator: (//span[text()="基本信息"])
+      action: click
+
+    #获取自动扩展值修改成功的提示信息
+    - by: xpath
+      locator: //div[@class='vue-message vue-message--success']/p
+      action: text
+
+    #还原：点击关闭预留内存按钮
+    - by: xpath
+      locator: (//div[@id="compute_instances_computes_inspect_mem_memory_auto_expand_enable"])/label[2]/span[1]
+      action: click
+
+#后置条件，恢复原状
+  data6:
+  #折叠内存详情栏
+    - by: xpath
+      locator: (//span[@class="more-select-info"])[2]/i
+      action: click
+
+  #鼠标移至虚拟机基本信息页中的编辑按钮，出现编辑列表
+    - by: xpath
+      locator: //body[@class="theme-white"]/div/div/div[2]/div/div/section/section/div[2]/div[2]/div[2]/div/section/div[3]/div/button
+      action: move
+
+  #鼠标移至编辑列表中的启动选项，并点击
+    - by: xpath
+      locator: (//li[@id="compute_instances_computes_inspect_operate_btn_start"])
+      action: move_click
+
+  #关闭虚拟机基本信息页
+    - by: xpath
+      locator: (//i[@id="compute_instances_computes_close"])
+      action: click
+
+# 152-2开机状态下添加/减小内存
+TH-CP-BASIC_MEM-0002:
+#搜索框中搜索虚拟机0000
+  data0: *demo0006
+  #搜索框中搜索虚拟机0000
+  #鼠标置于虚拟机0000的名称按钮，出现虚拟机基本信息页
+
+  data1:
+  #虚拟机处于运行状态
+
+    #减小内存数
+    #点击修改内存数按钮
+    - by: xpath
+      locator: (//button[@id="compute_instances_computes_inspect_memery_edit"])
+      action: click
+
+    #内存数输入框输入清理原有值后输入
+    - by: xpath
+      locator: (//input[@id="vm_memery"])
+      action: clear
+
+    - by: xpath
+      locator: (//input[@id="vm_memery"])
+      action: send
+      value: "1"
+
+    #获取内存数修改失败的提示信息（输入框下方存在提示信息：“在非关机状态下：不能减少内存”）
+    - by: xpath
+      locator: (//span[@class="el-form-item__error"])
+      action: text
+
+    #点击页面任一其它位置
+    - by: xpath
+      locator: (//span[text()="基本信息"])
+      action: click
+
+  data2:
+    #增加内存数
+    #点击修改内存数按钮
+    - by: xpath
+      locator: (//button[@id="compute_instances_computes_inspect_memery_edit"])
+      action: click
+
+    #内存数输入框输入清理原有值后输入
+    - by: xpath
+      locator: (//input[@id="vm_memery"])
+      action: clear
+
+    - by: xpath
+      locator: (//input[@id="vm_memery"])
+      action: send
+      value: "4"
+
+    #点击页面任一其它位置
+    - by: xpath
+      locator: (//span[text()="基本信息"])
+      action: click
+
+    #获取内存数修改成功的提示信息
+    - by: xpath
+      locator: //div[@class='vue-message vue-message--success']/p
+      action: text
+
+  #后置条件：恢复默认
+    #关闭虚拟机基本信息页
+    - by: xpath
+      locator: (//i[@id="compute_instances_computes_close"])
+      action: click
+
+#153 高可用
+#153-1 开启/关闭
+TH-CP-BASIC_HUSE-0001:
+#搜索框中搜索虚拟机0000
+  data0: *demo0006
+  #搜索框中搜索虚拟机0000
+  #鼠标置于虚拟机0000的名称按钮，出现虚拟机基本信息页
+
+  #高可用默认开启
+  #关闭高可用
+  data1:
+    - by: xpath
+      locator: (//label[@id="compute_instances_computes_inspect_ha_off"])/span[1]
+      action: click
+
+    #获取关闭高可用成功的提示信息
+    - by: xpath
+      locator: //div[@class='vue-message vue-message--success']/p
+      action: text
+
+  #开启高可用
+  data2:
+    - by: xpath
+      locator: (//label[@id="compute_instances_computes_inspect_ha_on"])/span[1]
+      action: click
+
+    #获取开启高可用成功的提示信息
+    - by: xpath
+      locator: //div[@class='vue-message vue-message--success']/p
+      action: text
+
+  #后置条件：恢复默认
+    #关闭虚拟机基本信息页
+    - by: xpath
+      locator: (//i[@id="compute_instances_computes_close"])
+      action: click
+
+#154 嵌套虚拟化
+#154-1 开启/关闭
+TH-CP-BASIC_NEST-0001:
+#搜索框中搜索虚拟机0000
+  data0: *demo0006
+  #搜索框中搜索虚拟机0000
+  #鼠标置于虚拟机0000的名称按钮，出现虚拟机基本信息页
+
+  data1: *demo0007
+  #虚拟机处于运行状态
+  #关闭虚拟机
+  #鼠标移至虚拟机基本信息页中的编辑按钮，出现编辑列表
+  #鼠标移至编辑列表中的关机选项，并点击
+  #出现确认弹窗
+  #点击确认按钮
+
+  #嵌套虚拟化默认关闭
+  #开启嵌套虚拟化
+  data2:
+    - by: xpath
+      locator: (//label[@id="compute_instances_computes_inspect_ha_off"])/span[1]
+      action: click
+
+    #获取开启嵌套虚拟化成功的提示信息
+    - by: xpath
+      locator: //div[@class='vue-message vue-message--success']/p
+      action: text
+
+  #关闭嵌套虚拟化
+  data3:
+    - by: xpath
+      locator: (//label[@id="compute_instances_computes_inspect_ha_on"])/span[1]
+      action: click
+
+    #获取关闭嵌套虚拟化成功的提示信息
+    - by: xpath
+      locator: //div[@class='vue-message vue-message--success']/p
+      action: text
+
+  #后置条件：恢复默认
+    #关闭虚拟机基本信息页
+    - by: xpath
+      locator: (//i[@id="compute_instances_computes_close"])
+      action: click
+
+
+
+
+
+#1.6 云服务器快照信息页面
+# 161普通快照
+# 161-1添加快照
+TH-CP-COM_SNAP_ADD-0001:
+#搜索框中搜索虚拟机0000
+#搜索框中搜索虚拟机0000
+  data0: &demo0008
+    #搜索框中搜索虚拟机0000
+    - by: xpath
+      locator: (//div[@class=" optiscroll-content"])[4]/section/section/div/div/div/input
+      action: send
+      value: '0000'
+
+    - by: xpath
+      locator: (//div[@class=" optiscroll-content"])[4]/section/section/div/div/button/span
+      action: click
+
+    - by: xpath
+      locator: (//div[@class=" optiscroll-content"])[4]/section/section/div/div/div/input
+      action: clear
+
+  #鼠标置于虚拟机0000的名称按钮，出现虚拟机基本信息页
+    - by: xpath
+      locator: //tbody/tr/td[2]/div/span/a/i
+      action: click
+
+  #点击快照图标，出现虚拟机快照信息页
+    - by: xpath
+      locator: //div[@id="tab-snap"]
+      action: click
+
+  data1:
+    #点击添加快照按钮
+    - by: xpath
+      locator: //button[@id="compute_instances_snap_addSnap"]/span
+      action: click
+
+    #出现添加快照弹窗
+    #快照名称输入框输入：ptkz-001
+    - by: xpath
+      locator: //input[@placeholder="请输入快照名称"]
+      action: send
+      value: "ptkz-001"
+
+    #快照描述输入框输入：“普通快照001”
+    - by: xpath
+      locator: //textarea[@placeholder="请输入快照描述"]
+      action: send
+      value: "普通快照001"
+
+    #点击确认按钮
+    - by: xpath
+      locator: //button[@id="compute_instances_snap_snapDialogConfirm"]
+      action: click
+
+    #获取创建普通虚拟机快照成功的提示信息
+    - by: xpath
+      locator: //div[@class='vue-message vue-message--success']/p
+      action: text
+
+    #后置条件：恢复虚拟机为开机状态
+    #关闭虚拟机快照信息页
+    - by: xpath
+      locator: (//i[@id="compute_instances_computes_close"])
+      action: click
+
+# 161-2回滚快照(需关机)
+TH-CP-COM_SNAP_ROLLBACK-0001:
+#搜索框中搜索虚拟机0000
+#搜索框中搜索虚拟机0000
+  data0: *demo0006
+  #搜索框中搜索虚拟机0000
+  #鼠标置于虚拟机0000的名称按钮，出现虚拟机基本信息页
+
+  #此时虚拟机处于开机状态
+  #鼠标置于编辑信息按钮
+  data1:
+    - by: xpath
+      locator: //button[@id="compute_instances_computes_inspect_operate_btn"]
+      action: move
+
+  #出现编辑信息选项列,移至关机按钮并点击
+    - by: xpath
+      locator: //li[@id="compute_instances_computes_inspect_operate_btn_shuntoff"]
+      action: move_click
+
+  #出现关机提示弹窗，点击确认按钮
+    - by: xpath
+      locator: //button[@id="compute_instances_dialog_vmOpt_confirm"]
+      action: click
+
+  #点击快照图标，出现虚拟机快照信息页
+    - by: xpath
+      locator: //div[@id="tab-snap"]
+      action: click
+
+  data2:
+    #点击添加快照按钮
+    - by: xpath
+      locator: //button[@id="compute_instances_snap_addSnap"]/span
+      action: click
+
+    #出现添加快照弹窗
+    #快照名称输入框输入：ptkz-002
+    - by: xpath
+      locator: //input[@id="compute_instances_snap_snapDialogName"]
+      action: send
+      value: "ptkz-002"
+
+    #快照描述输入框输入：“普通快照002”
+    - by: xpath
+      locator: //textarea[@placeholder="请输入快照描述"]
+      action: send
+      value: "普通快照002"
+
+    #点击确认按钮
+    - by: xpath
+      locator: //button[@id="compute_instances_snap_snapDialogConfirm"]
+      action: click
+
+    #获取创建普通虚拟机快照成功的提示信息
+    - by: xpath
+      locator: //div[@class='vue-message vue-message--success']/p
+      action: text
+
+
+  data3:
+    #默认在第一个快照
+    #点击快照回滚按钮
+    - by: xpath
+      locator: //button[@id="compute_instances_snap_rollbackSnap"]
+      action: click
+
+    #出现快照回滚提示弹窗，点击确认按钮
+    - by: xpath
+      locator: //button[@class="btn-confirm"]
+      action: click
+
+    #获取回滚普通虚拟机快照成功的提示信息
+    - by: xpath
+      locator: //div[@class='vue-message vue-message--success']/p
+      action: text
+
+  #后置条件：恢复虚拟机为开机状态
+  data4:
+    #关闭虚拟机快照信息页
+    - by: xpath
+      locator: (//i[@id="compute_instances_computes_close"])
+      action: click
+
+    #点击虚拟机信息栏中的开机按钮
+    - by: xpath
+      locator: //button[@id="compute_instances_computes_start"]
+      action: click
+
+
+#161-3删除快照
+TH-CP-COM_SNAP_DEL-0001:
+#搜索框中搜索虚拟机0000
+#搜索框中搜索虚拟机0000
+  data0: *demo0008
+  #搜索框中搜索虚拟机0000
+  #鼠标置于虚拟机0000的名称按钮，出现虚拟机基本信息页
+  #点击快照图标，出现虚拟机快照信息页
+
+  data1:
+    #删除第二个快照
+    #默认旋转第一个快照
+    #选择快照ptkz002
+    - by: xpath
+      locator: //div[@id="snapshots-tree"]/*[name()='svg']/*[name()='g'][2]/*[name()='g'][3]
+      action: click
+
+    #点击删除快照按钮
+    - by: xpath
+      locator: //button[@id="compute_instances_snap_delSnap"]
+      action: click
+
+    #出现删除快照确认弹窗，点击确认按钮
+    #出现快照回滚提示弹窗，点击确认按钮
+    - by: xpath
+      locator: //button[@class="btn-confirm"]
+      action: click
+
+    #获取回滚普通虚拟机快照成功的提示信息
+    - by: xpath
+      locator: //div[@class='vue-message vue-message--success']/p
+      action: text
+
+  data2:
+    #删除第一个快照
+    #默认旋转第一个快照ptkz-001
+    #点击删除快照按钮
+    - by: xpath
+      locator: //button[@id="compute_instances_snap_delSnap"]
+      action: click
+
+    #出现删除快照确认弹窗，点击确认按钮
+    #出现快照回滚提示弹窗，点击确认按钮
+    - by: xpath
+      locator: //button[@class="btn-confirm"]
+      action: click
+
+    #获取回滚普通虚拟机快照成功的提示信息
+    - by: xpath
+      locator: //div[@class='vue-message vue-message--success']/p
+      action: text
+
+    #后置条件：恢复虚拟机为开机状态
+    #关闭虚拟机快照信息页
+    - by: xpath
+      locator: (//i[@id="compute_instances_computes_close"])
+      action: click
+
+
+# 162内存快照（租户绑定的资源池已开启内存快照空间，虚拟机处于开机状态）
+# 162-1添加内存快照
+TH-CP-MEM_SNAP_ADD-0001:
+#搜索框中搜索虚拟机0000
+#搜索框中搜索虚拟机0000
+  data0: *demo0008
+  #搜索框中搜索虚拟机0000
+  #鼠标置于虚拟机0000的名称按钮，出现虚拟机基本信息页
+  #点击快照图标，出现虚拟机快照信息页
+
+
+  data1:
+    #点击添加快照按钮
+    - by: xpath
+      locator: //button[@id="compute_instances_snap_addSnap"]/span
+      action: click
+
+    #出现添加快照弹窗
+    #快照名称输入框输入：nckz-001
+    - by: xpath
+      locator: //input[@placeholder="请输入快照名称"]
+      action: send
+      value: "nckz-001"
+
+    #快照描述输入框输入：“内存快照001”
+    - by: xpath
+      locator: //textarea[@placeholder="请输入快照描述"]
+      action: send
+      value: "内存快照001"
+
+    #点击保存内存快照勾选项
+    - by: xpath
+      locator: //form[@class="el-form"]/div[4]/div/label/span
+      action: move_click
+
+    #点击确认按钮
+    - by: xpath
+      locator: //button[@id="compute_instances_snap_snapDialogConfirm"]
+      action: click
+
+    #获取创建普通虚拟机快照成功的提示信息
+    - by: xpath
+      locator: //div[@class='vue-message vue-message--success']/p
+      action: text
+
+    #后置条件：恢复虚拟机为开机状态
+    #关闭虚拟机快照信息页
+    - by: xpath
+      locator: (//i[@id="compute_instances_computes_close"])
+      action: click
+
+# 162-2回滚内存快照(需关机)
+TH-CP-MEM_SNAP_ROLLBACK-0001:
+#搜索框中搜索虚拟机0000
+#搜索框中搜索虚拟机0000
+  data0: *demo0008
+  #搜索框中搜索虚拟机0000
+  #鼠标置于虚拟机0000的名称按钮，出现虚拟机基本信息页
+  #点击快照图标，出现虚拟机快照信息页
+
+  data1:
+    #点击添加快照按钮
+    - by: xpath
+      locator: //button[@id="compute_instances_snap_addSnap"]/span
+      action: click
+
+    #出现添加快照弹窗
+    #快照名称输入框输入：nckz-002
+    - by: xpath
+      locator: //input[@id="compute_instances_snap_snapDialogName"]
+      action: send
+      value: "nckz-002"
+
+    #快照描述输入框输入：“普通快照002”
+    - by: xpath
+      locator: //textarea[@placeholder="请输入快照描述"]
+      action: send
+      value: "内存快照002"
+
+    #点击保存内存快照勾选项
+    - by: xpath
+      locator: //form[@class="el-form"]/div[4]/div/label/span
+      action: move_click
+
+    #点击确认按钮
+    - by: xpath
+      locator: //button[@id="compute_instances_snap_snapDialogConfirm"]
+      action: click
+
+    #获取创建普通虚拟机快照成功的提示信息
+    - by: xpath
+      locator: //div[@class='vue-message vue-message--success']/p
+      action: text
+
+  data2:
+  #切换到基本信息页
+    - by: xpath
+      locator: //div[@id="tab-views"]
+      action: click
+
+  #此时虚拟机处于开机状态
+  #鼠标置于编辑信息按钮
+    - by: xpath
+      locator: //button[@id="compute_instances_computes_inspect_operate_btn"]
+      action: move
+
+  #出现编辑信息选项列,移至关机按钮并点击
+    - by: xpath
+      locator: //li[@id="compute_instances_computes_inspect_operate_btn_shuntoff"]
+      action: move_click
+
+  #出现关机提示弹窗，点击确认按钮
+    - by: xpath
+      locator: //button[@id="compute_instances_dialog_vmOpt_confirm"]
+      action: click
+
+  #点击快照图标，出现虚拟机快照信息页
+    - by: xpath
+      locator: //div[@id="tab-snap"]
+      action: click
+
+  data3:
+    #默认在第一个快照
+    #点击快照回滚按钮
+    - by: xpath
+      locator: //button[@id="compute_instances_snap_rollbackSnap"]
+      action: click
+
+    #出现快照回滚提示弹窗
+    #点击确认按钮
+    - by: xpath
+      locator: //button[@class="btn-confirm"]
+      action: click
+
+    #出现回滚快照弹窗
+    #勾选还原内存并启动勾选项
+    - by: xpath
+      locator: //div[@aria-label="回滚快照"]/div[2]/label/span[1]/span
+      action: click
+
+    #点击确认按钮
+    - by: xpath
+      locator: //div[@aria-label="回滚快照"]/div[3]/span/button[1]
+      action: click
+
+    #获取回滚虚拟机内存快照成功的提示信息
+    - by: xpath
+      locator: //div[@class='vue-message vue-message--success']/p
+      action: text
+
+  #后置条件：恢复虚拟机为开机状态
+  data4:
+    #关闭虚拟机快照信息页
+    - by: xpath
+      locator: (//i[@id="compute_instances_computes_close"])
+      action: click
+
+    #点击虚拟机信息栏中的开机按钮
+    - by: xpath
+      locator: //button[@id="compute_instances_computes_start"]
+      action: click
+
+
+#162-3删除内存快照
+TH-CP-MEM_SNAP_DEL-0001:
+#搜索框中搜索虚拟机0000
+#搜索框中搜索虚拟机0000
+  data0: *demo0008
+  #搜索框中搜索虚拟机0000
+  #鼠标置于虚拟机0000的名称按钮，出现虚拟机基本信息页
+  #点击快照图标，出现虚拟机快照信息页
+
+  data1:
+    #删除第二个快照
+    #默认旋转第一个快照
+    #选择快照ptkz002
+    - by: xpath
+      locator: //div[@id="snapshots-tree"]/*[name()='svg']/*[name()='g'][2]/*[name()='g'][3]
+      action: click
+
+    #点击删除快照按钮
+    - by: xpath
+      locator: //button[@id="compute_instances_snap_delSnap"]
+      action: click
+
+    #出现删除快照确认弹窗，点击确认按钮
+    #出现快照回滚提示弹窗，点击确认按钮
+    - by: xpath
+      locator: //button[@class="btn-confirm"]
+      action: click
+
+    #获取回滚普通虚拟机快照成功的提示信息
+    - by: xpath
+      locator: //div[@class='vue-message vue-message--success']/p
+      action: text
+
+  data2:
+    #删除第一个快照
+    #默认旋转第一个快照ptkz-001
+    #点击删除快照按钮
+    - by: xpath
+      locator: //button[@id="compute_instances_snap_delSnap"]
+      action: click
+
+    #出现删除快照确认弹窗，点击确认按钮
+    #出现快照回滚提示弹窗，点击确认按钮
+    - by: xpath
+      locator: //button[@class="btn-confirm"]
+      action: click
+
+    #获取回滚普通虚拟机快照成功的提示信息
+    - by: xpath
+      locator: //div[@class='vue-message vue-message--success']/p
+      action: text
+
+    #后置条件：恢复虚拟机为开机状态
+    #关闭虚拟机快照信息页
+    - by: xpath
+      locator: (//i[@id="compute_instances_computes_close"])
+      action: click
+
+#1.7云服务器监控信息页面
+# 171 cgt安装
+TH-CP-BASIC_CGT-0001:
+#搜索框中搜索虚拟机0000
+  data0: *demo0006
+  #搜索框中搜索虚拟机0000
+  #鼠标置于虚拟机0000的名称按钮，出现虚拟机基本信息页
+
+  data1:
+    #鼠标移动值光驱栏后的cgt配置按钮并点击
+    - by: xpath
+      locator: //i[@class='el-icon-s-tools health']
+      action: click
+
+    #获取云服务器设置Guest-Agent-Tools成功的提示信息
+    - by: xpath
+      locator: //div[@class='vue-message vue-message--success']/p
+      action: text
+
+    #后置条件：恢复虚拟机原状
+    #卸挂载Guest-Agent-Tools镜像
+    #点击光驱栏后的镜像挂载按钮
+  data2:
+    - by: xpath
+      locator: //i[@class='im-icon-cp-cdrom icon']
+      action: click
+
+    #出现修改光驱弹窗（默认为空）
+    #点击确认按钮
+    - by: xpath
+      locator: //button[@id='compute_instances_computes_connectCloudImagedialog_confirm']
+      action: click
+
+    #获取卸挂载Guest-Agent-Tools镜像成功的提示信息
+    - by: xpath
+      locator: //div[@class='vue-message vue-message--success']/p
+      action: text
+
+    #关闭虚拟机快照信息页
+    - by: xpath
+      locator: (//i[@id="compute_instances_computes_close"])
+      action: click
+
+# 172 cgt监控
+TH-CP-MONITOR_CGT-0001:
+#搜索框中搜索虚拟机0000(已安装cgt)
+  data0: *demo0006
+  #搜索框中搜索虚拟机0000
+  #鼠标置于虚拟机0000的名称按钮，出现虚拟机基本信息页
+
+  data1:
+    #点击监控图标
+    - by: xpath
+      locator: (//div[@id="tab-monitor"])
+      action: click
+
+    #出现监控信息页面
+    #捕获cgt运行正常状态下的cgt信息
+    - by: xpath
+      locator: (//div[@id="tab-first"])
+      action: text
+
+    #关闭虚拟机监控信息页
+    - by: xpath
+      locator: (//i[@id="compute_instances_computes_close"])
+      action: click
+
+#1.8云服务器备份信息页面（已存在备份点：ptbf-001）
+# 181添加备份
+# 181-1单卷添加备份
+TH-CP-BACKUP_SINGLE-0001:
+#搜索框中搜索虚拟机0000(已安装cgt)
+  data0: *demo0006
+  #搜索框中搜索虚拟机0000
+  #鼠标置于虚拟机0000的名称按钮，出现虚拟机基本信息页
+
+  data1:
+    #点击备份图标
+    - by: xpath
+      locator: (//div[@id="tab-backup"])[2]
+      action: click
+
+    #出现备份信息页面
+    #点击添加备份按钮
+    - by: xpath
+      locator: (//button[@id="compute_instances_backcheck_backupAdd"])
+      action: click
+
+    #出现云服务器添加备份弹窗
+    #点击备份点下拉框
+    - by: xpath
+      locator: (//input[@id="compute_instances_backup_DiabackupTaskPoint"])
+      action: click
+
+    #选择备份点 ptbf-001
+    - by: xpath
+      locator: (//span[text()="ptbf-001"])
+      action: move_click
+
+    #备份方式选择项（默认增量备份），选择全量备份
+    - by: xpath
+      locator: (//label[text()="备份方式"])/../div/div/label[2]/span[1]
+      action: click
+
+    #备份名称输入框输入：bf001
+    - by: xpath
+      locator: (//input[@id="compute_instances_backup_DiabackupTaskname"])
+      action: send
+      value: "bf001"
+
+    #描述输入框输入：普通备份001-全量备份
+    - by: xpath
+      locator: (//textarea[@id="compute_instances_backup_DiabackupTaskDesc"])
+      action: send
+      value: "普通备份001-全量备份"
+
+    #点击确认按钮
+    - by: xpath
+      locator: (//button[@id="compute_instances_backup_DiabackupTaskConfirm"])
+      action: click
+
+    #捕获创建备份成功的提示信息
+    - by: xpath
+      locator: //div[@class='vue-message vue-message--success']/p
+      action: text
+
+    #关闭虚拟机备份信息页
+    - by: xpath
+      locator: (//i[@id="compute_instances_computes_close"])
+      action: click
+
+# 181-2多卷添加备份
+TH-CP-BACKUP_MULTI-0001:
+#搜索框中搜索虚拟机0000
+  data0: *demo0006
+  #搜索框中搜索虚拟机0000
+  #鼠标置于虚拟机0000的名称按钮，出现虚拟机基本信息页
+
+  #添加磁盘
+  #鼠标移动至虚拟机编辑按钮
+  data1:
+    - by: xpath
+      locator: (//button[@id="compute_instances_computes_inspect_operate_btn"])
+      action: move
+
+  #出现编辑列表
+  #移动至编辑列表中的”编辑/添加设备“选项并点击
+    - by: xpath
+      locator: //body[@class="theme-white"]/ul/li[15]
+      action: move_click
+
+  #出现编辑设备弹窗
+  #点击添加硬件按钮
+    - by: xpath
+      locator: //button[@id="instances_add_device_btn"]
+      action: click
+
+  #鼠标移至硬件上拉框中的磁盘并点击
+    - by: xpath
+      locator: (//button[@id="instances_add_device_btn"])/../div/div[1]
+      action: move_click
+
+  #出现添加磁盘弹窗（默认为云硬盘列表）
+  #切换到创建存储卷列表
+    - by: xpath
+      locator: (//div[@id="tab-createVolume"])
+      action: click
+
+  #点击存储池下拉框
+    - by: xpath
+      locator: (//input[@id="compute_instances_computes_inspect_attachDisk_createVolume_pool"])
+      action: click
+
+  #选择下拉框中的存储池 (//li[@class="el-select-dropdown__item hover"])
+    - by: xpath
+      locator: (//div[@class="el-scrollbar"]/div/ul/li)[21]
+      action: click
+
+  #卷名称输入框输入：bf002
+    - by: xpath
+      locator: (//input[@id="compute_instances_computes_inspect_attachDisk_createVolume_volume"])
+      action: send
+      value: "bf002"
+
+  #卷容量输入框输入：2
+    - by: xpath
+      locator: (//input[@placeholder="请输入卷容量"])[1]
+      action: send
+      value: "2"
+
+  #其它配置默认，点击确认按钮
+    - by: xpath
+      locator: (//button[@id="compute_instances_computes_inspect_attachDisk_confirm"])
+      action: click
+
+  #捕获创建磁盘成功的提示信息
+    - by: xpath
+      locator: //div[@class='vue-message vue-message--success']/p
+      action: text
+
+  #回退到编辑设备页面
+    #点击确认按钮
+    - by: xpath
+      locator: (//button[@id="instances_edit_device_close"])[1]
+      action: click
+
+  #回退到基本信息页面
+  data2:
+    #点击备份图标
+    - by: xpath
+      locator: (//div[@id="tab-backup"])[2]
+      action: click
+
+    #出现备份信息页面
+    #点击添加备份按钮
+    - by: xpath
+      locator: (//button[@id="compute_instances_backcheck_backupAdd"])
+      action: click
+
+    #出现云服务器添加备份弹窗
+    #点击备份点下拉框
+    - by: xpath
+      locator: (//input[@id="compute_instances_backup_DiabackupTaskPoint"])
+      action: click
+
+    #选择备份点 ptbf-001
+    - by: xpath
+      locator: (//div[@class="el-scrollbar"]/div/ul/li)[7]
+      action: move_click
+
+    #备份方式选择项（默认增量备份）
+#    - by: xpath
+#      locator: (//label[text()="备份方式"])/../div/div/label[2]/span[1]
+#      action: click
+
+    #备份名称输入框输入：bf002
+    - by: xpath
+      locator: (//input[@id="compute_instances_backup_DiabackupTaskname"])
+      action: send
+      value: "bf002"
+
+    #描述输入框输入：普通备份002-增量备份
+    - by: xpath
+      locator: (//textarea[@id="compute_instances_backup_DiabackupTaskDesc"])
+      action: send
+      value: "普通备份002-增量备份"
+
+    #点击确认按钮
+    - by: xpath
+      locator: (//button[@id="compute_instances_backup_DiabackupTaskConfirm"])
+      action: click
+
+    #捕获创建备份成功的提示信息
+    - by: xpath
+      locator: //div[@class='vue-message vue-message--success']/p
+      action: text
+
+    #关闭虚拟机备份信息页
+    - by: xpath
+      locator: (//i[@id="compute_instances_computes_close"])
+      action: click
+
+# 182备份恢复
+# 182-1单卷备份恢复
+TH-CP-REBACKUP_SINGLE-0001:
+#搜索框中搜索虚拟机0000
+  data0: *demo0006
+  #搜索框中搜索虚拟机0000
+  #鼠标置于虚拟机0000的名称按钮，出现虚拟机基本信息页
+
+  data1:
+    #点击备份图标
+    - by: xpath
+      locator: (//div[@id="tab-backup"])[2]
+      action: click
+
+    #出现备份信息页面
+    #搜索框中搜索bf001
+    - by: xpath
+      locator: (//input[@id="compute_instances_backcheck_backupcheck"])
+      action: send
+      value: "bf001"
+
+    - by: xpath
+      locator: (//button[@id="compute_instances_backcheck_backupSearch"])
+      action: click
+
+    #备份列表中点击备份bf001的恢复按钮
+    - by: xpath
+      locator: (//button[@id="compute_instances_backcheck_backupRestore"])
+      action: click
+
+    #出现云服务器备份恢复弹窗
+    #云服务输入框输入名称：bfhf001
+    - by: xpath
+      locator: (//input[@id="compute_virtua_backup_restore_dialog_new_vm_name"])
+      action: send
+      value: "bfhf001"
+
+    #卷名称输入框输入：bfhf001-01
+    - by: xpath
+      locator: (//input[@id="compute_virtua_backup_restore_dialog_volume_name"])
+      action: send
+      value: "bfhf001-01"
+
+    #点击存储池下拉框
+    - by: xpath
+      locator: (//input[@id="compute_virtua_backup_restore_dialog_pool_uuid"])
+      action: click
+
+    #选择下拉框中的存储池
+    - by: xpath
+      locator: (//div[@class="el-scrollbar"]/div/ul/li)[10]
+      action: move_click
+
+    #其它配置信息默认，点击确认按钮
+    - by: xpath
+      locator: (//button[@id="compute_virtua_backup_restore_dialog_comfrim"])
+      action: click
+
+    #捕获创建备份恢复成功的提示信息
+    - by: xpath
+      locator: //div[@class='vue-message vue-message--success']/p
+      action: text
+
+    #关闭虚拟机备份信息页
+    - by: xpath
+      locator: (//i[@id="compute_instances_computes_close"])
+      action: click
+
+# 182-2多卷备份恢复
+TH-CP-REBACKUP_MULTI-0001:
+#搜索框中搜索虚拟机0000
+  data0: *demo0006
+  #搜索框中搜索虚拟机0000
+  #鼠标置于虚拟机0000的名称按钮，出现虚拟机基本信息页
+
+  data1:
+    #点击备份图标
+    - by: xpath
+      locator: (//div[@id="tab-backup"])[2]
+      action: click
+
+    #出现备份信息页面
+    #搜索框中搜索bf002
+    - by: xpath
+      locator: (//input[@id="compute_instances_backcheck_backupcheck"])
+      action: send
+      value: "bf002"
+
+    - by: xpath
+      locator: (//button[@id="compute_instances_backcheck_backupSearch"])
+      action: click
+
+    #备份列表中点击备份bf002的恢复按钮
+    - by: xpath
+      locator: (//button[@id="compute_instances_backcheck_backupRestore"])
+      action: click
+
+    #出现云服务器备份恢复弹窗
+    #云服务输入框输入名称：bfhf002
+    - by: xpath
+      locator: (//input[@id="compute_virtua_backup_restore_dialog_new_vm_name"])
+      action: send
+      value: "bfhf002"
+
+    #磁盘1
+    #卷名称输入框输入：bfhf002-01
+    - by: xpath
+      locator: (//input[@id="compute_virtua_backup_restore_dialog_volume_name"])[1]
+      action: send
+      value: "bfhf002-01"
+
+    #点击存储池下拉框
+    - by: xpath
+      locator: (//input[@id="compute_virtua_backup_restore_dialog_pool_uuid"])[1]
+      action: click
+
+    #选择下拉框中的存储池
+    - by: xpath
+      locator: (//div[@class="el-scrollbar"]/div/ul/li)[13]
+      action: move_click
+
+    #磁盘2
+    #卷名称输入框输入：bfhf002-02
+    - by: xpath
+      locator: (//input[@id="compute_virtua_backup_restore_dialog_volume_name"])[2]
+      action: send
+      value: "bfhf002-02"
+
+    #点击存储池下拉框
+    - by: xpath
+      locator: (//input[@id="compute_virtua_backup_restore_dialog_pool_uuid"])[2]
+      action: click
+
+    #选择下拉框中的存储池
+    - by: xpath
+      locator: (//div[@class="el-scrollbar"]/div/ul/li)[13]
+      action: move_click
+
+    #其它配置信息默认，点击确认按钮
+    - by: xpath
+      locator: (//button[@id="compute_virtua_backup_restore_dialog_comfrim"])
+      action: click
+
+    #捕获创建备份恢复成功的提示信息
+    - by: xpath
+      locator: //div[@class='vue-message vue-message--success']/p
+      action: text
+
+    #关闭虚拟机备份信息页
+    - by: xpath
+      locator: (//i[@id="compute_instances_computes_close"])
+      action: click
+
+
+# 183删除备份
+TH-CP-BACKUP_DEL-0001:
+#搜索框中搜索虚拟机0000
+  data0: *demo0006
+  #搜索框中搜索虚拟机0000
+  #鼠标置于虚拟机0000的名称按钮，出现虚拟机基本信息页
+
+  data1:
+    #点击备份图标
+    - by: xpath
+      locator: (//div[@id="tab-backup"])[2]
+      action: click
+
+    #出现备份信息页面
+    #搜索框中搜索bf001
+    - by: xpath
+      locator: (//input[@id="compute_instances_backcheck_backupcheck"])
+      action: send
+      value: "bf001"
+
+    - by: xpath
+      locator: (//button[@id="compute_instances_backcheck_backupSearch"])
+      action: click
+
+    #备份列表中点击备份bf001的删除按钮
+    - by: xpath
+      locator: (//button[@id="compute_instances_backcheck_backupDel"])
+      action: click
+
+    #出现删除提示弹窗，点击确认按钮
+    - by: xpath
+      locator: //button[@class="btn-confirm"]
+      action: click
+
+    #捕获删除备份成功的提示信息
+    - by: xpath
+      locator: //div[@class='vue-message vue-message--success']/p
+      action: text
+
+    #关闭虚拟机备份信息页
+    - by: xpath
+      locator: (//i[@id="compute_instances_computes_close"])
+      action: click
+
+# 2222测试设备
+TceCP-TEST_VM-0000:
+    #搜索框中搜索虚拟机0000
+  - by: xpath
+    locator: (//div[@class=" optiscroll-content"])[4]/section/section/div/div/div/input
+    action: send
+    value: '0000'
+
+  - by: xpath
+    locator: (//div[@class=" optiscroll-content"])[4]/section/section/div/div/button/span
+    action: click
+
+  - by: xpath
+    locator: (//div[@class=" optiscroll-content"])[4]/section/section/div/div/div/input
+    action: clear
+
+    #鼠标置于虚拟机0000的名称按钮，出现虚拟机详情信息列表
+  - by: xpath
+    locator: //tbody/tr/td[2]/div/span/a/i
+    action: click
+
+    #鼠标移至虚拟机基本信息页中的编辑按钮，出现编辑列表
+  - by: xpath
+    locator: //body[@class="theme-white"]/div/div/div[2]/div/div/section/section/div[2]/div[2]/div[2]/div/section/div[3]/div/button
+    action: move
+
+ #鼠标移至编辑列表中的编辑/添加设备选项，并点击
+  - by: xpath
+    locator: (//ul[@class="el-dropdown-menu el-popper"])[5]/li[15]
+    action: move_click
+
+#出现编辑设备弹窗，点击添加硬件按钮
+#点击确认按钮，关闭编辑弹窗
+  - by: xpath
+    locator: (//*[@id="instances_edit_device_close"])[1]/span
+    action: click
+
+  #关闭虚拟即详细信息页
+  - by: xpath
+    locator: //body[@class="theme-white"]/div/div/div[2]/div/div/section/section/div[2]/div[2]/div[2]/div/section/div[3]/i
+    action: click
