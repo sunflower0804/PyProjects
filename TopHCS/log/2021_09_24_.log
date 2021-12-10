@@ -1,4 +1,0 @@
-2021-09-24 08:52:56,357 - basepage.py - [line:89] - INFO - 鼠标光标移动至navBar_item_计算_content元素
-2021-09-24 08:52:56,647 - basepage.py - [line:95] - INFO - 鼠标光标移动至navBar_item_计算_content_云服务器元素并点击
-2021-09-24 08:52:56,730 - basepage.py - [line:77] - INFO - 点击了//*[@id="tab-vmlist"]元素
-2021-09-24 08:53:05,594 - basepage.py - [line:108] - INFO - 元素文本信息为请输入名称、IP、Mac地址、uuid

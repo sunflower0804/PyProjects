@@ -9,7 +9,9 @@ import os
 
 import pytest
 
-from TopHC.others.filepath import readFilepath
+from TopHCS.others.filepath import readFilepath
+
+
 
 if __name__ == '__main__':
     #执行测试用例获得测试数据
@@ -23,7 +25,7 @@ if __name__ == '__main__':
     #2.生成测试报告的目录：report
     os.system('allure generate reportpath/allure-result -o reportpath/report --clean')
     #os.system('allure serve ./report')   #打开测试报告
-    #最后的测试报告路径：D:/WorkTools/PyProjects/TopHC/reports/index.html
+    #最后的测试报告路径：D:/WorkTools/PyProjects/TopEC/reports/index.html
 
 '''
 # --clean-alluredir清空上一次的xml报告

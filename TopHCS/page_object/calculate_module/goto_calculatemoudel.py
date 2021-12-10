@@ -4,12 +4,15 @@ from selenium.webdriver.common.by import By
 
 
 
-from TopHC.base.basepage import BasePage
+from TopHCS.base.basepage import BasePage
 
 # 云服务器模块入口
 # 从首页进入计算模块的首页-->云服务器模块
 class CserviceMoudelFile(BasePage):
+    url1 = 'http://10.30.100.26:8080/#/pages/overview'
+
     def goto_cserver(self):
+        self.visit(url=self.url1)
         self.move_mouse(By.ID, 'navBar_item_计算_content')
         self.move_and_click(By.ID, 'navBar_item_计算_content_云服务器')
 

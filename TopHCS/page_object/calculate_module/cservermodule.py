@@ -259,7 +259,7 @@ class ServicePage(BasePage):
     def operate_VM8(self):
         data1 = self.data['TH-CP-OPERATE_VM-0008']['data1']
         self.steps(data1)
-        sleep(20)   #关机较慢，手动添加等待时间
+        sleep(10)   #关机较慢，手动添加等待时间
         data2 = self.data['TH-CP-OPERATE_VM-0008']['data2']
         return self.steps(data2)  #捕获关机成功的提示信息
 
@@ -335,30 +335,40 @@ class ServicePage(BasePage):
         result2 = self.steps(data2)
         return result1, result2  #捕获链接克隆成功的提示信息
 
-    # 1413-3跨租户克隆  #报错
+    # 1413-3跨租户克隆  #报错：(//span[@class="el-switch__core"])[2]元素未找到
     def clone_VM4(self):
         data0 = self.data['TH-CP-CLONE_VM-0004']['data0']
         self.steps(data0)  #跳转到云服务器克隆弹窗
         data1 = self.data['TH-CP-CLONE_VM-0004']['data1']
-        self.steps(data1)
+        self.steps(data1)  #开启跨租户开关
+        sleep(3)
+        data2 = self.data['TH-CP-CLONE_VM-0004']['data2']
+        self.steps(data2)
         return self.steps(data1)  #捕获跨租户克隆成功的提示信息
 
     #1414导入
     #1414-1镜像仓库导入
     def import_DISK1(self):
         data0 = self.data['TH-CP-IMPORT_VM-0001']['data0']
-        self.steps(data0)  #跳转到云服务器磁盘导入弹窗
+        self.steps(data0)  #关闭虚拟机
+        sleep(30)
         data1 = self.data['TH-CP-IMPORT_VM-0001']['data1']
-        self.steps(data1)
-        return self.steps(data1)  #捕获云服务器磁盘成功的提示信息
+        self.steps(data1)  #跳转到云服务器磁盘导入弹窗
+        data2 = self.data['TH-CP-IMPORT_VM-0001']['data2']
+        result = self.steps(data2)
+        data3 = self.data['TH-CP-IMPORT_VM-0001']['data2']
+        self.steps(data3)
+        return result      #捕获云服务器磁盘成功的提示信息
 
     #1414-2ISCSI导入
     def import_DISK2(self):
         data0 = self.data['TH-CP-IMPORT_VM-0002']['data0']
         self.steps(data0)  #跳转到云服务器ISCSI导入弹窗
         data1 = self.data['TH-CP-IMPORT_VM-0002']['data1']
-        self.steps(data1)
-        return self.steps(data1)  #捕获云服务器ISCSI导入成功的提示信息
+        result = self.steps(data1)
+        data2 = self.data['TH-CP-IMPORT_VM-0002']['data2']
+        self.steps(data2)
+        return result  # 捕获云服务器磁盘成功的提示信息
 
     #1415导出
     # 1415-1磁盘导出
@@ -370,19 +380,28 @@ class ServicePage(BasePage):
 
 
     #1415-2云服务器导出
-    #（1）导出到镜像仓库
+    #（1）导出到镜像仓库  0007
     def exports_VM1(self):
         data0 = self.data['TH-CP-EXPORTS_VM-0002']['data0']
         self.steps(data0)  #跳转到云服务器导出弹窗
         data1 = self.data['TH-CP-EXPORTS_VM-0002']['data1']
-        return self.steps(data1)  # 捕获云服务器导出成功的提示信息
+        result = self.steps(data1)
+        sleep(2)
+        data2 = self.data['TH-CP-EXPORTS_VM-0002']['data2']
+        self.steps(data2)
+        return result  # 捕获云服务器导出成功的提示信息
 
-    #（2）导出到存储介质
+
+    #（2）导出到存储介质   0008
     def exports_VM2(self):
         data0 = self.data['TH-CP-EXPORTS_VM-0003']['data0']
         self.steps(data0)  #跳转到云服务器导出弹窗
         data1 = self.data['TH-CP-EXPORTS_VM-0003']['data1']
-        return self.steps(data1)  # 捕获云服务器导出成功的提示信息
+        result = self.steps(data1)
+        sleep(2)
+        data2 = self.data['TH-CP-EXPORTS_VM-0003']['data2']
+        self.steps(data2)
+        return result  # 捕获云服务器导出成功的提示信息
 
     #1.5云服务器基本信息页
     # 151 云服务器cpu操作
@@ -392,6 +411,7 @@ class ServicePage(BasePage):
         self.steps(data0)  #跳转到虚拟机基本信息页
         data1 = self.data['TH-CP-BASIC_CPU-0001']['data1']
         self.steps(data1)  #关机状态下修改cpu
+        sleep(15)
         data2 = self.data['TH-CP-BASIC_CPU-0001']['data2']
         result1 = self.steps(data2)  # 捕获云服务器插槽核数修改成功的提示信息
         data3 = self.data['TH-CP-BASIC_CPU-0001']['data3']
@@ -417,11 +437,16 @@ class ServicePage(BasePage):
         self.steps(data0)  #跳转到虚拟机基本信息页
         data1 = self.data['TH-CP-BASIC_CPU-0003']['data1']
         result1 = self.steps(data1)  #开启预留cpu并获取提示信息
+        sleep(3)
         self.keys_PageDown()  # 增加一个下翻页动作
         data2 = self.data['TH-CP-BASIC_CPU-0003']['data2']
         result2 = self.steps(data2)  #开启NUMA亲和性并获取提示信息
+        sleep(3)
         data3 = self.data['TH-CP-BASIC_CPU-0003']['data3']
         result3 = self.steps(data3)  #开启cpu自动扩展并获取提示信息
+        sleep(3)
+        data4 = self.data['TH-CP-BASIC_CPU-0003']['data4']
+        self.steps(data4)  #恢复原状
         return result1, result2, result3
 
     # 152云服务器内存操作
@@ -431,6 +456,7 @@ class ServicePage(BasePage):
         self.steps(data0)  # 跳转到虚拟机基本信息页
         data1 = self.data['TH-CP-BASIC_MEM-0001']['data1']
         self.steps(data1)  # 关机状态下修改内存
+        sleep(13)
         data2 = self.data['TH-CP-BASIC_MEM-0001']['data2']
         result1 = self.steps(data2)  # 捕获内存数修改成功的提示信息
         sleep(2)
@@ -467,6 +493,246 @@ class ServicePage(BasePage):
         result2 = self.steps(data2)  # 捕获开启高可用成功的提示信息
         return result1, result2
 
+    # 154 重要云服务器（开启高可用）
+    # 154-1 高/低/中
+    def basic_EDITIMPORTANT(self):
+        data0 = self.data['TH-CP-BASIC_IMPORTANT-0001']['data0']
+        self.steps(data0)  # 跳转到虚拟机基本信息页
+        data1 = self.data['TH-CP-BASIC_IMPORTANT-0001']['data1']
+        result1 = self.steps(data1)  # 获取重要云服务器选择高成功的提示信息
+        sleep(3)
+        data2 = self.data['TH-CP-BASIC_IMPORTANT-0001']['data2']
+        result2 = self.steps(data2)  # 获取重要云服务器选择低成功的提示信息
+        return result1, result2
+
+    # 155 内存巨页
+    # 155-1 开启/关闭
+    def basic_EDITMEMHUGE(self):
+        data0 = self.data['TH-CP-BASIC_MEMHUGE-0001']['data0']
+        self.steps(data0)  # 跳转到虚拟机基本信息页
+        data1 = self.data['TH-CP-BASIC_MEMHUGE-0001']['data1']
+        self.steps(data1)  # 关闭虚拟机
+        sleep(13)
+        data2 = self.data['TH-CP-BASIC_MEMHUGE-0001']['data2']
+        result1 = self.steps(data2)  # 获取开启内存巨页成功的提示信息
+        sleep(3)
+        data3 = self.data['TH-CP-BASIC_MEMHUGE-0001']['data3']
+        result2 = self.steps(data3)  # 获取关闭内存巨页成功的提示信息
+        sleep(3)
+        data4 = self.data['TH-CP-BASIC_MEMHUGE-0001']['data4']
+        self.steps(data4)  # 开启虚拟机
+        return result1, result2
+
+    # 156 启动
+    # 156-1 开启/关闭
+    def basic_EDITSTART(self):
+        data0 = self.data['TH-CP-BASIC_START-0001']['data0']
+        self.steps(data0)  # 跳转到虚拟机基本信息页
+        data1 = self.data['TH-CP-BASIC_START-0001']['data1']
+        self.steps(data1)  # 关闭虚拟机
+        sleep(13)
+        data2 = self.data['TH-CP-BASIC_START-0001']['data2']
+        result1 = self.steps(data2)  # 获取开启uefi启动成功的提示信息
+        sleep(3)
+        data3 = self.data['TH-CP-BASIC_START-0001']['data3']
+        result2 = self.steps(data3)  # 获取开启bios启动成功的提示信息
+        sleep(3)
+        data4 = self.data['TH-CP-BASIC_START-0001']['data4']
+        self.steps(data4)  # 开启虚拟机
+        return result1, result2
+
+    # 157 嵌套虚拟化
+    # 157-1 开启/关闭
+    def basic_EDITNEST(self):
+        data0 = self.data['TH-CP-BASIC_NEST-0001']['data0']
+        self.steps(data0)  # 跳转到虚拟机基本信息页
+        data1 = self.data['TH-CP-BASIC_NEST-0001']['data1']
+        self.steps(data1)  # 关闭虚拟机
+        sleep(13)
+        data2 = self.data['TH-CP-BASIC_NEST-0001']['data2']
+        result1 = self.steps(data2)  # 捕获关闭嵌套虚拟化成功的提示信息
+        sleep(3)
+        data3 = self.data['TH-CP-BASIC_NEST-0001']['data3']
+        result2 = self.steps(data3)  # 捕获开启嵌套虚拟化成功的提示信息
+        sleep(3)
+        data4 = self.data['TH-CP-BASIC_NEST-0001']['data4']
+        self.steps(data4)  # 恢复默认
+        return result1, result2
+
+    #158 数据本地化
+    # 158-1 开启/关闭
+    def basic_EDITDATALOCAL(self):
+        data0 = self.data['TH-CP-BASIC_DATALOCAL-0001']['data0']
+        self.steps(data0)  # 跳转到虚拟机基本信息页
+        data1 = self.data['TH-CP-BASIC_DATALOCAL-0001']['data1']
+        result1 = self.steps(data1)  # 获取开启数据本地化成功的提示信息
+        sleep(3)
+        data2 = self.data['TH-CP-BASIC_DATALOCAL-0001']['data2']
+        result2 = self.steps(data2)  # 获取关闭数据本地化成功的提示信息
+        return result1, result2
+
+    #159 内存安全
+    # 159-1 开启/关闭
+    def basic_EDITMEMSAFE(self):
+        data0 = self.data['TH-CP-BASIC_MEMSAFE-0001']['data0']
+        self.steps(data0)  # 跳转到虚拟机基本信息页
+        data1 = self.data['TH-CP-BASIC_MEMSAFE-0001']['data1']
+        result1 = self.steps(data1)  # 获取开启内存安全成功的提示信息
+        sleep(3)
+        data2 = self.data['TH-CP-BASIC_MEMSAFE-0001']['data2']
+        result2 = self.steps(data2)  # 获取关闭内存安全成功的提示信息
+        return result1, result2
+
+    #1510 启用双活
+    # 1510-1 开启/关闭
+    def basic_EDITDLIVE(self):
+        data0 = self.data['TH-CP-BASIC_DLIVE-0001']['data0']
+        self.steps(data0)  # 跳转到虚拟机基本信息页
+        data1 = self.data['TH-CP-BASIC_DLIVE-0001']['data1']
+        self.steps(data1)  # 关闭虚拟机
+        sleep(13)
+        data2 = self.data['TH-CP-BASIC_DLIVE-0001']['data2']
+        result1 = self.steps(data2)  # 获取开启启用双活成功的提示信息
+        sleep(3)
+        data3 = self.data['TH-CP-BASIC_DLIVE-0001']['data3']
+        result2 = self.steps(data3)  # 获取关闭启用双活成功的提示信息
+        sleep(3)
+        data4 = self.data['TH-CP-BASIC_DLIVE-0001']['data4']
+        self.steps(data4)  # 恢复默认
+        return result1, result2
+
+    #1512 绑定主资源池（前置条件：启用双活）
+    # 1512-1 开启/关闭
+    def basic_EDITBIND(self):
+        data0 = self.data['TH-CP-BASIC_BIND-0001']['data0']
+        self.steps(data0)  # 跳转到虚拟机基本信息页
+        data1 = self.data['TH-CP-BASIC_BIND-0001']['data1']
+        self.steps(data1)  # 开启启用双活
+        sleep(3)
+        data2 = self.data['TH-CP-BASIC_BIND-0001']['data2']
+        result1 = self.steps(data2)  # 获取开启绑定主资源池成功的提示信息
+        sleep(3)
+        data3 = self.data['TH-CP-BASIC_BIND-0001']['data3']
+        result2 = self.steps(data3)  # 获取关闭绑定主资源池成功的提示信息
+        sleep(3)
+        data4 = self.data['TH-CP-BASIC_BIND-0001']['data4']
+        self.steps(data4)  # 恢复默认
+        return result1, result2
+
+    #1513 VNC
+    # 1513-1 关机状态下开启
+    def basic_EDITVNC1(self):
+        data0 = self.data['TH-CP-BASIC_VNC-0001']['data0']
+        self.steps(data0)  # 跳转到虚拟机基本信息页
+        data1 = self.data['TH-CP-BASIC_VNC-0001']['data1']
+        self.steps(data1)  # 关闭虚拟机
+        sleep(13)
+        data2 = self.data['TH-CP-BASIC_VNC-0001']['data2']
+        result1 = self.steps(data2)  # 获取开启VNC成功的提示信息
+        sleep(3)
+        data3 = self.data['TH-CP-BASIC_VNC-0001']['data3']
+        self.steps(data3)  # 恢复默认
+        return result1
+
+    # 1513-2 开机状态下检查VNC配置信息
+    def basic_EDITVNC2(self):
+        data0 = self.data['TH-CP-BASIC_VNC-0002']['data0']
+        self.steps(data0)  # 跳转到虚拟机基本信息页
+        data1 = self.data['TH-CP-BASIC_VNC-0002']['data1']
+        self.steps(data1)
+        self.keys_PageDown() # 滑动滚动条，防止元素被遮挡
+        sleep(3)
+        data2 = self.data['TH-CP-BASIC_VNC-0002']['data2']
+        result1 = self.steps(data2)  # 检查开启VNC后的展示信息
+        sleep(3)
+        data3 = self.data['TH-CP-BASIC_VNC-0002']['data3']
+        self.steps(data3)  # 恢复默认
+        return result1
+
+    #1514 Spice
+    # 1514-1 开机状态下检查Spice配置信息
+    def basic_EDITSPICE1(self):
+        data0 = self.data['TH-CP-BASIC_SPICE-0001']['data0']
+        self.steps(data0)  # 跳转到虚拟机基本信息页
+        data1 = self.data['TH-CP-BASIC_SPICE-0001']['data1']
+        self.steps(data1)
+        self.keys_PageDown()  # 滑动滚动条，防止元素被遮挡
+        sleep(3)
+        data2 = self.data['TH-CP-BASIC_SPICE-0001']['data2']
+        result1 = self.steps(data2)  # 检查开机状态开启Spice的展示信息
+        sleep(3)
+        data3 = self.data['TH-CP-BASIC_SPICE-0001']['data3']
+        self.steps(data3)  # 恢复默认
+        return result1
+
+    # 1514-2 关机状态下检查Spice配置信息
+    def basic_EDITSPICE2(self):
+        data0 = self.data['TH-CP-BASIC_SPICE-0002']['data0']
+        self.steps(data0)  # 跳转到虚拟机基本信息页
+        data1 = self.data['TH-CP-BASIC_SPICE-0002']['data1']
+        self.steps(data1)  #关闭虚拟机
+        sleep(15)
+        data2 = self.data['TH-CP-BASIC_SPICE-0002']['data2']
+        self.steps(data2)
+        self.keys_PageDown()  # 滑动滚动条，防止元素被遮挡
+        sleep(3)
+        data3 = self.data['TH-CP-BASIC_SPICE-0002']['data3']
+        result1 = self.steps(data3)  # 检查关机状态开启Spice的展示信息
+        sleep(3)
+        data4 = self.data['TH-CP-BASIC_SPICE-0002']['data4']
+        self.steps(data4)  # 恢复默认
+        return result1
+
+    #1515异常检测
+    #1515-1 开启/关闭
+    def basic_EDITUNUSUAL(self):
+        data0 = self.data['TH-CP-BASIC_UNUSUAL-0001']['data0']
+        self.steps(data0)  # 跳转到虚拟机基本信息页
+        data1 = self.data['TH-CP-BASIC_UNUSUAL-0001']['data1']
+        self.steps(data1)
+        self.keys_PageDown()  # 滑动滚动条，防止元素被遮挡
+        sleep(3)
+        data2 = self.data['TH-CP-BASIC_UNUSUAL-0001']['data2']
+        result1 = self.steps(data2)  #获取关闭异常检测成功的提示信息
+        sleep(3)
+        data3 = self.data['TH-CP-BASIC_UNUSUAL-0001']['data3']
+        result2 = self.steps(data3)  #获取开启异常检测成功的提示信息
+        sleep(3)
+        data4 = self.data['TH-CP-BASIC_UNUSUAL-0001']['data4']
+        self.steps(data4)  # 恢复默认
+        return result1, result2
+
+    # 1516自动配置
+    # 1516-1选择主机
+    def basic_EDITDISPOSE1(self):
+        data0 = self.data['TH-CP-BASIC_DISPOSE-0001']['data0']
+        self.steps(data0)  # 跳转到虚拟机基本信息页
+        data1 = self.data['TH-CP-BASIC_DISPOSE-0001']['data1']
+        self.steps(data1)
+        self.keys_PageDown()  # 滑动滚动条，防止元素被遮挡
+        sleep(3)
+        data2 = self.data['TH-CP-BASIC_DISPOSE-0001']['data2']
+        result1 = self.steps(data2)  #获取选择主机启动操作成功的提示信息
+        sleep(3)
+        data3 = self.data['TH-CP-BASIC_DISPOSE-0001']['data3']
+        self.steps(data3)  # 恢复默认
+        return result1
+
+    # 1516-2选择标签
+    def basic_EDITDISPOSE2(self):
+        data0 = self.data['TH-CP-BASIC_DISPOSE-0002']['data0']
+        self.steps(data0)  # 跳转到虚拟机基本信息页
+        data1 = self.data['TH-CP-BASIC_DISPOSE-0002']['data1']
+        self.steps(data1)
+        self.keys_PageDown()  # 滑动滚动条，防止元素被遮挡
+        sleep(3)
+        data2 = self.data['TH-CP-BASIC_DISPOSE-0002']['data2']
+        result1 = self.steps(data2)  #获取选择标签启动操作成功的提示信息
+        sleep(3)
+        data3 = self.data['TH-CP-BASIC_DISPOSE-0002']['data3']
+        self.steps(data3)  # 恢复默认
+        return result1
+
     ########
 
     # 1.6 云服务器快照信息页面
@@ -485,9 +751,10 @@ class ServicePage(BasePage):
         self.steps(data0)  # 跳转到基本信息页
         data1 = self.data['TH-CP-COM_SNAP_ROLLBACK-0001']['data1']
         self.steps(data1)  #关闭虚拟机，进入到虚拟机快照信息页
-        sleep(1)
+        sleep(13)
         data2 = self.data['TH-CP-COM_SNAP_ROLLBACK-0001']['data2']
         self.steps(data2)  # 创建普通快照002
+        sleep(5)
         data3 = self.data['TH-CP-COM_SNAP_ROLLBACK-0001']['data3']
         result1 = self.steps(data3)  # 回滚至普通快照001，捕获回滚普通快照成功的提示信息
         data4 = self.data['TH-CP-COM_SNAP_ROLLBACK-0001']['data4']
@@ -524,7 +791,7 @@ class ServicePage(BasePage):
         sleep(2)
         data2 = self.data['TH-CP-MEM_SNAP_ROLLBACK-0001']['data2']
         self.steps(data2)  #关闭虚拟机，进入到虚拟机快照信息页
-        sleep(2)
+        sleep(13)
         data3 = self.data['TH-CP-MEM_SNAP_ROLLBACK-0001']['data3']
         result1 = self.steps(data3)  # 回滚至内存快照001，捕获回滚内存快照成功的提示信息
         data4 = self.data['TH-CP-MEM_SNAP_ROLLBACK-0001']['data4']
@@ -535,9 +802,10 @@ class ServicePage(BasePage):
     def snap_DEL2(self):
         data0 = self.data['TH-CP-MEM_SNAP_DEL-0001']['data0']
         self.steps(data0)  # 跳转到虚拟机快照信息页
+        sleep(3)
         data1 = self.data['TH-CP-MEM_SNAP_DEL-0001']['data1']
         result1 = self.steps(data1)  #捕获删除内存快照2成功的提示信息；关闭虚拟机快照信息页
-        sleep(1.5)
+        sleep(3)
         data2 = self.data['TH-CP-MEM_SNAP_DEL-0001']['data2']
         result2 = self.steps(data2)  # 捕获删除内存快照1成功的提示信息；关闭虚拟机快照信息页
         return result1, result2
@@ -567,6 +835,7 @@ class ServicePage(BasePage):
     def backup_SINGEL_ADD1(self):
         data0 = self.data['TH-CP-BACKUP_SINGLE-0001']['data0']
         self.steps(data0)  # 跳转到虚拟机备份信息页
+        sleep(6)
         data1 = self.data['TH-CP-BACKUP_SINGLE-0001']['data1']
         return self.steps(data1)  #捕获创建备份成功的提示信息
 
@@ -576,6 +845,7 @@ class ServicePage(BasePage):
         self.steps(data0)  # 跳转到虚拟机备份信息页
         data1 = self.data['TH-CP-BACKUP_MULTI-0001']['data1']
         self.steps(data1)  #添加磁盘
+        sleep(6)
         data2 = self.data['TH-CP-BACKUP_MULTI-0001']['data2']
         return self.steps(data2)  #捕获创建备份成功的提示信息
 

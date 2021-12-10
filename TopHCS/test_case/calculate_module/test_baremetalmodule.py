@@ -1,7 +1,7 @@
 import pytest
 import yaml
 
-from TopHC.base.main import Main
+from TopEC.base.main import Main
 
 
 class TestSearchUI:

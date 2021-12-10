@@ -2,9 +2,9 @@ from time import sleep
 
 import pytest
 from selenium.webdriver.common.by import By
-from TopHC.base.basepage import BasePage
-from TopHC.others.yamlexcelload import loadyaml
-from TopHC.others.filepath import readFilepath
+from TopEC.base.basepage import BasePage
+from TopEC.others.yamlexcelload import loadyaml
+from TopEC.others.filepath import readFilepath
 
 #1.云服务器模块
 # 1.1云服务器页面
@@ -131,7 +131,7 @@ class ServicePage(BasePage):
 
     #(1)集群目录新增组功能验证
     def add_group(self):
-        return self.steps(r'/TopHC/data/page_data/calculate_module_data/cserver_module/serverdata.yaml')
+        return self.steps(r'/TopEC/data/page_data/calculate_module_data/cserver_module/serverdata.yaml')
 
     #(6)集群目录组名称重命名功能验证
     def update_group(self):

@@ -1,6 +1,6 @@
 import logging,time
 
-from TopHCS.others.filepath import readFilepath
+from TopEC.others.filepath import readFilepath
 
 
 class Log():
@@ -20,26 +20,23 @@ class Log():
 
     def streamhandler(self):
         '''控制台处理器'''
-        if not logging.StreamHandler:
-            handler_stream=logging.StreamHandler()
-            handler_stream.setLevel(level=logging.INFO)
-            handler_stream.setFormatter(fmt=self.formatter)
-            self.logger.addHandler(hdlr=handler_stream)
+        handler_stream=logging.StreamHandler()
+        handler_stream.setLevel(level=logging.INFO)
+        handler_stream.setFormatter(fmt=self.formatter)
+        self.logger.addHandler(hdlr=handler_stream)
 
     def filehandler(self):
         '''文件处理器'''
-        if not logging.FileHandler:
-            handler_file=logging.FileHandler(filename='{0}\{1}.log'.format(self.LogPath,self.LogTime))
-            handler_file.setLevel(level=logging.INFO)
-            handler_file.setFormatter(fmt=self.formatter)
-            self.logger.addHandler(hdlr=handler_file)
+        handler_file=logging.FileHandler(filename='{0}\{1}.log'.format(self.LogPath,self.LogTime))
+        handler_file.setLevel(level=logging.INFO)
+        handler_file.setFormatter(fmt=self.formatter)
+        self.logger.addHandler(hdlr=handler_file)
 
     def getLog(self):
         '''实例化控制台处理器和文件处理器,返回日志器'''
         self.streamhandler()
         self.filehandler()
         return self.logger
-
 #实例化日志类，并将返回值赋值给变量logger
 logs=Log().getLog()
 

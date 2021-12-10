@@ -1,4 +1,4 @@
-from TopHC.base.basepage import BasePage
+from TopEC.base.basepage import BasePage
 
 
 class StrategyPage(BasePage):

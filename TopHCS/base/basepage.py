@@ -25,60 +25,60 @@ class BasePage():
     imagespath = readFilepath.ImagePath
     data = loadyaml(filepath)  # 获取测试驱动数据文件，并解析
 
-    # __init__:父类的构造方法，子类执行之前首先会去调用执行父类的构造方法
-    def __init__(self, driver: WebDriver = None):  # driver的类型为 WebDriver = None
-        # 这里如果不对参数进行初始化会报错：TypeError: __init__() missing 1 required positional argument: 'driver'
-        # 定义页面基础类时，初始化webdiver，传参数的时候没有对参数driver赋默认None值，即一个默认参数，导致页面报错如下：
-        # 传人默认参数，在调用self.main=Main()时，就可以不传入参数了(或者直接在调用时传入默认参数初始值self.main=Main(WebDriver = None))
-        # 且不指定浏览器驱动类型时，后面调用时定位元素会出问题
-        if driver is None:  # 如果外面没有对driver进行传值（即第一次调用），那么就对driver进行初始化
-            options = Options()  # 使用 selenium 时，我们可能需要对 chrome 做一些特殊的设置，以完成我们期望的浏览器行为，比如阻止图片加载，阻止JavaScript执行 等动作。这些需要 selenium的 ChromeOptions 来帮助我们完成
-            options.debugger_address = '127.0.0.1:9500'  # 开启浏览器调试模式：cmd命令窗口输入： chrome  --remote-debugging-port=端口1（随便取），回车
-            self.driver = webdriver.Chrome(options=options)
-            sleep(2)
-            # 加入隐式等待时间
-            # 弊端：全局生效，但只要找到元素不管有没有完全加载就继续下一步，这样会造成操作失败
-            #self._driver.implicitly_wait(10)
-            # 解决办法:使用显示等待
-        else:
-            self.driver = driver  # 后面每次有方法调用self._driver时，都是初始化之后的driver
-
-        if self.url != '':
-            self.driver.get(self.url)
+    # # __init__:父类的构造方法，子类执行之前首先会去调用执行父类的构造方法
+    # def __init__(self, driver: WebDriver = None):  # driver的类型为 WebDriver = None
+    #     # 这里如果不对参数进行初始化会报错：TypeError: __init__() missing 1 required positional argument: 'driver'
+    #     # 定义页面基础类时，初始化webdiver，传参数的时候没有对参数driver赋默认None值，即一个默认参数，导致页面报错如下：
+    #     # 传人默认参数，在调用self.main=Main()时，就可以不传入参数了(或者直接在调用时传入默认参数初始值self.main=Main(WebDriver = None))
+    #     # 且不指定浏览器驱动类型时，后面调用时定位元素会出问题
+    #     if driver is None:  # 如果外面没有对driver进行传值（即第一次调用），那么就对driver进行初始化
+    #         options = Options()  # 使用 selenium 时，我们可能需要对 chrome 做一些特殊的设置，以完成我们期望的浏览器行为，比如阻止图片加载，阻止JavaScript执行 等动作。这些需要 selenium的 ChromeOptions 来帮助我们完成
+    #         options.debugger_address = '127.0.0.1:9500'  # 开启浏览器调试模式：cmd命令窗口输入： chrome  --remote-debugging-port=端口1（随便取），回车
+    #         self.driver = webdriver.Chrome(options=options)
+    #         sleep(2)
+    #         # 加入隐式等待时间
+    #         # 弊端：全局生效，但只要找到元素不管有没有完全加载就继续下一步，这样会造成操作失败
+    #         #self._driver.implicitly_wait(10)
+    #         # 解决办法:使用显示等待
+    #     else:
+    #         self.driver = driver  # 后面每次有方法调用self._driver时，都是初始化之后的driver
+    #
+    #     if self.url != '':
+    #         self.driver.get(self.url)
 
     # 虚构driver对象
     # driver = webdriver.Chrome()
 
-    #登录
+    # 登录
     # 构造函数
-    # def __init__(self, driver):
-    #     if driver is None:
-    #     #     options = Options()
-    #     #     self.driver = webdriver.Chrome(options=options)
-    #         options = webdriver.ChromeOptions()
-    #         options.add_argument('--headless')   #无窗口模式
-    #         # options.add_argument('--disable-gpu')
-    #         options.add_argument("--window-size=1920,1080")   #窗口分辨率
-    #         # options.add_argument('--incognito')  #无痕模式
-    #         # options.add_experimental_option('w3c', False)
-    #         options.add_argument('ignore-certificate-errors')  # 设置忽略ssl证书认证的错误，或者接收不信任的认证
-    #         self.driver = webdriver.Chrome(chrome_options=options)
-    #     else:
-    #         self.driver = driver  # 后面每次有方法调用self._driver时，都是初始化之后的driver
-    #     if self.url != '':
-    #         self.driver.get(self.url)
-    #         self.windowmax()
-    #         data = self.data['TH-LOGIN-0001']
-    #         self.steps(data)
-    #         logs.info('登录成功')
-    #
-    #
+    def __init__(self, driver):
+        if driver is None:
+        #     options = Options()
+        #     self.driver = webdriver.Chrome(options=options)
+            options = webdriver.ChromeOptions()
+            options.add_argument('--headless')   #无窗口模式
+            # options.add_argument('--disable-gpu')
+            options.add_argument("--window-size=1920,1080")   #窗口分辨率
+            # options.add_argument('--incognito')  #无痕模式
+            # options.add_experimental_option('w3c', False)
+            options.add_argument('ignore-certificate-errors')  # 设置忽略ssl证书认证的错误，或者接收不信任的认证
+            self.driver = webdriver.Chrome(chrome_options=options)
+        else:
+            self.driver = driver  # 后面每次有方法调用self._driver时，都是初始化之后的driver
+        if self.url != '':
+            self.driver.get(self.url)
+            self.windowmax()
+            data = self.data['TH-LOGIN-0001']
+            self.steps(data)
+            logs.info('登录成功')
 
+
+
+    # 共同方法
     # 访问url
     def visit(self, url):
         self.driver.get(url)  # 直接传入每次调用它的页面的url
 
-    # 共同方法
     # 1、元素定位+显示等待
     def find(self, *loc):
         '''元素显示等待'''
@@ -295,9 +295,8 @@ class BasePage():
                 if action == "move_click":
                     self.move_and_click(step["by"], step["locator"])
                 if action == "text":
-                    # element.text
                     texts.append(self.find_text(step["by"], step["locator"]))
-                    logs.info('获取文本信息:{0}成功'.format("text"))
+                    logs.info('获取文本信息:{0}成功'.format(element.text))
         return texts
 
     def windowmax(self, maximize_window=True, implicitly_wait=10):

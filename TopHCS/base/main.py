@@ -18,7 +18,7 @@ from TopHCS.page_object.system_module.configure_module.goto_configuremoudel impo
 
 class Main(BasePage):
     # 登录页面（用户名登录的步骤）
-    url = 'http://10.30.100.26:8080/#/pages/overview'
+    url = 'http://10.30.100.26:8080/#/login'
 
     def goto_logins(self):
         return LoginPage(self.driver)

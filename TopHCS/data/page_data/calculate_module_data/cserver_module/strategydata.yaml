@@ -5,8 +5,8 @@
 TH-CP-STRATEGY-0001:
   #默认为开关机策略页面
   #点击新增策略按钮
-  - by: xpath
-    locator: //button[@id="compute_virtual_strategy_Set"]
+  - by: id
+    locator: compute_virtual_strategy_Set
     action: click
 
   #出现创建开关机策略弹窗
@@ -28,8 +28,8 @@ TH-CP-STRATEGY-0001:
     action: move_click
 
   #点击下一次开机日历控件
-  - by: xpath
-    locator: //input[@id="switch_strategy_last_start"]
+  - by: id
+    locator: switch_strategy_last_start
     action: click
 
   #移动并点击此刻按钮
@@ -38,13 +38,13 @@ TH-CP-STRATEGY-0001:
     action: move_click
 
   #其它配置默认，点击下一步按钮
-  - by: xpath
-    locator: //button[@id="compute_strategy_create_next_step"]
+  - by: id
+    locator: compute_strategy_create_next_step
     action: click
 
   #跳转至选择云服务器页面，点击确认按钮
-  - by: xpath
-    locator: //button[@id="compute_strategy_create_confirm"]
+  - by: id
+    locator: compute_strategy_create_confirm
     action: click
 
   #捕获创建开关机策略成功的提示信息：”提交开关机策略成功！“
@@ -56,24 +56,24 @@ TH-CP-STRATEGY-0001:
 TH-CP-STRATEGY-0002:
   data0: &demo0000
   #搜索框中搜索已创建的开关机策略：strategy-kg1
-    - by: xpath
-      locator: //input[@id="compute_virtual_filtersVal"]
+    - by: id
+      locator: compute_virtual_filtersVal
       action: send
       value: "strategy-kg1"
 
-    - by: xpath
-      locator: //button[@id="compute_virtual_searchBtn"]
+    - by: id
+      locator: compute_virtual_searchBtn
       action: click
 
-    - by: xpath
-      locator: //input[@id="compute_virtual_filtersVal"]
+    - by: id
+      locator: compute_virtual_filtersVal
       action: clear
 
   #(2-1)停止开关机策略
   #鼠标移动至该策略的操作栏，出现操作类型下拉列表
   data1:
-    - by: xpath
-      locator: //button[@id="compute_instances_computes_operate_btn"]
+    - by: id
+      locator: compute_instances_computes_operate_btn
       action: move
 
   #移动至停止选项并点击
@@ -89,8 +89,8 @@ TH-CP-STRATEGY-0002:
   ##(2-2)开启开关机策略
   #鼠标移动至该策略的操作栏，出现操作类型下拉列表
   data2:
-    - by: xpath
-      locator: //button[@id="compute_instances_computes_operate_btn"]
+    - by: id
+      locator: compute_instances_computes_operate_btn
       action: move
 
   #移动至开启选项并点击
@@ -108,8 +108,8 @@ TH-CP-STRATEGY-0002:
 TH-CP-STRATEGY-0003:
   data0: *demo0000
   data1:
-    - by: xpath
-      locator: //button[@id="compute_instances_computes_operate_btn"]
+    - by: id
+      locator: compute_instances_computes_operate_btn
       action: move
 
   #移动至编辑选项并点击
@@ -136,13 +136,13 @@ TH-CP-STRATEGY-0003:
       action: move_click
 
   #其它配置默认，点击下一步按钮
-    - by: xpath
-      locator: //button[@id="compute_strategy_create_next_step"]
+    - by: id
+      locator: compute_strategy_create_next_step
       action: click
 
   #跳转至选择云服务器页面，点击确认按钮
-    - by: xpath
-      locator: //button[@id="compute_strategy_create_confirm"]
+    - by: id
+      locator: compute_strategy_create_confirm
       action: click
 
   #捕获编辑开关机策略成功的提示信息：”编辑开关机策略成功！“
@@ -155,14 +155,18 @@ TH-CP-STRATEGY-0003:
 TH-CP-STRATEGY-0004:
   data0: *demo0000
   data1:
-    - by: xpath
-      locator: //button[@id="compute_instances_computes_operate_btn"]
+    - by: id
+      locator: compute_instances_computes_operate_btn
       action: move
 
   #移动至删除选项并点击
     - by: xpath
       locator: //div[@class="xl-chrome-ext-bar"]/../ul/li[5]
       action: move_click
+
+    - by: xpath
+      locator: //button[@class="btn-confirm"]
+      action: click
 
   #捕获删除开关机策略成功的提示信息：”删除开关机策略成功！“
     - by: xpath
@@ -178,8 +182,8 @@ TH-CP-STRATEGY-0005:
     action: click
 
   #点击新增策略按钮
-  - by: xpath
-    locator: //button[@id="compute_virtual_strategy_Set"]
+  - by: id
+    locator: compute_virtual_strategy_Set
     action: click
 
   #出现创建开关机策略弹窗
@@ -207,7 +211,7 @@ TH-CP-STRATEGY-0005:
 
   #移动并点击此刻按钮
   - by: xpath
-    locator: //button[@class="el-button el-picker-panel__link-btn el-button--text el-button--mini"]
+    locator: (//button[@class="el-button el-picker-panel__link-btn el-button--text el-button--mini"])
     action: move_click
 
   #保留数量输入框输入：“2”
@@ -217,13 +221,13 @@ TH-CP-STRATEGY-0005:
     value: "2"
 
   #其它配置默认，点击下一步按钮
-  - by: xpath
-    locator: //button[@id="compute_strategy_create_next_step"]
+  - by: id
+    locator: compute_strategy_create_next_step
     action: click
 
   #跳转至选择云服务器页面，点击确认按钮
-  - by: xpath
-    locator: //button[@id="compute_strategy_create_confirm"]
+  - by: id
+    locator: compute_strategy_create_confirm
     action: click
 
   #捕获创建开关机策略成功的提示信息：”提交快照策略成功！“
@@ -240,25 +244,25 @@ TH-CP-STRATEGY-0006:
       action: click
 
   #搜索框输入创建的快照策略名称
-    - by: xpath
-      locator: //input[@id="compute_virtual_filtersVal"]
+    - by: id
+      locator: compute_virtual_filtersVal
       action: send
       value: "strategy-kz1"
 
   #点击查询按钮
-    - by: xpath
-      locator: //button[@id="compute_virtual_searchBtn"]
+    - by: id
+      locator: compute_virtual_searchBtn
       action: click
 
-    - by: xpath
-      locator: //input[@id="compute_virtual_filtersVal"]
+    - by: id
+      locator: compute_virtual_filtersVal
       action: clear
 
   #(2-1)停止快照策略
   #鼠标移动至该策略的操作栏，出现操作类型下拉列表
   data1:
-    - by: xpath
-      locator: //button[@id="compute_instances_computes_operate_btn"]
+    - by: id
+      locator: compute_instances_computes_operate_btn
       action: move
 
   #移动至停止选项并点击
@@ -274,8 +278,8 @@ TH-CP-STRATEGY-0006:
   ##(2-2)开启快照策略
   #鼠标移动至该策略的操作栏，出现操作类型下拉列表
   data2:
-    - by: xpath
-      locator: //button[@id="compute_instances_computes_operate_btn"]
+    - by: id
+      locator: compute_instances_computes_operate_btn
       action: move
 
   #移动至开启选项并点击
@@ -294,8 +298,8 @@ TH-CP-STRATEGY-0007:
   data0: *demo0001
   data1:
     #鼠标移动至该策略的操作栏，出现操作类型下拉列表
-    - by: xpath
-      locator: //button[@id="compute_instances_computes_operate_btn"]
+    - by: id
+      locator: compute_instances_computes_operate_btn
       action: move
 
     #移动至编辑选项并点击
@@ -322,13 +326,13 @@ TH-CP-STRATEGY-0007:
       action: move_click
 
   #其它配置默认，点击下一步按钮
-    - by: xpath
-      locator: //button[@id="compute_strategy_create_next_step"]
+    - by: id
+      locator: compute_strategy_create_next_step
       action: click
 
   #跳转至选择云服务器页面，点击确认按钮
-    - by: xpath
-      locator: //button[@id="compute_strategy_create_confirm"]
+    - by: id
+      locator: compute_strategy_create_confirm
       action: click
 
   #捕获编辑开关机策略成功的提示信息：”编辑开关机策略成功！“
@@ -342,7 +346,7 @@ TH-CP-STRATEGY-0008:
   data0: *demo0001
   data1:
     - by: xpath
-      locator: //button[@id="compute_instances_computes_operate_btn"]
+      locator: (//button[@id="compute_instances_computes_operate_btn"])[2]
       action: move
 
   #移动至删除选项并点击
@@ -355,7 +359,7 @@ TH-CP-STRATEGY-0008:
       locator: //button[@class="btn-confirm"]
       action: click
 
-  #捕获删除开关机策略成功的提示信息：”删除开关机策略成功！“
+  #捕获删除快照策略成功的提示信息：”删除快照策略成功！“
     - by: xpath
       locator: //div[@class='vue-message vue-message--success']/p
       action: text
@@ -371,8 +375,8 @@ TH-CP-STRATEGY-0009:
     action: click
 
   #点击新增策略按钮
-  - by: xpath
-    locator: //button[@id="compute_virtual_strategy_Set"]
+  - by: id
+    locator: compute_virtual_strategy_Set
     action: click
 
   #出现创建开关机策略弹窗
@@ -420,13 +424,13 @@ TH-CP-STRATEGY-0009:
     value: "2"
 
   #其它配置默认，点击下一步按钮
-  - by: xpath
-    locator: //button[@id="compute_strategy_create_next_step"]
+  - by: id
+    locator: compute_strategy_create_next_step
     action: click
 
   #跳转至选择云服务器页面，点击确认按钮
-  - by: xpath
-    locator: //button[@id="compute_strategy_create_confirm"]
+  - by: id
+    locator: compute_strategy_create_confirm
     action: click
 
   #捕获创建开关机策略成功的提示信息：”提交备份策略成功！“
@@ -443,25 +447,25 @@ TH-CP-STRATEGY-0010:
       action: click
 
   #搜索框输入创建的备份策略名称
-    - by: xpath
-      locator: //input[@id="compute_virtual_filtersVal"]
+    - by: id
+      locator: compute_virtual_filtersVal
       action: send
       value: "strategy-bf1"
 
   #点击查询按钮
-    - by: xpath
-      locator: //button[@id="compute_virtual_searchBtn"]
+    - by: id
+      locator: compute_virtual_searchBtn
       action: click
 
-    - by: xpath
-      locator: //input[@id="compute_virtual_filtersVal"]
+    - by: id
+      locator: compute_virtual_filtersVal
       action: clear
 
   #(2-1)停止备份策略
   #鼠标移动至该策略的操作栏，出现操作类型下拉列表
   data1:
     - by: xpath
-      locator: //button[@id="compute_instances_computes_operate_btn"]
+      locator: (//button[@id="compute_instances_computes_operate_btn"])[2]
       action: move
 
   #移动至停止选项并点击
@@ -478,7 +482,7 @@ TH-CP-STRATEGY-0010:
   #鼠标移动至该策略的操作栏，出现操作类型下拉列表
   data2:
     - by: xpath
-      locator: //button[@id="compute_instances_computes_operate_btn"]
+      locator: (//button[@id="compute_instances_computes_operate_btn"])[2]
       action: move
 
   #移动至开启选项并点击
@@ -498,7 +502,7 @@ TH-CP-STRATEGY-0011:
   data1:
     #鼠标移动至该策略的操作栏，出现操作类型下拉列表
     - by: xpath
-      locator: //button[@id="compute_instances_computes_operate_btn"]
+      locator: (//button[@id="compute_instances_computes_operate_btn"])[2]
       action: move
 
     #移动至编辑选项并点击
@@ -525,13 +529,13 @@ TH-CP-STRATEGY-0011:
       action: move_click
 
   #其它配置默认，点击下一步按钮
-    - by: xpath
-      locator: //button[@id="compute_strategy_create_next_step"]
+    - by: id
+      locator: compute_strategy_create_next_step
       action: click
 
   #跳转至选择云服务器页面，点击确认按钮
-    - by: xpath
-      locator: //button[@id="compute_strategy_create_confirm"]
+    - by: id
+      locator: compute_strategy_create_confirm
       action: click
 
   #捕获编辑开关机策略成功的提示信息：”编辑备份策略成功！“
@@ -545,7 +549,7 @@ TH-CP-STRATEGY-0012:
   data0: *demo0002
   data1:
     - by: xpath
-      locator: //button[@id="compute_instances_computes_operate_btn"]
+      locator: (//button[@id="compute_instances_computes_operate_btn"])[2]
       action: move
 
   #移动至删除选项并点击
@@ -553,10 +557,11 @@ TH-CP-STRATEGY-0012:
       locator: //div[@class="xl-chrome-ext-bar"]/../ul/li[5]
       action: move_click
 
+  data2:
   #出现确认弹窗，点击确认按钮
     - by: xpath
-      locator: //button[@class="btn-confirm"]
-      action: click
+      locator: //div[@class="confirm-box"]/div[3]/div/button[1]
+      action: move_click
 
   #捕获删除开关机策略成功的提示信息：”删除备份策略成功！“
     - by: xpath

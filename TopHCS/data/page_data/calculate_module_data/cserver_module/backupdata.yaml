@@ -3,19 +3,19 @@
 # 4.1远端导入备份（前置条件：存在远端导入备份点）
 TH-CP-BACKUP-0001:
   #点击远端导入按钮
-  - by: xpath
-    locator: //button[@id="compute_virtual_backup_remote_import"]
+  - by: id
+    locator: compute_virtual_backup_remote_import
     action: click
 
   #出现远端导入弹窗页面
   #点击请选择备份点下拉框
-  - by: xpath
-    locator: //input[@id="compute_virtua_backup_remoteImport_dialog_selectBackupPoint"]
+  - by: id
+    locator: compute_virtua_backup_remoteImport_dialog_selectBackupPoint
     action: click
 
   #移动至备份点下拉框中的远端备份点并点击
-  - by: xpath
-    locator: //li[@id="compute_virtua_backup_remoteImport_dialog_selectBackupPoint0"]
+  - by: id
+    locator: compute_virtua_backup_remoteImport_dialog_selectBackupPoint0
     action: move_click
 
   #出现对应的备份信息列表
@@ -25,8 +25,8 @@ TH-CP-BACKUP-0001:
     action: click
 
   #点击确认
-  - by: xpath
-    locator: //button[@id="compute_virtua_backup_remoteImport_dialog_confirm"]
+  - by: id
+    locator: compute_virtua_backup_remoteImport_dialog_confirm
     action: click
 
   #捕获远端导入备份成功的提示信息：”创建云服务器1个成功！“
@@ -38,17 +38,17 @@ TH-CP-BACKUP-0001:
 # 4.2远端备份恢复
 TH-CP-BACKUP-0002:
  #搜索框中搜索已导入的远端备份点ydbf
-  - by: xpath
-    locator: //input[@id="compute_virtual_backup_searchName"]
+  - by: id
+    locator: compute_virtual_backup_searchName
     action: send
     value: "bf1"
 
-  - by: xpath
-    locator: //button[@id="compute_virtual_backup_search_btn"]
+  - by: id
+    locator: compute_virtual_backup_search_btn
     action: click
 
-  - by: xpath
-    locator: //input[@id="compute_virtual_backup_searchName"]
+  - by: id
+    locator: compute_virtual_backup_searchName
     action: clear
 
   #点击备份恢复按钮
@@ -58,14 +58,14 @@ TH-CP-BACKUP-0002:
 
   #出现云服务器备份恢复弹窗
   #云服务器输入框输入：ydbf-hf
-  - by: xpath
-    locator: //input[@id="compute_virtua_backup_restore_dialog_new_vm_name"]
+  - by: id
+    locator: compute_virtua_backup_restore_dialog_new_vm_name
     action: send
     value:  "ydbf-hf"
 
   #点击资源池下拉框
-  - by: xpath
-    locator: //input[@id="compute_virtua_backup_restore_dialog_cluster"]
+  - by: id
+    locator: compute_virtua_backup_restore_dialog_cluster
     action: click
 
   #移动鼠标至第一个选项并点击
@@ -96,8 +96,8 @@ TH-CP-BACKUP-0002:
 
   #其它配置默认
   #点击确认
-  - by: xpath
-    locator: //button[@id="compute_virtua_backup_restore_dialog_comfrim"]
+  - by: id
+    locator: compute_virtua_backup_restore_dialog_comfrim
     action: click
 
   #捕获远端导入备份恢复成功的提示信息：”创建云服务器1个成功！“

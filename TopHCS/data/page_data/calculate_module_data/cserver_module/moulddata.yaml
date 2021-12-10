@@ -4,17 +4,17 @@
 # 2.2基于模板添加云服务器(存在已创建的模板0000)
 TH-CP-MOULD_VM-0001:
   #搜索框中搜索虚拟机模板0000
-  - by: xpath
-    locator: //*[@id="compute_virtual_filtersVal"]
+  - by: id
+    locator: compute_virtual_filtersVal
     action: send
     value: "0000"
 
-  - by: xpath
-    locator: //*[@id="compute_virtual_searchBtn"]
+  - by: id
+    locator: compute_virtual_searchBtn
     action: click
 
-  - by: xpath
-    locator: //*[@id="compute_virtual_filtersVal"]
+  - by: id
+    locator: compute_virtual_filtersVal
     action: clear
 
   #点击虚拟机模板的名称，进入虚拟机模板的基本信息页
@@ -23,17 +23,17 @@ TH-CP-MOULD_VM-0001:
     action: click
 
   #点击基于模板添加云服务器按钮，创建虚拟机moudel
-  - by: xpath
-    locator: //*[@id="compute_virtual_template_create_compute"]
+  - by: id
+    locator: compute_virtual_template_create_compute
     action: click
 
   #出现创建云服务器页面，修改默认名称为：moudel-VM1
-  - by: xpath
-    locator: //*[@id="vmDiaAdd_vmname"]
+  - by: id
+    locator: vmDiaAdd_vmname
     action: clear
 
-  - by: xpath
-    locator: //*[@id="vmDiaAdd_vmname"]
+  - by: id
+    locator: vmDiaAdd_vmname
     action: send
     value: "moudel-VM1"
 
@@ -49,12 +49,12 @@ TH-CP-MOULD_VM-0001:
 
   #选择二级下拉框中第一个选项
   - by: xpath
-    locator: (//span[text()='default'])[2]
+    locator: (//span[text()='default'])[3]
     action: move_click
 
   #其它配置默认，点击确认按钮
-  - by: xpath
-    locator: //button[@id='vmDiaAdd_confirm']
+  - by: id
+    locator: vmDiaAdd_confirm
     action: click
 
   #捕获基于模板创建虚拟机成功的提示信息：”创建云服务器1个成功！“
@@ -63,41 +63,41 @@ TH-CP-MOULD_VM-0001:
     action: text
 
   #关闭虚拟机模板详细信息页
-  - by: xpath
-    locator: //i[@id='compute_virtual_template_create_compute_Close']
+  - by: id
+    locator: compute_virtual_template_create_compute_Close
     action: click
 
 #2.3模板恢复
 TH-CP-MOULD_VM-0002:
   #搜索框中搜索虚拟机模板0000
-  - by: xpath
-    locator: //*[@id="compute_virtual_filtersVal"]
+  - by: id
+    locator: compute_virtual_filtersVal
     action: send
     value: "0000"
 
-  - by: xpath
-    locator: //*[@id="compute_virtual_searchBtn"]
+  - by: id
+    locator: compute_virtual_searchBtn
     action: click
 
-  - by: xpath
-    locator: //*[@id="compute_virtual_filtersVal"]
+  - by: id
+    locator: compute_virtual_filtersVal
     action: clear
 
   #点击转换云服务器按钮
-  - by: xpath
-    locator: //*[@id="compute_virtual_template_list_convert"]
+  - by: id
+    locator: compute_virtual_template_list_convert
     action: click
 
   #出现转换云服务器弹窗
   #云服务器输入框输入模板虚拟机转换后的名称：mould-hf
-  - by: xpath
-    locator: //*[@id="compute_virtual_template_convert_compute_dialog_compute_name"]
+  - by: id
+    locator: compute_virtual_template_convert_compute_dialog_compute_name
     action: send
     value: "mould-hf"
 
   #其它配置默认，点击确认按钮
-  - by: xpath
-    locator: //*[@id="compute_virtual_template_convert_compute_dialog_confirm"]
+  - by: id
+    locator: compute_virtual_template_convert_compute_dialog_confirm
     action: click
 
   #捕获基于模板创建虚拟机成功的提示信息：”模板转换云服务器成功！“
